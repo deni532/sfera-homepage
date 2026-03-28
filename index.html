@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFERA Smart Systems | Home Automation Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary:  '#1F3C88',
+                        logoBlue: '#009DFF',
+                        dark:     '#2E2E2E',
+                        accent:   '#C6A75E',
+                    },
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color:#fff; color:#2E2E2E; overflow-x:hidden; font-family:'Poppins',sans-serif; }
+        .logo-container { display:flex; align-items:center; gap:15px; }
+        .logo-text-wrapper { display:flex; flex-direction:column; line-height:1; }
+        .logo-main-text { font-weight:600; font-size:38px; letter-spacing:.1em; color:#009DFF; text-transform:uppercase; }
+        .logo-sub-text  { font-weight:400; font-size:14px; letter-spacing:.35em; color:#2E2E2E; text-transform:lowercase; margin-top:-2px; }
+        .hero-gradient  { background:linear-gradient(135deg,rgba(15,23,42,.95) 0%,rgba(15,23,42,.6) 100%); }
+        .reveal { opacity:0; transform:translateY(30px); transition:all .8s ease-out; }
+        .reveal.active  { opacity:1; transform:translateY(0); }
+        .glass-card { background:rgba(255,255,255,.8); backdrop-filter:blur(10px); border:1px solid rgba(0,0,0,.05); }
+        .btn-transition { transition:all .3s cubic-bezier(.4,0,.2,1); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-28 flex items-center justify-between">
+            <div class="logo-container">
+                <svg width="65" height="65" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="#2E2E2E" stroke-width="1.5"/>
+                    <ellipse cx="50" cy="50" rx="42" ry="15" stroke="#2E2E2E" stroke-width="1" transform="rotate(45 50 50)"/>
+                    <ellipse cx="50" cy="50" rx="42" ry="15" stroke="#2E2E2E" stroke-width="1" transform="rotate(-45 50 50)"/>
+                    <ellipse cx="50" cy="50" rx="42" ry="30" stroke="#2E2E2E" stroke-width="1"/>
+                    <path d="M30 55 L50 38 L70 55 V65 H30 V55Z" fill="white"/>
+                    <path d="M28 56 L50 35 L72 56" stroke="#2E2E2E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="46" y="52" width="8" height="8" fill="#2E2E2E"/>
+                    <rect x="42" y="65" width="16" height="3" fill="#2E2E2E"/>
+                </svg>
+                <div class="logo-text-wrapper">
+                    <span class="logo-main-text">SFERA</span>
+                    <span class="logo-sub-text">smart systems</span>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-10 items-center">
+                <a href="#" class="text-sm font-semibold hover:text-logoBlue btn-transition">Sistemi</a>
+                <a href="#" class="text-sm font-semibold hover:text-logoBlue btn-transition">Servizi</a>
+                <a href="#" class="text-sm font-semibold hover:text-logoBlue btn-transition">Perché Noi</a>
+                <a href="#" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold btn-transition hover:opacity-90 hover:shadow-lg">Contattaci</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative min-h-screen flex items-center pt-28 overflow-hidden bg-slate-900">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1558002038-103792e07a70?auto=format&fit=crop&q=80&w=2000"
+                 alt="Domotica" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-6 z-10">
+            <div class="max-w-2xl reveal active">
+                <div class="inline-block px-4 py-1 mb-6 border border-white/20 rounded-full bg-white/10">
+                    <span class="text-logoBlue text-xs font-bold tracking-widest uppercase">Tecnologia Invisibile, Comfort Assoluto</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl text-white font-extrabold leading-tight mb-6">
+                    La tua casa,<br><span class="text-logoBlue">più intelligente.</span>
+                </h1>
+                <p class="text-lg text-white/80 mb-10 leading-relaxed font-light">
+                    Sperimenta il controllo totale con interfacce 3D intuitive. SFERA trasforma ogni ambiente in un ecosistema intelligente che risponde al tuo tocco.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl">Inizia il Progetto</button>
+                    <button class="border border-white/30 text-white px-8 py-4 rounded-lg font-bold btn-transition hover:bg-white/10">Guarda il Video</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servizi -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-4">Soluzioni Integrate</h2>
+                <div class="h-1 w-20 bg-logoBlue mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="reveal glass-card p-10 rounded-2xl border-b-4 border-primary hover:shadow-2xl btn-transition group">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white btn-transition text-primary">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Domotica 3D</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Controllo totale di ogni ambiente attraverso modelli tridimensionali dinamici.</p>
+                </div>
+                <div class="reveal glass-card p-10 rounded-2xl border-b-4 border-logoBlue hover:shadow-2xl btn-transition group" style="transition-delay:100ms">
+                    <div class="w-16 h-16 bg-sky-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-logoBlue group-hover:text-white btn-transition text-logoBlue">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Sicurezza</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Protezione proattiva con monitoraggio AI e crittografia di livello superiore.</p>
+                </div>
+                <div class="reveal glass-card p-10 rounded-2xl border-b-4 border-accent hover:shadow-2xl btn-transition group" style="transition-delay:200ms">
+                    <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white btn-transition text-accent">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Energia</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Ottimizzazione dei carichi per ridurre i consumi senza sacrificare il comfort.</p>
+                </div>
+                <div class="reveal glass-card p-10 rounded-2xl border-b-4 border-dark hover:shadow-2xl btn-transition group" style="transition-delay:300ms">
+                    <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-dark group-hover:text-white btn-transition text-dark">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Remoto</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Gestisci la tua abitazione da qualsiasi parte del mondo con l'App SFERA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perché Noi -->
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?auto=format&fit=crop&q=80&w=800"
+                     alt="Esperto Tech SFERA" class="rounded-3xl shadow-2xl">
+            </div>
+            <div class="reveal">
+                <span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">L'eccellenza è di casa</span>
+                <h2 class="text-4xl font-extrabold mb-8 text-dark">Perché scegliere SFERA Systems?</h2>
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="text-logoBlue mt-1 shrink-0">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-dark">Integrazione Nativa</h4>
+                            <p class="text-gray-500 text-sm font-light">Tutti i dispositivi comunicano in un unico ecosistema armonioso.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-logoBlue mt-1 shrink-0">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-dark">Supporto H24</h4>
+                            <p class="text-gray-500 text-sm font-light">Monitoraggio remoto e assistenza tecnica sempre al tuo fianco.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-20">
+                <div>
+                    <div class="logo-container mb-6">
+                        <svg width="45" height="45" viewBox="0 0 100 100" fill="none">
+                            <circle cx="50" cy="50" r="42" stroke="white" stroke-width="2"/>
+                            <path d="M28 56 L50 35 L72 56" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                        </svg>
+                        <div class="logo-text-wrapper">
+                            <span style="font-size:24px;color:#009DFF;font-weight:600;letter-spacing:.1em;text-transform:uppercase;">SFERA</span>
+                            <span style="font-size:10px;color:rgba(255,255,255,.6);letter-spacing:.35em;text-transform:lowercase;">smart systems</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed font-light">Leader nell'integrazione di sistemi domotici ad alta tecnologia per residenze premium.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Sistemi</h4>
+                    <ul class="space-y-4 text-sm text-gray-400 font-light">
+                        <li><a href="#" class="hover:text-white btn-transition">Illuminazione</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Sicurezza</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Clima</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Azienda</h4>
+                    <ul class="space-y-4 text-sm text-gray-400 font-light">
+                        <li><a href="#" class="hover:text-white btn-transition">Chi Siamo</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Progetti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Contatti</h4>
+                    <ul class="space-y-4 text-sm text-gray-400 font-light">
+                        <li><a href="mailto:info@sferasystems.it" class="hover:text-white btn-transition">info@sferasystems.it</a></li>
+                        <li>Milano, Italia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-10 text-xs text-gray-500 uppercase tracking-widest">
+                <p>&copy; 2025 SFERA Smart Systems.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function reveal() {
+            document.querySelectorAll(".reveal").forEach(function(el) {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add("active");
+                }
+            });
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+</html>
