@@ -165,14 +165,16 @@
                 <img src="https://raw.githubusercontent.com/deni532/SFERA-logo/main/IMG_20260403_163345.jpg" alt="Logo" class="h-11 w-auto object-contain">
             </div>
 
-            <!-- Link Navigazione -->
-            <div class="hidden md:flex space-x-10 items-center absolute left-1/2 -translate-x-1/2">
-                <a href="#" class="text-sm font-semibold hover:text-logoBlue btn-transition">Sistemi</a>
-                <a href="#" class="text-sm font-semibold hover:text-logoBlue btn-transition">Servizi</a>
-                <a href="#" class="text-sm font-semibold hover:text-logoBlue btn-transition">Perché Noi</a>
-                <a href="#" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold btn-transition hover:bg-primary/90 hover:shadow-lg shadow-primary/20">
-                    Contattaci
-                </a>
+            <!-- Barra di Ricerca -->
+            <div class="hidden md:flex items-center absolute left-1/2 -translate-x-1/2 w-80 lg:w-[450px]">
+                <div class="relative w-full">
+                    <input type="text" placeholder="Cerca parole o servizi..." onkeydown="if(event.key === 'Enter') window.find(this.value)" class="w-full bg-gray-100 border-none rounded-full py-2.5 pl-11 pr-4 text-sm focus:ring-2 focus:ring-logoBlue/30 btn-transition text-dark font-inter">
+                    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -184,20 +186,20 @@
             <div class="absolute inset-0 hero-gradient"></div>
         </div>
 
-        <div class="relative max-w-7xl mx-auto px-6 z-10">
-            <div class="max-w-2xl reveal active">
-                <div class="inline-block px-4 py-1 mb-6 border border-logoBlue/30 rounded-full bg-logoBlue/10">
+        <div class="relative max-w-7xl mx-auto px-6 z-10 text-center">
+            <div class="max-w-4xl mx-auto reveal active">
+                <div class="inline-block px-4 py-1 mb-6 border border-logoBlue/30 rounded-full bg-logoBlue/10 mx-auto">
                     <span class="text-logoBlue text-xs font-bold tracking-widest uppercase">Tecnologia Invisibile, Comfort Assoluto</span>
                 </div>
                 <h1 class="text-5xl md:text-7xl text-white font-800 leading-tight mb-6">
-                    La tua casa,<br><span class="text-logoBlue">più intelligente che mai.</span>
+                    La tua casa, <span class="text-logoBlue">più intelligente che mai.</span>
                 </h1>
-                <p style="font-family: 'Inter', sans-serif; font-size: 17px; color: #FFFFFF;" class="mb-10 leading-relaxed">
+                <p style="font-family: 'Inter', sans-serif; font-size: 17px; color: #FFFFFF;" class="mb-10 leading-relaxed mx-auto">
                     Trasforma ogni ambiente in un ecosistema intelligente che risponde al tuo bisogno.<br><br>Più comfort e meno sprechi.
                 </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                    <button class="bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl shadow-logoBlue/20">
-                        Scopri come funziona
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
+                    <button class="bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl shadow-logoBlue/20 text-center">
+                        Prenota subito il tuo<br>SOPRALLUOGO GRATUITO
                     </button>
                     <button class="border border-white/30 text-white px-8 py-4 rounded-lg font-bold btn-transition hover:bg-white/10">
                         Guarda il Video
@@ -207,7 +209,7 @@
         </div>
     </section>
 
-    <!-- Altre Sezioni (Servizi, Perché Noi, Footer rimangono identici) -->
+    <!-- Sezione Servizi -->
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20 reveal">
@@ -251,80 +253,97 @@
         </div>
     </section>
 
+    <!-- Sezione: Dalla consulenza all’installazione -->
+    <section class="py-16 bg-white reveal">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 style="font-family: 'Poppins', sans-serif; font-size: 32px;" class="font-800 text-primary mb-6 uppercase">DALLA CONSULENZA ALL’INSTALLAZIONE</h2>
+            <p style="font-family: 'Inter', sans-serif; font-size: 22px;" class="text-dark/70 leading-relaxed mb-10">
+                Creiamo ecosistemi smart aperti e integrati.<br>
+                Che tu stia ristrutturando o voglia evolvere la tua casa attuale, rendiamo la tecnologia un'alleata silenziosa, senza vincoli e senza stress.
+            </p>
+            <button class="bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl shadow-logoBlue/20 text-center mx-auto">
+                Prenota subito il tuo<br>SOPRALLUOGO GRATUITO
+            </button>
+        </div>
+    </section>
+
     <!-- Sezione Perché Noi -->
     <section class="py-24 bg-white border-t border-gray-50">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-            <div class="reveal">
-                <img src="https://raw.githubusercontent.com/deni532/Immagine-dispositivi-home-page/main/Edit_the_provided_202604030659.png" alt="Ecosistema SFERA Smart Home" class="rounded-3xl shadow-2xl w-full h-auto object-cover transform hover:scale-[1.02] btn-transition">
-            </div>
-            <div class="reveal">
-                <span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">L'eccellenza è di casa</span>
-                <h2 class="text-4xl font-800 mb-8 text-dark">Perché scegliere SFERA Smart Systems?</h2>
-                <div class="space-y-8">
-                    <div class="flex items-start space-x-4">
-                        <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
-                        <div>
-                            <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">Integrazione Nativa</h4>
-                            <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Dispositivi provenienti da sistemi diversi comunicano in un unico ecosistema affidabile.</p>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <img src="https://raw.githubusercontent.com/deni532/Immagine-dispositivi-home-page/main/Edit_the_provided_202604030659.png" alt="Ecosistema SFERA Smart Home" class="rounded-3xl shadow-2xl w-full h-auto object-cover transform hover:scale-[1.02] btn-transition">
+                </div>
+                <div class="reveal">
+                    <span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">L'eccellenza è di casa</span>
+                    <h2 class="text-4xl font-800 mb-8 text-dark">Perché scegliere SFERA Smart Systems?</h2>
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
+                            <div>
+                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">Integrazione Nativa</h4>
+                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Dspositivi provenienti da sistemi diversi comunicano in un unico ecosistema affidabile.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
-                        <div>
-                            <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">Soluzione su misura per te</h4>
-                            <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Progettiamo tutto in base alla tua casa e alle tue abitudini.</p>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
+                            <div>
+                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">Soluzione su misura per te</h4>
+                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Progettiamo tutto in base alla tua casa e alle tue abitudini.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
-                        <div>
-                            <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">Assistenza inclusa</h4>
-                            <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Ti supportiamo anche dopo l’installazione. <br>Monitoraggio remoto e assistenza tecnica sempre al tuo fianco.</p>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
+                            <div>
+                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">Assistenza inclusa</h4>
+                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Ti supportiamo anche dopo l’installazione. <br>Monitoraggio remoto e assistenza tecnica sempre al tuo fianco.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
-                        <div>
-                            <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">facile da usare</h4>
-                            <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Controlli tutto dal telefono, in modo semplice e intuitivo.</p>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
+                            <div>
+                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">facile da usare</h4>
+                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Controlli tutto dal telefono, in modo semplice e intuitivo.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="reveal text-center mt-12">
+                <button class="bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl shadow-logoBlue/20">
+                    Prenota subito il tuo<br>SOPRALLUOGO GRATUITO
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-12 mb-20">
-                <div class="col-span-1 md:col-span-1">
-                    <div class="logo-container">
-                        <img src="https://raw.githubusercontent.com/deni532/SFERA-logo/main/Convert_logo_to_202604031203.jpeg" alt="Logo Footer" class="w-[45px] h-[45px] object-contain rounded-full">
-                        <div class="logo-text-wrapper">
-                            <span class="logo-main-text !text-logoBlue !text-2xl">SFERA</span>
-                            <span class="logo-sub-text !text-white/60 !text-[10px]">smart systems</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mt-6 mb-6 font-300">Leader nell'integrazione di sistemi domotici ad alta tecnologia per residenze premium.</p>
-                </div>
-                <!-- ... Resto del footer ... -->
-                <div>
+    <footer class="bg-gradient-to-b from-slate-800 to-slate-950 text-white pt-8 pb-10">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-400 text-sm leading-relaxed font-300 mx-auto whitespace-nowrap text-center">
+                Punto di riferimento nell'integrazione di ecosistemi domotici per trasformare la tua casa in una residenza smart premium
+            </p>
+            <div class="border-t border-white/5 mt-8 mb-12"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
+                <div class="text-left">
                     <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Sistemi</h4>
                     <ul class="space-y-4 text-sm text-gray-400 font-300">
-                        <li><a href="#" class="hover:text-white btn-transition">Illuminazione</a></li>
-                        <li><a href="#" class="hover:text-white btn-transition">Sicurezza</a></li>
-                        <li><a href="#" class="hover:text-white btn-transition">Clima</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Starter Smart</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Comfort Smart ⭐più scelto</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Security Smart</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Energy Smart</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Full Smart</a></li>
                     </ul>
                 </div>
-                <div>
+                <div class="text-left">
                     <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Azienda</h4>
                     <ul class="space-y-4 text-sm text-gray-400 font-300">
                         <li><a href="#" class="hover:text-white btn-transition">Chi Siamo</a></li>
-                        <li><a href="#" class="hover:text-white btn-transition">Progetti</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">la nostra missione</a></li>
                     </ul>
                 </div>
-                <div>
+                <div class="text-left">
                     <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Contatti</h4>
                     <ul class="space-y-4 text-sm text-gray-400 font-300">
                         <li>info@sferasmart.it</li>
@@ -332,6 +351,7 @@
                     </ul>
                 </div>
             </div>
+            
             <div class="border-t border-white/5 pt-10 flex justify-between items-center text-[11px] text-gray-500 uppercase tracking-widest font-600">
                 <p>&copy; 2025 SFERA Smart Systems.</p>
             </div>
