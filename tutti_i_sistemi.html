@@ -32,7 +32,15 @@
     .animate-pulse { animation: pulse 2s ease-in-out infinite; }
     .mobile-menu-enter { animation: slideDown .2s ease-out; }
     @keyframes slideDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:translateY(0)} }
-.btn-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }#sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }.sidebar-open #sidebar { transform: translateX(0); }.systems-dropdown, .company-dropdown, .contact-dropdown {  max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;}.systems-dropdown.open, .company-dropdown.open, .contact-dropdown.open {  max-height: 500px;}  </style>
+.btn-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }#sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }.sidebar-open #sidebar { transform: translateX(0); }.systems-dropdown, .company-dropdown, .contact-dropdown {  max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;}.systems-dropdown.open, .company-dropdown.open, .contact-dropdown.open {  max-height: 500px;}  
+
+/* Fix for Navbar unity during scroll-to-hide */
+#navbar {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+</style>
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 <!-- Hamburger Menu Button --><button id="menuBtn" class="fixed top-4 right-6 z-[60] bg-white p-3 rounded-xl shadow-lg border border-gray-100 hover:scale-110 btn-transition" onclick="document.body.classList.toggle('sidebar-open')">    <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>    </svg></button><!-- Sidebar --><aside id="sidebar" class="fixed top-0 left-0 h-full w-80 bg-white z-[55] shadow-2xl -translate-x-full border-r border-gray-100 p-12 overflow-y-auto">    <div class="mt-20 space-y-12">        <div>            <button onclick="document.getElementById('dropdown-systems').classList.toggle('open')" class="flex items-center justify-between w-full font-bold mb-6 text-logoBlue uppercase text-xs tracking-widest text-left">                SISTEMI                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>            </button>            <ul id="dropdown-systems" class="systems-dropdown space-y-4 text-sm text-gray-500 pl-2">                <li><a href="tutti_i_sistemi.html" class="hover:text-logoBlue btn-transition">Tutti i sistemi</a></li>                <li><a href="#" class="hover:text-logoBlue btn-transition">Starter Smart</a></li>                <li><a href="#" class="hover:text-logoBlue btn-transition">Comfort Smart ⭐</a></li>                <li><a href="#" class="hover:text-logoBlue btn-transition">Security Smart</a></li>                <li><a href="#" class="hover:text-logoBlue btn-transition">Energy Smart</a></li>                <li><a href="#" class="hover:text-logoBlue btn-transition">Full Smart</a></li>            </ul>        </div>        <div>            <button onclick="document.getElementById('dropdown-company').classList.toggle('open')" class="flex items-center justify-between w-full font-bold mb-6 text-logoBlue uppercase text-xs tracking-widest text-left">                SU DI NOI                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>            </button>            <ul id="dropdown-company" class="company-dropdown space-y-4 text-sm text-gray-500 pl-2">                <li><a href="#" class="hover:text-logoBlue btn-transition">Chi siamo</a></li>                <li><a href="#" class="hover:text-logoBlue btn-transition">La nostra missione</a></li>            </ul>        </div>        <div>            <button onclick="document.getElementById('dropdown-contact').classList.toggle('open')" class="flex items-center justify-between w-full font-bold mb-6 text-logoBlue uppercase text-xs tracking-widest text-left">                CONTATTACI                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>            </button>            <ul id="dropdown-contact" class="contact-dropdown space-y-4 text-sm text-gray-500 pl-2">                <li><a href="#" class="hover:text-logoBlue btn-transition">Contatti</a></li>            </ul>        </div>    </div></aside><!-- Overlay --><div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 hidden sidebar-open:block" onclick="document.body.classList.remove('sidebar-open')"></div>
@@ -48,13 +56,6 @@
     </div>
     <!-- Desktop Nav -->
     <div class="hidden md:flex items-center space-x-8">
-      <button onclick="scrollToSection('problema')" class="font-medium hover:text-blue-600 transition-colors">Perché Noi</button>
-      <buttpralluogoon onclick="scrollToSection('pacchetti')" class="font-medium hover:text-blue-600 transition-colors">Soluzioni</button>
-      <button onclick="scrollToSection('processo')" class="font-medium hover:text-blue-600 transition-colors">Come Funziona</button>
-      <button onclick="scrollToSection('contatti')"
-        class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200">
-        So Gratuito
-      </button>
     </div>
     
   </div>
@@ -155,92 +156,95 @@
 <section id="pacchetti" class="pt-12 pb-24 bg-slate-50">
   <div class="max-w-7xl mx-auto px-4">
     <div class="text-center mb-16 space-y-4">
-      <h2 class="font-extrabold text-slate-900 section-title">Soluzioni su misura per ogni esigenza</h2>
+      <h2 class="font-extrabold text-slate-900 section-title text-[32px]">Soluzioni su misura per ogni esigenza</h2>
       <p class="text-slate-600 max-w-2xl mx-auto">Nessuna configurazione standard. Scegli il punto di partenza e noi lo personalizziamo per te.</p>
     </div>
-    <div class="grid lg:grid-cols-3 gap-8">
-      <!-- Fascia BASE -->
-      <div class="space-y-8">
-        <div class="text-xs font-bold text-blue-600 uppercase tracking-[0.2em] text-center">BASE</div>
-        <!-- Starter Smart -->
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:border-blue-300 transition-all">
-          <h3 class="font-bold mb-4" style="font-size:18px">Starter Smart</h3>
-          <p class="text-slate-600 mb-6">L'essenziale per iniziare. Luci intelligenti, controllo tapparelle base e gestione da remoto. Ideale per testare la comodità.</p>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Luci Smart</li>
-            <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Automazione Tapparelle</li>
-            <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> App Mobile</li>
-            <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Comandi Vocali</li>
-          </ul>
-        </div>
-        <!-- Comfort Smart (highlighted) -->
-        <div class="bg-blue-600 p-8 rounded-3xl shadow-2xl border-4 border-blue-400 relative scale-105 transform z-10">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">Più Scelto</div>
-          <h3 class="font-bold text-white mb-4" style="font-size:18px">Comfort Smart</h3>
-          <p class="text-blue-50 mb-6">Il perfetto equilibrio tra relax e controllo. Include gestione climatica avanzata e scenari personalizzati.</p>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-2 font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Tutto lo Starter</li>
-            <li class="flex items-center gap-2 font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Controllo Riscaldamento/AC</li>
-            <li class="flex items-center gap-2 font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Scenari Cinema/Notte</li>
-            <li class="flex items-center gap-2 font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Sensori Luminosità</li>
-            <li class="flex items-center gap-2 font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Sicurezza Base</li>
-          </ul>
-          <button onclick="scrollToSection('contatti')" class="w-full py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-slate-100 transition-colors">Richiedi Informazioni</button>
-        </div>
-      </div>
-
-      <!-- Fascia MEDIO -->
-      <div class="space-y-8">
-        <div class="text-xs font-bold text-blue-600 uppercase tracking-[0.2em] text-center">MEDIO</div>
-        <!-- Energy Smart -->
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:border-blue-300 transition-all">
-          <h3 class="font-bold mb-4 flex items-center gap-2" style="font-size:18px">Energy Smart <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></h3>
-          <p class="text_slate_600 mb-6">Per chi guarda al portafoglio e all'ambiente. Monitoraggio dei carichi e gestione intelligente per evitare blackout.</p>
-          <ul class="space-y-3 mb-8 font-medium text-slate-700">
-            <li class="flex items-center gap-2 font-bold text-blue-600 underline">Include Comfort Smart</li>
-            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Monitoraggio Energia Real-time</li>
-            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Gestione Priorità Carichi</li>
-            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Analisi Consumi Storici</li>
-            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Notifiche Sprechi</li>
-          </ul>
-        </div>
-        <!-- Security Smart -->
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:border-blue-300 transition-all">
-          <h3 class="font-bold mb-4 flex items-center gap-2" style="font-size:18px">Security Smart <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></h3>
-          <p class="text-slate-600 mb-6">La tua fortezza digitale. Videosorveglianza avanzata, sensori anti-intrusione e notifiche istantanee prioritarie.</p>
-          <ul class="space-y-3 mb-8 font-medium text-slate-700">
-            <li class="flex items-center gap-2 font-bold text-blue-600 underline">Include Comfort Smart</li>
-            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Telecamere AI Notturne</li>
-            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Sensori Finestre/Porte</li>
-            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Allarme Integrato App</li>
-            <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Notifiche SOS</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Fascia AVANZATO -->
-      <div class="space-y-8">
-        <div class="text-xs font-bold text-blue-600 uppercase tracking-[0.2em] text-center">AVANZATO</div>
-        <div class="bg-slate-900 p-8 rounded-3xl shadow-2xl border-t-8 border-blue-600 h-full flex flex-col justify-between">
-          <div>
-            <h3 class="font-bold text-white mb-4" style="font-size:18px">Full Smart</h3>
-            <p class="text-slate-400 mb-6">L'esperienza definitiva. Tutto il meglio di Comfort, Energy e Security in un unico ecosistema integrato. Zero pensieri, massimo prestigio.</p>
-            <ul class="space-y-4 mb-8 text-white">
-              <li class="flex items-start gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1" class="shrink-0 mt-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <div><p class="font-bold">Integrazione Totale</p><p class="text-xs text-slate-400">Audio multi-room e controllo carichi avanzato.</p></div>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1" class="shrink-0 mt-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <div><p class="font-bold">Assistenza Priority</p><p class="text-xs text-slate-400">Supporto dedicato H24 per il primo anno.</p></div>
-              </li>
-              <li class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Soluzione "Chiavi in mano"
-              </li>
+    
+    <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+      <!-- Colonna 1: BASE -->
+      <div class="flex flex-col">
+        <div class="text-xs font-bold text-blue-600 uppercase tracking-[0.2em] text-center mb-8">BASE</div>
+        <div class="flex-1 flex flex-col gap-8">
+          <!-- Starter Smart -->
+          <div class="flex-1 bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:border-blue-300 transition-all flex flex-col">
+            <h3 class="font-bold mb-4 text-[22px]">Starter Smart</h3>
+            <p class="text-slate-600 mb-6 flex-none">L'essenziale per iniziare. Luci intelligenti, controllo tapparelle base e gestione da remoto.</p>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Luci Smart</li>
+              <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Automazione Tapparelle</li>
+              <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> App Mobile</li>
+              <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Comandi Vocali</li>
             </ul>
+            <button onclick="scrollToSection('contatti')" class="w-full py-4 bg-slate-100 text-slate-700 font-bold rounded-xl hover:bg-slate-200 transition-colors mt-auto">Richiedi Informazioni</button>
           </div>
-          <button onclick="scrollToSection('contatti')" class="w-full py-5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-lg">Richiedi Progetto Premium</button>
+          <!-- Comfort Smart -->
+          <div class="flex-1 bg-blue-600 p-8 rounded-3xl shadow-2xl border-4 border-blue-400 relative flex flex-col">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">Più Scelto</div>
+            <h3 class="font-bold text-white mb-4 text-[22px]">Comfort Smart</h3>
+            <p class="text-blue-50 mb-6 flex-none">Il perfetto equilibrio tra relax e controllo. Include gestione climatica e scenari.</p>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-2 font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Tutto lo Starter</li>
+              <li class="flex items-center gap-2 font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Controllo Riscaldamento/AC</li>
+              <li class="flex items-center gap-2 font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Scenari Cinema/Notte</li>
+              <li class="flex items-center gap-2 font-medium text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Sicurezza Base</li>
+            </ul>
+            <button onclick="scrollToSection('contatti')" class="w-full py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-slate-100 transition-colors mt-auto">Richiedi Informazioni</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonna 2: MEDIO -->
+      <div class="flex flex-col">
+        <div class="text-xs font-bold text-blue-600 uppercase tracking-[0.2em] text-center mb-8">MEDIO</div>
+        <div class="flex-1 flex flex-col gap-8">
+          <!-- Energy Smart -->
+          <div class="flex-1 bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:border-blue-300 transition-all flex flex-col">
+            <h3 class="font-bold mb-4 flex items-center gap-2 text-[22px]">Energy Smart <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></h3>
+            <p class="text-slate-600 mb-6 flex-none">Per chi guarda al portafoglio e all'ambiente. Monitoraggio dei carichi intelligente.</p>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-2 font-bold text-blue-600 underline">Include Comfort Smart</li>
+              <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Monitoraggio Energia</li>
+              <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Gestione Carichi</li>
+              <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Notifiche Sprechi</li>
+            </ul>
+            <button onclick="scrollToSection('contatti')" class="w-full py-4 bg-slate-100 text-slate-700 font-bold rounded-xl hover:bg-slate-200 transition-colors mt-auto">Richiedi Informazioni</button>
+          </div>
+          <!-- Security Smart -->
+          <div class="flex-1 bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:border-blue-300 transition-all flex flex-col">
+            <h3 class="font-bold mb-4 flex items-center gap-2 text-[22px]">Security Smart <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></h3>
+            <p class="text-slate-600 mb-6 flex-none">La tua fortezza digitale. Videosorveglianza avanzata e sensori anti-intrusione.</p>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-2 font-bold text-blue-600 underline">Include Comfort Smart</li>
+              <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Telecamere AI</li>
+              <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Sensori Finestre/Porte</li>
+              <li class="flex items-center gap-2 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Notifiche SOS</li>
+            </ul>
+            <button onclick="scrollToSection('contatti')" class="w-full py-4 bg-slate-100 text-slate-700 font-bold rounded-xl hover:bg-slate-200 transition-colors mt-auto">Richiedi Informazioni</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonna 3: AVANZATO -->
+      <div class="flex flex-col">
+        <div class="text-xs font-bold text-blue-600 uppercase tracking-[0.2em] text-center mb-8">AVANZATO</div>
+        <div class="flex-1 bg-slate-900 p-8 rounded-3xl shadow-2xl border-t-8 border-blue-600 flex flex-col">
+          <h3 class="font-bold text-white mb-4 text-[22px]">Full Smart</h3>
+          <p class="text-slate-400 mb-6 flex-none">L'esperienza definitiva. Tutto il meglio in un unico ecosistema integrato. Zero pensieri, massimo prestigio.</p>
+          <ul class="space-y-4 mb-8 text-white flex-1">
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1" class="shrink-0 mt-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <div><p class="font-bold">Integrazione Totale</p><p class="text-xs text-slate-400">Audio multi-room e controllo carichi avanzato.</p></div>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1" class="shrink-0 mt-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <div><p class="font-bold">Assistenza Priority</p><p class="text-xs text-slate-400">Supporto dedicato H24 per il primo anno.</p></div>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Soluzione "Chiavi in mano"
+            </li>
+          </ul>
+          <button onclick="scrollToSection('contatti')" class="w-full py-5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-lg mt-auto">Richiedi Progetto Premium</button>
         </div>
       </div>
     </div>
@@ -338,7 +342,7 @@
     </div>
     <div class="flex justify-center gap-1 mt-4">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg xmlns="http://www.get_icon_svg" width="20" height="20" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -469,7 +473,16 @@
     const nav = document.getElementById('navbar');
     const currentScrollY = window.scrollY;
 
-    // Background transition
+    // Transition logic for Unity: Remove transition-all during movement to prevent multi-attribute lag
+    if (currentScrollY > lastScrollY && currentScrollY > 200) {
+      // Scrolling down - Hide (The whole bar moves as a single unit)
+      nav.style.transform = 'translateY(-100%)';
+    } else {
+      // Scrolling up - Show
+      nav.style.transform = 'translateY(0)';
+    }
+
+    // Background transition logic (Padding/Shadow)
     if (currentScrollY > 50) {
       nav.classList.add('bg-white', 'shadow-md', 'py-2');
       nav.classList.remove('bg-transparent', 'py-4');
@@ -478,12 +491,6 @@
       nav.classList.add('bg-transparent', 'py-4');
     }
 
-    // Hide on scroll down, Show on scroll up
-    if (currentScrollY > lastScrollY && currentScrollY > 200) {
-      nav.style.transform = 'translateY(-100%)';
-    } else {
-      nav.style.transform = 'translateY(0)';
-    }
     lastScrollY = currentScrollY;
   });
 
