@@ -121,7 +121,7 @@
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <ul id="dropdown-systems" class="systems-dropdown space-y-4 text-sm text-gray-500 font-400 pl-2">
-                    <li><a href="#" class="hover:text-logoBlue btn-transition">Tutti i sistemi</a></li>
+                    <li><a href="tutti_i_sistemi.html" class="hover:text-logoBlue btn-transition">Tutti i sistemi</a></li>
                     <li><a href="#" class="hover:text-logoBlue btn-transition">Starter Smart</a></li>
                     <li>
                         <a href="#" class="hover:text-logoBlue btn-transition flex items-center">
@@ -330,7 +330,7 @@
                 <div class="text-left">
                     <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Sistemi</h4>
                     <ul class="space-y-4 text-sm text-gray-400 font-300">
-                        <li><a href="#" class="hover:text-white btn-transition">Tutti i sistemi</a></li>
+                        <li><a href="tutti_i_sistemi.html" class="hover:text-white btn-transition">Tutti i sistemi</a></li>
                         <li><a href="#" class="hover:text-white btn-transition">Starter Smart</a></li>
                         <li><a href="#" class="hover:text-white btn-transition">Comfort Smart ⭐più scelto</a></li>
                         <li><a href="#" class="hover:text-white btn-transition">Security Smart</a></li>
@@ -348,7 +348,7 @@
                 <div class="text-left">
                     <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Contatti</h4>
                     <ul class="space-y-4 text-sm text-gray-400 font-300">
-                        <li>info@sferasmart.it</li>
+                        <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2a43444c456a594c4f584b59474b585e04435e">[email&#160;protected]</a></li>
                         <li>Bolzano, Italia</li>
                     </ul>
                 </div>
@@ -360,7 +360,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Gestione Animazioni Reveal
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
@@ -413,10 +413,10 @@
             }
         });
 
-        window.onload = function() {
+        // Esegui reveal anche al caricamento della pagina
+        window.addEventListener('load', function() {
             reveal();
-            handleNavbar();
-        };
+        });
     </script>
 </body>
 </html>
