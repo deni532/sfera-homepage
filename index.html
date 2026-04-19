@@ -45,16 +45,16 @@
         .logo-main-text {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 38px;
+            font-size: 76px;
             letter-spacing: 0.1em;
-            color: #009DFF; 
+            color: #009DFF;
             text-transform: uppercase;
         }
 
         .logo-sub-text {
             font-family: 'Poppins', sans-serif;
             font-weight: 400;
-            font-size: 14px;
+            font-size: 28px;
             letter-spacing: 0.35em;
             color: #2E2E2E;
             text-transform: lowercase;
@@ -73,21 +73,209 @@
         }
         .btn-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
-        #sidebar {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        /* ── Horizontal Dropdown Nav ── */
+        .nav-menu { display: flex; align-items: center; gap: 4px; }
+
+        .nav-item { position: relative; }
+        .nav-item-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #374151;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
         }
-        .sidebar-open #sidebar {
-            transform: translateX(0);
+        .nav-item-btn:hover, .nav-item.open .nav-item-btn {
+            color: #009DFF;
+            background: #EFF6FF;
         }
-        
-        .systems-dropdown, .company-dropdown, .contact-dropdown {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
+        .nav-item-btn .chevron {
+            width: 14px; height: 14px;
+            transition: transform 0.25s;
+            opacity: 0.6;
         }
-        .systems-dropdown.open, .company-dropdown.open, .contact-dropdown.open {
-            max-height: 500px;
+        .nav-item.open .nav-item-btn .chevron { transform: rotate(180deg); opacity: 1; }
+
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-6px);
+            min-width: 240px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.06);
+            padding: 10px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.22s ease, transform 0.22s ease;
+            z-index: 200;
         }
+        .nav-item.open .nav-dropdown {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+        .nav-dropdown::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px; height: 12px;
+            background: #fff;
+            border-left: 1px solid rgba(0,0,0,0.06);
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-radius: 2px 0 0 0;
+        }
+        .nav-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.18s;
+            white-space: nowrap;
+        }
+        .nav-dropdown a:hover { background: #EFF6FF; }
+        .nav-dropdown a svg { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.35; transition: opacity 0.18s; color: #009DFF; }
+        .nav-dropdown a:hover svg { opacity: 0.9; }
+        .nav-dd-text { display: flex; flex-direction: column; gap: 1px; }
+        .nav-dd-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #1e293b;
+            transition: color 0.18s;
+        }
+        .nav-dropdown a:hover .nav-dd-title { color: #009DFF; }
+        .nav-dd-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 11.5px;
+            font-weight: 400;
+            color: #94a3b8;
+            transition: color 0.18s;
+        }
+        .nav-dropdown a:hover .nav-dd-desc { color: #64a8d8; }
+        .nav-dd-divider { height: 1px; background: #F3F4F6; margin: 6px 0; }
+        .nav-dd-badge {
+            font-size: 9px;
+            background: #FEF3C7;
+            color: #C6A75E;
+            padding: 2px 7px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-left: auto;
+            flex-shrink: 0;
+            align-self: flex-start;
+            margin-top: 2px;
+        }
+
+        /* ── Solution Modal ── */
+        .sol-overlay {
+            position: fixed; inset: 0; z-index: 500;
+            background: rgba(15,23,42,0.55);
+            backdrop-filter: blur(6px);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .sol-overlay.open { opacity: 1; pointer-events: auto; }
+        .sol-modal {
+            background: #fff;
+            border-radius: 24px;
+            width: 90%; max-width: 560px;
+            padding: 48px 44px 40px;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.18);
+            transform: translateY(20px) scale(0.97);
+            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+            opacity: 0;
+        }
+        .sol-overlay.open .sol-modal { transform: translateY(0) scale(1); opacity: 1; }
+        .sol-close {
+            position: absolute; top: 18px; right: 18px;
+            width: 34px; height: 34px; border-radius: 50%;
+            background: #F1F5F9; border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; color: #64748b;
+            transition: background 0.2s, color 0.2s;
+        }
+        .sol-close:hover { background: #E2E8F0; color: #1e293b; }
+        .sol-icon-wrap {
+            width: 56px; height: 56px; border-radius: 16px;
+            background: #EFF6FF; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 20px;
+            color: #009DFF;
+        }
+        .sol-icon-wrap svg { width: 28px; height: 28px; }
+        .sol-headline {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px; font-weight: 700;
+            color: #0f172a; line-height: 1.25;
+            margin-bottom: 10px;
+        }
+        .sol-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; color: #64748b;
+            line-height: 1.6; margin-bottom: 28px;
+        }
+        .sol-benefits {
+            display: flex; flex-direction: column; gap: 12px;
+            margin-bottom: 32px;
+        }
+        .sol-benefit {
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+        .sol-benefit-dot {
+            width: 22px; height: 22px; border-radius: 50%;
+            background: #EFF6FF; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            margin-top: 1px;
+        }
+        .sol-benefit-dot svg { width: 12px; height: 12px; color: #009DFF; }
+        .sol-benefit p {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px; color: #374151; line-height: 1.5;
+        }
+        .sol-img {
+            width: 100%; border-radius: 14px;
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 28px; overflow: hidden;
+            color: #93c5fd; font-family: 'Inter', sans-serif;
+            font-size: 13px; letter-spacing: 0.05em;
+        }
+        .sol-img img {
+            width: 100%; height: auto; display: block;
+            object-fit: contain;
+            border-radius: 14px;
+        }
+        .sol-cta {
+            display: block; width: 100%;
+            background: #009DFF; color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px; font-weight: 700;
+            padding: 14px; border: none; border-radius: 12px;
+            cursor: pointer; text-align: center;
+            box-shadow: 0 4px 16px rgba(0,157,255,0.3);
+            transition: background 0.22s, transform 0.22s;
+        }
+        .sol-cta:hover { background: #0088dd; transform: translateY(-1px); }
 
         /* Navbar Dinamica - Sfondo Solido */
         #main-nav {
@@ -101,120 +289,307 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             border-bottom: none;
         }
+        .lang-switcher { display: flex; align-items: center; gap: 4px; background: #F3F4F6; border-radius: 10px; padding: 4px 6px; }
+        .lang-btn { background: none; border: none; font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9CA3AF; cursor: pointer; padding: 6px 12px; border-radius: 7px; transition: all 0.25s; }
+        .lang-btn:hover { color: #2E2E2E; background: #E5E7EB; }
+        .lang-btn.active { color: #ffffff; background: #009DFF; box-shadow: 0 2px 8px rgba(0,157,255,0.35); }
+        .lang-sep { font-size: 10px; color: #D1D5DB; user-select: none; }
+
+        /* Nav height fix per logo 101px */
+        #main-nav .nav-inner { height: 112px; }
+
+        /* Scroll-to-top */
+        #scrollTop { position: fixed; bottom: 32px; right: 32px; z-index: 100; width: 44px; height: 44px; border-radius: 50%; background: #009DFF; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,157,255,0.4); opacity: 0; transform: translateY(12px); transition: all 0.3s; pointer-events: none; }
+        #scrollTop.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        #scrollTop:hover { background: #0088dd; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,157,255,0.5); }
+
+        /* CTA button arrow */
+        .btn-arrow { display: inline-flex; align-items: center; gap: 10px; }
+        .btn-arrow svg { transition: transform 0.3s; }
+        .btn-arrow:hover svg { transform: translateX(4px); }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Hamburger Menu Button -->
-    <button id="menuBtn" class="fixed top-4 right-6 z-[60] bg-white p-3 rounded-xl shadow-lg border border-gray-100 hover:scale-110 btn-transition" onclick="document.body.classList.toggle('sidebar-open')">
-        <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-    </button>
-
-    <!-- Sidebar a scomparsa -->
-    <aside id="sidebar" class="fixed top-0 left-0 h-full w-80 bg-white z-[55] shadow-2xl -translate-x-full border-r border-gray-100 p-12 overflow-y-auto">
-        <div class="mt-20 space-y-12">
-            <div>
-                <button onclick="document.getElementById('dropdown-systems').classList.toggle('open')" class="flex items-center justify-between w-full font-bold mb-6 text-logoBlue uppercase text-xs tracking-widest text-left">
-                    SISTEMI
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <ul id="dropdown-systems" class="systems-dropdown space-y-4 text-sm text-gray-500 font-400 pl-2">
-                    <li><a href="tutti_i_sistemi.html" class="hover:text-logoBlue btn-transition">Tutti i sistemi</a></li>
-                    <li><a href="#" class="hover:text-logoBlue btn-transition">Starter Smart</a></li>
-                    <li>
-                        <a href="#" class="hover:text-logoBlue btn-transition flex items-center">
-                            Comfort Smart ⭐ <span class="ml-2 text-[9px] bg-accent/10 text-accent px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">più scelto</span>
-                        </a>
-                    </li>
-                    <li><a href="#" class="hover:text-logoBlue btn-transition">Security Smart</a></li>
-                    <li><a href="#" class="hover:text-logoBlue btn-transition">Energy Smart</a></li>
-                    <li><a href="#" class="hover:text-logoBlue btn-transition">Full Smart</a></li>
-                </ul>
+    <!-- ── SOLUTION MODALS ── -->
+    <div class="sol-overlay" id="sol-overlay" onclick="closeSol(event)">
+        <div class="sol-modal" id="sol-modal">
+            <button class="sol-close" onclick="closeSolBtn()">✕</button>
+            <div class="sol-icon-wrap" id="sol-icon"></div>
+            <div class="sol-img" id="sol-img">
+                <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="opacity:0.3"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
             </div>
-            <div>
-                <button onclick="document.getElementById('dropdown-company').classList.toggle('open')" class="flex items-center justify-between w-full font-bold mb-6 text-logoBlue uppercase text-xs tracking-widest text-left">
-                    SU DI NOI
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <ul id="dropdown-company" class="company-dropdown space-y-4 text-sm text-gray-500 font-400 pl-2">
-                    <li><a href="#" class="hover:text-logoBlue btn-transition">Chi siamo</a></li>
-                    <li><a href="#" class="hover:text-logoBlue btn-transition">la nostra missione</a></li>
-                </ul>
-            </div>
-            <div>
-                <button onclick="document.getElementById('dropdown-contact').classList.toggle('open')" class="flex items-center justify-between w-full font-bold mb-6 text-logoBlue uppercase text-xs tracking-widest text-left">
-                    CONTATTACI
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <ul id="dropdown-contact" class="contact-dropdown space-y-4 text-sm text-gray-500 font-400 pl-2">
-                    <li><a href="#" class="hover:text-logoBlue btn-transition">Contatti</a></li>
-                </ul>
-            </div>
+            <h2 class="sol-headline" id="sol-headline"></h2>
+            <p class="sol-sub" id="sol-sub"></p>
+            <div class="sol-benefits" id="sol-benefits"></div>
+            <button class="sol-cta" onclick="closeSolBtn()">Prenota sopralluogo gratuito →</button>
         </div>
-    </aside>
+    </div>
 
-    <!-- Overlay per Sidebar -->
-    <div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 hidden sidebar-open:block" onclick="document.body.classList.remove('sidebar-open')"></div>
+    <!-- Scroll to top -->
+    <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna su">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 15V5M5 10l5-5 5 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
 
     <!-- Navigation Dinamica -->
     <nav id="main-nav" class="fixed w-full z-50 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
-            <!-- Immagine Logo a SINISTRA -->
+        <div class="nav-inner max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <!-- Logo -->
             <div class="logo-container">
-                <img src="https://raw.githubusercontent.com/deni532/SFERA-logo/main/IMG_20260403_163345.jpg" alt="Logo" class="h-11 w-auto object-contain">
+                <img src="Images/logo_tex_org.png" alt="SFERA" class="w-auto object-contain" style="height: 101px;">
             </div>
 
-            <!-- Barra di Ricerca -->
-            <div class="hidden md:flex items-center absolute left-1/2 -translate-x-1/2 w-80 lg:w-[450px]">
-                <div class="relative w-full">
-                    <input type="text" placeholder="Cerca parole o servizi..." onkeydown="if(event.key === 'Enter') window.find(this.value)" class="w-full bg-gray-100 border-none rounded-full py-2.5 pl-11 pr-4 text-sm focus:ring-2 focus:ring-logoBlue/30 btn-transition text-dark font-inter">
-                    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
+            <!-- Dropdown Nav Menu (center) -->
+            <nav class="nav-menu" id="main-menu">
+
+                <!-- SISTEMI -->
+                <div class="nav-item" id="nav-sistemi">
+                    <button class="nav-item-btn" onclick="toggleNavItem('nav-sistemi')">
+                        Sistemi
+                        <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="nav-dropdown" style="min-width: 290px;">
+                        <a href="tutti_i_sistemi.html">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Tutti i sistemi</span>
+                                <span class="nav-dd-desc">Esplora l'intera gamma</span>
+                            </div>
+                        </a>
+                        <div class="nav-dd-divider"></div>
+                        <a href="#">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Starter Smart</span>
+                                <span class="nav-dd-desc">Controllo base luci e prese</span>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Comfort Smart ⭐</span>
+                                <span class="nav-dd-desc">Luci, clima e automazioni</span>
+                            </div>
+                            <span class="nav-dd-badge">più scelto</span>
+                        </a>
+                        <a href="#">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Security Smart</span>
+                                <span class="nav-dd-desc">Allarme, telecamere e controllo remoto</span>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Energy Smart</span>
+                                <span class="nav-dd-desc">Riduzione consumi e monitoraggio</span>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 4v10m-5-5h10"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Full Smart</span>
+                                <span class="nav-dd-desc">Casa completamente automatizzata</span>
+                            </div>
+                        </a>
                     </div>
+                </div>
+
+                <!-- SOLUZIONI -->
+                <div class="nav-item" id="nav-soluzioni">
+                    <button class="nav-item-btn" onclick="toggleNavItem('nav-soluzioni')">
+                        Soluzioni
+                        <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="nav-dropdown" style="min-width: 300px;">
+
+                        <a href="#" onclick="openSol('illuminazione'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Illuminazione intelligente</span>
+                                <span class="nav-dd-desc">La luce che si adatta a te</span>
+                            </div>
+                        </a>
+
+                        <a href="#" onclick="openSol('clima'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 10-4.584-7H7a4 4 0 00-4 3z M12 9v3m0 0v3m0-3h3m-3 0H9"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Clima e riscaldamento</span>
+                                <span class="nav-dd-desc">La temperatura giusta, sempre</span>
+                            </div>
+                        </a>
+
+                        <a href="#" onclick="openSol('sicurezza'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Sicurezza e allarme</span>
+                                <span class="nav-dd-desc">Dormì tranquillo, ci pensiamo noi</span>
+                            </div>
+                        </a>
+
+                        <a href="#" onclick="openSol('scenari'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Scenari automatici</span>
+                                <span class="nav-dd-desc">Un tocco, tutto cambia</span>
+                            </div>
+                        </a>
+
+                        <a href="#" onclick="openSol('vocale'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4M9 11V7a3 3 0 016 0v4a3 3 0 01-6 0z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Controllo vocale</span>
+                                <span class="nav-dd-desc">Parla, la casa ti ascolta</span>
+                            </div>
+                        </a>
+
+                        <a href="#" onclick="openSol('remoto'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Controllo remoto</span>
+                                <span class="nav-dd-desc">La tua casa, ovunque tu sia</span>
+                            </div>
+                        </a>
+
+                        <a href="#" onclick="openSol('energia'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Risparmio energetico</span>
+                                <span class="nav-dd-desc">Consuma meno, vivi meglio</span>
+                            </div>
+                        </a>
+
+                        <a href="#" onclick="openSol('giardino'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Giardino e accessi</span>
+                                <span class="nav-dd-desc">Accesso sicuro, giardino curato</span>
+                            </div>
+                        </a>
+
+                        <a href="#" onclick="openSol('3d'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Visualizzazione 3D</span>
+                                <span class="nav-dd-desc">Vedi la tua casa prima di installarla</span>
+                            </div>
+                        </a>
+
+                        <a href="#" onclick="openSol('casa'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Casa intelligente</span>
+                                <span class="nav-dd-desc">Tutto connesso, vita senza pensieri</span>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- SU DI NOI -->
+                <div class="nav-item" id="nav-azienda">
+                    <button class="nav-item-btn" onclick="toggleNavItem('nav-azienda')">
+                        Su di noi
+                        <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="#" onclick="openSol('chi-siamo'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Chi siamo</span>
+                                <span class="nav-dd-desc">Il team dietro SFERA</span>
+                            </div>
+                        </a>
+                        <a href="#" onclick="openSol('missione'); return false;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">La nostra missione</span>
+                                <span class="nav-dd-desc">Valori e visione aziendale</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CONTATTACI -->
+                <div class="nav-item" id="nav-contatti">
+                    <button class="nav-item-btn" onclick="toggleNavItem('nav-contatti')">
+                        Contattaci
+                        <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="#">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <div class="nav-dd-text">
+                                <span class="nav-dd-title">Contatti</span>
+                                <span class="nav-dd-desc">Scrivici o chiamaci</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </nav>
+
+            <!-- Right side: CTA + Lang switcher -->
+            <div style="display:flex; align-items:center; gap:16px;">
+                <button onclick="void(0)" style="font-family:'Poppins',sans-serif; font-size:13px; font-weight:700; background:#009DFF; color:#fff; border:none; border-radius:8px; padding:10px 18px; cursor:pointer; white-space:nowrap; box-shadow:0 4px 14px rgba(0,157,255,0.3); transition:all 0.25s;" onmouseover="this.style.background='#0088dd';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#009DFF';this.style.transform='translateY(0)'">
+                    Sopralluogo gratuito
+                </button>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="it">IT</button>
+                    <span class="lang-sep">|</span>
+                    <button class="lang-btn" data-lang="de">DE</button>
+                    <span class="lang-sep">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-900">
-        <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1558002038-103792e07a70?auto=format&fit=crop&q=80&w=2000" alt="Soggiorno moderno" class="w-full h-full object-cover">
-            <div class="absolute inset-0 hero-gradient"></div>
-        </div>
+    <!-- Hero Section — split layout -->
+    <section style="min-height: 100vh; display: flex; padding-top: 112px; background: #0F172A;">
 
-        <div class="relative max-w-7xl mx-auto px-6 z-10 text-center">
-            <div class="max-w-4xl mx-auto reveal active">
-                <div class="inline-block px-4 py-1 mb-6 border border-logoBlue/30 rounded-full bg-logoBlue/10 mx-auto">
-                    <span class="text-logoBlue text-xs font-bold tracking-widest uppercase">Tecnologia Invisibile, Comfort Assoluto</span>
+        <!-- LEFT: testo -->
+        <div style="flex: 0 0 52%; display: flex; align-items: center; padding: 64px 0 64px 6vw; position: relative; z-index: 2;">
+            <div class="reveal active">
+                <div class="inline-block px-4 py-1 mb-6 border border-logoBlue/30 rounded-full bg-logoBlue/10">
+                    <span class="text-logoBlue text-xs font-bold tracking-widest uppercase" data-i18n="hero-badge">Tecnologia Invisibile, Comfort Assoluto</span>
                 </div>
-                <h1 class="text-5xl md:text-7xl text-white font-800 leading-tight mb-6">
+                <h1 style="font-family:'Poppins',sans-serif; font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 800; line-height: 1.15; color: #fff; margin-bottom: 24px;" data-i18n-html="hero-h1">
                     La tua casa, <span class="text-logoBlue">più intelligente che mai.</span>
                 </h1>
-                <p style="font-family: 'Inter', sans-serif; font-size: 17px; color: #FFFFFF;" class="mb-10 leading-relaxed mx-auto">
+                <p style="font-family:'Inter',sans-serif; font-size: 17px; color: rgba(255,255,255,0.72); line-height: 1.85; margin-bottom: 40px; max-width: 420px;" data-i18n-html="hero-sub">
                     Trasforma ogni ambiente in un ecosistema intelligente che risponde al tuo bisogno.<br><br>Più comfort e meno sprechi.
                 </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
-                    <button class="bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl shadow-logoBlue/20 text-center">
+                <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                    <button class="btn-arrow bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl shadow-logoBlue/20 text-left" data-i18n-html="hero-btn1">
                         Prenota subito il tuo<br>SOPRALLUOGO GRATUITO
                     </button>
-                    <button class="border border-white/30 text-white px-8 py-4 rounded-lg font-bold btn-transition hover:bg-white/10">
+                    <button class="btn-arrow border border-white/30 text-white px-8 py-4 rounded-lg font-bold btn-transition hover:bg-white/10" data-i18n="hero-btn2">
                         Guarda il Video
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                 </div>
             </div>
         </div>
+
+        <!-- RIGHT: video -->
+        <div style="flex: 1; position: relative; overflow: hidden;">
+            <!-- sfumatura sinistra per blend con testo -->
+            <div style="position:absolute; top:0; left:0; bottom:0; width:40%; background: linear-gradient(to right, #0F172A 0%, rgba(15,23,42,0.7) 50%, transparent 100%); z-index:1; pointer-events:none;"></div>
+            <video autoplay muted loop playsinline preload="auto"
+                style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position: center center;">
+                <source src="Video/IMG_9357.MP4" type="video/mp4">
+            </video>
+        </div>
+
     </section>
 
     <!-- Sezione Servizi -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20 reveal">
-                <h2 style="font-family: 'Poppins', sans-serif; font-size: 32px;" class="font-800 text-primary mb-4">Perché rendere la tua casa intelligente</h2>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 32px;" class="font-800 text-primary mb-4" data-i18n="services-h2">Perché rendere la tua casa intelligente</h2>
                 <div class="h-1 w-20 bg-logoBlue mx-auto"></div>
             </div>
 
@@ -223,46 +598,46 @@
                     <div class="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white btn-transition text-primary">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     </div>
-                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold mb-3">La tua casa ti capisce, ogni giorno</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">La tua casa impara, capisce e si prepara ad accoglierti giorno dopo giorno</p>
+                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold mb-3" data-i18n="card1-h3">La tua casa ti capisce, ogni giorno</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed" data-i18n="card1-p">La tua casa impara, capisce e si prepara ad accoglierti giorno dopo giorno</p>
                 </div>
 
                 <div class="reveal glass-card p-10 rounded-2xl border-b-4 border-logoBlue hover:shadow-2xl btn-transition group" style="transition-delay: 100ms;">
                     <div class="w-16 h-16 bg-logoBlue/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-logoBlue group-hover:text-white btn-transition text-logoBlue">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </div>
-                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold mb-3">Maggiore sicurezza</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Sempre aggiornato su tutto, ovunque tu sia! <br>Protezione autonoma con monitoraggio AI e aggiornamenti costanti in caso di allarme.</p>
+                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold mb-3" data-i18n="card2-h3">Maggiore sicurezza</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed" data-i18n-html="card2-p">Sempre aggiornato su tutto, ovunque tu sia! <br>Protezione autonoma con monitoraggio AI e aggiornamenti costanti in caso di allarme.</p>
                 </div>
 
                 <div class="reveal glass-card p-10 rounded-2xl border-b-4 border-accent hover:shadow-2xl btn-transition group" style="transition-delay: 200ms;">
                     <div class="w-16 h-16 bg-accent/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white btn-transition text-accent">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
-                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold mb-3">Risparmi sulle bollette</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Autogestione e ottimizzazione dei carichi riducendo i consumi senza sacrificare il comfort.</p>
+                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold mb-3" data-i18n="card3-h3">Risparmi sulle bollette</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed" data-i18n="card3-p">Autogestione e ottimizzazione dei carichi riducendo i consumi senza sacrificare il comfort.</p>
                 </div>
 
                 <div class="reveal glass-card p-10 rounded-2xl border-b-4 border-dark hover:shadow-2xl btn-transition group" style="transition-delay: 300ms;">
                     <div class="w-16 h-16 bg-dark/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-dark group-hover:text-white btn-transition text-dark">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold mb-3">Controllo totale, ovunque sei</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">In caso di necessità, gestisci tutto dal telefono.</p>
+                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold mb-3" data-i18n="card4-h3">Controllo totale, ovunque sei</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed" data-i18n="card4-p">In caso di necessità, gestisci tutto dal telefono.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Sezione: Dalla consulenza all’installazione -->
-    <section class="py-16 bg-white reveal">
+    <section class="py-16 reveal" style="background: linear-gradient(135deg, #EFF6FF 0%, #F0F9FF 100%);">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 style="font-family: 'Poppins', sans-serif; font-size: 32px;" class="font-800 text-primary mb-6 uppercase">DALLA CONSULENZA ALL’INSTALLAZIONE</h2>
-            <p style="font-family: 'Inter', sans-serif; font-size: 22px;" class="text-dark/70 leading-relaxed mb-10">
+            <h2 style="font-family: ‘Poppins’, sans-serif; font-size: 32px;" class="font-800 text-primary mb-6 uppercase" data-i18n="consult-h2">DALLA CONSULENZA ALL’INSTALLAZIONE</h2>
+            <p style="font-family: ‘Inter’, sans-serif; font-size: 22px;" class="text-dark/70 leading-relaxed mb-10" data-i18n-html="consult-p">
                 Creiamo ecosistemi smart aperti e integrati.<br>
-                Che tu stia ristrutturando o voglia evolvere la tua casa attuale, rendiamo la tecnologia un'alleata silenziosa, senza vincoli e senza stress.
+                Che tu stia ristrutturando o voglia evolvere la tua casa attuale, rendiamo la tecnologia un’alleata silenziosa, senza vincoli e senza stress.
             </p>
-            <button class="bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl shadow-logoBlue/20 text-center mx-auto">
+            <button class="bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl shadow-logoBlue/20 text-center mx-auto" data-i18n-html="cta-btn">
                 Prenota subito il tuo<br>SOPRALLUOGO GRATUITO
             </button>
         </div>
@@ -276,42 +651,42 @@
                     <img src="https://raw.githubusercontent.com/deni532/Immagine-dispositivi-home-page/main/Edit_the_provided_202604030659.png" alt="Ecosistema SFERA Smart Home" class="rounded-3xl shadow-2xl w-full h-auto object-cover transform hover:scale-[1.02] btn-transition">
                 </div>
                 <div class="reveal">
-                    <span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">L'eccellenza è di casa</span>
-                    <h2 class="text-4xl font-800 mb-8 text-dark">Perché scegliere SFERA Smart Systems?</h2>
+                    <span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block" data-i18n="why-eyebrow">L'eccellenza è di casa</span>
+                    <h2 class="text-4xl font-800 mb-8 text-dark" data-i18n="why-h2">Perché scegliere SFERA Smart Systems?</h2>
                     <div class="space-y-8">
                         <div class="flex items-start space-x-4">
                             <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
                             <div>
-                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">Integrazione Nativa</h4>
-                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Dspositivi provenienti da sistemi diversi comunicano in un unico ecosistema affidabile.</p>
+                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark" data-i18n="why1-h4">Integrazione Nativa</h4>
+                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed" data-i18n="why1-p">Dispositivi provenienti da sistemi diversi comunicano in un unico ecosistema affidabile.</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-4">
                             <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
                             <div>
-                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">Soluzione su misura per te</h4>
-                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Progettiamo tutto in base alla tua casa e alle tue abitudini.</p>
+                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark" data-i18n="why2-h4">Soluzione su misura per te</h4>
+                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed" data-i18n="why2-p">Progettiamo tutto in base alla tua casa e alle tue abitudini.</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-4">
                             <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
                             <div>
-                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">Assistenza inclusa</h4>
-                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Ti supportiamo anche dopo l’installazione. <br>Monitoraggio remoto e assistenza tecnica sempre al tuo fianco.</p>
+                                <h4 style="font-family: ‘Poppins’, sans-serif; font-size: 22px;" class="font-bold text-dark" data-i18n="why3-h4">Assistenza inclusa</h4>
+                                <p style="font-family: ‘Inter’, sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed" data-i18n-html="why3-p">Ti supportiamo anche dopo l’installazione. <br>Monitoraggio remoto e assistenza tecnica sempre al tuo fianco.</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-4">
                             <div class="text-logoBlue mt-1"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></div>
                             <div>
-                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark">facile da usare</h4>
-                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed">Controlli tutto dal telefono, in modo semplice e intuitivo.</p>
+                                <h4 style="font-family: 'Poppins', sans-serif; font-size: 22px;" class="font-bold text-dark" data-i18n="why4-h4">Facile da usare</h4>
+                                <p style="font-family: 'Inter', sans-serif; font-size: 17px;" class="text-dark/60 leading-relaxed" data-i18n="why4-p">Controlli tutto dal telefono, in modo semplice e intuitivo.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="reveal text-center mt-12">
-                <button class="bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl shadow-logoBlue/20">
+                <button class="bg-logoBlue text-white px-8 py-4 rounded-lg font-bold btn-transition hover:scale-105 shadow-xl shadow-logoBlue/20" data-i18n-html="cta-btn">
                     Prenota subito il tuo<br>SOPRALLUOGO GRATUITO
                 </button>
             </div>
@@ -319,34 +694,37 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-b from-slate-800 to-slate-950 text-white pt-8 pb-10">
+    <footer class="bg-gradient-to-b from-slate-800 to-slate-950 text-white pt-12 pb-10">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-gray-400 text-sm leading-relaxed font-300 mx-auto whitespace-nowrap text-center">
+            <div class="flex justify-center mb-6">
+                <img src="Images/logo_tex_org.png" alt="SFERA" style="height: 64px; filter: brightness(0) invert(1); opacity: 0.7;" class="w-auto object-contain">
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed font-300 mx-auto whitespace-nowrap text-center" data-i18n="footer-tagline">
                 Punto di riferimento nell'integrazione di ecosistemi domotici per trasformare la tua casa in una residenza smart premium
             </p>
             <div class="border-t border-white/5 mt-8 mb-12"></div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
                 <div class="text-left">
-                    <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Sistemi</h4>
+                    <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest" data-i18n="ft-sistemi">Sistemi</h4>
                     <ul class="space-y-4 text-sm text-gray-400 font-300">
                         <li><a href="tutti_i_sistemi.html" class="hover:text-white btn-transition">Tutti i sistemi</a></li>
-                        <li><a href="#" class="hover:text-white btn-transition">Starter Smart</a></li>
-                        <li><a href="#" class="hover:text-white btn-transition">Comfort Smart ⭐più scelto</a></li>
-                        <li><a href="#" class="hover:text-white btn-transition">Security Smart</a></li>
-                        <li><a href="#" class="hover:text-white btn-transition">Energy Smart</a></li>
-                        <li><a href="#" class="hover:text-white btn-transition">Full Smart</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Controllo base luci e prese</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Luci, clima e automazioni ⭐</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Allarme, telecamere e controllo remoto</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Riduzione consumi e monitoraggio</a></li>
+                        <li><a href="#" class="hover:text-white btn-transition">Casa completamente automatizzata</a></li>
                     </ul>
                 </div>
                 <div class="text-left">
-                    <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Azienda</h4>
+                    <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest" data-i18n="ft-azienda">Azienda</h4>
                     <ul class="space-y-4 text-sm text-gray-400 font-300">
                         <li><a href="#" class="hover:text-white btn-transition">Chi Siamo</a></li>
                         <li><a href="#" class="hover:text-white btn-transition">la nostra missione</a></li>
                     </ul>
                 </div>
                 <div class="text-left">
-                    <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest">Contatti</h4>
+                    <h4 class="font-bold mb-6 text-accent uppercase text-xs tracking-widest" data-i18n="ft-contatti">Contatti</h4>
                     <ul class="space-y-4 text-sm text-gray-400 font-300">
                         <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2a43444c456a594c4f584b59474b585e04435e">[email&#160;protected]</a></li>
                         <li>Bolzano, Italia</li>
@@ -355,12 +733,142 @@
             </div>
             
             <div class="border-t border-white/5 pt-10 flex justify-between items-center text-[11px] text-gray-500 uppercase tracking-widest font-600">
-                <p>&copy; 2025 SFERA Smart Systems.</p>
+                <p data-i18n="footer-copy">&copy; 2025 SFERA Smart Systems.</p>
             </div>
         </div>
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        /* ── Solution Modal Data ── */
+        const solData = {
+            illuminazione: {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>',
+                headline: 'La luce che si adatta a te',
+                sub: 'Niente più interruttori. La casa capisce cosa vuoi e crea l\'atmosfera perfetta, in ogni momento.',
+                benefits: ['Si accende da sola quando entri in una stanza', 'Scenari personalizzati: cinema, cena, relax', 'Controllo totale dal telefono, ovunque tu sia'],
+                video: 'Video/La luce che si adatta a te.mp4'
+            },
+            clima: {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>',
+                headline: 'La temperatura giusta, sempre',
+                sub: 'Caldo quando serve, fresco quando lo vuoi. Il clima si gestisce da solo, senza che tu ci pensi.',
+                benefits: ['Preriscalda casa prima che tu arrivi', 'Riduce i consumi quando sei fuori', 'Impara le tue abitudini e si adatta']
+            },
+            sicurezza: {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+                headline: 'Dormì tranquillo, ci pensiamo noi',
+                sub: 'Allarme, telecamere e sensori sempre attivi. Ricevi una notifica sul telefono se succede qualcosa.',
+                benefits: ['Rilevamento automatico di movimenti anomali', 'Notifica istantanea sul tuo smartphone', 'Telecamere HD accessibili da remoto, 24/7']
+            },
+            scenari: {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/></svg>',
+                headline: 'Un tocco, tutto cambia',
+                sub: 'Crei una volta lo scenario perfetto. Poi ci pensa la casa da sola, ogni volta che ne hai bisogno.',
+                benefits: ['Scenario "Buonanotte": luci off, porte chiuse, allarme on', 'Scenario "Cinema": oscuranti giù, luce soffusa, TV accesa', 'Si attivano automaticamente a orario o per presenza']
+            },
+            vocale: {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4M9 11V7a3 3 0 016 0v4a3 3 0 01-6 0z"/></svg>',
+                headline: 'Parla, la casa ti ascolta',
+                sub: 'Nessun telecomando, nessuna app. Dì solo cosa vuoi e la casa risponde all\'istante.',
+                benefits: ['Compatibile con Alexa, Google e Siri', 'Funziona per tutta la famiglia, anche i bambini', 'Controllo di luci, clima, musica e molto altro']
+            },
+            remoto: {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>',
+                headline: 'La tua casa, ovunque tu sia',
+                sub: 'Sei in ufficio, in vacanza, all\'estero? Non importa. La tua casa è sempre nel palmo della tua mano.',
+                benefits: ['Apri o chiudi la porta a distanza', 'Controlla tutto da un\'unica app intuitiva', 'Ricevi aggiornamenti in tempo reale']
+            },
+            energia: {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>',
+                headline: 'Consuma meno, vivi meglio',
+                sub: 'La casa ottimizza da sola i consumi. Tu risparmi in bolletta senza rinunciare al comfort.',
+                benefits: ['Monitoraggio dei consumi in tempo reale', 'Riduzione automatica quando non sei in casa', 'Fino al 40% di risparmio sulla bolletta energetica']
+            },
+            giardino: {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>',
+                headline: 'Accesso sicuro, giardino curato',
+                sub: 'Il cancello si apre da solo quando arrivi. L\'irrigazione parte da sola. Il tuo esterno, sempre perfetto.',
+                benefits: ['Cancello automatico con riconoscimento auto', 'Irrigazione programmata in base al meteo', 'Videocitofono smart con risposta da smartphone']
+            },
+            '3d': {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>',
+                headline: 'Vedi la tua casa prima di installarla',
+                sub: 'Ti mostriamo esattamente come sarà la tua smart home, in 3D, prima ancora di iniziare i lavori.',
+                benefits: ['Anteprima realistica di ogni ambiente', 'Scegli i dispositivi vedendo il risultato finale', 'Nessuna sorpresa: quello che vedi è quello che avrai']
+            },
+            casa: {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>',
+                headline: 'Tutto connesso, vita senza pensieri',
+                sub: 'Non solo dispositivi smart: un ecosistema completo che pensa a tutto, perché tu possa vivere meglio.',
+                benefits: ['Tutti i sistemi integrati in un\'unica piattaforma', 'Si configura una volta, funziona per sempre', 'Pensato per te: semplice, elegante, invisibile']
+            },
+            'chi-siamo': {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
+                headline: 'Persone che amano le case intelligenti',
+                sub: 'SFERA nasce a Bolzano dall\'incontro tra passione per la tecnologia e rispetto per il modo in cui le persone vivono la propria casa.',
+                benefits: ['Team di esperti in domotica con anni di esperienza sul campo', 'Ogni progetto seguito personalmente, dall\'idea all\'installazione', 'Il cliente è la nostra priorità. Sempre. Prima, durante e dopo l\'installazione.'],
+                img: '../Photo and video/photo principale.jpg'
+            },
+            missione: {
+                icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>',
+                headline: 'Rendere ogni casa straordinaria',
+                sub: 'Crediamo che la tecnologia debba semplificare la vita, non complicarla. Per questo progettiamo sistemi che si adattano a te, non il contrario.',
+                benefits: ['Tecnologia invisibile: funziona senza che tu ci pensi', 'Zero compromessi tra design e funzionalità', 'Un futuro in cui vivere bene è alla portata di tutti']
+            }
+        };
+
+        function openSol(key) {
+            const d = solData[key];
+            if (!d) return;
+            document.querySelectorAll('.nav-item').forEach(function(i){ i.classList.remove('open'); });
+            document.getElementById('sol-icon').innerHTML = d.icon;
+            document.getElementById('sol-headline').textContent = d.headline;
+            document.getElementById('sol-sub').textContent = d.sub;
+            document.getElementById('sol-benefits').innerHTML = d.benefits.map(function(b){
+                return '<div class="sol-benefit"><div class="sol-benefit-dot"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><p>' + b + '</p></div>';
+            }).join('');
+            const imgEl = document.getElementById('sol-img');
+            if (d.video) {
+                imgEl.innerHTML = '<video autoplay muted loop playsinline style="width:100%;height:auto;display:block;border-radius:14px;"><source src="' + d.video + '" type="video/mp4"></video>';
+            } else if (d.img) {
+                imgEl.innerHTML = '<img src="' + d.img + '" alt="">';
+            } else {
+                imgEl.innerHTML = '<svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="opacity:0.3"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>';
+            }
+            document.getElementById('sol-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSolBtn() {
+            document.getElementById('sol-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+            const v = document.querySelector('#sol-img video');
+            if (v) { v.pause(); v.currentTime = 0; }
+        }
+        function closeSol(e) {
+            if (e.target === document.getElementById('sol-overlay')) closeSolBtn();
+        }
+
+        /* ── Dropdown Nav Logic ── */
+        function toggleNavItem(id) {
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach(function(item) {
+                if (item.id === id) {
+                    item.classList.toggle('open');
+                } else {
+                    item.classList.remove('open');
+                }
+            });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item')) {
+                document.querySelectorAll('.nav-item').forEach(function(item) {
+                    item.classList.remove('open');
+                });
+            }
+        });
+
         // Gestione Animazioni Reveal
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
@@ -417,6 +925,144 @@
         window.addEventListener('load', function() {
             reveal();
         });
+
+        // Scroll-to-top visibility
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', function() {
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+        }, { passive: true });
+
+        /* ── LANGUAGE SWITCHER ── */
+        const translations = {
+            it: {
+                'hero-badge':    'Tecnologia Invisibile, Comfort Assoluto',
+                'hero-h1':       'La tua casa, <span class="text-logoBlue">più intelligente che mai.</span>',
+                'hero-sub':      'Trasforma ogni ambiente in un ecosistema intelligente che risponde al tuo bisogno.<br><br>Più comfort e meno sprechi.',
+                'hero-btn1':     'Prenota subito il tuo<br>SOPRALLUOGO GRATUITO',
+                'hero-btn2':     'Guarda il Video',
+                'services-h2':   'Perché rendere la tua casa intelligente',
+                'card1-h3':      'La tua casa ti capisce, ogni giorno',
+                'card1-p':       'La tua casa impara, capisce e si prepara ad accoglierti giorno dopo giorno',
+                'card2-h3':      'Maggiore sicurezza',
+                'card2-p':       'Sempre aggiornato su tutto, ovunque tu sia!<br>Protezione autonoma con monitoraggio AI e aggiornamenti costanti in caso di allarme.',
+                'card3-h3':      'Risparmi sulle bollette',
+                'card3-p':       'Autogestione e ottimizzazione dei carichi riducendo i consumi senza sacrificare il comfort.',
+                'card4-h3':      'Controllo totale, ovunque sei',
+                'card4-p':       'In caso di necessità, gestisci tutto dal telefono.',
+                'consult-h2':    'DALLA CONSULENZA ALL\'INSTALLAZIONE',
+                'consult-p':     'Creiamo ecosistemi smart aperti e integrati.<br>Che tu stia ristrutturando o voglia evolvere la tua casa attuale, rendiamo la tecnologia un\'alleata silenziosa, senza vincoli e senza stress.',
+                'cta-btn':       'Prenota subito il tuo<br>SOPRALLUOGO GRATUITO',
+                'why-eyebrow':   'L\'eccellenza è di casa',
+                'why-h2':        'Perché scegliere SFERA Smart Systems?',
+                'why1-h4':       'Integrazione Nativa',
+                'why1-p':        'Dispositivi provenienti da sistemi diversi comunicano in un unico ecosistema affidabile.',
+                'why2-h4':       'Soluzione su misura per te',
+                'why2-p':        'Progettiamo tutto in base alla tua casa e alle tue abitudini.',
+                'why3-h4':       'Assistenza inclusa',
+                'why3-p':        'Ti supportiamo anche dopo l\'installazione.<br>Monitoraggio remoto e assistenza tecnica sempre al tuo fianco.',
+                'why4-h4':       'Facile da usare',
+                'why4-p':        'Controlli tutto dal telefono, in modo semplice e intuitivo.',
+                'footer-tagline':'Punto di riferimento nell\'integrazione di ecosistemi domotici per trasformare la tua casa in una residenza smart premium',
+                'ft-sistemi':    'Sistemi',
+                'ft-azienda':    'Azienda',
+                'ft-contatti':   'Contatti',
+                'footer-copy':   '© 2025 SFERA Smart Systems.',
+                'search-ph':     'Cerca parole o servizi...',
+            },
+            de: {
+                'hero-badge':    'Unsichtbare Technologie, absoluter Komfort',
+                'hero-h1':       'Dein Zuhause, <span class="text-logoBlue">intelligenter denn je.</span>',
+                'hero-sub':      'Verwandelt jeden Raum in ein intelligentes Ökosystem, das auf deine Bedürfnisse reagiert.<br><br>Mehr Komfort, weniger Verbrauch.',
+                'hero-btn1':     'Jetzt kostenlose<br>BERATUNG BUCHEN',
+                'hero-btn2':     'Video ansehen',
+                'services-h2':   'Warum Ihr Zuhause intelligent machen?',
+                'card1-h3':      'Dein Haus versteht dich, jeden Tag',
+                'card1-p':       'Dein Zuhause lernt, versteht und bereitet sich darauf vor, dich Tag für Tag zu empfangen',
+                'card2-h3':      'Mehr Sicherheit',
+                'card2-p':       'Immer informiert, egal wo du bist!<br>Autonomer Schutz mit KI-Überwachung und Echtzeit-Benachrichtigungen.',
+                'card3-h3':      'Weniger Energiekosten',
+                'card3-p':       'Automatische Lastoptimierung reduziert den Verbrauch ohne Einbußen beim Komfort.',
+                'card4-h3':      'Volle Kontrolle, überall',
+                'card4-p':       'Im Bedarfsfall steuerst du alles bequem vom Smartphone.',
+                'consult-h2':    'VON DER BERATUNG BIS ZUR INSTALLATION',
+                'consult-p':     'Wir schaffen offene und integrierte Smart-Ökosysteme.<br>Ob Renovierung oder Modernisierung – wir machen Technologie zu einem stillen Verbündeten, ohne Einschränkungen und Stress.',
+                'cta-btn':       'Jetzt kostenlose<br>BERATUNG BUCHEN',
+                'why-eyebrow':   'Exzellenz zu Hause',
+                'why-h2':        'Warum SFERA Smart Systems wählen?',
+                'why1-h4':       'Native Integration',
+                'why1-p':        'Geräte aus verschiedenen Systemen kommunizieren in einem einzigen zuverlässigen Ökosystem.',
+                'why2-h4':       'Maßgeschneiderte Lösung',
+                'why2-p':        'Wir planen alles nach deinem Zuhause und deinen Gewohnheiten.',
+                'why3-h4':       'Inklusive Support',
+                'why3-p':        'Wir unterstützen dich auch nach der Installation.<br>Fernüberwachung und technische Assistenz immer an deiner Seite.',
+                'why4-h4':       'Einfach zu bedienen',
+                'why4-p':        'Alles per Smartphone steuern – einfach und intuitiv.',
+                'footer-tagline':'Referenz für die Integration von Domotiksystemen zur Verwandlung Ihres Hauses in eine Smart-Premium-Residenz',
+                'ft-sistemi':    'Systeme',
+                'ft-azienda':    'Unternehmen',
+                'ft-contatti':   'Kontakt',
+                'footer-copy':   '© 2025 SFERA Smart Systems.',
+                'search-ph':     'Suche nach Begriffen oder Diensten...',
+            },
+            en: {
+                'hero-badge':    'Invisible Technology, Absolute Comfort',
+                'hero-h1':       'Your home, <span class="text-logoBlue">smarter than ever.</span>',
+                'hero-sub':      'Transform every room into an intelligent ecosystem that responds to your needs.<br><br>More comfort, less waste.',
+                'hero-btn1':     'Book your free<br>SITE SURVEY NOW',
+                'hero-btn2':     'Watch the Video',
+                'services-h2':   'Why make your home intelligent?',
+                'card1-h3':      'Your home understands you, every day',
+                'card1-p':       'Your home learns, understands and prepares to welcome you day after day',
+                'card2-h3':      'Greater security',
+                'card2-p':       'Always updated on everything, wherever you are!<br>Autonomous protection with AI monitoring and real-time alerts.',
+                'card3-h3':      'Save on energy bills',
+                'card3-p':       'Automatic load optimisation reduces consumption without sacrificing comfort.',
+                'card4-h3':      'Total control, wherever you are',
+                'card4-p':       'When needed, manage everything from your phone.',
+                'consult-h2':    'FROM CONSULTATION TO INSTALLATION',
+                'consult-p':     'We create open and integrated smart ecosystems.<br>Whether renovating or upgrading your current home, we make technology a silent ally — no constraints, no stress.',
+                'cta-btn':       'Book your free<br>SITE SURVEY NOW',
+                'why-eyebrow':   'Excellence at home',
+                'why-h2':        'Why choose SFERA Smart Systems?',
+                'why1-h4':       'Native Integration',
+                'why1-p':        'Devices from different systems communicate within a single, reliable ecosystem.',
+                'why2-h4':       'Tailored solution',
+                'why2-p':        'We design everything around your home and your habits.',
+                'why3-h4':       'Support included',
+                'why3-p':        'We support you even after installation.<br>Remote monitoring and technical assistance always by your side.',
+                'why4-h4':       'Easy to use',
+                'why4-p':        'Control everything from your phone — simple and intuitive.',
+                'footer-tagline':'A reference point in smart home integration, transforming your home into a premium smart residence',
+                'ft-sistemi':    'Systems',
+                'ft-azienda':    'Company',
+                'ft-contatti':   'Contact',
+                'footer-copy':   '© 2025 SFERA Smart Systems.',
+                'search-ph':     'Search for terms or services...',
+            }
+        };
+
+        function setLang(lang) {
+            if (!translations[lang]) return;
+            const t = translations[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                if (t[el.dataset.i18n] !== undefined) el.textContent = t[el.dataset.i18n];
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                if (t[el.dataset.i18nHtml] !== undefined) el.innerHTML = t[el.dataset.i18nHtml];
+            });
+            const input = document.querySelector('input[type="text"]');
+            if (input && t['search-ph']) input.placeholder = t['search-ph'];
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            document.documentElement.lang = lang;
+            localStorage.setItem('sfera-lang', lang);
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLang(btn.dataset.lang));
+        });
+        setLang(localStorage.getItem('sfera-lang') || 'it');
     </script>
 </body>
 </html>
