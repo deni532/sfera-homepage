@@ -1,0 +1,2087 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-title="page-title">Tutti i Sistemi | SFERA Smart Systems</title>
+    <meta name="description" content="Confronta tutti i sistemi SFERA Smart: Starter, Comfort, Security, Energy e Full Smart. Trova il pacchetto giusto per la tua casa.">
+    <link rel="canonical" href="https://www.sferasmart.it/tutti_i_sistemi.html">
+    <link rel="icon" type="image/png" href="images/logo_tex_org.png">
+    <link rel="apple-touch-icon" href="images/logo_tex_org.png">
+    <meta name="theme-color" content="#070C18">
+    <meta property="og:title" content="Tutti i Sistemi | SFERA Smart Systems">
+    <meta property="og:description" content="Scegli il sistema smart giusto per la tua casa.">
+    <meta property="og:image" content="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/photo-principale.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Strip hash from URL BEFORE browser renders, store it for JS-controlled scroll -->
+    <script>
+        var _sferaHash = '';
+        if (window.location.hash) {
+            _sferaHash = window.location.hash;
+            try { history.replaceState(null, '', window.location.pathname + window.location.search); } catch(e) {}
+        }
+    </script>
+    <style>
+        /* ── Reset & base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: #070C18; color: #fff;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            opacity: 0; animation: page-in 0.5s ease 0.05s forwards;
+        }
+        @keyframes page-in { to { opacity: 1; } }
+
+        /* ── Scroll progress ── */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            z-index: 9999;
+            background: linear-gradient(90deg, #3AAEFF, #009DFF, #C6A75E);
+            transition: width 0.1s linear; pointer-events: none;
+        }
+
+        /* ── Noise overlay ── */
+        body::after {
+            content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+            opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 160px;
+        }
+
+        /* ── NAV — identical to main page ── */
+        #top-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+            background: rgba(7, 12, 24, 0.88);
+            backdrop-filter: blur(20px) saturate(140%);
+            -webkit-backdrop-filter: blur(20px) saturate(140%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            transition: background 0.3s;
+        }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between;
+            min-height: 72px;
+        }
+        .nav-logo-link { display: flex; align-items: center; text-decoration: none; }
+        /* Exact same logo sizing + filter as main page */
+        .nav-logo-img {
+            height: 40px;
+            width: auto; object-fit: contain;
+            /* Invert dark logo for dark background (same as main page) */
+            filter: invert(1) hue-rotate(180deg);
+            transition: filter 0.35s ease;
+        }
+        @media(min-width: 640px)  { .nav-logo-img { height: 56px; } }
+        @media(min-width: 1024px) { .nav-logo-img { height: 101px; } }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+
+        /* Back button — matches main nav style */
+        .nav-back {
+            display: flex; align-items: center; gap: 8px;
+            font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+            color: rgba(255, 255, 255, 0.6); text-decoration: none;
+            padding: 9px 18px; border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-back:hover { color: #fff; border-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.08); }
+        .nav-back svg { transition: transform 0.2s; flex-shrink: 0; }
+        .nav-back:hover svg { transform: translateX(-3px); }
+
+        /* CTA pill — same gradient as main site */
+        .nav-cta-pill {
+            font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700;
+            background: linear-gradient(135deg, #2EA7FF, #1C7DFF);
+            color: #fff; border: none; border-radius: 10px; padding: 11px 22px;
+            cursor: pointer; text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 18px rgba(0, 157, 255, 0.32);
+            white-space: nowrap; position: relative; overflow: hidden;
+        }
+        .nav-cta-pill:hover { transform: scale(1.04); box-shadow: 0 6px 28px rgba(0, 157, 255, 0.5); }
+
+        /* ── Hero ── */
+        .page-hero {
+            padding: 120px 32px 90px;
+            text-align: center;
+            position: relative; overflow: hidden;
+        }
+        @media(min-width: 1024px) { .page-hero { padding-top: 160px; } }
+        .page-hero-glow {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 900px; height: 450px; border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(0,157,255,0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .page-hero-dot-grid {
+            position: absolute; inset: 0; pointer-events: none;
+            background-image: radial-gradient(circle, rgba(58,174,255,0.15) 1px, transparent 1px);
+            background-size: 28px 28px;
+            mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 80%);
+            opacity: 0.4;
+        }
+        .eyebrow {
+            font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+            letter-spacing: .18em; text-transform: uppercase; color: #3AAEFF;
+            display: block; margin-bottom: 16px;
+        }
+        @keyframes grad { 0%{background-position:0%} 50%{background-position:100%} 100%{background-position:0%} }
+
+        /* ── Package cards ── */
+        .pkg-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+            max-width: 1300px; margin: 0 auto; padding: 0 28px;
+        }
+        @media(max-width:1150px){ .pkg-grid{ grid-template-columns:repeat(3,1fr); } }
+        @media(max-width:720px){ .pkg-grid{ grid-template-columns:1fr 1fr; } }
+        @media(max-width:480px){ .pkg-grid{ grid-template-columns:1fr; } }
+
+        .pkg-card {
+            position: relative;
+            border-radius: 22px;
+            padding: 28px 22px 26px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+            display: flex; flex-direction: column; gap: 0;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s;
+            overflow: hidden;
+            scroll-margin-top: 100px;
+            will-change: transform;
+        }
+        .pkg-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: var(--pkg-color, rgba(58,174,255,0.4));
+            border-radius: 22px 22px 0 0;
+        }
+        /* Shimmer line on top border */
+        .pkg-card::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            animation: border-shimmer 3.5s ease infinite;
+            animation-delay: var(--shimmer-delay, 0s);
+        }
+        @keyframes border-shimmer { 0%{left:-100%} 50%,100%{left:150%} }
+        .pkg-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 36px 72px rgba(0,0,0,0.55), 0 0 40px var(--pkg-color, rgba(58,174,255,0.18));
+            border-color: var(--pkg-color, rgba(58,174,255,0.45));
+        }
+        .pkg-card:hover .pkg-cta {
+            background: rgba(255,255,255,0.12) !important;
+            color: #fff !important;
+            border-color: rgba(255,255,255,0.28) !important;
+        }
+        .pkg-card.featured:hover .pkg-cta.primary {
+            background: linear-gradient(135deg,#2EA7FF,#1C7DFF) !important;
+            box-shadow: 0 8px 32px rgba(0,157,255,0.55) !important;
+            border-color: transparent !important;
+        }
+        .pkg-card.featured {
+            border-color: rgba(0,157,255,0.38);
+            background: linear-gradient(160deg, rgba(0,157,255,0.09) 0%, rgba(0,157,255,0.02) 100%);
+            box-shadow: 0 0 48px rgba(0,157,255,0.1);
+        }
+        .pkg-card.featured:hover { box-shadow: 0 36px 72px rgba(0,0,0,0.55), 0 0 48px rgba(0,157,255,0.2); }
+        .pkg-card.pkg-active {
+            box-shadow: 0 0 0 2px var(--pkg-color, #3AAEFF), 0 28px 60px rgba(0,0,0,0.55);
+            border-color: var(--pkg-color, #3AAEFF);
+            transform: translateY(-4px);
+        }
+        @keyframes pkg-pulse {
+            0%   { box-shadow: 0 0 0 2px var(--pkg-color,#3AAEFF), 0 24px 56px rgba(0,0,0,0.55), 0 0 0 0 var(--pkg-color,#3AAEFF); }
+            60%  { box-shadow: 0 0 0 2px var(--pkg-color,#3AAEFF), 0 24px 56px rgba(0,0,0,0.55), 0 0 0 12px transparent; }
+            100% { box-shadow: 0 0 0 2px var(--pkg-color,#3AAEFF), 0 24px 56px rgba(0,0,0,0.55), 0 0 0 0 transparent; }
+        }
+        .pkg-card.pkg-active { animation: pkg-pulse 0.8s ease-out 0.4s 1; }
+
+        /* Featured badge */
+        .pkg-badge {
+            position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(90deg, #C6A75E, #e8c878, #C6A75E);
+            background-size: 200%;
+            animation: badge-shimmer 2.5s ease infinite;
+            color: #070C18; font-family: 'Poppins',sans-serif; font-size: 9px; font-weight: 800;
+            letter-spacing: .12em; text-transform: uppercase; padding: 4px 14px;
+            border-radius: 0 0 10px 10px; white-space: nowrap;
+        }
+        @keyframes badge-shimmer { 0%{background-position:0%} 50%{background-position:100%} 100%{background-position:0%} }
+
+        /* Icon box */
+        .pkg-icon {
+            width: 50px; height: 50px; border-radius: 14px;
+            background: var(--pkg-icon-bg, rgba(58,174,255,0.1));
+            border: 1px solid var(--pkg-icon-border, rgba(58,174,255,0.2));
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px; color: var(--pkg-icon-color, #3AAEFF);
+            flex-shrink: 0;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.3s;
+        }
+        .pkg-card:hover .pkg-icon {
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            background: var(--pkg-icon-hover-bg, rgba(58,174,255,0.18));
+        }
+        .pkg-icon svg {
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        /* Stroke-draw on icon hover */
+        .pkg-card:hover .pkg-icon svg path,
+        .pkg-card:hover .pkg-icon svg polyline,
+        .pkg-card:hover .pkg-icon svg circle {
+            animation: stroke-draw 0.6s ease forwards;
+        }
+        @keyframes stroke-draw {
+            0%   { opacity: 0.4; transform: scale(0.9); }
+            60%  { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .pkg-name {
+            font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 800;
+            color: #fff; margin-bottom: 8px; line-height: 1.2;
+        }
+        .pkg-desc {
+            font-family: 'Inter', sans-serif; font-size: 12.5px; color: rgba(255,255,255,0.42);
+            line-height: 1.6; margin-bottom: 20px; flex: 1;
+        }
+        .pkg-features { display: flex; flex-direction: column; gap: 9px; margin-bottom: 22px; }
+        .pkg-feat {
+            display: flex; align-items: center; gap: 9px;
+            font-family: 'Inter', sans-serif; font-size: 12.5px; color: rgba(255,255,255,0.68);
+        }
+        .pkg-feat svg { flex-shrink: 0; }
+        .pkg-feat.inherited { color: rgba(255,255,255,0.28); font-style: italic; font-size: 12px; }
+
+        /* CTA button — gradient identical to main site */
+        .pkg-cta {
+            display: block; width: 100%;
+            font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700;
+            padding: 12px; border: none; border-radius: 12px; cursor: pointer;
+            text-align: center; text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.12);
+            position: relative; overflow: hidden;
+        }
+        .pkg-cta:hover { background: rgba(255,255,255,0.12); color: #fff; transform: scale(1.02); }
+        .pkg-cta.primary {
+            background: linear-gradient(135deg, #2EA7FF, #1C7DFF); color: #fff;
+            border: none; box-shadow: 0 4px 20px rgba(0,157,255,0.32);
+        }
+        .pkg-cta.primary:hover { transform: scale(1.03); box-shadow: 0 8px 32px rgba(0,157,255,0.52); }
+
+        /* ── Comparison table ── */
+        .cmp-section { padding: 100px 0 80px; position: relative; }
+        .cmp-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        .cmp-table {
+            width: 100%; border-collapse: separate; border-spacing: 0;
+            border-radius: 20px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+        .cmp-table thead th {
+            padding: 22px 14px 18px; text-align: center;
+            font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: .04em;
+            background: rgba(7, 12, 24, 0.92);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            position: sticky; top: 72px; z-index: 10;
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+            vertical-align: bottom;
+        }
+        .cmp-table thead th:first-child {
+            text-align: left; vertical-align: middle;
+            font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
+            letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,0.3);
+        }
+        .cmp-col-name {
+            display: block; font-size: 13px; font-weight: 800; color: #fff;
+            margin-bottom: 3px; line-height: 1.3; white-space: nowrap;
+        }
+        .cmp-col-sub {
+            display: block; font-family: 'Inter',sans-serif; font-size: 10px; font-weight: 400;
+            color: rgba(255,255,255,0.32); letter-spacing: .02em; line-height: 1.4;
+        }
+        .cmp-col-dot { display: block; width: 6px; height: 6px; border-radius: 50%; margin: 8px auto 0; }
+        .cmp-table thead th.featured-col { background: rgba(0,157,255,0.08); border-left: 1px solid rgba(0,157,255,0.2); border-right: 1px solid rgba(0,157,255,0.2); }
+        .cmp-table tbody td.featured-col { background: rgba(0,157,255,0.04); border-left: 1px solid rgba(0,157,255,0.12); border-right: 1px solid rgba(0,157,255,0.12); }
+        .cmp-table tbody tr.cat-row td {
+            padding: 14px 20px 8px;
+            font-family: 'Poppins', sans-serif; font-size: 10.5px; font-weight: 800;
+            letter-spacing: .14em; text-transform: uppercase;
+            color: #3AAEFF; background: rgba(58,174,255,0.06);
+            border-top: 1px solid rgba(58,174,255,0.15);
+            border-bottom: 1px solid rgba(58,174,255,0.08);
+        }
+        .cmp-table tbody tr.feat-row td {
+            padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);
+            vertical-align: middle; text-align: center;
+            transition: background 0.15s;
+        }
+        .cmp-table tbody tr.feat-row:hover td { background: rgba(255,255,255,0.032); }
+        .cmp-table tbody tr.feat-row:hover td:first-child { color: rgba(255,255,255,0.9); }
+        .cmp-table tbody tr.feat-row td:first-child {
+            text-align: left; font-family: 'Inter', sans-serif; font-size: 13px;
+            color: rgba(255,255,255,0.75); padding-left: 22px;
+        }
+        .feat-icon-label { display: flex; align-items: center; gap: 11px; }
+        .feat-icon-label span.feat-emoji { font-size: 16px; width: 24px; text-align: center; flex-shrink: 0; }
+        /* Table indicators — plain symbols, no circles */
+        .chk-yes  { font-size:17px; font-weight:700; color:#4ade80; line-height:1; display:block; text-align:center; text-shadow:0 0 10px rgba(74,222,128,0.45); }
+        .chk-no   { font-size:16px; color:rgba(255,255,255,0.18); line-height:1; font-family:'Inter',sans-serif; display:block; text-align:center; }
+        .cmp-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 20px; }
+        .cmp-scroll::-webkit-scrollbar { height: 4px; }
+        .cmp-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        .cmp-scroll::-webkit-scrollbar-thumb { background: rgba(58,174,255,0.3); border-radius: 2px; }
+
+        /* ── CTA strip ── */
+        .cta-strip {
+            background: linear-gradient(135deg, rgba(0,157,255,0.08), rgba(198,167,94,0.06));
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 24px; padding: 60px 48px; text-align: center;
+            max-width: 700px; margin: 0 auto; position: relative; overflow: hidden;
+        }
+        .cta-strip::before {
+            content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+            width: 400px; height: 400px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,157,255,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ── WhatsApp float ── */
+        #wa-float {
+            position: fixed; bottom: 28px; right: 28px; z-index: 400;
+            width: 58px; height: 58px; border-radius: 50%;
+            background: linear-gradient(135deg, #25D366, #1da851);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+            cursor: pointer; text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #wa-float:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
+        #wa-float::before {
+            content: ''; position: absolute; inset: -5px; border-radius: 50%;
+            border: 2px solid rgba(37,211,102,0.45);
+            animation: wa-pulse 2.2s ease-out infinite;
+            pointer-events: none;
+        }
+        @keyframes wa-pulse {
+            0%   { transform: scale(1); opacity: 0.7; }
+            70%  { transform: scale(1.35); opacity: 0; }
+            100% { transform: scale(1.35); opacity: 0; }
+        }
+
+        /* ── Reveal ── */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ── Ripple ── */
+        .ripple-btn { position: relative; overflow: hidden; }
+        .ripple-btn .ripple {
+            position: absolute; border-radius: 50%; background: rgba(255,255,255,0.25);
+            transform: scale(0); animation: ripple-anim 0.55s linear; pointer-events: none;
+        }
+        @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
+
+        /* ── Scroll-to-top ── */
+        #scroll-top {
+            position: fixed; bottom: 96px; right: 28px; z-index: 400;
+            width: 42px; height: 42px; border-radius: 12px;
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s, transform 0.2s, background 0.2s;
+            color: rgba(255,255,255,0.5);
+        }
+        #scroll-top.visible { opacity: 1; pointer-events: auto; }
+        #scroll-top:hover { background: rgba(255,255,255,0.12); color: #fff; transform: translateY(-2px); }
+
+        /* ── Prefers-reduced-motion ── */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        @media(max-width: 768px) {
+            .page-hero { padding: 120px 20px 60px; }
+            .cta-strip { padding: 40px 24px; }
+            .nav-inner { padding: 0 18px; }
+            .nav-cta-pill { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Scroll progress -->
+<div id="scroll-progress"></div>
+
+<!-- Scroll-to-top -->
+<button id="scroll-top" aria-label="Torna su" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
+
+<!-- WhatsApp float -->
+<a id="wa-float" href="https://wa.me/393345875351" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ── NAV ── -->
+<nav id="top-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo-link">
+            <img src="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/logo_tex_org.png" alt="SFERA Smart Systems" class="nav-logo-img">
+        </a>
+        <div class="nav-right">
+            <a href="index.html" class="nav-back" id="nav-back-btn">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 18l-6-6 6-6"/></svg>
+                <span id="nav-back-label" data-i18n="nav-back">Home</span>
+            </a>
+            <a href="index.html" class="nav-cta-pill ripple-btn" data-i18n="nav-cta">Sopralluogo gratuito →</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="page-hero">
+    <div class="page-hero-dot-grid"></div>
+    <div class="page-hero-glow"></div>
+    <div style="position:relative;z-index:2;">
+        <span class="eyebrow" data-i18n="hero-eyebrow">I nostri sistemi</span>
+        <h1 style="font-family:'Poppins',sans-serif;font-size:clamp(2rem,5vw,3.6rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:18px;max-width:720px;margin-left:auto;margin-right:auto;">
+            <span data-i18n="hero-h1-1">Scegli il sistema</span><br>
+            <span style="background:linear-gradient(90deg,#3AAEFF,#009DFF,#C6A75E,#3AAEFF);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:grad 4s ease infinite;" data-i18n="hero-h1-2">giusto per te</span>
+        </h1>
+        <p style="font-family:'Inter',sans-serif;font-size:clamp(15px,2vw,17px);color:rgba(255,255,255,0.5);max-width:500px;margin:0 auto 40px;line-height:1.75;" data-i18n="hero-sub">
+            Da un primo passo smart fino alla casa completamente automatizzata. Ogni sistema include installazione e supporto.
+        </p>
+        <a href="#confronto" style="font-family:'Inter',sans-serif;font-size:13px;color:#3AAEFF;text-decoration:none;border-bottom:1px solid rgba(58,174,255,0.3);padding-bottom:2px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(58,174,255,0.8)'" onmouseout="this.style.borderColor='rgba(58,174,255,0.3)'" data-i18n="hero-anchor">
+            ↓ Vedi il confronto completo
+        </a>
+    </div>
+</section>
+
+<!-- ── PACKAGE CARDS ── -->
+<section style="padding:0 0 110px;">
+    <div class="pkg-grid">
+
+        <!-- STARTER SMART -->
+        <div id="pkg-starter" class="pkg-card reveal" style="--pkg-color:rgba(100,200,120,0.6);--pkg-icon-bg:rgba(100,200,120,0.1);--pkg-icon-border:rgba(100,200,120,0.22);--pkg-icon-color:#4ade80;--pkg-icon-hover-bg:rgba(100,200,120,0.18);--shimmer-delay:0s;">
+            <div class="pkg-icon">
+                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <div class="pkg-name" data-i18n="pkg-starter-name">Starter Smart</div>
+            <div class="pkg-desc" data-i18n="pkg-starter-desc">Il primo passo nel mondo smart. Luci intelligenti, tapparelle e controllo da app.</div>
+            <div class="pkg-features">
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-luci">Luci Smart</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-tapp">Tapparelle automatiche</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-app">App mobile</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-voce">Comandi vocali</span></div>
+            </div>
+            <button class="pkg-cta ripple-btn" onclick="openPkg('starter')">Scopri di più</button>
+        </div>
+
+        <!-- COMFORT SMART — FEATURED -->
+        <div id="pkg-comfort" class="pkg-card featured reveal" style="--pkg-color:#3AAEFF;--pkg-icon-bg:rgba(58,174,255,0.15);--pkg-icon-border:rgba(58,174,255,0.32);--pkg-icon-color:#3AAEFF;--pkg-icon-hover-bg:rgba(58,174,255,0.26);--shimmer-delay:0.6s;" data-delay="1">
+            <div class="pkg-badge" data-i18n="pkg-badge">⭐ Più scelto</div>
+            <div class="pkg-icon" style="margin-top:18px;">
+                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
+            </div>
+            <div class="pkg-name" data-i18n="pkg-comfort-name">Comfort Smart</div>
+            <div class="pkg-desc" data-i18n="pkg-comfort-desc">Il perfetto equilibrio. Clima, scenari automatici e sicurezza base in un ecosistema.</div>
+            <div class="pkg-features">
+                <div class="pkg-feat inherited"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-all-starter">Tutto lo Starter</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#3AAEFF" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-clima">Clima e riscaldamento</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#3AAEFF" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-scenari">Scenari Cinema / Notte</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#3AAEFF" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-sic-base">Sicurezza base</span></div>
+            </div>
+            <button class="pkg-cta primary ripple-btn" onclick="openPkg('comfort')">Scopri di più</button>
+        </div>
+
+        <!-- SECURITY SMART -->
+        <div id="pkg-security" class="pkg-card reveal" style="--pkg-color:rgba(34,197,94,0.55);--pkg-icon-bg:rgba(34,197,94,0.1);--pkg-icon-border:rgba(34,197,94,0.22);--pkg-icon-color:#4ade80;--pkg-icon-hover-bg:rgba(34,197,94,0.18);--shimmer-delay:1.2s;" data-delay="2">
+            <div class="pkg-icon">
+                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div class="pkg-name" data-i18n="pkg-security-name">Security Smart</div>
+            <div class="pkg-desc" data-i18n="pkg-security-desc">La tua fortezza digitale. Telecamere AI, sensori e notifiche istantanee.</div>
+            <div class="pkg-features">
+                <div class="pkg-feat inherited"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-all-comfort">Tutto il Comfort</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-cam">Telecamere AI</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-sensori">Sensori porte / finestre</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-sos">Notifiche SOS</span></div>
+            </div>
+            <button class="pkg-cta ripple-btn" onclick="openPkg('security')">Scopri di più</button>
+        </div>
+
+        <!-- ENERGY SMART -->
+        <div id="pkg-energy" class="pkg-card reveal" style="--pkg-color:rgba(251,146,60,0.55);--pkg-icon-bg:rgba(251,146,60,0.1);--pkg-icon-border:rgba(251,146,60,0.22);--pkg-icon-color:#fb923c;--pkg-icon-hover-bg:rgba(251,146,60,0.18);--shimmer-delay:1.8s;" data-delay="3">
+            <div class="pkg-icon">
+                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div class="pkg-name" data-i18n="pkg-energy-name">Energy Smart</div>
+            <div class="pkg-desc" data-i18n="pkg-energy-desc">Risparmia sulle bollette. Monitoraggio consumi, gestione carichi e ottimizzazione.</div>
+            <div class="pkg-features">
+                <div class="pkg-feat inherited"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-all-comfort">Tutto il Comfort</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#fb923c" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-monitor">Monitoraggio energia</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#fb923c" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-carichi">Gestione carichi</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#fb923c" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-sprechi">Notifiche sprechi</span></div>
+            </div>
+            <button class="pkg-cta ripple-btn" onclick="openPkg('energy')">Scopri di più</button>
+        </div>
+
+        <!-- FULL SMART -->
+        <div id="pkg-full" class="pkg-card reveal" style="--pkg-color:rgba(198,167,94,0.65);--pkg-icon-bg:rgba(198,167,94,0.12);--pkg-icon-border:rgba(198,167,94,0.28);--pkg-icon-color:#C6A75E;--pkg-icon-hover-bg:rgba(198,167,94,0.22);--shimmer-delay:2.4s;" data-delay="4">
+            <div class="pkg-icon">
+                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </div>
+            <div class="pkg-name" data-i18n="pkg-full-name">Full Smart</div>
+            <div class="pkg-desc" data-i18n="pkg-full-desc">L'esperienza definitiva. Tutto integrato, interfaccia 3D e assistenza priority H24.</div>
+            <div class="pkg-features">
+                <div class="pkg-feat inherited"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-all-sec-en">Tutto Security + Energy</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#C6A75E" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-3d">Interfaccia 3D</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#C6A75E" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-audio">Audio multi-room</span></div>
+                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#C6A75E" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-h24">Assistenza priority H24</span></div>
+            </div>
+            <button class="pkg-cta ripple-btn" onclick="openPkg('full')">Scopri di più</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ── FEATURE COMPARISON TABLE ── -->
+<section class="cmp-section" id="confronto">
+    <div class="cmp-wrap">
+
+        <div class="reveal" style="text-align:center;margin-bottom:60px;">
+            <span class="eyebrow" data-i18n="cmp-eyebrow">Confronto completo</span>
+            <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(24px,3.5vw,38px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:14px;" data-i18n="cmp-h2">
+                Cosa include ogni sistema?
+            </h2>
+            <p style="font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.38);max-width:420px;margin:0 auto;line-height:1.65;" data-i18n="cmp-sub">
+                Ogni riga è una funzionalità. Vedi in un colpo d'occhio cosa ottieni.
+            </p>
+        </div>
+
+        <div class="cmp-scroll reveal">
+        <table class="cmp-table">
+            <thead>
+                <tr>
+                    <th style="min-width:200px;" data-i18n="cmp-col-feat">Funzionalità</th>
+                    <th style="min-width:120px;">
+                        <span class="cmp-col-name">Starter</span>
+                        <span class="cmp-col-sub">Smart</span>
+                        <span class="cmp-col-dot" style="background:rgba(100,200,120,0.8);"></span>
+                    </th>
+                    <th class="featured-col" style="min-width:130px;">
+                        <span class="cmp-col-name" style="color:#3AAEFF;">Comfort ⭐</span>
+                        <span class="cmp-col-sub">Smart</span>
+                        <span class="cmp-col-dot" style="background:#3AAEFF;"></span>
+                    </th>
+                    <th style="min-width:120px;">
+                        <span class="cmp-col-name">Security</span>
+                        <span class="cmp-col-sub">Smart</span>
+                        <span class="cmp-col-dot" style="background:#4ade80;"></span>
+                    </th>
+                    <th style="min-width:120px;">
+                        <span class="cmp-col-name">Energy</span>
+                        <span class="cmp-col-sub">Smart</span>
+                        <span class="cmp-col-dot" style="background:#fb923c;"></span>
+                    </th>
+                    <th style="min-width:120px;">
+                        <span class="cmp-col-name" style="color:#C6A75E;">Full</span>
+                        <span class="cmp-col-sub" style="color:#C6A75E;">Smart</span>
+                        <span class="cmp-col-dot" style="background:#C6A75E;"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="cat-row"><td colspan="6">💡 <span data-i18n="cat-controllo">Luci</span></td></tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">🪟</span><span data-i18n="feat-tapp">Tapparelle automatiche</span></div></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td class="featured-col"><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">📱</span><span data-i18n="feat-app">App mobile</span></div></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td class="featured-col"><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">🎙️</span><span data-i18n="feat-voce">Comandi vocali</span></div></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td class="featured-col"><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+
+                <tr class="cat-row"><td colspan="6">🌡️ <span data-i18n="cat-clima">Clima &amp; comfort</span></td></tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">🌡️</span><span data-i18n="feat-clima">Clima e riscaldamento</span></div></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td class="featured-col"><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">🎬</span><span data-i18n="feat-scenari">Scenari automatici</span></div></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td class="featured-col"><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+
+                <tr class="cat-row"><td colspan="6">🔒 <span data-i18n="cat-sicurezza">Sicurezza</span></td></tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">🔒</span><span data-i18n="feat-sic-base">Sicurezza base</span></div></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td class="featured-col"><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">📹</span><span data-i18n="feat-cam">Telecamere AI</span></div></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td class="featured-col"><span class="chk-no">—</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">🚪</span><span data-i18n="feat-sensori">Sensori porte / finestre</span></div></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td class="featured-col"><span class="chk-no">—</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+
+                <tr class="cat-row"><td colspan="6">⚡ <span data-i18n="cat-energia">Energia</span></td></tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">⚡</span><span data-i18n="feat-monitor">Monitoraggio consumi</span></div></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td class="featured-col"><span class="chk-no">—</span></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">📊</span><span data-i18n="feat-carichi">Gestione carichi</span></div></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td class="featured-col"><span class="chk-no">—</span></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+
+                <tr class="cat-row"><td colspan="6">🏠 <span data-i18n="cat-avanzato">Avanzato</span></td></tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">🗺️</span><span data-i18n="feat-3d">Interfaccia 3D</span></div></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td class="featured-col"><span class="chk-no">—</span></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">🎵</span><span data-i18n="feat-audio">Audio multi-room</span></div></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td class="featured-col"><span class="chk-no">—</span></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+                <tr class="feat-row">
+                    <td><div class="feat-icon-label"><span class="feat-emoji">🛟</span><span data-i18n="feat-h24">Assistenza priority H24</span></div></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td class="featured-col"><span class="chk-no">—</span></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td><span class="chk-no">—</span></td>
+                    <td><span class="chk-yes">✓</span></td>
+                </tr>
+
+                <!-- CTA row -->
+                <tr>
+                    <td style="padding:20px 20px;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.22);letter-spacing:.06em;">
+                        <span data-i18n="cmp-legend">✓ incluso &nbsp;&nbsp; — non incluso</span>
+                    </td>
+                    <td style="padding:16px 10px;"><a href="index.html" style="display:block;text-align:center;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,0.42);text-decoration:none;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);transition:all 0.2s;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='rgba(255,255,255,0.42)';this.style.borderColor='rgba(255,255,255,0.1)'" data-i18n="cmp-scegli">Scegli</a></td>
+                    <td class="featured-col" style="padding:16px 10px;"><a href="index.html" style="display:block;text-align:center;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:#fff;text-decoration:none;padding:8px;border-radius:8px;background:linear-gradient(135deg,#2EA7FF,#1C7DFF);box-shadow:0 4px 14px rgba(0,157,255,0.3);transition:all 0.2s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" data-i18n="cmp-scegli-top">⭐ Scegli</a></td>
+                    <td style="padding:16px 10px;"><a href="index.html" style="display:block;text-align:center;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,0.42);text-decoration:none;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);transition:all 0.2s;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='rgba(255,255,255,0.42)';this.style.borderColor='rgba(255,255,255,0.1)'" data-i18n="cmp-scegli">Scegli</a></td>
+                    <td style="padding:16px 10px;"><a href="index.html" style="display:block;text-align:center;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,0.42);text-decoration:none;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);transition:all 0.2s;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='rgba(255,255,255,0.42)';this.style.borderColor='rgba(255,255,255,0.1)'" data-i18n="cmp-scegli">Scegli</a></td>
+                    <td style="padding:16px 10px;"><a href="index.html" style="display:block;text-align:center;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:#C6A75E;text-decoration:none;padding:8px;border-radius:8px;border:1px solid rgba(198,167,94,0.25);background:rgba(198,167,94,0.08);transition:all 0.2s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" data-i18n="cmp-scegli-full">Premium →</a></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</section>
+
+<!-- ── CTA FINALE ── -->
+<section style="padding:0 24px 110px;">
+    <div class="cta-strip reveal">
+        <span class="eyebrow" data-i18n="cta-eyebrow">Inizia oggi</span>
+        <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:14px;position:relative;" data-i18n="cta-h2">
+            Non sai quale scegliere?
+        </h2>
+        <p style="font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.45);line-height:1.75;margin-bottom:32px;max-width:400px;margin-left:auto;margin-right:auto;position:relative;" data-i18n="cta-sub">
+            In 15 minuti di chiamata ti aiutiamo a capire qual è il sistema perfetto per la tua casa — senza impegno.
+        </p>
+        <a href="index.html" class="ripple-btn" style="display:inline-block;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;background:linear-gradient(135deg,#2EA7FF,#1C7DFF);color:#fff;text-decoration:none;border-radius:14px;padding:17px 40px;box-shadow:0 6px 28px rgba(0,157,255,0.38);transition:transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 10px 40px rgba(0,157,255,0.55)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 6px 28px rgba(0,157,255,0.38)'" data-i18n="cta-btn">
+            Prenota sopralluogo gratuito →
+        </a>
+    </div>
+</section>
+
+<!-- ── FOOTER — identical to main page ── -->
+<footer style="background:linear-gradient(180deg,#1a2540 0%,#0f172a 100%);color:#fff;padding:0;">
+    <div style="height:2px;background:linear-gradient(90deg,#009DFF 0%,#C6A75E 60%,transparent 100%);opacity:0.6;"></div>
+    <div style="max-width:1100px;margin:0 auto;padding:44px 28px 0 28px;">
+
+        <style>
+            @media(max-width:900px){ #ft-grid-s{ grid-template-columns:1fr 1fr !important; } }
+            @media(max-width:500px){ #ft-grid-s{ grid-template-columns:1fr !important; } }
+            .soc-icon-s {
+                display:flex;align-items:center;justify-content:center;
+                width:38px;height:38px;border-radius:10px;
+                background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+                color:rgba(255,255,255,0.5);text-decoration:none;
+                transition:all 0.22s;
+            }
+            .soc-icon-s:hover { color:#fff; transform:scale(1.1); }
+            .soc-li-s:hover  { background:#0A66C2; border-color:#0A66C2; box-shadow:0 4px 18px rgba(10,102,194,0.45); }
+            .soc-ig-s:hover  { background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); border-color:transparent; box-shadow:0 4px 18px rgba(220,39,67,0.4); }
+            .soc-yt-s:hover  { background:#FF0000; border-color:#FF0000; box-shadow:0 4px 18px rgba(255,0,0,0.45); }
+            .soc-fb-s:hover  { background:#1877F2; border-color:#1877F2; box-shadow:0 4px 18px rgba(24,119,242,0.45); }
+            .soc-tg-s:hover  { background:#229ED9; border-color:#229ED9; box-shadow:0 4px 18px rgba(34,158,217,0.45); }
+        </style>
+
+        <div id="ft-grid-s" style="display:grid;grid-template-columns:1fr 1fr 0.85fr 1.5fr;gap:32px;margin-bottom:40px;">
+
+            <!-- Col 1: SISTEMI -->
+            <div>
+                <h4 style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C6A75E;margin:0 0 16px 0;" data-i18n="ft-sistemi">Sistemi</h4>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;">
+                    <li><a href="tutti_i_sistemi.html" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-s-all">Tutti i sistemi</a></li>
+                    <li><a href="tutti_i_sistemi.html#pkg-starter" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-s-starter">Starter Smart</a></li>
+                    <li style="display:flex;align-items:center;gap:6px;"><a href="tutti_i_sistemi.html#pkg-comfort" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-s-comfort-plain">Comfort Smart</a><span style="font-family:'Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(198,167,94,0.15);color:#C6A75E;border:1px solid rgba(198,167,94,0.25);border-radius:4px;padding:1px 5px;" data-i18n="nav-badge-top">più scelto</span></li>
+                    <li><a href="tutti_i_sistemi.html#pkg-security" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-s-security">Security Smart</a></li>
+                    <li><a href="tutti_i_sistemi.html#pkg-energy" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-s-energy">Energy Smart</a></li>
+                    <li><a href="tutti_i_sistemi.html#pkg-full" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-s-full">Full Smart</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 2: SOLUZIONI -->
+            <div>
+                <h4 style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C6A75E;margin:0 0 16px 0;" data-i18n="ft-soluzioni">Soluzioni</h4>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;">
+                    <li><a href="index.html#section-soluzioni" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-sol-luce">Illuminazione intelligente</a></li>
+                    <li><a href="index.html#section-soluzioni" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-sol-clima">Clima e riscaldamento</a></li>
+                    <li><a href="index.html#section-soluzioni" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-sol-sicur">Sicurezza e allarme</a></li>
+                    <li><a href="index.html#section-soluzioni" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-sol-scenari">Scenari automatici</a></li>
+                    <li><a href="index.html#section-soluzioni" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-sol-vocale">Controllo vocale</a></li>
+                    <li><a href="index.html#section-soluzioni" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="nav-sol-3d">Controllo 3D</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: AZIENDA -->
+            <div>
+                <h4 style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C6A75E;margin:0 0 16px 0;" data-i18n="ft-azienda">Azienda</h4>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;">
+                    <li><a href="index.html" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="ft-a1">Chi Siamo</a></li>
+                    <li><a href="index.html" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'" data-i18n="ft-a2">La nostra missione</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: CONTATTI -->
+            <div>
+                <h4 style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C6A75E;margin:0 0 16px 0;" data-i18n="ft-contatti">Contatti</h4>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;">
+                    <li style="display:flex;align-items:center;gap:9px;">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:#25D366;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.12 1.533 5.854L.057 23.215a.75.75 0 00.928.928l5.361-1.476A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.503-5.236-1.381l-.374-.218-3.883 1.069 1.069-3.883-.218-.374A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                        <a href="https://wa.me/393345875351" target="_blank" rel="noopener" style="font-family:'Inter',sans-serif;font-size:13.5px;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">+39 334 587 53 51</a>
+                    </li>
+                    <li style="display:flex;align-items:center;gap:9px;">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:rgba(255,255,255,0.4);flex-shrink:0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:info@sferasmart.it" style="font-family:'Inter',sans-serif;font-size:13.5px;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">info@sferasmart.it</a>
+                    </li>
+                    <li style="display:flex;align-items:center;gap:9px;">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:rgba(255,255,255,0.4);flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span style="font-family:'Inter',sans-serif;font-size:13.5px;color:rgba(255,255,255,0.45);" data-i18n="ft-city">Bolzano, Italia</span>
+                    </li>
+                    <li style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);">
+                        <span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);" data-i18n="ft-direct">Contatti diretti</span>
+                    </li>
+                    <li style="display:flex;align-items:baseline;gap:8px;">
+                        <span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:rgba(255,255,255,0.55);min-width:44px;">Dmytro</span>
+                        <a href="mailto:d.kirichek@sferasmart.it" style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">d.kirichek@sferasmart.it</a>
+                    </li>
+                    <li style="display:flex;align-items:baseline;gap:8px;">
+                        <span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:rgba(255,255,255,0.55);min-width:44px;">Deni</span>
+                        <a href="mailto:d.atanasov@sferasmart.it" style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.18s;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">d.atanasov@sferasmart.it</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Bottom strip -->
+        <div style="border-top:1px solid rgba(255,255,255,0.07);padding:22px 0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+            <!-- Logo + tagline -->
+            <div style="display:flex;align-items:center;gap:16px;">
+                <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-start;">
+                    <img src="images/logo_tex_org.png" alt="SFERA" style="height:44px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.8;">
+                    <span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.22);">Comfort&nbsp;•&nbsp;intelligenza&nbsp;•&nbsp;Sfera</span>
+                </div>
+                <span style="width:1px;height:36px;background:rgba(255,255,255,0.1);display:inline-block;flex-shrink:0;"></span>
+                <p style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.38);margin:0;line-height:1.55;" data-i18n="footer-tagline">Soluzioni smart per una casa<br>più comoda, sicura ed efficiente.</p>
+            </div>
+            <!-- Social icons: LinkedIn + Instagram + YouTube + Facebook + Telegram -->
+            <div style="display:flex;align-items:center;gap:12px;">
+                <a href="#" aria-label="LinkedIn" class="soc-icon-s soc-li-s">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/sfera_smart_systems/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="soc-icon-s soc-ig-s">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@Sferasmart" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="soc-icon-s soc-yt-s">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://www.facebook.com/sferasmartsystems" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="soc-icon-s soc-fb-s">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://t.me/sferasmart" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="soc-icon-s soc-tg-s">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </a>
+            </div>
+            <!-- Copyright -->
+            <p style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.22);margin:0;letter-spacing:.04em;white-space:nowrap;" data-i18n="footer-copy">&copy; 2026 SFERA Smart Systems &nbsp;&middot;&nbsp; Tutti i diritti riservati</p>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+    /* ── Translations ── */
+    var translations = {
+        it: {
+            'page-title': 'Tutti i Sistemi | SFERA Smart Systems',
+            'hero-eyebrow': 'I nostri sistemi',
+            'hero-h1-1': 'Scegli il sistema',
+            'hero-h1-2': 'giusto per te',
+            'hero-sub': 'Da un primo passo smart fino alla casa completamente automatizzata. Ogni sistema include installazione e supporto.',
+            'hero-anchor': '↓ Vedi il confronto completo',
+            'nav-back': 'Torna alla Home', 'nav-cta': 'Sopralluogo gratuito →',
+            'pkg-badge': '⭐ Più scelto',
+            'pkg-starter-name': 'Starter Smart', 'pkg-starter-desc': 'Il primo passo nel mondo smart. Luci intelligenti, tapparelle e controllo da app.',
+            'pkg-comfort-name': 'Comfort Smart', 'pkg-comfort-desc': 'Il perfetto equilibrio. Clima, scenari automatici e sicurezza base in un ecosistema.',
+            'pkg-security-name': 'Security Smart', 'pkg-security-desc': 'La tua fortezza digitale. Telecamere AI, sensori e notifiche istantanee.',
+            'pkg-energy-name': 'Energy Smart', 'pkg-energy-desc': 'Risparmia sulle bollette. Monitoraggio consumi, gestione carichi e ottimizzazione.',
+            'pkg-full-name': 'Full Smart', 'pkg-full-desc': 'L\'esperienza definitiva. Tutto integrato, interfaccia 3D e assistenza priority H24.',
+            'feat-luci': 'Luci Smart', 'feat-tapp': 'Tapparelle automatiche', 'feat-app': 'App mobile', 'feat-voce': 'Comandi vocali',
+            'feat-all-starter': 'Tutto lo Starter', 'feat-all-comfort': 'Tutto il Comfort', 'feat-all-sec-en': 'Tutto Security + Energy',
+            'feat-clima': 'Clima e riscaldamento', 'feat-scenari': 'Scenari Cinema / Notte', 'feat-sic-base': 'Sicurezza base',
+            'feat-cam': 'Telecamere AI', 'feat-sensori': 'Sensori porte / finestre', 'feat-sos': 'Notifiche SOS',
+            'feat-monitor': 'Monitoraggio energia', 'feat-carichi': 'Gestione carichi', 'feat-sprechi': 'Notifiche sprechi',
+            'feat-3d': 'Interfaccia 3D', 'feat-audio': 'Audio multi-room', 'feat-h24': 'Assistenza priority H24',
+            'pkg-cta-scopri': 'Scopri di più', 'pkg-cta-prenota': 'Prenota sopralluogo →', 'pkg-cta-full': 'Richiedi progetto →',
+            'cmp-eyebrow': 'Confronto completo', 'cmp-h2': 'Cosa include ogni sistema?',
+            'cmp-sub': 'Ogni riga è una funzionalità. Vedi in un colpo d\'occhio cosa ottieni.',
+            'cmp-col-feat': 'Funzionalità',
+            'cmp-scegli': 'Scegli', 'cmp-scegli-top': '⭐ Scegli', 'cmp-scegli-full': 'Premium →',
+            'cmp-legend': '✓ incluso  — non incluso',
+            'cat-controllo': 'Luci', 'cat-clima': 'Clima & comfort', 'cat-sicurezza': 'Sicurezza', 'cat-energia': 'Energia', 'cat-avanzato': 'Avanzato',
+            'cta-eyebrow': 'Inizia oggi', 'cta-h2': 'Non sai quale scegliere?',
+            'cta-sub': 'In 15 minuti di chiamata ti aiutiamo a capire qual è il sistema perfetto per la tua casa — senza impegno.',
+            'cta-btn': 'Prenota sopralluogo gratuito →',
+            'footer-tagline': 'Soluzioni smart per una casa più comoda, sicura ed efficiente.',
+            'footer-home': 'Home', 'footer-contact': 'Contatti',
+            'ft-sistemi': 'Sistemi', 'ft-soluzioni': 'Soluzioni', 'ft-azienda': 'Azienda', 'ft-contatti': 'Contatti',
+            'nav-s-all': 'Tutti i sistemi', 'nav-s-starter': 'Starter Smart', 'nav-s-comfort-plain': 'Comfort Smart',
+            'nav-badge-top': 'più scelto', 'nav-s-security': 'Security Smart', 'nav-s-energy': 'Energy Smart', 'nav-s-full': 'Full Smart',
+            'nav-sol-luce': 'Illuminazione intelligente', 'nav-sol-clima': 'Clima e riscaldamento',
+            'nav-sol-sicur': 'Sicurezza e allarme', 'nav-sol-scenari': 'Scenari automatici',
+            'nav-sol-vocale': 'Controllo vocale', 'nav-sol-3d': 'Controllo 3D',
+            'ft-a1': 'Chi Siamo', 'ft-a2': 'La nostra missione',
+            'ft-city': 'Bolzano, Italia', 'ft-direct': 'Contatti diretti',
+            'footer-copy': '© 2026 SFERA Smart Systems · Tutti i diritti riservati',
+        },
+        de: {
+            'page-title': 'Alle Systeme | SFERA Smart Systems',
+            'hero-eyebrow': 'Unsere Systeme',
+            'hero-h1-1': 'Wähle das System',
+            'hero-h1-2': 'das zu dir passt',
+            'hero-sub': 'Vom ersten smarten Schritt bis zum vollautomatischen Haus. Jedes System beinhaltet Installation und Support.',
+            'hero-anchor': '↓ Vollständigen Vergleich ansehen',
+            'nav-back': 'Zurück zur Startseite', 'nav-cta': 'Kostenlose Besichtigung →',
+            'pkg-badge': '⭐ Meistgewählt',
+            'pkg-starter-name': 'Starter Smart', 'pkg-starter-desc': 'Der erste Schritt in die smarte Welt. Intelligentes Licht, Rollläden und App-Steuerung.',
+            'pkg-comfort-name': 'Comfort Smart', 'pkg-comfort-desc': 'Die perfekte Balance. Klima, automatische Szenarien und Basissicherheit in einem Ökosystem.',
+            'pkg-security-name': 'Security Smart', 'pkg-security-desc': 'Deine digitale Festung. KI-Kameras, Sensoren und sofortige Benachrichtigungen.',
+            'pkg-energy-name': 'Energy Smart', 'pkg-energy-desc': 'Spare bei Energiekosten. Verbrauchsüberwachung, Lastmanagement und Optimierung.',
+            'pkg-full-name': 'Full Smart', 'pkg-full-desc': 'Das ultimative Erlebnis. Alles integriert, 3D-Schnittstelle und Priority-Support H24.',
+            'feat-luci': 'Smart Beleuchtung', 'feat-tapp': 'Automatische Rollläden', 'feat-app': 'Mobile App', 'feat-voce': 'Sprachbefehle',
+            'feat-all-starter': 'Alles aus Starter', 'feat-all-comfort': 'Alles aus Comfort', 'feat-all-sec-en': 'Alles Security + Energy',
+            'feat-clima': 'Klima & Heizung', 'feat-scenari': 'Kino- / Nachtszenarien', 'feat-sic-base': 'Basissicherheit',
+            'feat-cam': 'KI-Kameras', 'feat-sensori': 'Tür- / Fenstersensoren', 'feat-sos': 'SOS-Benachrichtigungen',
+            'feat-monitor': 'Energieüberwachung', 'feat-carichi': 'Lastmanagement', 'feat-sprechi': 'Vergeudungswarnungen',
+            'feat-3d': '3D-Schnittstelle', 'feat-audio': 'Multi-Room Audio', 'feat-h24': 'Priority-Support H24',
+            'pkg-cta-scopri': 'Mehr erfahren', 'pkg-cta-prenota': 'Besichtigung buchen →', 'pkg-cta-full': 'Projekt anfragen →',
+            'cmp-eyebrow': 'Vollständiger Vergleich', 'cmp-h2': 'Was enthält jedes System?',
+            'cmp-sub': 'Jede Zeile ist eine Funktion. Sieh auf einen Blick, was du bekommst.',
+            'cmp-col-feat': 'Funktion',
+            'cmp-scegli': 'Wählen', 'cmp-scegli-top': '⭐ Wählen', 'cmp-scegli-full': 'Premium →',
+            'cmp-legend': '✓ enthalten  — nicht enthalten',
+            'cat-controllo': 'Beleuchtung', 'cat-clima': 'Klima & Komfort', 'cat-sicurezza': 'Sicherheit', 'cat-energia': 'Energie', 'cat-avanzato': 'Erweitert',
+            'cta-eyebrow': 'Heute starten', 'cta-h2': 'Nicht sicher, was du brauchst?',
+            'cta-sub': 'In 15 Minuten helfen wir dir, das perfekte System für dein Zuhause zu finden — unverbindlich.',
+            'cta-btn': 'Kostenlose Besichtigung buchen →',
+            'footer-tagline': 'Smarte Lösungen für ein komfortableres, sichereres und effizienteres Zuhause.',
+            'footer-home': 'Startseite', 'footer-contact': 'Kontakt',
+            'ft-sistemi': 'Systeme', 'ft-soluzioni': 'Lösungen', 'ft-azienda': 'Unternehmen', 'ft-contatti': 'Kontakt',
+            'nav-s-all': 'Alle Systeme', 'nav-s-starter': 'Starter Smart', 'nav-s-comfort-plain': 'Comfort Smart',
+            'nav-badge-top': 'beliebteste', 'nav-s-security': 'Security Smart', 'nav-s-energy': 'Energy Smart', 'nav-s-full': 'Full Smart',
+            'nav-sol-luce': 'Intelligente Beleuchtung', 'nav-sol-clima': 'Klima & Heizung',
+            'nav-sol-sicur': 'Sicherheit & Alarm', 'nav-sol-scenari': 'Automatische Szenarien',
+            'nav-sol-vocale': 'Sprachsteuerung', 'nav-sol-3d': '3D-Steuerung',
+            'ft-a1': 'Über uns', 'ft-a2': 'Unsere Mission',
+            'ft-city': 'Bozen, Italien', 'ft-direct': 'Direkte Kontakte',
+            'footer-copy': '© 2026 SFERA Smart Systems · Alle Rechte vorbehalten',
+        },
+        en: {
+            'page-title': 'All Systems | SFERA Smart Systems',
+            'hero-eyebrow': 'Our systems',
+            'hero-h1-1': 'Choose the system',
+            'hero-h1-2': 'right for you',
+            'hero-sub': 'From a first smart step to a fully automated home. Every system includes installation and support.',
+            'hero-anchor': '↓ See the full comparison',
+            'nav-back': 'Back to Home', 'nav-cta': 'Free site survey →',
+            'pkg-badge': '⭐ Most chosen',
+            'pkg-starter-name': 'Starter Smart', 'pkg-starter-desc': 'The first step into the smart world. Smart lights, blinds and app control.',
+            'pkg-comfort-name': 'Comfort Smart', 'pkg-comfort-desc': 'The perfect balance. Climate, automatic scenes and basic security in one ecosystem.',
+            'pkg-security-name': 'Security Smart', 'pkg-security-desc': 'Your digital fortress. AI cameras, sensors and instant notifications.',
+            'pkg-energy-name': 'Energy Smart', 'pkg-energy-desc': 'Save on energy bills. Consumption monitoring, load management and optimization.',
+            'pkg-full-name': 'Full Smart', 'pkg-full-desc': 'The ultimate experience. Fully integrated, 3D interface and H24 priority support.',
+            'feat-luci': 'Smart Lighting', 'feat-tapp': 'Automatic Blinds', 'feat-app': 'Mobile App', 'feat-voce': 'Voice Commands',
+            'feat-all-starter': 'Everything in Starter', 'feat-all-comfort': 'Everything in Comfort', 'feat-all-sec-en': 'All Security + Energy',
+            'feat-clima': 'Climate & Heating', 'feat-scenari': 'Cinema / Night Scenes', 'feat-sic-base': 'Basic Security',
+            'feat-cam': 'AI Cameras', 'feat-sensori': 'Door / Window Sensors', 'feat-sos': 'SOS Notifications',
+            'feat-monitor': 'Energy Monitoring', 'feat-carichi': 'Load Management', 'feat-sprechi': 'Waste Alerts',
+            'feat-3d': '3D Interface', 'feat-audio': 'Multi-room Audio', 'feat-h24': 'H24 Priority Support',
+            'pkg-cta-scopri': 'Learn more', 'pkg-cta-prenota': 'Book site survey →', 'pkg-cta-full': 'Request project →',
+            'cmp-eyebrow': 'Full comparison', 'cmp-h2': 'What does each system include?',
+            'cmp-sub': 'Each row is a feature. See at a glance what you get.',
+            'cmp-col-feat': 'Feature',
+            'cmp-scegli': 'Choose', 'cmp-scegli-top': '⭐ Choose', 'cmp-scegli-full': 'Premium →',
+            'cmp-legend': '✓ included  — not included',
+            'cat-controllo': 'Lighting', 'cat-clima': 'Climate & Comfort', 'cat-sicurezza': 'Security', 'cat-energia': 'Energy', 'cat-avanzato': 'Advanced',
+            'cta-eyebrow': 'Start today', 'cta-h2': 'Not sure which to choose?',
+            'cta-sub': 'In a 15-minute call we help you find the perfect system for your home — no commitment.',
+            'cta-btn': 'Book a free site survey →',
+            'footer-tagline': 'Smart solutions for a more comfortable, safe and efficient home.',
+            'footer-home': 'Home', 'footer-contact': 'Contact',
+            'ft-sistemi': 'Systems', 'ft-soluzioni': 'Solutions', 'ft-azienda': 'Company', 'ft-contatti': 'Contact',
+            'nav-s-all': 'All systems', 'nav-s-starter': 'Starter Smart', 'nav-s-comfort-plain': 'Comfort Smart',
+            'nav-badge-top': 'most chosen', 'nav-s-security': 'Security Smart', 'nav-s-energy': 'Energy Smart', 'nav-s-full': 'Full Smart',
+            'nav-sol-luce': 'Smart Lighting', 'nav-sol-clima': 'Climate & Heating',
+            'nav-sol-sicur': 'Security & Alarm', 'nav-sol-scenari': 'Automatic Scenes',
+            'nav-sol-vocale': 'Voice Control', 'nav-sol-3d': '3D Control',
+            'ft-a1': 'About us', 'ft-a2': 'Our mission',
+            'ft-city': 'Bolzano, Italy', 'ft-direct': 'Direct contacts',
+            'footer-copy': '© 2026 SFERA Smart Systems · All rights reserved',
+        }
+    };
+
+    var currentLang = 'it';
+
+    function setLang(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
+        var t = translations[lang];
+
+        /* Update title */
+        if (t['page-title']) document.title = t['page-title'];
+        document.documentElement.lang = lang;
+
+        /* data-i18n elements */
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+            var key = el.dataset.i18n;
+            if (t[key] !== undefined) el.textContent = t[key];
+        });
+
+    }
+
+    /* ── Read language from localStorage (set by main page) ── */
+    (function() {
+        try {
+            var saved = localStorage.getItem('sfera-lang');
+            if (saved && translations[saved]) setLang(saved);
+        } catch(e) {}
+    })();
+
+    /* ── Scroll progress ── */
+    var bar = document.getElementById('scroll-progress');
+    var scrollTopBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', function() {
+        var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        bar.style.width = (pct * 100) + '%';
+        scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+
+    /* ── Reveal on scroll ── */
+    if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+    } else {
+        document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('active'); });
+    }
+
+    /* ── Stagger cards ── */
+    document.querySelectorAll('.pkg-card[data-delay]').forEach(function(card) {
+        card.style.transitionDelay = (parseInt(card.dataset.delay) * 0.09) + 's';
+    });
+
+    /* ── Ripple ── */
+    document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.ripple-btn');
+        if (!btn) return;
+        var r = btn.getBoundingClientRect();
+        var size = Math.max(r.width, r.height);
+        var ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+(e.clientX-r.left-size/2)+'px;top:'+(e.clientY-r.top-size/2)+'px;';
+        btn.appendChild(ripple);
+        setTimeout(function() { ripple.remove(); }, 600);
+    });
+
+    /* ── 3D tilt ── */
+    document.querySelectorAll('.pkg-card').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+            if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+            var r = card.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width  - 0.5;
+            var y = (e.clientY - r.top)  / r.height - 0.5;
+            card.style.transform = 'perspective(700px) rotateY('+(x*5)+'deg) rotateX('+(-y*5)+'deg) translateY(-8px)';
+        });
+        card.addEventListener('mouseleave', function() { card.style.transform = ''; });
+    });
+
+    /* ── Highlight card from hash (hash was stripped in <head>, stored in _sferaHash) ── */
+    (function() {
+        if (!_sferaHash) return;
+        var card = document.querySelector(_sferaHash);
+        if (!card || !card.classList.contains('pkg-card')) return;
+
+        /* Page starts at top (browser never saw the hash). Scroll to card after fade-in. */
+        setTimeout(function() {
+            card.classList.add('pkg-active');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 650);
+    })();
+</script>
+
+<!-- ── PACKAGE POP-UP ── -->
+<style>
+    #pkg-overlay { display:none; position:fixed; inset:0; z-index:9000;
+        background:rgba(0,0,0,0.72); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+        align-items:center; justify-content:center; padding:24px; }
+    #pkg-popup {
+        position:relative; width:90vw; max-width:1400px; height:88vh; border-radius:28px;
+        overflow:hidden; background:rgba(8,12,24,0.97);
+        backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+        box-shadow:0 40px 120px rgba(0,0,0,0.65); border:1px solid rgba(255,255,255,0.06);
+        display:flex; flex-direction:column;
+        transform:scale(0.96); opacity:0; transition:transform 0.35s ease,opacity 0.35s ease;
+    }
+    #pkg-popup-inner { display:flex; height:100%; }
+    #pkg-popup-left {
+        width:40%; height:100%; overflow-y:auto; padding:52px 48px;
+        display:flex; flex-direction:column; justify-content:center; gap:0; position:relative;
+        scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.1) transparent;
+    }
+    #pkg-popup-accent { position:absolute; top:0; left:0; right:0; height:3px; }
+    #pkg-popup-right { width:60%; height:100%; position:relative; overflow:hidden; }
+    #pkg-popup-img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+    #pkg-popup-overlay-grad { position:absolute; inset:0; z-index:1; }
+    #pkg-popup-close {
+        position:absolute; top:20px; right:20px; z-index:20;
+        width:40px; height:40px; border-radius:50%;
+        background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12);
+        color:rgba(255,255,255,0.65); font-size:17px; cursor:pointer; line-height:1;
+        display:flex; align-items:center; justify-content:center;
+        transition:all 0.2s;
+    }
+    #pkg-popup-close:hover { background:rgba(255,255,255,0.14); color:#fff; }
+    .ss-feat-card { transition:background 0.22s,border-color 0.22s,box-shadow 0.22s; }
+    .ss-feat-card:hover { background:rgba(74,222,128,0.07) !important; border-color:rgba(74,222,128,0.25) !important; box-shadow:0 0 18px rgba(74,222,128,0.08); }
+    @media(max-width:767px) {
+        #pkg-overlay { padding:0 !important; }
+        #pkg-popup { width:100vw !important; max-width:100% !important;
+            height:100dvh !important; border-radius:0 !important; }
+        #pkg-popup-inner { flex-direction:column !important; }
+        #pkg-popup-right { width:100% !important; height:40vh !important; flex-shrink:0; }
+        #pkg-popup-left { width:100% !important; height:auto !important;
+            padding:28px 24px 40px !important; justify-content:flex-start !important; }
+        #pkg-popup-cta { width:100% !important; }
+    }
+</style>
+
+<div id="pkg-overlay" onclick="closePkgIfBackdrop(event)">
+    <div id="pkg-popup">
+        <button id="pkg-popup-close" onclick="closePkg()">✕</button>
+        <div id="pkg-popup-inner">
+            <!-- Left: info -->
+            <div id="pkg-popup-left">
+                <div id="pkg-popup-accent"></div>
+                <div id="pkg-popup-eyebrow" style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;"></div>
+                <h2 id="pkg-popup-name" style="font-family:'Poppins',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px;"></h2>
+                <p id="pkg-popup-desc" style="font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.62);line-height:1.75;margin-bottom:30px;"></p>
+                <ul id="pkg-popup-feats" style="list-style:none;margin:0 0 38px;padding:0;display:flex;flex-direction:column;gap:13px;"></ul>
+                <button id="pkg-popup-cta" onclick="window.location='index.html'" style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;background:linear-gradient(135deg,#2EA7FF,#1C7DFF);color:#fff;border:none;border-radius:12px;padding:15px 28px;cursor:pointer;box-shadow:0 6px 24px rgba(0,157,255,0.36);transition:transform 0.2s,box-shadow 0.2s;text-align:center;" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 12px 38px rgba(0,157,255,0.54)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 6px 24px rgba(0,157,255,0.36)'">Prenota un sopralluogo gratuito</button>
+            </div>
+            <!-- Right: hero image -->
+            <div id="pkg-popup-right">
+                <div id="pkg-popup-overlay-grad"></div>
+                <img id="pkg-popup-img" src="" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function(){
+var R2 = 'https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev';
+var PKG = {
+    starter: {
+        name:'Starter Smart', eyebrow:'Il primo passo', color:'#4ade80', colorRgb:'74,222,128',
+        desc:'Trasforma la tua casa con il pacchetto di ingresso SFERA. Controllo completo di luci e tapparelle dal telefono, comandi vocali e scenari personalizzati — installato in un giorno.',
+        feats:['Luci Smart controllabili da app e voce','Tapparelle automatiche con timer e orari','App mobile iOS & Android','Comandi vocali Alexa, Google, Siri','Installazione professionale inclusa'],
+        img:'photo-principale.jpg'
+    },
+    comfort: {
+        name:'Comfort Smart', eyebrow:'Il più scelto', color:'#3AAEFF', colorRgb:'58,174,255',
+        desc:'Il perfetto equilibrio tra tecnologia e vita quotidiana. Clima, scenari automatici, sicurezza base e gestione completa della casa in un unico ecosistema intelligente.',
+        feats:['Tutto lo Starter incluso','Clima e riscaldamento intelligente','Scenari Cinema, Notte, Benvenuto','Sicurezza base integrata H24','Dashboard centralizzata'],
+        img:'photo-principale.jpg'
+    },
+    security: {
+        name:'Security Smart', eyebrow:'La tua fortezza', color:'#4ade80', colorRgb:'74,222,128',
+        desc:'Protezione completa e intelligente per la tua casa. Telecamere AI con riconoscimento persone, sensori su ogni punto di accesso e notifiche istantanee 24/7.',
+        feats:['Tutto il Comfort incluso','Telecamere AI con riconoscimento persone','Sensori porte e finestre','Notifiche SOS istantanee','Registrazione cloud cifrata'],
+        img:'photo-principale.jpg'
+    },
+    energy: {
+        name:'Energy Smart', eyebrow:'Risparmia ogni mese', color:'#fb923c', colorRgb:'251,146,60',
+        desc:'Monitoraggio e ottimizzazione energetica avanzata. Visualizza i consumi in tempo reale, gestisci i carichi automaticamente e taglia le bollette fino al 40%.',
+        feats:['Tutto il Comfort incluso','Monitoraggio energia in tempo reale','Gestione carichi automatica','Notifiche sprechi energetici','Integrazione fotovoltaico e batterie'],
+        img:'photo-principale.jpg'
+    },
+    full: {
+        name:'Full Smart', eyebrow:'Il massimo', color:'#C6A75E', colorRgb:'198,167,94',
+        desc:"Il massimo della smart home. Tutto integrato in un ecosistema premium: domotica completa, sicurezza avanzata, gestione energetica, interfaccia 3D e assistenza priority H24.",
+        feats:['Tutto Security + Energy incluso','Interfaccia 3D personalizzata della casa','Audio multi-room integrato','AI predittiva personalizzata','Assistenza priority H24 dedicata'],
+        img:'photo-principale.jpg'
+    }
+};
+
+window.openPkg = function(id) {
+    var d = PKG[id]; if (!d) return;
+    var el = function(i){ return document.getElementById(i); };
+
+    el('pkg-popup-accent').style.background =
+        'linear-gradient(90deg,rgba('+d.colorRgb+',0.25),'+d.color+',rgba('+d.colorRgb+',0.25))';
+    el('pkg-popup-eyebrow').style.color = d.color;
+    el('pkg-popup-name').textContent = d.name;
+    el('pkg-popup-desc').textContent = d.desc;
+
+    var ul = el('pkg-popup-feats');
+    ul.innerHTML = '';
+
+    if (id === 'starter') {
+        // ── Full-width layout: hide photo, expand left panel ──
+        el('pkg-popup-right').style.display = 'none';
+        el('pkg-popup-left').style.cssText = 'width:100%;height:100%;padding:0;display:flex;flex-direction:column;position:relative;overflow:hidden;';
+
+        // Hide original static elements — rebuilt in ul
+        el('pkg-popup-eyebrow').style.display = 'none';
+        el('pkg-popup-name').style.display = 'none';
+        el('pkg-popup-desc').style.display = 'none';
+        el('pkg-popup-cta').style.display = 'none';
+
+        ul.style.cssText = 'list-style:none;margin:0;padding:0;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;';
+
+        // ── Feature cards (2×2 grid) with hover class ──
+        var fcards = [
+            { svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.5-1.3 4.7-3.3 6L12 17l-3.7-2C6.3 13.7 5 11.5 5 9a7 7 0 017-7z"/></svg>', bg:'rgba(253,230,138,0.07)', bd:'rgba(253,230,138,0.13)', title:'Luci Smart', desc:'Si accende quando ci sei, si spegne da sola. Zero sprechi, massimo comfort.' },
+            { svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="3" rx="1"/><path d="M3 9h18M3 15h18"/><path d="M8 21l4-4 4 4"/></svg>', bg:'rgba(147,197,253,0.07)', bd:'rgba(147,197,253,0.13)', title:'Tapparelle Automatiche', desc:'Programmata o on-demand. Svegliati con la luce naturale, senza muovere un dito.' },
+            { svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#86EFAC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>', bg:'rgba(134,239,172,0.07)', bd:'rgba(134,239,172,0.13)', title:'App Mobile', desc:'Controllo completo da smartphone ovunque tu sia. Accendi una luce dall\'ufficio.' },
+            { svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>', bg:'rgba(196,181,253,0.07)', bd:'rgba(196,181,253,0.13)', title:'Comandi Vocali', desc:'Alexa, Google e Apple HomeKit. La casa obbedisce alla tua voce.' }
+        ];
+        var grid = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;">';
+        fcards.forEach(function(fc){
+            grid += '<div class="ss-feat-card" style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:15px;display:flex;flex-direction:column;gap:9px;">' +
+                '<div style="width:36px;height:36px;border-radius:9px;background:'+fc.bg+';border:1px solid '+fc.bd+';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+fc.svg+'</div>' +
+                '<p style="font-family:\'Poppins\',sans-serif;font-size:12.5px;font-weight:700;color:#fff;margin:0;">'+fc.title+'</p>' +
+                '<p style="font-family:\'Inter\',sans-serif;font-size:11.5px;color:rgba(255,255,255,0.4);margin:0;line-height:1.5;">'+fc.desc+'</p>' +
+                '</div>';
+        });
+        grid += '</div>';
+
+        // ── "È ideale se" cards ──
+        var idealData = [
+            { title:'Vuoi iniziare senza complicazioni', desc:'Nessuna competenza tecnica richiesta.' },
+            { title:'Hai un appartamento o casa media', desc:'Efficace dal primo giorno.' },
+            { title:'Vuoi poter espandere in futuro', desc:'Modulare: passa a Comfort o Full Smart.' }
+        ];
+        var ideal = '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#4ade80;margin:0 0 8px;">È il pacchetto giusto se…</p>' +
+            '<div style="display:flex;flex-direction:column;gap:6px;">';
+        idealData.forEach(function(it){
+            ideal += '<div style="background:rgba(58,174,255,0.03);border:1px solid rgba(58,174,255,0.09);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:center;">' +
+                '<div style="width:20px;height:20px;border-radius:5px;background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
+                '<svg width="9" height="9" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>' +
+                '<div><span style="font-family:\'Poppins\',sans-serif;font-size:11.5px;font-weight:700;color:#fff;">'+it.title+'</span>' +
+                ' <span style="font-family:\'Inter\',sans-serif;font-size:11px;color:rgba(255,255,255,0.35);">'+it.desc+'</span></div></div>';
+        });
+        ideal += '</div></div>';
+
+        // ── Full comparison table (from reference) ──
+        var ck = '<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(52,211,153,0.12);"><svg width="9" height="9" fill="none" stroke="#34D399" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>';
+        var no = '<span style="color:rgba(255,255,255,0.15);font-size:12px;">—</span>';
+        var sb = 'background:rgba(74,222,128,0.03);border-left:1px solid rgba(74,222,128,0.09);border-right:1px solid rgba(74,222,128,0.09);';
+        var th = 'font-family:\'Poppins\',sans-serif;font-size:9px;font-weight:700;text-align:center;padding:7px 4px 8px;border-bottom:1px solid rgba(255,255,255,0.06);';
+        var tdF = 'font-family:\'Inter\',sans-serif;font-size:10.5px;color:rgba(255,255,255,0.52);padding:5px 10px;border-bottom:1px solid rgba(255,255,255,0.04);';
+        var tdC = 'text-align:center;padding:5px 4px;border-bottom:1px solid rgba(255,255,255,0.04);';
+        function grpRow(emoji, label, color, bg) {
+            return '<tr><td colspan="6" style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:'+color+';padding:9px 10px 5px;background:'+bg+';border-top:1px solid rgba(255,255,255,0.04);">'+emoji+' '+label+'</td></tr>';
+        }
+        function dataRow(label, s, co, se, en, fu) {
+            return '<tr><td style="'+tdF+'">'+label+'</td>' +
+                '<td style="'+tdC+sb+'">'+(s?ck:no)+'</td>' +
+                '<td style="'+tdC+'">'+(co?ck:no)+'</td>' +
+                '<td style="'+tdC+'">'+(se?ck:no)+'</td>' +
+                '<td style="'+tdC+'">'+(en?ck:no)+'</td>' +
+                '<td style="'+tdC+'">'+(fu?ck:no)+'</td></tr>';
+        }
+        var T=true, F=false;
+        var cmp = '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#3AAEFF;margin:0 0 8px;">Confronto pacchetti</p>' +
+            '<div style="border-radius:10px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;">' +
+            '<table style="width:100%;border-collapse:collapse;background:rgba(8,12,24,0.55);">' +
+            '<thead><tr>' +
+            '<th style="'+th+';text-align:left;padding-left:10px;color:rgba(255,255,255,0.25);">Funzione</th>' +
+            '<th style="'+th+';color:#4ade80;background:rgba(74,222,128,0.06);border-bottom:2px solid #4ade80;border-left:1px solid rgba(74,222,128,0.12);border-right:1px solid rgba(74,222,128,0.12);">Starter</th>' +
+            '<th style="'+th+';color:rgba(255,255,255,0.4);">Comfort</th>' +
+            '<th style="'+th+';color:rgba(255,255,255,0.4);">Security</th>' +
+            '<th style="'+th+';color:rgba(255,255,255,0.4);">Energy</th>' +
+            '<th style="'+th+';color:#C6A75E;">Full</th>' +
+            '</tr></thead><tbody>' +
+            grpRow('💡','Luci','#FDE68A','rgba(253,230,138,0.03)') +
+            dataRow('💡 Luci Smart',                T,T,T,T,T) +
+            dataRow('🪟 Tapparelle automatiche',    T,T,T,T,T) +
+            dataRow('📱 App mobile',                T,T,T,T,T) +
+            dataRow('🎙️ Comandi vocali',            T,T,T,T,T) +
+            grpRow('🌡️','Clima & comfort','#93C5FD','rgba(147,197,253,0.03)') +
+            dataRow('🌡️ Clima e riscaldamento',     F,T,T,T,T) +
+            dataRow('🎬 Scenari Cinema / Notte',    F,T,T,T,T) +
+            grpRow('🔒','Sicurezza','#F87171','rgba(248,113,113,0.03)') +
+            dataRow('🔒 Sicurezza base',            F,T,T,F,T) +
+            dataRow('📹 Telecamere AI',             F,F,T,F,T) +
+            dataRow('🚪 Sensori porte / finestre',  F,F,T,F,T) +
+            grpRow('⚡','Energia','#FBBF24','rgba(251,191,36,0.03)') +
+            dataRow('⚡ Monitoraggio energia',       F,F,F,T,T) +
+            dataRow('📊 Gestione carichi',          F,F,F,T,T) +
+            grpRow('🏠','Avanzato','#C084FC','rgba(192,132,252,0.03)') +
+            dataRow('🗺️ Interfaccia 3D',            F,F,F,F,T) +
+            dataRow('🎵 Audio multi-room',          F,F,F,F,T) +
+            dataRow('🛟 Assistenza priority H24',   F,F,F,F,T) +
+            '</tbody></table></div></div>';
+
+        // ── Upgrade path ──
+        var upgrade = '<div style="background:linear-gradient(135deg,rgba(74,222,128,0.05),rgba(58,174,255,0.04));border:1px solid rgba(74,222,128,0.11);border-radius:10px;padding:10px 13px;display:flex;align-items:center;flex-wrap:wrap;gap:5px;">' +
+            '<span style="font-family:\'Poppins\',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);margin-right:4px;">Percorso:</span>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:700;color:#4ade80;background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.25);border-radius:99px;padding:2px 10px;">Starter</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Comfort</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Full Smart</span>' +
+            '</div>';
+
+        // ── Assemble (no duplicate IDs) ──
+        var topStrip =
+            '<div style="padding:28px 44px 20px;border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0;">' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#4ade80;display:block;margin-bottom:7px;">Pacchetto Entry Level</span>' +
+            '<h2 style="font-family:\'Poppins\',sans-serif;font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;line-height:1.1;margin:0 0 8px;">Starter Smart</h2>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin:0;max-width:680px;">L\'essenziale per iniziare — luci intelligenti, tapparelle automatiche e controllo vocale. Semplice dal primo giorno.</p>' +
+            '</div>';
+
+        var bodyGrid =
+            '<div style="display:flex;flex:1;min-height:0;overflow:hidden;">' +
+            '<div style="flex:1;padding:20px 44px;overflow-y:auto;display:flex;flex-direction:column;gap:16px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.07) transparent;">' +
+            '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#3AAEFF;margin:0 0 12px;">Cosa include</p>' +
+            grid +
+            '</div>' +
+            ideal +
+            '</div>' +
+            '</div>';
+
+        var ctaBar =
+            '<div style="padding:16px 44px;border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0;">' +
+            '<button onclick="openContattiSistemi()" style="font-family:\'Poppins\',sans-serif;font-size:14px;font-weight:700;background:linear-gradient(135deg,#2EA7FF,#1C7DFF);color:#fff;border:none;border-radius:12px;padding:13px 32px;cursor:pointer;box-shadow:0 6px 24px rgba(0,157,255,0.36);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform=\'scale(1.03)\';this.style.boxShadow=\'0 12px 38px rgba(0,157,255,0.54)\'" onmouseout="this.style.transform=\'scale(1)\';this.style.boxShadow=\'0 6px 24px rgba(0,157,255,0.36)\'">Prenota un sopralluogo gratuito</button>' +
+            '</div>';
+
+        ul.innerHTML = topStrip + bodyGrid + ctaBar;
+
+    } else if (id === 'comfort') {
+        // ── Full-width layout: hide photo, expand left panel ──
+        el('pkg-popup-right').style.display = 'none';
+        el('pkg-popup-left').style.cssText = 'width:100%;height:100%;padding:0;display:flex;flex-direction:column;position:relative;overflow:hidden;';
+        el('pkg-popup-eyebrow').style.display = 'none';
+        el('pkg-popup-name').style.display = 'none';
+        el('pkg-popup-desc').style.display = 'none';
+        el('pkg-popup-cta').style.display = 'none';
+        ul.style.cssText = 'list-style:none;margin:0;padding:0;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;';
+
+        // ── 7 Feature cards ──
+        var fcards2 = [
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.5-1.3 4.7-3.3 6L12 17l-3.7-2C6.3 13.7 5 11.5 5 9a7 7 0 017-7z"/></svg>', bg:'rgba(253,230,138,0.07)', bd:'rgba(253,230,138,0.13)', title:'Luci Smart', desc:'Controllo totale dell\'illuminazione da app e voce.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDBA74" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="3" rx="1"/><path d="M3 9h18M3 15h18"/><path d="M8 21l4-4 4 4"/></svg>', bg:'rgba(253,186,116,0.07)', bd:'rgba(253,186,116,0.13)', title:'Tapparelle Automatiche', desc:'Timer, orari e scenari automatici.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#86EFAC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>', bg:'rgba(134,239,172,0.07)', bd:'rgba(134,239,172,0.13)', title:'App Mobile', desc:'iOS e Android. Controllo da ovunque.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>', bg:'rgba(196,181,253,0.07)', bd:'rgba(196,181,253,0.13)', title:'Comandi Vocali', desc:'Alexa, Google e Apple HomeKit.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>', bg:'rgba(147,197,253,0.07)', bd:'rgba(147,197,253,0.13)', title:'Clima & Riscaldamento', desc:'Temperatura ideale, programmata o adattiva.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>', bg:'rgba(251,191,36,0.07)', bd:'rgba(251,191,36,0.13)', title:'Scenari Cinema & Notte', desc:'Atmosfera perfetta in un solo tocco.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>', bg:'rgba(248,113,113,0.07)', bd:'rgba(248,113,113,0.13)', title:'Sicurezza Base', desc:'Protezione integrata H24.', span:true }
+        ];
+        var grid2 = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">';
+        fcards2.forEach(function(fc){
+            grid2 += '<div class="ss-feat-card" style="'+(fc.span?'grid-column:span 2;':'')+'background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:13px;padding:12px;display:flex;flex-direction:column;gap:7px;">' +
+                '<div style="width:32px;height:32px;border-radius:8px;background:'+fc.bg+';border:1px solid '+fc.bd+';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+fc.svg+'</div>' +
+                '<p style="font-family:\'Poppins\',sans-serif;font-size:11.5px;font-weight:700;color:#fff;margin:0;">'+fc.title+'</p>' +
+                '<p style="font-family:\'Inter\',sans-serif;font-size:11px;color:rgba(255,255,255,0.4);margin:0;line-height:1.45;">'+fc.desc+'</p>' +
+                '</div>';
+        });
+        grid2 += '</div>';
+
+        // ── "È ideale se" cards ──
+        var idealData2 = [
+            { title:'Vuoi il comfort automatico', desc:'La casa si adatta a te senza sforzo.' },
+            { title:'Hai una famiglia', desc:'Scenari per tutti, sicurezza inclusa.' },
+            { title:'Vuoi sicurezza senza complessità', desc:'Protezione base già integrata.' }
+        ];
+        var ideal2 = '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#FBBF24;margin:0 0 8px;">È il pacchetto giusto se…</p>' +
+            '<div style="display:flex;flex-direction:column;gap:6px;">';
+        idealData2.forEach(function(it){
+            ideal2 += '<div style="background:rgba(251,191,36,0.03);border:1px solid rgba(251,191,36,0.09);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:center;">' +
+                '<div style="width:20px;height:20px;border-radius:5px;background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
+                '<svg width="9" height="9" fill="none" stroke="#FBBF24" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>' +
+                '<div><span style="font-family:\'Poppins\',sans-serif;font-size:11.5px;font-weight:700;color:#fff;">'+it.title+'</span>' +
+                ' <span style="font-family:\'Inter\',sans-serif;font-size:11px;color:rgba(255,255,255,0.35);">'+it.desc+'</span></div></div>';
+        });
+        ideal2 += '</div></div>';
+
+        // ── Full comparison table (Comfort column highlighted gold) ──
+        var ck2 = '<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(52,211,153,0.12);"><svg width="9" height="9" fill="none" stroke="#34D399" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>';
+        var no2 = '<span style="color:rgba(255,255,255,0.15);font-size:12px;">—</span>';
+        var sb2 = 'background:rgba(251,191,36,0.06);border-left:1px solid rgba(251,191,36,0.12);border-right:1px solid rgba(251,191,36,0.12);';
+        var th2 = 'font-family:\'Poppins\',sans-serif;font-size:9px;font-weight:700;text-align:center;padding:7px 4px 8px;border-bottom:1px solid rgba(255,255,255,0.06);';
+        var tdF2 = 'font-family:\'Inter\',sans-serif;font-size:10.5px;color:rgba(255,255,255,0.52);padding:5px 10px;border-bottom:1px solid rgba(255,255,255,0.04);';
+        var tdC2 = 'text-align:center;padding:5px 4px;border-bottom:1px solid rgba(255,255,255,0.04);';
+        function grpRow2(emoji, label, color, bg) {
+            return '<tr><td colspan="6" style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:'+color+';padding:9px 10px 5px;background:'+bg+';border-top:1px solid rgba(255,255,255,0.04);">'+emoji+' '+label+'</td></tr>';
+        }
+        function dataRow2(label, s, co, se, en, fu) {
+            return '<tr><td style="'+tdF2+'">'+label+'</td>' +
+                '<td style="'+tdC2+'">'+(s?ck2:no2)+'</td>' +
+                '<td style="'+tdC2+sb2+'">'+(co?ck2:no2)+'</td>' +
+                '<td style="'+tdC2+'">'+(se?ck2:no2)+'</td>' +
+                '<td style="'+tdC2+'">'+(en?ck2:no2)+'</td>' +
+                '<td style="'+tdC2+'">'+(fu?ck2:no2)+'</td></tr>';
+        }
+        var T2=true, F2=false;
+        var cmp2 = '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#FBBF24;margin:0 0 8px;">Confronto pacchetti</p>' +
+            '<div style="border-radius:10px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;">' +
+            '<table style="width:100%;border-collapse:collapse;background:rgba(8,12,24,0.55);">' +
+            '<thead><tr>' +
+            '<th style="'+th2+';text-align:left;padding-left:10px;color:rgba(255,255,255,0.25);">Funzione</th>' +
+            '<th style="'+th2+';color:rgba(255,255,255,0.4);">Starter</th>' +
+            '<th style="'+th2+';color:#FBBF24;background:rgba(251,191,36,0.06);border-bottom:2px solid #FBBF24;border-left:1px solid rgba(251,191,36,0.12);border-right:1px solid rgba(251,191,36,0.12);">Comfort ⭐</th>' +
+            '<th style="'+th2+';color:rgba(255,255,255,0.4);">Security</th>' +
+            '<th style="'+th2+';color:rgba(255,255,255,0.4);">Energy</th>' +
+            '<th style="'+th2+';color:#C6A75E;">Full</th>' +
+            '</tr></thead><tbody>' +
+            grpRow2('💡','Luci','#FDE68A','rgba(253,230,138,0.03)') +
+            dataRow2('💡 Luci Smart',                T2,T2,T2,T2,T2) +
+            dataRow2('🪟 Tapparelle automatiche',    T2,T2,T2,T2,T2) +
+            dataRow2('📱 App mobile',                T2,T2,T2,T2,T2) +
+            dataRow2('🎙️ Comandi vocali',            T2,T2,T2,T2,T2) +
+            grpRow2('🌡️','Clima & comfort','#93C5FD','rgba(147,197,253,0.03)') +
+            dataRow2('🌡️ Clima e riscaldamento',     F2,T2,T2,T2,T2) +
+            dataRow2('🎬 Scenari Cinema / Notte',    F2,T2,T2,T2,T2) +
+            grpRow2('🔒','Sicurezza','#F87171','rgba(248,113,113,0.03)') +
+            dataRow2('🔒 Sicurezza base',            F2,T2,T2,F2,T2) +
+            dataRow2('📹 Telecamere AI',             F2,F2,T2,F2,T2) +
+            dataRow2('🚪 Sensori porte / finestre',  F2,F2,T2,F2,T2) +
+            grpRow2('⚡','Energia','#FBBF24','rgba(251,191,36,0.03)') +
+            dataRow2('⚡ Monitoraggio energia',       F2,F2,F2,T2,T2) +
+            dataRow2('📊 Gestione carichi',          F2,F2,F2,T2,T2) +
+            grpRow2('🏠','Avanzato','#C084FC','rgba(192,132,252,0.03)') +
+            dataRow2('🗺️ Interfaccia 3D',            F2,F2,F2,F2,T2) +
+            dataRow2('🎵 Audio multi-room',          F2,F2,F2,F2,T2) +
+            dataRow2('🛟 Assistenza priority H24',   F2,F2,F2,F2,T2) +
+            '</tbody></table></div></div>';
+
+        // ── Upgrade path (Comfort active) ──
+        var upgrade2 = '<div style="background:linear-gradient(135deg,rgba(251,191,36,0.05),rgba(251,191,36,0.03));border:1px solid rgba(251,191,36,0.12);border-radius:10px;padding:10px 13px;display:flex;align-items:center;flex-wrap:wrap;gap:5px;">' +
+            '<span style="font-family:\'Poppins\',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);margin-right:4px;">Percorso:</span>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Starter</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:700;color:#FBBF24;background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.25);border-radius:99px;padding:2px 10px;">Comfort ⭐</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Full Smart</span>' +
+            '</div>';
+
+        // ── Assemble ──
+        var topStrip2 =
+            '<div style="padding:28px 44px 20px;border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">' +
+            '<div>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#FBBF24;display:block;margin-bottom:7px;">Il Pacchetto Più Scelto</span>' +
+            '<h2 style="font-family:\'Poppins\',sans-serif;font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;line-height:1.1;margin:0 0 8px;">Comfort Smart</h2>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin:0;max-width:680px;">Il perfetto equilibrio tra tecnologia e vita quotidiana — clima, scenari automatici e sicurezza base in un unico ecosistema intelligente.</p>' +
+            '</div>' +
+            '<span style="flex-shrink:0;font-family:\'Poppins\',sans-serif;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#FBBF24;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);border-radius:99px;padding:4px 10px;white-space:nowrap;margin-top:2px;">⭐ TOP</span>' +
+            '</div>';
+
+        var bodyGrid2 =
+            '<div style="display:flex;flex:1;min-height:0;overflow:hidden;">' +
+            '<div style="flex:1;padding:20px 44px;overflow-y:auto;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.07) transparent;">' +
+            '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#3AAEFF;margin:0 0 10px;">Cosa include</p>' +
+            grid2 +
+            '</div>' +
+            ideal2 +
+            '</div>' +
+            '</div>';
+
+        var ctaBar2 =
+            '<div style="padding:16px 44px;border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0;">' +
+            '<button onclick="openContattiSistemi()" style="font-family:\'Poppins\',sans-serif;font-size:14px;font-weight:700;background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;border:none;border-radius:12px;padding:13px 32px;cursor:pointer;box-shadow:0 6px 24px rgba(251,191,36,0.36);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform=\'scale(1.03)\';this.style.boxShadow=\'0 12px 38px rgba(251,191,36,0.54)\'" onmouseout="this.style.transform=\'scale(1)\';this.style.boxShadow=\'0 6px 24px rgba(251,191,36,0.36)\'">Prenota un sopralluogo gratuito</button>' +
+            '</div>';
+
+        ul.innerHTML = topStrip2 + bodyGrid2 + ctaBar2;
+
+    } else if (id === 'security') {
+        // ── Full-width layout: hide photo, expand left panel ──
+        el('pkg-popup-right').style.display = 'none';
+        el('pkg-popup-left').style.cssText = 'width:100%;height:100%;padding:0;display:flex;flex-direction:column;position:relative;overflow:hidden;';
+        el('pkg-popup-eyebrow').style.display = 'none';
+        el('pkg-popup-name').style.display = 'none';
+        el('pkg-popup-desc').style.display = 'none';
+        el('pkg-popup-cta').style.display = 'none';
+        ul.style.cssText = 'list-style:none;margin:0;padding:0;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;';
+
+        // ── 7 Feature cards ──
+        var fcards3 = [
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.5-1.3 4.7-3.3 6L12 17l-3.7-2C6.3 13.7 5 11.5 5 9a7 7 0 017-7z"/></svg>', bg:'rgba(253,230,138,0.07)', bd:'rgba(253,230,138,0.13)', title:'Luci Smart', desc:'Controllo totale dell\'illuminazione da app e voce.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#86EFAC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>', bg:'rgba(134,239,172,0.07)', bd:'rgba(134,239,172,0.13)', title:'App Mobile', desc:'Monitoraggio live da smartphone. Ovunque tu sia.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>', bg:'rgba(147,197,253,0.07)', bd:'rgba(147,197,253,0.13)', title:'Clima & Scenari Automatici', desc:'Comfort ambientale con automazioni intelligenti.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>', bg:'rgba(196,181,253,0.07)', bd:'rgba(196,181,253,0.13)', title:'Comandi Vocali', desc:'Alexa, Google e Apple HomeKit.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 018 8c0 5-8 12-8 12S4 15 4 10a8 8 0 018-8z"/></svg>', bg:'rgba(34,211,238,0.07)', bd:'rgba(34,211,238,0.13)', title:'Telecamere AI', desc:'Riconosce volti, veicoli e animali. Nessun falso allarme.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>', bg:'rgba(34,211,238,0.07)', bd:'rgba(34,211,238,0.13)', title:'Sensori Perimetrali', desc:'Sensori magnetici su ogni porta e finestra.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>', bg:'rgba(34,211,238,0.07)', bd:'rgba(34,211,238,0.13)', title:'Monitoraggio 24/7 & SOS', desc:'Allarme automatico, notifiche istantanee e intervento su richiesta.', span:true }
+        ];
+        var grid3 = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">';
+        fcards3.forEach(function(fc){
+            grid3 += '<div class="ss-feat-card" style="'+(fc.span?'grid-column:span 2;':'')+'background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:13px;padding:12px;display:flex;flex-direction:column;gap:7px;">' +
+                '<div style="width:32px;height:32px;border-radius:8px;background:'+fc.bg+';border:1px solid '+fc.bd+';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+fc.svg+'</div>' +
+                '<p style="font-family:\'Poppins\',sans-serif;font-size:11.5px;font-weight:700;color:#fff;margin:0;">'+fc.title+'</p>' +
+                '<p style="font-family:\'Inter\',sans-serif;font-size:11px;color:rgba(255,255,255,0.4);margin:0;line-height:1.45;">'+fc.desc+'</p>' +
+                '</div>';
+        });
+        grid3 += '</div>';
+
+        // ── "È ideale se" cards ──
+        var idealData3 = [
+            { title:'Vuoi proteggere la tua famiglia, 24/7', desc:'Il sistema non dorme mai. Telecamere AI attive, sensori su ogni apertura, allarme geo-fence automatico.' },
+            { title:'Viaggi o lavori spesso fuori casa', desc:'La casa ti manda report in tempo reale.' },
+            { title:'Non ti basta una telecamera classica', desc:'Vuoi AI che riconosce e filtra, non archivi da guardare.' }
+        ];
+        var ideal3 = '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#22D3EE;margin:0 0 8px;">È il pacchetto giusto se…</p>' +
+            '<div style="display:flex;flex-direction:column;gap:6px;">';
+        idealData3.forEach(function(it){
+            ideal3 += '<div style="background:rgba(34,211,238,0.03);border:1px solid rgba(34,211,238,0.09);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:center;">' +
+                '<div style="width:20px;height:20px;border-radius:5px;background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
+                '<svg width="9" height="9" fill="none" stroke="#22D3EE" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>' +
+                '<div><span style="font-family:\'Poppins\',sans-serif;font-size:11.5px;font-weight:700;color:#fff;">'+it.title+'</span>' +
+                ' <span style="font-family:\'Inter\',sans-serif;font-size:11px;color:rgba(255,255,255,0.35);">'+it.desc+'</span></div></div>';
+        });
+        ideal3 += '</div></div>';
+
+        // ── Full comparison table (Security column highlighted cyan) ──
+        var ck3 = '<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(52,211,153,0.12);"><svg width="9" height="9" fill="none" stroke="#34D399" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>';
+        var no3 = '<span style="color:rgba(255,255,255,0.15);font-size:12px;">—</span>';
+        var sb3 = 'background:rgba(34,211,238,0.06);border-left:1px solid rgba(34,211,238,0.12);border-right:1px solid rgba(34,211,238,0.12);';
+        var th3 = 'font-family:\'Poppins\',sans-serif;font-size:9px;font-weight:700;text-align:center;padding:7px 4px 8px;border-bottom:1px solid rgba(255,255,255,0.06);';
+        var tdF3 = 'font-family:\'Inter\',sans-serif;font-size:10.5px;color:rgba(255,255,255,0.52);padding:5px 10px;border-bottom:1px solid rgba(255,255,255,0.04);';
+        var tdC3 = 'text-align:center;padding:5px 4px;border-bottom:1px solid rgba(255,255,255,0.04);';
+        function grpRow3(emoji, label, color, bg) {
+            return '<tr><td colspan="6" style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:'+color+';padding:9px 10px 5px;background:'+bg+';border-top:1px solid rgba(255,255,255,0.04);">'+emoji+' '+label+'</td></tr>';
+        }
+        function dataRow3(label, s, co, se, en, fu) {
+            return '<tr><td style="'+tdF3+'">'+label+'</td>' +
+                '<td style="'+tdC3+'">'+(s?ck3:no3)+'</td>' +
+                '<td style="'+tdC3+'">'+(co?ck3:no3)+'</td>' +
+                '<td style="'+tdC3+sb3+'">'+(se?ck3:no3)+'</td>' +
+                '<td style="'+tdC3+'">'+(en?ck3:no3)+'</td>' +
+                '<td style="'+tdC3+'">'+(fu?ck3:no3)+'</td></tr>';
+        }
+        var T3=true, F3=false;
+        var cmp3 = '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#22D3EE;margin:0 0 8px;">Confronto pacchetti</p>' +
+            '<div style="border-radius:10px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;">' +
+            '<table style="width:100%;border-collapse:collapse;background:rgba(8,12,24,0.55);">' +
+            '<thead><tr>' +
+            '<th style="'+th3+';text-align:left;padding-left:10px;color:rgba(255,255,255,0.25);">Funzione</th>' +
+            '<th style="'+th3+';color:rgba(255,255,255,0.4);">Starter</th>' +
+            '<th style="'+th3+';color:rgba(255,255,255,0.4);">Comfort</th>' +
+            '<th style="'+th3+';color:#22D3EE;background:rgba(34,211,238,0.06);border-bottom:2px solid #22D3EE;border-left:1px solid rgba(34,211,238,0.12);border-right:1px solid rgba(34,211,238,0.12);">Security 🛡️</th>' +
+            '<th style="'+th3+';color:rgba(255,255,255,0.4);">Energy</th>' +
+            '<th style="'+th3+';color:#C6A75E;">Full</th>' +
+            '</tr></thead><tbody>' +
+            grpRow3('💡','Luci','#FDE68A','rgba(253,230,138,0.03)') +
+            dataRow3('💡 Luci Smart',                T3,T3,T3,T3,T3) +
+            dataRow3('🪟 Tapparelle automatiche',    T3,T3,T3,T3,T3) +
+            dataRow3('📱 App mobile',                T3,T3,T3,T3,T3) +
+            dataRow3('🎙️ Comandi vocali',            T3,T3,T3,T3,T3) +
+            grpRow3('🌡️','Clima & comfort','#93C5FD','rgba(147,197,253,0.03)') +
+            dataRow3('🌡️ Clima e riscaldamento',     F3,T3,T3,T3,T3) +
+            dataRow3('🎬 Scenari Cinema / Notte',    F3,T3,T3,T3,T3) +
+            grpRow3('🔒','Sicurezza','#F87171','rgba(248,113,113,0.03)') +
+            dataRow3('🔒 Sicurezza base',            F3,T3,T3,F3,T3) +
+            dataRow3('📹 Telecamere AI',             F3,F3,T3,F3,T3) +
+            dataRow3('🚪 Sensori porte / finestre',  F3,F3,T3,F3,T3) +
+            grpRow3('⚡','Energia','#FBBF24','rgba(251,191,36,0.03)') +
+            dataRow3('⚡ Monitoraggio energia',       F3,F3,F3,T3,T3) +
+            dataRow3('📊 Gestione carichi',          F3,F3,F3,T3,T3) +
+            grpRow3('🏠','Avanzato','#C084FC','rgba(192,132,252,0.03)') +
+            dataRow3('🗺️ Interfaccia 3D',            F3,F3,F3,F3,T3) +
+            dataRow3('🎵 Audio multi-room',          F3,F3,F3,F3,T3) +
+            dataRow3('🛟 Assistenza priority H24',   F3,F3,F3,F3,T3) +
+            '</tbody></table></div></div>';
+
+        // ── Upgrade path (Security active) ──
+        var upgrade3 = '<div style="background:linear-gradient(135deg,rgba(34,211,238,0.05),rgba(34,211,238,0.03));border:1px solid rgba(34,211,238,0.12);border-radius:10px;padding:10px 13px;display:flex;align-items:center;flex-wrap:wrap;gap:5px;">' +
+            '<span style="font-family:\'Poppins\',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);margin-right:4px;">Percorso:</span>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Starter</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Comfort</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:700;color:#22D3EE;background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.25);border-radius:99px;padding:2px 10px;">Security 🛡️</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Full Smart</span>' +
+            '</div>';
+
+        // ── Assemble ──
+        var topStrip3 =
+            '<div style="padding:28px 44px 20px;border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">' +
+            '<div>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#22D3EE;display:block;margin-bottom:7px;">Protezione Avanzata AI</span>' +
+            '<h2 style="font-family:\'Poppins\',sans-serif;font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;line-height:1.1;margin:0 0 8px;">Security Smart</h2>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin:0;max-width:680px;">La sicurezza che non dorme mai — telecamere AI, sensori perimetrali e monitoraggio 24/7. La tua casa si difende da sola.</p>' +
+            '</div>' +
+            '<span style="flex-shrink:0;font-family:\'Poppins\',sans-serif;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#22D3EE;background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.25);border-radius:99px;padding:4px 10px;white-space:nowrap;margin-top:2px;">🛡️ AI</span>' +
+            '</div>';
+
+        var bodyGrid3 =
+            '<div style="display:flex;flex:1;min-height:0;overflow:hidden;">' +
+            '<div style="flex:1;padding:20px 44px;overflow-y:auto;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.07) transparent;">' +
+            '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#3AAEFF;margin:0 0 10px;">Cosa include</p>' +
+            grid3 +
+            '</div>' +
+            ideal3 +
+            '</div>' +
+            '</div>';
+
+        var ctaBar3 =
+            '<div style="padding:16px 44px;border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0;">' +
+            '<button onclick="openContattiSistemi()" style="font-family:\'Poppins\',sans-serif;font-size:14px;font-weight:700;background:linear-gradient(135deg,#22D3EE,#0891B2);color:#070C18;border:none;border-radius:12px;padding:13px 32px;cursor:pointer;box-shadow:0 6px 24px rgba(34,211,238,0.36);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform=\'scale(1.03)\';this.style.boxShadow=\'0 12px 38px rgba(34,211,238,0.54)\'" onmouseout="this.style.transform=\'scale(1)\';this.style.boxShadow=\'0 6px 24px rgba(34,211,238,0.36)\'">Prenota un sopralluogo gratuito</button>' +
+            '</div>';
+
+        ul.innerHTML = topStrip3 + bodyGrid3 + ctaBar3;
+
+    } else if (id === 'energy') {
+        // ── Full-width layout: hide photo, expand left panel ──
+        el('pkg-popup-right').style.display = 'none';
+        el('pkg-popup-left').style.cssText = 'width:100%;height:100%;padding:0;display:flex;flex-direction:column;position:relative;overflow:hidden;';
+        el('pkg-popup-eyebrow').style.display = 'none';
+        el('pkg-popup-name').style.display = 'none';
+        el('pkg-popup-desc').style.display = 'none';
+        el('pkg-popup-cta').style.display = 'none';
+        ul.style.cssText = 'list-style:none;margin:0;padding:0;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;';
+
+        // ── 7 Feature cards ──
+        var fcards4 = [
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.5-1.3 4.7-3.3 6L12 17l-3.7-2C6.3 13.7 5 11.5 5 9a7 7 0 017-7z"/></svg>', bg:'rgba(253,230,138,0.07)', bd:'rgba(253,230,138,0.13)', title:'Luci Smart', desc:'Illuminazione che capisce quando sei presente. Si accende da sola, si spegne da sola. Zero sprechi, zero pensieri.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#86EFAC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>', bg:'rgba(134,239,172,0.07)', bd:'rgba(134,239,172,0.13)', title:'App Mobile', desc:'Controllo e monitoraggio live da smartphone, ovunque. Videofeed, allarmi e comandi — tutto in un\'app.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>', bg:'rgba(147,197,253,0.07)', bd:'rgba(147,197,253,0.13)', title:'Clima & Scenari Automatici', desc:'La casa si prepara prima che tu arrivi. Scenari Cinema, Notte, Mattina — un tocco e tutto cambia.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>', bg:'rgba(196,181,253,0.07)', bd:'rgba(196,181,253,0.13)', title:'Comandi Vocali', desc:'Compatibile con Alexa, Google, Apple HomeKit.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>', bg:'rgba(16,185,129,0.07)', bd:'rgba(16,185,129,0.13)', title:'Monitoraggio Energia', desc:'Dashboard in tempo reale su ogni dispositivo. Vedi esattamente dove va l\'energia e quali elettrodomestici pesano di più sulla bolletta.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>', bg:'rgba(16,185,129,0.07)', bd:'rgba(16,185,129,0.13)', title:'Gestione Intelligente Carichi', desc:'Il sistema sposta automaticamente i carichi nelle fasce orarie più economiche. Risparmio immediato, nessun intervento manuale.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>', bg:'rgba(16,185,129,0.07)', bd:'rgba(16,185,129,0.13)', title:'Fotovoltaico & Batterie', desc:'Integrazione nativa con impianti solari. Il sistema decide autonomamente quando consumare, ricaricare o cedere alla rete — massimizzando il tuo ROI.', span:true }
+        ];
+        var grid4 = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">';
+        fcards4.forEach(function(fc){
+            grid4 += '<div class="ss-feat-card" style="'+(fc.span?'grid-column:span 2;':'')+'background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:13px;padding:12px;display:flex;flex-direction:column;gap:7px;">' +
+                '<div style="width:32px;height:32px;border-radius:8px;background:'+fc.bg+';border:1px solid '+fc.bd+';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+fc.svg+'</div>' +
+                '<p style="font-family:\'Poppins\',sans-serif;font-size:11.5px;font-weight:700;color:#fff;margin:0;">'+fc.title+'</p>' +
+                '<p style="font-family:\'Inter\',sans-serif;font-size:11px;color:rgba(255,255,255,0.4);margin:0;line-height:1.45;">'+fc.desc+'</p>' +
+                '</div>';
+        });
+        grid4 += '</div>';
+
+        // ── "È ideale se" cards ──
+        var idealData4 = [
+            { title:'Vuoi tagliare la bolletta senza sacrifici', desc:'Il sistema ottimizza automaticamente i consumi. Sposta i carichi nelle fasce più economiche e ti mostra dove sprechi energia ogni giorno.' },
+            { title:'Hai già pannelli fotovoltaici (o li stai valutando)', desc:'Energy Smart si integra con il tuo impianto solare e massimizza l\'autoconsumo. Batterie, net metering e fasce orarie gestite in automatico.' },
+            { title:'Vuoi capire dove vanno i tuoi soldi ogni mese', desc:'Dashboard live, report mensili, notifiche di spreco. Finalmente controllo totale sui consumi — dispositivo per dispositivo, stanza per stanza.' }
+        ];
+        var ideal4 = '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#10B981;margin:0 0 8px;">È il pacchetto giusto se…</p>' +
+            '<div style="display:flex;flex-direction:column;gap:6px;">';
+        idealData4.forEach(function(it){
+            ideal4 += '<div style="background:rgba(16,185,129,0.03);border:1px solid rgba(16,185,129,0.09);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:center;">' +
+                '<div style="width:20px;height:20px;border-radius:5px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
+                '<svg width="9" height="9" fill="none" stroke="#10B981" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>' +
+                '<div><span style="font-family:\'Poppins\',sans-serif;font-size:11.5px;font-weight:700;color:#fff;">'+it.title+'</span>' +
+                ' <span style="font-family:\'Inter\',sans-serif;font-size:11px;color:rgba(255,255,255,0.35);">'+it.desc+'</span></div></div>';
+        });
+        ideal4 += '</div></div>';
+
+        // ── Full comparison table (Energy column highlighted green) ──
+        var ck4 = '<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(52,211,153,0.12);"><svg width="9" height="9" fill="none" stroke="#34D399" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>';
+        var no4 = '<span style="color:rgba(255,255,255,0.15);font-size:12px;">—</span>';
+        var sb4 = 'background:rgba(16,185,129,0.06);border-left:1px solid rgba(16,185,129,0.12);border-right:1px solid rgba(16,185,129,0.12);';
+        var th4 = 'font-family:\'Poppins\',sans-serif;font-size:9px;font-weight:700;text-align:center;padding:7px 4px 8px;border-bottom:1px solid rgba(255,255,255,0.06);';
+        var tdF4 = 'font-family:\'Inter\',sans-serif;font-size:10.5px;color:rgba(255,255,255,0.52);padding:5px 10px;border-bottom:1px solid rgba(255,255,255,0.04);';
+        var tdC4 = 'text-align:center;padding:5px 4px;border-bottom:1px solid rgba(255,255,255,0.04);';
+        function grpRow4(emoji, label, color, bg) {
+            return '<tr><td colspan="6" style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:'+color+';padding:9px 10px 5px;background:'+bg+';border-top:1px solid rgba(255,255,255,0.04);">'+emoji+' '+label+'</td></tr>';
+        }
+        function dataRow4(label, s, co, se, en, fu) {
+            return '<tr><td style="'+tdF4+'">'+label+'</td>' +
+                '<td style="'+tdC4+'">'+(s?ck4:no4)+'</td>' +
+                '<td style="'+tdC4+'">'+(co?ck4:no4)+'</td>' +
+                '<td style="'+tdC4+'">'+(se?ck4:no4)+'</td>' +
+                '<td style="'+tdC4+sb4+'">'+(en?ck4:no4)+'</td>' +
+                '<td style="'+tdC4+'">'+(fu?ck4:no4)+'</td></tr>';
+        }
+        var T4=true, F4=false;
+        var cmp4 = '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#10B981;margin:0 0 8px;">Confronto pacchetti</p>' +
+            '<div style="border-radius:10px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;">' +
+            '<table style="width:100%;border-collapse:collapse;background:rgba(8,12,24,0.55);">' +
+            '<thead><tr>' +
+            '<th style="'+th4+';text-align:left;padding-left:10px;color:rgba(255,255,255,0.25);">Funzione</th>' +
+            '<th style="'+th4+';color:rgba(255,255,255,0.4);">Starter</th>' +
+            '<th style="'+th4+';color:rgba(255,255,255,0.4);">Comfort</th>' +
+            '<th style="'+th4+';color:rgba(255,255,255,0.4);">Security</th>' +
+            '<th style="'+th4+';color:#10B981;background:rgba(16,185,129,0.07);border-bottom:2px solid #10B981;border-left:1px solid rgba(16,185,129,0.12);border-right:1px solid rgba(16,185,129,0.12);">Energy ⚡</th>' +
+            '<th style="'+th4+';color:#C6A75E;">Full</th>' +
+            '</tr></thead><tbody>' +
+            grpRow4('💡','Luci','#FDE68A','rgba(253,230,138,0.03)') +
+            dataRow4('💡 Luci Smart',                T4,T4,T4,T4,T4) +
+            dataRow4('🪟 Tapparelle automatiche',    T4,T4,T4,T4,T4) +
+            dataRow4('📱 App mobile',                T4,T4,T4,T4,T4) +
+            dataRow4('🎙️ Comandi vocali',            T4,T4,T4,T4,T4) +
+            grpRow4('🌡️','Clima & comfort','#93C5FD','rgba(147,197,253,0.03)') +
+            dataRow4('🌡️ Clima e riscaldamento',     F4,T4,T4,T4,T4) +
+            dataRow4('🎬 Scenari Cinema / Notte',    F4,T4,T4,T4,T4) +
+            grpRow4('🔒','Sicurezza','#F87171','rgba(248,113,113,0.03)') +
+            dataRow4('🔒 Sicurezza base',            F4,T4,T4,F4,T4) +
+            dataRow4('📹 Telecamere AI',             F4,F4,T4,F4,T4) +
+            dataRow4('🚪 Sensori porte / finestre',  F4,F4,T4,F4,T4) +
+            grpRow4('⚡','Energia','#FBBF24','rgba(251,191,36,0.03)') +
+            dataRow4('⚡ Monitoraggio energia',       F4,F4,F4,T4,T4) +
+            dataRow4('📊 Gestione carichi',          F4,F4,F4,T4,T4) +
+            grpRow4('🏠','Avanzato','#C084FC','rgba(192,132,252,0.03)') +
+            dataRow4('🗺️ Interfaccia 3D',            F4,F4,F4,F4,T4) +
+            dataRow4('🎵 Audio multi-room',          F4,F4,F4,F4,T4) +
+            dataRow4('🛟 Assistenza priority H24',   F4,F4,F4,F4,T4) +
+            '</tbody></table></div></div>';
+
+        // ── Upgrade path (Energy active) ──
+        var upgrade4 = '<div style="background:linear-gradient(135deg,rgba(16,185,129,0.05),rgba(16,185,129,0.03));border:1px solid rgba(16,185,129,0.12);border-radius:10px;padding:10px 13px;display:flex;align-items:center;flex-wrap:wrap;gap:5px;">' +
+            '<span style="font-family:\'Poppins\',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);margin-right:4px;">Percorso:</span>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Starter</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Comfort</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Security</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:700;color:#10B981;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);border-radius:99px;padding:2px 10px;">Energy ⚡</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Full Smart</span>' +
+            '</div>';
+
+        // ── Assemble ──
+        var topStrip4 =
+            '<div style="padding:28px 44px 20px;border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">' +
+            '<div>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#10B981;display:block;margin-bottom:7px;">Risparmio Energetico AI</span>' +
+            '<h2 style="font-family:\'Poppins\',sans-serif;font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;line-height:1.1;margin:0 0 8px;">Energy Smart</h2>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin:0;max-width:680px;">Controllo totale sui consumi — risparmio automatico, integrazione solare e ottimizzazione intelligente delle fasce orarie.</p>' +
+            '</div>' +
+            '<span style="flex-shrink:0;font-family:\'Poppins\',sans-serif;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#10B981;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:99px;padding:4px 10px;white-space:nowrap;margin-top:2px;">⚡ AI</span>' +
+            '</div>';
+
+        var bodyGrid4 =
+            '<div style="display:flex;flex:1;min-height:0;overflow:hidden;">' +
+            '<div style="flex:1;padding:20px 44px;overflow-y:auto;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.07) transparent;">' +
+            '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#3AAEFF;margin:0 0 10px;">Cosa include</p>' +
+            grid4 +
+            '</div>' +
+            ideal4 +
+            '</div>' +
+            '</div>';
+
+        var ctaBar4 =
+            '<div style="padding:16px 44px;border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0;">' +
+            '<button onclick="openContattiSistemi()" style="font-family:\'Poppins\',sans-serif;font-size:14px;font-weight:700;background:linear-gradient(135deg,#10B981,#059669);color:#fff;border:none;border-radius:12px;padding:13px 32px;cursor:pointer;box-shadow:0 6px 24px rgba(16,185,129,0.36);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform=\'scale(1.03)\';this.style.boxShadow=\'0 12px 38px rgba(16,185,129,0.54)\'" onmouseout="this.style.transform=\'scale(1)\';this.style.boxShadow=\'0 6px 24px rgba(16,185,129,0.36)\'">Prenota un sopralluogo gratuito</button>' +
+            '</div>';
+
+        ul.innerHTML = topStrip4 + bodyGrid4 + ctaBar4;
+
+    } else if (id === 'full') {
+        // ── Full-width layout: hide photo, expand left panel ──
+        el('pkg-popup-right').style.display = 'none';
+        el('pkg-popup-left').style.cssText = 'width:100%;height:100%;padding:0;display:flex;flex-direction:column;position:relative;overflow:hidden;';
+        el('pkg-popup-eyebrow').style.display = 'none';
+        el('pkg-popup-name').style.display = 'none';
+        el('pkg-popup-desc').style.display = 'none';
+        el('pkg-popup-cta').style.display = 'none';
+        ul.style.cssText = 'list-style:none;margin:0;padding:0;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;';
+
+        // ── 9 Feature cards (3-column grid) ──
+        var fcards5 = [
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.5-1.3 4.7-3.3 6L12 17l-3.7-2C6.3 13.7 5 11.5 5 9a7 7 0 017-7z"/></svg>', bg:'rgba(253,230,138,0.07)', bd:'rgba(253,230,138,0.13)', title:'Illuminazione', desc:'Scenari dinamici, adattamento circadiano. Risparmio fino al 40%.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>', bg:'rgba(147,197,253,0.07)', bd:'rgba(147,197,253,0.13)', title:'Clima & Comfort', desc:'Temperatura ottimale per ogni stanza. VMC integrata.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>', bg:'rgba(248,113,113,0.07)', bd:'rgba(248,113,113,0.13)', title:'Sicurezza AI', desc:'Telecamere AI, sensori perimetrali e allarme automatico.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>', bg:'rgba(16,185,129,0.07)', bd:'rgba(16,185,129,0.13)', title:'Gestione Energia', desc:'Fotovoltaico, accumulo batterie e EV charging integrati.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>', bg:'rgba(196,181,253,0.07)', bd:'rgba(196,181,253,0.13)', title:'Comandi Vocali', desc:'Alexa, Google, Siri. Multi-lingua: IT · DE · EN.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#86EFAC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>', bg:'rgba(134,239,172,0.07)', bd:'rgba(134,239,172,0.13)', title:'Audio & Video Premium', desc:'Multiroom audio e home cinema 4K ovunque in casa.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A75E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>', bg:'rgba(198,167,94,0.07)', bd:'rgba(198,167,94,0.13)', title:'Scenari & Automazioni', desc:'Cinema, Notte, Vacanza — scenari illimitati con un tocco.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A75E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>', bg:'rgba(198,167,94,0.07)', bd:'rgba(198,167,94,0.13)', title:'Accesso Remoto', desc:'App nativa iOS e Android. Controllo da qualsiasi parte del mondo.' },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A75E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>', bg:'rgba(198,167,94,0.07)', bd:'rgba(198,167,94,0.13)', title:'Esterni & Giardino', desc:'Irrigazione, cancelli e illuminazione esterna sincronizzati.' }
+        ];
+        var grid5 = '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">';
+        fcards5.forEach(function(fc){
+            grid5 += '<div class="ss-feat-card" style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:13px;padding:11px;display:flex;flex-direction:column;gap:6px;">' +
+                '<div style="width:30px;height:30px;border-radius:8px;background:'+fc.bg+';border:1px solid '+fc.bd+';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+fc.svg+'</div>' +
+                '<p style="font-family:\'Poppins\',sans-serif;font-size:10.5px;font-weight:700;color:#fff;margin:0;">'+fc.title+'</p>' +
+                '<p style="font-family:\'Inter\',sans-serif;font-size:10px;color:rgba(255,255,255,0.4);margin:0;line-height:1.45;">'+fc.desc+'</p>' +
+                '</div>';
+        });
+        grid5 += '</div>';
+
+        // ── "È ideale se" cards ──
+        var idealData5 = [
+            { title:'Vuoi il massimo, senza compromessi', desc:'9 sistemi integrati in un\'unica regia digitale. Nessun altro pacchetto offre questo livello di personalizzazione.' },
+            { title:'Stai costruendo o ristrutturando una villa', desc:'Il momento perfetto per l\'infrastruttura KNX nel cantiere — zero lavori aggiuntivi in futuro.' },
+            { title:'Cerchi un investimento che dura nel tempo', desc:'Assistenza H24 dedicata, aggiornamenti lifetime e ROI misurabile già dal primo anno.' }
+        ];
+        var ideal5 = '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C6A75E;margin:0 0 8px;">È il pacchetto giusto se…</p>' +
+            '<div style="display:flex;flex-direction:column;gap:6px;">';
+        idealData5.forEach(function(it){
+            ideal5 += '<div style="background:rgba(198,167,94,0.03);border:1px solid rgba(198,167,94,0.09);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:center;">' +
+                '<div style="width:20px;height:20px;border-radius:5px;background:rgba(198,167,94,0.12);border:1px solid rgba(198,167,94,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
+                '<svg width="9" height="9" fill="none" stroke="#C6A75E" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>' +
+                '<div><span style="font-family:\'Poppins\',sans-serif;font-size:11.5px;font-weight:700;color:#fff;">'+it.title+'</span>' +
+                ' <span style="font-family:\'Inter\',sans-serif;font-size:11px;color:rgba(255,255,255,0.35);">'+it.desc+'</span></div></div>';
+        });
+        ideal5 += '</div></div>';
+
+        // ── Full comparison table (Full column highlighted gold) ──
+        var ck5 = '<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(52,211,153,0.12);"><svg width="9" height="9" fill="none" stroke="#34D399" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>';
+        var no5 = '<span style="color:rgba(255,255,255,0.15);font-size:12px;">—</span>';
+        var sb5 = 'background:rgba(198,167,94,0.06);border-left:1px solid rgba(198,167,94,0.12);border-right:1px solid rgba(198,167,94,0.12);';
+        var th5 = 'font-family:\'Poppins\',sans-serif;font-size:9px;font-weight:700;text-align:center;padding:7px 4px 8px;border-bottom:1px solid rgba(255,255,255,0.06);';
+        var tdF5 = 'font-family:\'Inter\',sans-serif;font-size:10.5px;color:rgba(255,255,255,0.52);padding:5px 10px;border-bottom:1px solid rgba(255,255,255,0.04);';
+        var tdC5 = 'text-align:center;padding:5px 4px;border-bottom:1px solid rgba(255,255,255,0.04);';
+        function grpRow5(emoji, label, color, bg) {
+            return '<tr><td colspan="6" style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:'+color+';padding:9px 10px 5px;background:'+bg+';border-top:1px solid rgba(255,255,255,0.04);">'+emoji+' '+label+'</td></tr>';
+        }
+        function dataRow5(label, s, co, se, en, fu) {
+            return '<tr><td style="'+tdF5+'">'+label+'</td>' +
+                '<td style="'+tdC5+'">'+(s?ck5:no5)+'</td>' +
+                '<td style="'+tdC5+'">'+(co?ck5:no5)+'</td>' +
+                '<td style="'+tdC5+'">'+(se?ck5:no5)+'</td>' +
+                '<td style="'+tdC5+'">'+(en?ck5:no5)+'</td>' +
+                '<td style="'+tdC5+sb5+'">'+(fu?ck5:no5)+'</td></tr>';
+        }
+        var T5=true, F5=false;
+        var cmp5 = '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C6A75E;margin:0 0 8px;">Confronto pacchetti</p>' +
+            '<div style="border-radius:10px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;">' +
+            '<table style="width:100%;border-collapse:collapse;background:rgba(8,12,24,0.55);">' +
+            '<thead><tr>' +
+            '<th style="'+th5+';text-align:left;padding-left:10px;color:rgba(255,255,255,0.25);">Funzione</th>' +
+            '<th style="'+th5+';color:rgba(255,255,255,0.4);">Starter</th>' +
+            '<th style="'+th5+';color:rgba(255,255,255,0.4);">Comfort</th>' +
+            '<th style="'+th5+';color:rgba(255,255,255,0.4);">Security</th>' +
+            '<th style="'+th5+';color:rgba(255,255,255,0.4);">Energy</th>' +
+            '<th style="'+th5+';color:#C6A75E;background:rgba(198,167,94,0.07);border-bottom:2px solid #C6A75E;border-left:1px solid rgba(198,167,94,0.12);border-right:1px solid rgba(198,167,94,0.12);">Full 👑</th>' +
+            '</tr></thead><tbody>' +
+            grpRow5('💡','Luci','#FDE68A','rgba(253,230,138,0.03)') +
+            dataRow5('💡 Luci Smart',                T5,T5,T5,T5,T5) +
+            dataRow5('🪟 Tapparelle automatiche',    T5,T5,T5,T5,T5) +
+            dataRow5('📱 App mobile',                T5,T5,T5,T5,T5) +
+            dataRow5('🎙️ Comandi vocali',            T5,T5,T5,T5,T5) +
+            grpRow5('🌡️','Clima & comfort','#93C5FD','rgba(147,197,253,0.03)') +
+            dataRow5('🌡️ Clima e riscaldamento',     F5,T5,T5,T5,T5) +
+            dataRow5('🎬 Scenari Cinema / Notte',    F5,T5,T5,T5,T5) +
+            grpRow5('🔒','Sicurezza','#F87171','rgba(248,113,113,0.03)') +
+            dataRow5('🔒 Sicurezza base',            F5,T5,T5,F5,T5) +
+            dataRow5('📹 Telecamere AI',             F5,F5,T5,F5,T5) +
+            dataRow5('🚪 Sensori porte / finestre',  F5,F5,T5,F5,T5) +
+            grpRow5('⚡','Energia','#FBBF24','rgba(251,191,36,0.03)') +
+            dataRow5('⚡ Monitoraggio energia',       F5,F5,F5,T5,T5) +
+            dataRow5('📊 Gestione carichi',          F5,F5,F5,T5,T5) +
+            grpRow5('🏠','Avanzato','#C084FC','rgba(192,132,252,0.03)') +
+            dataRow5('🗺️ Interfaccia 3D',            F5,F5,F5,F5,T5) +
+            dataRow5('🎵 Audio multi-room',          F5,F5,F5,F5,T5) +
+            dataRow5('🛟 Assistenza priority H24',   F5,F5,F5,F5,T5) +
+            '</tbody></table></div></div>';
+
+        // ── Upgrade path (Full Smart active) ──
+        var upgrade5 = '<div style="background:linear-gradient(135deg,rgba(198,167,94,0.05),rgba(198,167,94,0.03));border:1px solid rgba(198,167,94,0.12);border-radius:10px;padding:10px 13px;display:flex;align-items:center;flex-wrap:wrap;gap:5px;">' +
+            '<span style="font-family:\'Poppins\',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);margin-right:4px;">Percorso:</span>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Starter</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Comfort</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Security</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:99px;padding:2px 10px;">Energy</span>' +
+            '<svg width="9" height="9" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10.5px;font-weight:700;color:#C6A75E;background:rgba(198,167,94,0.12);border:1px solid rgba(198,167,94,0.25);border-radius:99px;padding:2px 10px;">Full Smart 👑</span>' +
+            '</div>';
+
+        // ── Assemble ──
+        var topStrip5 =
+            '<div style="padding:28px 44px 20px;border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">' +
+            '<div>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C6A75E;display:block;margin-bottom:7px;">9 Sistemi · 200+ Dispositivi</span>' +
+            '<h2 style="font-family:\'Poppins\',sans-serif;font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;line-height:1.1;margin:0 0 8px;">Full Smart</h2>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin:0;max-width:680px;">Il massimo del comfort, della sicurezza e dell\'efficienza — 9 sistemi integrati in un\'unica regia digitale completamente su misura.</p>' +
+            '</div>' +
+            '<span style="flex-shrink:0;font-family:\'Poppins\',sans-serif;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#C6A75E;background:rgba(198,167,94,0.1);border:1px solid rgba(198,167,94,0.25);border-radius:99px;padding:4px 10px;white-space:nowrap;margin-top:2px;">👑 FULL</span>' +
+            '</div>';
+
+        var bodyGrid5 =
+            '<div style="display:flex;flex:1;min-height:0;overflow:hidden;">' +
+            '<div style="flex:1;padding:20px 44px;overflow-y:auto;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.07) transparent;">' +
+            '<div>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#3AAEFF;margin:0 0 10px;">Cosa include</p>' +
+            grid5 +
+            '</div>' +
+            ideal5 +
+            '</div>' +
+            '</div>';
+
+        var ctaBar5 =
+            '<div style="padding:16px 44px;border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0;">' +
+            '<button onclick="openContattiSistemi()" style="font-family:\'Poppins\',sans-serif;font-size:14px;font-weight:700;background:linear-gradient(135deg,#C6A75E,#FFD980);color:#070C18;border:none;border-radius:12px;padding:13px 32px;cursor:pointer;box-shadow:0 6px 24px rgba(198,167,94,0.36);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform=\'scale(1.03)\';this.style.boxShadow=\'0 12px 38px rgba(198,167,94,0.54)\'" onmouseout="this.style.transform=\'scale(1)\';this.style.boxShadow=\'0 6px 24px rgba(198,167,94,0.36)\'">Richiedi il tuo progetto Full Smart</button>' +
+            '</div>';
+
+        ul.innerHTML = topStrip5 + bodyGrid5 + ctaBar5;
+
+    } else {
+        // ── Restore layout for other packages ──
+        el('pkg-popup-right').style.display = '';
+        el('pkg-popup-left').style.cssText = 'width:40%;height:100%;overflow-y:auto;padding:52px 48px;display:flex;flex-direction:column;justify-content:center;gap:0;position:relative;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.1) transparent;';
+        el('pkg-popup-eyebrow').style.display = '';
+        el('pkg-popup-name').style.display = '';
+        el('pkg-popup-desc').style.display = '';
+        el('pkg-popup-cta').style.display = '';
+        el('pkg-popup-eyebrow').textContent = d.eyebrow;
+        ul.style.cssText = "list-style:none;margin:0 0 38px;padding:0;display:flex;flex-direction:column;gap:13px;";
+        d.feats.forEach(function(t){
+            var li = document.createElement('li');
+            li.style.cssText = "display:flex;align-items:flex-start;gap:12px;font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.82);line-height:1.6;";
+            li.innerHTML = '<span style="color:'+d.color+';flex-shrink:0;margin-top:3px;font-size:13px;">✦</span><span>'+t+'</span>';
+            ul.appendChild(li);
+        });
+    }
+
+    el('pkg-popup-overlay-grad').style.background =
+        'linear-gradient(to right,rgba(8,12,24,0.90) 0%,rgba(8,12,24,0.42) 55%,rgba('+d.colorRgb+',0.10) 100%)';
+    el('pkg-popup-img').src = R2+'/'+d.img;
+    el('pkg-popup-img').alt = d.name;
+
+    var ov = el('pkg-overlay');
+    ov.style.display = 'flex';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+        el('pkg-popup').style.transform='scale(1)';
+        el('pkg-popup').style.opacity='1';
+    });});
+    document.body.style.overflow='hidden';
+};
+
+window.closePkg = function() {
+    var p = document.getElementById('pkg-popup');
+    p.style.transform='scale(0.96)'; p.style.opacity='0';
+    setTimeout(function(){
+        document.getElementById('pkg-overlay').style.display='none';
+        document.body.style.overflow='';
+    }, 350);
+};
+
+window.closePkgIfBackdrop = function(e){
+    if (e.target===document.getElementById('pkg-overlay')) window.closePkg();
+};
+
+document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') window.closePkg();
+});
+})();
+</script>
+
+<!-- ── CONTACT POPUP ── -->
+<style>
+#ct-overlay {
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(7,12,24,0.82); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    align-items:center; justify-content:center; padding:24px;
+}
+#ct-overlay.open { display:flex; }
+#ct-modal {
+    position:relative; width:100%; max-width:660px;
+    background:linear-gradient(160deg,#0b1220 0%,#0f172a 100%);
+    border-radius:22px; overflow:hidden;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 48px 120px rgba(0,0,0,0.6);
+    transform:translateY(14px) scale(0.97); opacity:0;
+    transition:transform 0.3s cubic-bezier(0.34,1.4,0.64,1),opacity 0.28s;
+}
+#ct-overlay.open #ct-modal { transform:translateY(0) scale(1); opacity:1; }
+#ct-close {
+    position:absolute; top:14px; right:14px; z-index:10;
+    width:30px; height:30px; border-radius:50%;
+    background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1);
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    font-size:13px; color:rgba(255,255,255,0.4);
+    transition:background 0.2s,color 0.2s,transform 0.25s;
+}
+#ct-close:hover { background:rgba(255,255,255,0.14); color:#fff; transform:rotate(90deg); }
+</style>
+
+<div id="ct-overlay" onclick="if(event.target===this)closeContattiSistemi()">
+    <div id="ct-modal">
+        <button id="ct-close" onclick="closeContattiSistemi()">✕</button>
+
+        <!-- Top accent -->
+        <div style="height:3px;background:linear-gradient(90deg,rgba(58,174,255,0.2),#3AAEFF,rgba(58,174,255,0.2));"></div>
+
+        <div style="padding:36px 40px 40px;">
+            <!-- Eyebrow -->
+            <span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3AAEFF;display:block;margin-bottom:10px;">Sopralluogo gratuito</span>
+            <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(20px,3vw,26px);font-weight:900;color:#fff;line-height:1.15;margin:0 0 8px;">Parliamo del tuo progetto</h2>
+            <p style="font-family:'Inter',sans-serif;font-size:13.5px;color:rgba(255,255,255,0.48);line-height:1.7;margin:0 0 28px;">Il nostro team ti risponde entro poche ore. Il sopralluogo è gratuito, senza impegno.</p>
+
+            <!-- Contact options -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/393345875351" target="_blank" rel="noopener"
+                   style="display:flex;align-items:center;gap:12px;background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.25);border-radius:14px;padding:16px 18px;text-decoration:none;transition:background 0.2s,border-color 0.2s,transform 0.2s,box-shadow 0.2s;"
+                   onmouseover="this.style.background='rgba(22,163,74,0.18)';this.style.borderColor='rgba(22,163,74,0.45)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(22,163,74,0.18)'"
+                   onmouseout="this.style.background='rgba(22,163,74,0.1)';this.style.borderColor='rgba(22,163,74,0.25)';this.style.transform='';this.style.boxShadow=''">
+                    <div style="width:38px;height:38px;border-radius:10px;background:rgba(22,163,74,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <svg width="19" height="19" viewBox="0 0 24 24" fill="#4ade80"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </div>
+                    <div>
+                        <p style="font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:#fff;margin:0 0 2px;">WhatsApp</p>
+                        <p style="font-family:'Inter',sans-serif;font-size:11.5px;color:rgba(255,255,255,0.45);margin:0;">+39 334 587 53 51</p>
+                    </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:info@sferasmart.it"
+                   style="display:flex;align-items:center;gap:12px;background:rgba(58,174,255,0.07);border:1px solid rgba(58,174,255,0.18);border-radius:14px;padding:16px 18px;text-decoration:none;transition:background 0.2s,border-color 0.2s,transform 0.2s,box-shadow 0.2s;"
+                   onmouseover="this.style.background='rgba(58,174,255,0.14)';this.style.borderColor='rgba(58,174,255,0.4)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(58,174,255,0.14)'"
+                   onmouseout="this.style.background='rgba(58,174,255,0.07)';this.style.borderColor='rgba(58,174,255,0.18)';this.style.transform='';this.style.boxShadow=''">
+                    <div style="width:38px;height:38px;border-radius:10px;background:rgba(58,174,255,0.14);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3AAEFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div>
+                        <p style="font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:#fff;margin:0 0 2px;">Email</p>
+                        <p style="font-family:'Inter',sans-serif;font-size:11.5px;color:rgba(255,255,255,0.45);margin:0;">info@sferasmart.it</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Trust strip -->
+            <div style="display:flex;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.06);padding-top:18px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <svg width="14" height="14" fill="none" stroke="#4ade80" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    <span style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);">Sopralluogo gratuito</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <svg width="14" height="14" fill="none" stroke="#4ade80" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    <span style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);">Risposta entro poche ore</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <svg width="14" height="14" fill="none" stroke="#4ade80" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    <span style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);">Senza impegno</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+window.openContattiSistemi = function() {
+    var ov = document.getElementById('ct-overlay');
+    ov.style.display = 'flex';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+        ov.classList.add('open');
+    });});
+};
+window.closeContattiSistemi = function() {
+    var ov = document.getElementById('ct-overlay');
+    ov.classList.remove('open');
+    setTimeout(function(){ ov.style.display = 'none'; }, 300);
+};
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') window.closeContattiSistemi();
+});
+</script>
+
+</body>
+</html>
