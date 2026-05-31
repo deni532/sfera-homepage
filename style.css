@@ -907,6 +907,14 @@ html { overflow-x: hidden; max-width: 100%; }
             .nav-item-btn { font-size: 12px; padding: 7px 11px; }
         }
 
+        /* ── Tablet nav: hamburger for iPad / small screens (769–1023px) ── */
+        @media (min-width: 769px) and (max-width: 1023px) {
+            #main-nav .nav-inner { padding: 0 20px; }
+            .nav-menu { display: none !important; }
+            #nav-right { display: none !important; }
+            #mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+        }
+
         /* ══════════════════════════════════
            RESPONSIVE — MOBILE (≤768px)
         ══════════════════════════════════ */
@@ -1594,6 +1602,7 @@ html { overflow-x: hidden; max-width: 100%; }
         .footer-contact-link:hover { color: #fff; }
 
                 @media(max-width:1000px){ #ft-grid{ grid-template-columns: repeat(4, 1fr) !important; gap: 24px !important; } }
+                @media(max-width:860px){  #ft-grid{ grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; } }
                 @media(max-width:680px){  #ft-grid{ grid-template-columns: repeat(3, 1fr) !important; } }
                 @media(max-width:440px){  #ft-grid{ grid-template-columns: repeat(2, 1fr) !important; } }
             
@@ -1661,6 +1670,7 @@ html { overflow-x: hidden; max-width: 100%; }
     transform-style: preserve-3d;
 }
 .sc3d-card:not(.sc3d-active) { cursor: pointer; pointer-events: auto; }
+.sc3d-card.sc3d-active { cursor: pointer; }
 .sc3d-inner {
     background: rgba(8,16,40,.82);
     backdrop-filter: blur(22px);
@@ -1936,7 +1946,7 @@ html { overflow-x: hidden; max-width: 100%; }
     .sc3d-visual { height: 148px; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .sc3d-card { transition: none; }
+    .sc3d-card { transition: opacity 0.35s ease; }
     .sc3d-card.sc3d-active .sc3d-inner { animation: none; }
     .sc3d-v-illum::before, .sc3d-v-sicur::before, .sc3d-v-scene::before, .sc3d-dot-node { animation: none; }
 }
@@ -2108,6 +2118,23 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
 }
 @media (min-width: 768px) { .why-spacer { display: block; } }
 @media (max-width: 767px) { .why-grid { grid-template-columns: 1fr; } }
+
+/* ── Why section: tablet/iPad fix (768–1199px) ── */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .why-grid {
+        column-gap: 36px;
+        grid-template-columns: 2fr 3fr;
+    }
+    .why-image-cell {
+        align-self: center;
+        max-height: 520px;
+    }
+    .why-image-cell img {
+        height: 100% !important;
+        max-height: 520px !important;
+        object-fit: cover !important;
+    }
+}
 
 /* ── Sticky bar body clearance ── */
 @media (max-width: 900px) {

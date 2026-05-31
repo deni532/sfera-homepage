@@ -97,6 +97,7 @@
             var v = document.getElementById('hero-video-modal');
             if (v) v.play();
             _syncOverlayState();
+            if(typeof gtag!=='undefined') gtag('event','video_open',{video:'hero'});
         }
         var _origVideoSrc = 'https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/Guarda%20il%20video.MP4';
         function closeVideo() {
@@ -113,6 +114,7 @@
             document.getElementById('contatti-overlay').classList.add('open');
             document.body.style.overflow = 'hidden';
             _syncOverlayState();
+            if(typeof gtag!=='undefined') gtag('event','contact_open',{page:'index'});
         }
         function closeContatti() {
             document.getElementById('contatti-overlay').classList.remove('open');
@@ -1141,6 +1143,7 @@
         }
         /* ── Exit-intent popup ── */
         var exitFired = sessionStorage.getItem('sfera-exit-fired');
+        var _exitT0 = Date.now();
         function closeExit() {
             document.getElementById('exit-overlay').classList.remove('open');
             document.body.style.overflow = '';
@@ -1149,6 +1152,9 @@
         if (!exitFired) {
             document.addEventListener('mouseleave', function onExitIntent(e) {
                 if (e.clientY > 20) return; // only top edge
+                if (Date.now() - _exitT0 < 15000) return; // < 15 sec on page
+                var maxScroll = document.body.scrollHeight - window.innerHeight;
+                if (maxScroll > 0 && window.scrollY / maxScroll < 0.5) return; // < 50% scrolled
                 sessionStorage.setItem('sfera-exit-fired', '1');
                 document.removeEventListener('mouseleave', onExitIntent);
                 setTimeout(function() {
@@ -1199,6 +1205,7 @@
             document.querySelectorAll('.quiz-dot').forEach(function(d,i){ d.classList.toggle('done', i===0); });
             document.getElementById('qs0').classList.add('active');
             _updateQuizBack();
+            if(typeof gtag!=='undefined') gtag('event','quiz_start');
             document.getElementById('quiz-overlay').classList.add('open');
             document.body.style.overflow = 'hidden';
             _syncOverlayState();
@@ -1280,6 +1287,11 @@
             if (stripe) stripe.style.background = p.stripe;
             document.querySelectorAll('.quiz-step').forEach(function(el){ el.classList.remove('active'); });
             document.getElementById('qs-result').classList.add('active');
+            if(typeof gtag!=='undefined') gtag('event','quiz_complete');
+            setTimeout(function(){
+                var cta = document.querySelector('.quiz-cta-btn');
+                if (cta) cta.scrollIntoView({behavior:'smooth', block:'center'});
+            }, 400);
             quizStep = 6;
             _updateQuizBack();
             try { if(typeof gtag==='function') gtag('event','quiz_result',{event_category:'quiz',event_label:pkg}); } catch(e){}
@@ -1551,11 +1563,13 @@
             var dots   = document.querySelectorAll('.sc3d-dot-btn');
             if (!stage || !cards.length) return;
 
-            /* click on non-active card → advance */
+            /* click on any card → navigate (active → next, others → go to that card) */
             for (var i = 0; i < cards.length; i++) {
+                cards[i].removeAttribute('onclick');
                 (function(idx) {
                     cards[idx].addEventListener('click', function() {
-                        if (idx !== activeIdx) { goTo(idx); startAuto(); }
+                        if (idx !== activeIdx) { goTo(idx); } else { next(); }
+                        startAuto();
                     });
                 })(i);
             }

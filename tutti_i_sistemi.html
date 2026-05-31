@@ -6,8 +6,8 @@
     <title data-i18n-title="page-title">Tutti i Sistemi | SFERA Smart Systems</title>
     <meta name="description" content="Confronta tutti i sistemi SFERA Smart: Starter, Comfort, Security, Energy e Full Smart. Trova il pacchetto giusto per la tua casa.">
     <link rel="canonical" href="https://www.sferasmart.it/tutti_i_sistemi.html">
-    <link rel="icon" type="image/png" href="images/logo_tex_org.png">
-    <link rel="apple-touch-icon" href="images/logo_tex_org.png">
+    <link rel="icon" type="image/png" href="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/logo_blue.png">
+    <link rel="apple-touch-icon" href="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/logo_blue.png">
     <meta name="theme-color" content="#070C18">
     <meta property="og:title" content="Tutti i Sistemi | SFERA Smart Systems">
     <meta property="og:description" content="Scegli il sistema smart giusto per la tua casa.">
@@ -768,9 +768,9 @@ html { overflow-x: hidden; max-width: 100%; }
 
         /* Navbar — transparent overlay */
         #main-nav {
-            background: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.30);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255,255,255,0.08) !important;
             transition: background 0.35s ease, box-shadow 0.35s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -822,6 +822,26 @@ html { overflow-x: hidden; max-width: 100%; }
             transition: transform 0.22s ease, opacity 0.22s;
         }
         .lang-switcher-wrap.open .lang-chevron { transform: rotate(180deg); opacity: 0.9; }
+
+        /* ── Nav home icon ── */
+        .nav-home-btn {
+            display: flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px; border-radius: 10px;
+            color: rgba(255,255,255,0.58);
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.13);
+            text-decoration: none;
+            transition: color 0.22s, background 0.22s, border-color 0.22s,
+                        box-shadow 0.22s, transform 0.22s;
+            flex-shrink: 0;
+        }
+        .nav-home-btn:hover {
+            color: #fff;
+            background: rgba(58,174,255,0.10);
+            border-color: rgba(58,174,255,0.32);
+            box-shadow: 0 0 16px rgba(58,174,255,0.18);
+            transform: translateY(-1px);
+        }
 
         /* Dropdown panel */
         .lang-dropdown {
@@ -2624,6 +2644,15 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
         }
     
 </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZK83EC7MK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FZK83EC7MK');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -2863,6 +2892,17 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
                         </button>
                     </div>
                 </div>
+                <!-- Home → index.html -->
+                <a href="index.html" class="nav-home-btn" aria-label="Home">
+                    <svg width="18" height="18" fill="none" stroke="currentColor"
+                         viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <!-- roof -->
+                        <path d="M3 12l9-9 9 9"/>
+                        <!-- walls + door opening -->
+                        <path d="M5 10.5V20a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1V10.5"/>
+                    </svg>
+                </a>
             </div>
 
             <!-- Hamburger (mobile only) -->
@@ -3599,6 +3639,11 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
             'cts-h2': 'Parliamo del tuo progetto',
             'cts-sub': 'Il nostro team ti risponde entro poche ore. Il sopralluogo è gratuito, senza impegno.',
             'cts-trust1': 'Sopralluogo gratuito', 'cts-trust2': 'Risposta entro poche ore', 'cts-trust3': 'Senza impegno',
+            'cts-form-or': 'Oppure invia una richiesta direttamente dal sito',
+            'cts-form-name': 'Il tuo nome', 'cts-form-email': 'La tua email', 'cts-form-phone': 'Il tuo telefono', 'cts-form-msg': 'Il tuo messaggio…',
+            'cts-form-send': 'Invia richiesta',
+            'cts-form-ok': '✓ Messaggio inviato! Ti risponderemo presto.',
+            'cts-form-err': '✗ Errore nell’invio. Prova via WhatsApp.',
         },
         de: {
             'page-title': 'Alle Systeme | SFERA Smart Systems',
@@ -3704,6 +3749,11 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
             'cts-h2': 'Lass uns über dein Projekt sprechen',
             'cts-sub': 'Unser Team antwortet dir innerhalb weniger Stunden. Die Besichtigung ist kostenlos, unverbindlich.',
             'cts-trust1': 'Kostenlose Besichtigung', 'cts-trust2': 'Antwort in wenigen Stunden', 'cts-trust3': 'Unverbindlich',
+            'cts-form-or': 'Oder sende eine Anfrage direkt über die Website',
+            'cts-form-name': 'Dein Name', 'cts-form-email': 'Deine E-Mail', 'cts-form-phone': 'Deine Telefonnummer', 'cts-form-msg': 'Deine Nachricht…',
+            'cts-form-send': 'Anfrage senden',
+            'cts-form-ok': '✓ Nachricht gesendet! Wir melden uns bald.',
+            'cts-form-err': '✗ Fehler. Schreib uns bitte per WhatsApp.',
         },
         en: {
             'page-title': 'All Systems | SFERA Smart Systems',
@@ -3809,6 +3859,11 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
             'cts-h2': "Let's talk about your project",
             'cts-sub': 'Our team replies within a few hours. The site visit is free, no commitment.',
             'cts-trust1': 'Free site visit', 'cts-trust2': 'Reply within a few hours', 'cts-trust3': 'No commitment',
+            'cts-form-or': 'Or send a request directly from the site',
+            'cts-form-name': 'Your name', 'cts-form-email': 'Your email', 'cts-form-phone': 'Your phone number', 'cts-form-msg': 'Your message…',
+            'cts-form-send': 'Send request',
+            'cts-form-ok': '✓ Message sent! We’ll get back to you soon.',
+            'cts-form-err': '✗ Error sending. Please try via WhatsApp.',
         }
     };
 
@@ -3833,6 +3888,12 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
         document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
             var key = el.dataset.i18nHtml;
             if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+
+        /* data-i18n-placeholder elements */
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+            var key = el.dataset.i18nPlaceholder;
+            if (t[key] !== undefined) el.placeholder = t[key];
         });
 
         /* Re-render sol popup if open during language switch */
@@ -3927,11 +3988,10 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
         var card = document.querySelector(_sferaHash);
         if (!card || !card.classList.contains('pkg-card')) return;
 
-        /* Page starts at top (browser never saw the hash). Scroll to card after fade-in. */
+        /* Highlight the target card; page stays at top so hero is visible */
         setTimeout(function() {
             card.classList.add('pkg-active');
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 650);
+        }, 400);
     })();
 </script>
 
@@ -4650,15 +4710,15 @@ window.openPkg = function(id) {
 
         // ── 9 Feature cards (3-column grid) ──
         var fcards5 = [
-            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.5-1.3 4.7-3.3 6L12 17l-3.7-2C6.3 13.7 5 11.5 5 9a7 7 0 017-7z"/></svg>', bg:'rgba(253,230,138,0.07)', bd:'rgba(253,230,138,0.13)', title:{it:'Illuminazione',de:'Beleuchtung',en:'Lighting'}, desc:{it:'Scenari dinamici, adattamento circadiano. Risparmio fino al 40%.',de:'Dynamische Szenarien, zirkadianer Anpassung. Einsparungen bis zu 40%.',en:'Automatic lighting, personalized scenes, brightness sensors, smart control, dynamic atmosphere and energy optimization.'} },
-            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>', bg:'rgba(147,197,253,0.07)', bd:'rgba(147,197,253,0.13)', title:{it:'Clima & Comfort',de:'Klima & Komfort',en:'Climate & Comfort'}, desc:{it:'Temperatura ottimale per ogni stanza. VMC integrata.',de:'Optimale Temperatur für jedes Zimmer. Integrierte Lüftungsanlage.',en:'Intelligent temperature management, Home/Away modes, air purifiers and automated climate control for perfect comfort.'} },
-            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>', bg:'rgba(248,113,113,0.07)', bd:'rgba(248,113,113,0.13)', title:{it:'Sicurezza AI',de:'KI-Sicherheit',en:'AI Security'}, desc:{it:'Telecamere AI, sensori perimetrali e allarme automatico.',de:'KI-Kameras, Perimetersensoren und automatischer Alarm.',en:'AI cameras, smart sensors, smart locks, automatic notifications and advanced 24/7 protection.'} },
-            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>', bg:'rgba(16,185,129,0.07)', bd:'rgba(16,185,129,0.13)', title:{it:'Gestione Energia',de:'Energiemanagement',en:'Energy Management'}, desc:{it:'Fotovoltaico, accumulo batterie e EV charging integrati.',de:'Solar, Batteriespeicher und EV-Laden integriert.',en:'Integration of solar systems, EV charging stations, energy monitoring and intelligent energy management.'} },
-            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>', bg:'rgba(196,181,253,0.07)', bd:'rgba(196,181,253,0.13)', title:{it:'Comandi Vocali',de:'Sprachsteuerung',en:'Voice Control'}, desc:{it:'Alexa, Google, Siri. Multi-lingua: IT · DE · EN.',de:'Alexa, Google, Siri. Mehrsprachig: IT · DE · EN.',en:'Compatible with Alexa, Siri and Google Home, with smart speakers integrated into every room for natural and instant control.'} },
-            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#67E8F9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></svg>', bg:'rgba(103,232,249,0.07)', bd:'rgba(103,232,249,0.13)', title:{it:'Audio & Video Premium',de:'Premium Audio & Video',en:'Smart 3D Interface'}, desc:{it:'Multiroom audio e home cinema 4K ovunque in casa.',de:'Multiroom-Audio und 4K-Heimkino überall im Haus.',en:'Manage your entire home directly from the interactive floor plan. Intuitive control of lighting, climate, security and scenarios directly from the home\'s digital map.'} },
-            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A75E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>', bg:'rgba(198,167,94,0.07)', bd:'rgba(198,167,94,0.13)', title:{it:'Scenari & Automazioni',de:'Szenarien & Automatisierungen',en:'Scenarios & Automation'}, desc:{it:'Cinema, Notte, Vacanza — scenari illimitati con un tocco.',de:'Kino, Nacht, Urlaub — unbegrenzte Szenarien mit einem Tipp.',en:'Intelligent automations for lighting, climate, security and comfort, fully customizable.'} },
-            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A75E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>', bg:'rgba(198,167,94,0.07)', bd:'rgba(198,167,94,0.13)', title:{it:'Accesso Remoto',de:'Fernzugriff',en:'Remote Access'}, desc:{it:'App nativa iOS e Android. Controllo da qualsiasi parte del mondo.',de:'Native iOS- und Android-App. Steuerung von überall auf der Welt.',en:'Complete remote access through iOS and Android apps at any time.'} },
-            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A75E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>', bg:'rgba(198,167,94,0.07)', bd:'rgba(198,167,94,0.13)', title:{it:'Esterni & Giardino',de:'Außenbereich & Garten',en:'Outdoor & Garden'}, desc:{it:'Irrigazione, cancelli e illuminazione esterna sincronizzati.',de:'Intelligente Steuerung von Toren, Bewässerung, Außenbeleuchtung und Outdoor-Szenarien.',en:'Intelligent control of gates, irrigation, outdoor lighting and outdoor scenarios.'} }
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.5-1.3 4.7-3.3 6L12 17l-3.7-2C6.3 13.7 5 11.5 5 9a7 7 0 017-7z"/></svg>', bg:'rgba(253,230,138,0.07)', bd:'rgba(253,230,138,0.13)', title:{it:'Illuminazione',de:'Beleuchtung',en:'Lighting'}, desc:{it:'Illuminazione intelligente che segue il tuo ritmo naturale.',de:'Intelligente Beleuchtung, die sich deinem natürlichen Rhythmus anpasst.',en:'Intelligent lighting that follows your natural rhythm.'} },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>', bg:'rgba(147,197,253,0.07)', bd:'rgba(147,197,253,0.13)', title:{it:'Clima & Comfort',de:'Klima & Komfort',en:'Climate & Comfort'}, desc:{it:'Clima automatico e qualità dell\'aria sempre ottimale.',de:'Automatisches Klima und stets optimale Luftqualität.',en:'Automatic climate control and always-optimized air quality.'} },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>', bg:'rgba(248,113,113,0.07)', bd:'rgba(248,113,113,0.13)', title:{it:'Sicurezza AI',de:'KI-Sicherheit',en:'AI Security'}, desc:{it:'Sicurezza intelligente sempre attiva.',de:'Intelligente Sicherheit rund um die Uhr aktiv.',en:'Intelligent security always active.'} },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>', bg:'rgba(16,185,129,0.07)', bd:'rgba(16,185,129,0.13)', title:{it:'Gestione Energia',de:'Energiemanagement',en:'Energy Management'}, desc:{it:'Produci, accumula e utilizza energia in modo intelligente.',de:'Energie intelligent produzieren, speichern und nutzen.',en:'Produce, store and use energy intelligently.'} },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>', bg:'rgba(196,181,253,0.07)', bd:'rgba(196,181,253,0.13)', title:{it:'Comandi Vocali',de:'Sprachsteuerung',en:'Voice Control'}, desc:{it:'Controlla tutta la casa con la voce.',de:'Steuere das ganze Haus mit deiner Stimme.',en:'Control your entire home with your voice.'} },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#67E8F9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></svg>', bg:'rgba(103,232,249,0.07)', bd:'rgba(103,232,249,0.13)', title:{it:'Interfaccia 3D Smart',de:'Smart 3D-Oberfläche',en:'Smart 3D Interface'}, desc:{it:'Gestisci tutta la casa direttamente dalla planimetria interattiva.',de:'Steuere dein gesamtes Zuhause direkt über den interaktiven Grundriss.',en:'Manage your entire home directly from the interactive floor plan.'} },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A75E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>', bg:'rgba(198,167,94,0.07)', bd:'rgba(198,167,94,0.13)', title:{it:'Scenari & Automazioni',de:'Szenarien & Automatisierungen',en:'Scenarios & Automation'}, desc:{it:'Un solo tocco trasforma tutta la casa.',de:'Eine einzige Berührung verändert das ganze Haus.',en:'One touch transforms the entire home.'} },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A75E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>', bg:'rgba(198,167,94,0.07)', bd:'rgba(198,167,94,0.13)', title:{it:'Accesso Remoto',de:'Fernzugriff',en:'Remote Access'}, desc:{it:'Controlla tutto ovunque ti trovi.',de:'Kontrolliere alles, egal wo du bist.',en:'Control everything wherever you are.'} },
+            { svg:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A75E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>', bg:'rgba(198,167,94,0.07)', bd:'rgba(198,167,94,0.13)', title:{it:'Esterni & Giardino',de:'Außenbereich & Garten',en:'Outdoor & Garden'}, desc:{it:'Eleganza e automazione anche all\'esterno.',de:'Eleganz und Automation auch im Außenbereich.',en:'Elegance and automation even outdoors.'} }
         ];
         var grid5 = '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">';
         fcards5.forEach(function(fc){
@@ -4672,9 +4732,8 @@ window.openPkg = function(id) {
 
         // ── "È ideale se" cards ──
         var idealData5 = [
-            { title:{it:'Vuoi il massimo, senza compromessi',de:'Du das Maximum an Smart-Home-Technologie ohne Kompromisse möchtest',en:'You want the ultimate smart technology experience without compromises'}, desc:{it:'9 sistemi integrati in un\'unica regia digitale. Nessun altro pacchetto offre questo livello di personalizzazione.',de:'Die vollständigste und individuellste Lösung im SFERA-Ökosystem. Ideal für alle, die höchsten Komfort, maximale Automation und vollständige Integration wünschen.',en:'The most complete and customizable solution in the SFERA ecosystem. Perfect for those who want maximum comfort, automation and integration.'} },
-            { title:{it:'Stai costruendo o ristrutturando una villa',de:'Du eine Premium-Villa planst oder komplett renovierst',en:'You are building a premium villa or planning a complete renovation'}, desc:{it:'Il momento perfetto per l\'infrastruttura KNX nel cantiere — zero lavori aggiuntivi in futuro.',de:'Der perfekte Zeitpunkt, um ein echtes Smart Home zu schaffen. Entwickelt für moderne Villen, Neubauten und vollständig integrierte Premium-Projekte.',en:'The perfect moment to create a true smart home. Designed for modern villas, new constructions and fully integrated premium projects.'} },
-            { title:{it:'Cerchi un investimento che dura nel tempo',de:'Du suchst eine Investition, die langfristig hält',en:'You are looking for an investment that lasts'}, desc:{it:'Assistenza H24 dedicata, aggiornamenti lifetime e ROI misurabile già dal primo anno.',de:'Dedizierter H24-Support, lebenslange Updates und messbarer ROI bereits im ersten Jahr.',en:'Dedicated H24 support, lifetime updates and measurable ROI from the first year.'} }
+            { title:{it:'Vuoi il massimo della tecnologia smart senza limiti',de:'Du das Maximum an Smart-Home-Technologie ohne Kompromisse möchtest',en:'You want the ultimate smart technology experience without compromises'}, desc:{it:'La soluzione più completa e personalizzabile dell\'ecosistema SFERA. Ideale per chi desidera il massimo livello di comfort, automazione e integrazione.',de:'Die vollständigste und individuellste Lösung im SFERA-Ökosystem. Ideal für alle, die höchsten Komfort, maximale Automation und vollständige Integration wünschen.',en:'The most complete and customizable solution in the SFERA ecosystem. Perfect for those who want maximum comfort, automation and integration.'} },
+            { title:{it:'Progetti una villa premium o una ristrutturazione completa',de:'Du eine Premium-Villa planst oder komplett renovierst',en:'You are building a premium villa or planning a complete renovation'}, desc:{it:'Il momento perfetto per creare una vera smart home. Pensato per ville moderne, nuove costruzioni e progetti premium completamente integrati.',de:'Der perfekte Zeitpunkt, um ein echtes Smart Home zu schaffen. Entwickelt für moderne Villen, Neubauten und vollständig integrierte Premium-Projekte.',en:'The perfect moment to create a true smart home. Designed for modern villas, new constructions and fully integrated premium projects.'} }
         ];
         var ideal5 = '<div>' +
             '<p style="font-family:\'Inter\',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C6A75E;margin:0 0 8px;">'+_t({it:'È il pacchetto giusto se…',de:'Das richtige Paket für dich, wenn…',en:'This package is perfect if…'})+'</p>' +
@@ -4758,9 +4817,9 @@ window.openPkg = function(id) {
         var topStrip5 =
             '<div style="padding:12px 60px 10px 24px;border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0;display:flex;align-items:flex-start;gap:16px;">' +
             '<div>' +
-            '<span style="font-family:\'Inter\',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C6A75E;display:block;margin-bottom:7px;">'+_t({it:'9 Sistemi · 200+ Dispositivi',de:'9 Systeme · 200+ Geräte',en:'The most complete smart home ecosystem by SFERA'})+'</span>' +
+            '<span style="font-family:\'Inter\',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C6A75E;display:block;margin-bottom:7px;">'+_t({it:'LA SMART HOME PIÙ COMPLETA DI SFERA',de:'DAS UMFASSENDSTE SMART-HOME-SYSTEM VON SFERA',en:'THE MOST COMPLETE SMART HOME ECOSYSTEM BY SFERA'})+'</span>' +
             '<h2 style="font-family:\'Poppins\',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:900;color:#fff;line-height:1.1;margin:0 0 8px;">Full Smart</h2>' +
-            '<p style="font-family:\'Inter\',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;margin:0;max-width:680px;">'+_t({it:'Il massimo del comfort, della sicurezza e dell\'efficienza — 9 sistemi integrati in un\'unica regia digitale completamente su misura.',de:'Das Höchste an Komfort, Sicherheit und Effizienz — 9 Systeme integriert in einer vollständig maßgeschneiderten digitalen Zentrale.',en:'Comfort, security and energy in one intelligent ecosystem.'})+'</p>' +
+            '<p style="font-family:\'Inter\',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;margin:0;max-width:680px;">'+_t({it:'Comfort, sicurezza ed energia in un unico ecosistema intelligente.',de:'Komfort, Sicherheit und Energie in einem intelligenten Ökosystem.',en:'Comfort, security and energy in one intelligent ecosystem.'})+'</p>' +
             '</div>' +
             '<span style="flex-shrink:0;font-family:\'Poppins\',sans-serif;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#C6A75E;background:rgba(198,167,94,0.1);border:1px solid rgba(198,167,94,0.25);border-radius:99px;padding:4px 10px;white-space:nowrap;margin-top:2px;">👑 FULL</span>' +
             '</div>';
@@ -4778,7 +4837,7 @@ window.openPkg = function(id) {
 
         var ctaBar5 =
             '<div style="padding:10px 24px;border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0;">' +
-            '<button onclick="openContattiSistemi()" style="font-family:\'Poppins\',sans-serif;font-size:14px;font-weight:700;background:linear-gradient(135deg,#C6A75E,#FFD980);color:#070C18;border:none;border-radius:12px;padding:13px 32px;cursor:pointer;box-shadow:0 6px 24px rgba(198,167,94,0.36);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform=\'scale(1.03)\';this.style.boxShadow=\'0 12px 38px rgba(198,167,94,0.54)\'" onmouseout="this.style.transform=\'scale(1)\';this.style.boxShadow=\'0 6px 24px rgba(198,167,94,0.36)\'">'+_t({it:'Richiedi il tuo progetto Full Smart',de:'Starte dein Full Smart Projekt',en:'Start your Full Smart project'})+'</button>' +
+            '<button onclick="openContattiSistemi()" style="font-family:\'Poppins\',sans-serif;font-size:14px;font-weight:700;background:linear-gradient(135deg,#C6A75E,#FFD980);color:#070C18;border:none;border-radius:12px;padding:13px 32px;cursor:pointer;box-shadow:0 6px 24px rgba(198,167,94,0.36);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform=\'scale(1.03)\';this.style.boxShadow=\'0 12px 38px rgba(198,167,94,0.54)\'" onmouseout="this.style.transform=\'scale(1)\';this.style.boxShadow=\'0 6px 24px rgba(198,167,94,0.36)\'">'+_t({it:'Inizia il tuo progetto Full Smart',de:'Starte dein Full Smart Projekt',en:'Start your Full Smart project'})+'</button>' +
             '</div>';
 
         ul.innerHTML = topStrip5 + bodyGrid5 + ctaBar5;
@@ -4844,8 +4903,9 @@ document.addEventListener('keydown',function(e){
 #ct-overlay.open { display:flex; }
 #ct-modal {
     position:relative; width:100%; max-width:660px;
+    max-height:calc(100vh - 48px); overflow-y:auto;
     background:linear-gradient(160deg,#0b1220 0%,#0f172a 100%);
-    border-radius:22px; overflow:hidden;
+    border-radius:22px; overflow-x:hidden;
     border:1px solid rgba(255,255,255,0.08);
     box-shadow:0 48px 120px rgba(0,0,0,0.6);
     transform:translateY(14px) scale(0.97); opacity:0;
@@ -4861,6 +4921,36 @@ document.addEventListener('keydown',function(e){
     transition:background 0.2s,color 0.2s,transform 0.25s;
 }
 #ct-close:hover { background:rgba(255,255,255,0.14); color:#fff; transform:rotate(90deg); }
+#contact-form input::placeholder, #contact-form textarea::placeholder { color:rgba(255,255,255,0.28); }
+#contact-form input, #contact-form textarea { color-scheme:dark; }
+@media (max-width: 600px) {
+    #ct-overlay {
+        padding: 12px;
+    }
+    #ct-modal {
+        max-width: calc(100vw - 24px);
+        max-height: 90vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-radius: 18px;
+    }
+    #ct-body {
+        padding: 22px 16px 26px !important;
+    }
+    #ct-wa-grid {
+        grid-template-columns: 1fr !important;
+    }
+    #ct-body h2 {
+        font-size: 20px !important;
+    }
+    #ct-body > p {
+        margin-bottom: 18px !important;
+    }
+    #ct-body > div[style*="border-top"] {
+        margin-top: 18px !important;
+        padding-top: 16px !important;
+    }
+}
 </style>
 
 <div id="ct-overlay" onclick="if(event.target===this)closeContattiSistemi()">
@@ -4870,14 +4960,14 @@ document.addEventListener('keydown',function(e){
         <!-- Top accent -->
         <div style="height:3px;background:linear-gradient(90deg,rgba(58,174,255,0.2),#3AAEFF,rgba(58,174,255,0.2));"></div>
 
-        <div style="padding:36px 40px 40px;">
+        <div id="ct-body" style="padding:36px 40px 40px;">
             <!-- Eyebrow -->
             <span data-i18n="cts-eyebrow" style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3AAEFF;display:block;margin-bottom:10px;">Sopralluogo gratuito</span>
             <h2 data-i18n="cts-h2" style="font-family:'Poppins',sans-serif;font-size:clamp(20px,3vw,26px);font-weight:900;color:#fff;line-height:1.15;margin:0 0 8px;">Parliamo del tuo progetto</h2>
             <p data-i18n="cts-sub" style="font-family:'Inter',sans-serif;font-size:13.5px;color:rgba(255,255,255,0.48);line-height:1.7;margin:0 0 28px;">Il nostro team ti risponde entro poche ore. Il sopralluogo è gratuito, senza impegno.</p>
 
             <!-- Contact options -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+            <div id="ct-wa-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
 
                 <!-- WhatsApp -->
                 <a href="https://wa.me/393345875351" target="_blank" rel="noopener"
@@ -4923,6 +5013,38 @@ document.addEventListener('keydown',function(e){
                     <span data-i18n="cts-trust3" style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);">Senza impegno</span>
                 </div>
             </div>
+
+            <!-- ── Direct message form ── -->
+            <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:24px;padding-top:20px;">
+                <p data-i18n="cts-form-or" style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.32);margin:0 0 14px;line-height:1.5;">Oppure invia una richiesta direttamente dal sito</p>
+                <form id="contact-form" novalidate>
+                    <div style="display:flex;flex-direction:column;gap:10px;">
+                        <input type="text" id="ctf-name" name="name" required maxlength="100"
+                               data-i18n-placeholder="cts-form-name" placeholder="Il tuo nome"
+                               style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13.5px;color:#fff;outline:none;transition:border-color .2s;width:100%;box-sizing:border-box;"
+                               onfocus="this.style.borderColor='rgba(58,174,255,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.10)'" />
+                        <input type="email" id="ctf-email" name="email" required maxlength="200"
+                               data-i18n-placeholder="cts-form-email" placeholder="La tua email"
+                               style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13.5px;color:#fff;outline:none;transition:border-color .2s;width:100%;box-sizing:border-box;"
+                               onfocus="this.style.borderColor='rgba(58,174,255,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.10)'" />
+                        <input type="tel" id="ctf-phone" name="phone" required maxlength="30"
+                               data-i18n-placeholder="cts-form-phone" placeholder="Il tuo telefono"
+                               style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13.5px;color:#fff;outline:none;transition:border-color .2s;width:100%;box-sizing:border-box;"
+                               onfocus="this.style.borderColor='rgba(58,174,255,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.10)'" />
+                        <textarea id="ctf-msg" name="message" required maxlength="1000" rows="3"
+                                  data-i18n-placeholder="cts-form-msg" placeholder="Il tuo messaggio…"
+                                  style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13.5px;color:#fff;outline:none;transition:border-color .2s;width:100%;box-sizing:border-box;resize:vertical;min-height:82px;"
+                                  onfocus="this.style.borderColor='rgba(58,174,255,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.10)'"></textarea>
+                        <button type="submit" id="ctf-btn"
+                                style="background:linear-gradient(135deg,rgba(58,174,255,0.12),rgba(58,174,255,0.06));border:1px solid rgba(58,174,255,0.28);border-radius:10px;padding:13px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:#fff;cursor:pointer;transition:background .2s,border-color .2s,transform .18s,box-shadow .18s;letter-spacing:.02em;width:100%;"
+                                onmouseover="if(!this.disabled){this.style.background='rgba(58,174,255,0.18)';this.style.borderColor='rgba(58,174,255,0.5)';this.style.boxShadow='0 0 18px rgba(58,174,255,0.18)';this.style.transform='translateY(-1px)';}" onmouseout="if(!this.disabled){this.style.background='linear-gradient(135deg,rgba(58,174,255,0.12),rgba(58,174,255,0.06))';this.style.borderColor='rgba(58,174,255,0.28)';this.style.boxShadow='';this.style.transform='';}"
+                                >
+                            <span id="ctf-lbl" data-i18n="cts-form-send">Invia richiesta</span>
+                        </button>
+                    </div>
+                    <p id="ctf-status" style="display:none;font-family:'Inter',sans-serif;font-size:12.5px;text-align:center;margin:10px 0 0;border-radius:8px;padding:9px 12px;"></p>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -4933,15 +5055,55 @@ window.openContattiSistemi = function() {
     ov.style.display = 'flex';
     requestAnimationFrame(function(){ requestAnimationFrame(function(){
         ov.classList.add('open');
+        if(typeof gtag!=='undefined') gtag('event','contact_open',{page:'sistemi'});
     });});
 };
 window.closeContattiSistemi = function() {
     var ov = document.getElementById('ct-overlay');
     ov.classList.remove('open');
     setTimeout(function(){ ov.style.display = 'none'; }, 300);
+    var f = document.getElementById('contact-form');
+    var st = document.getElementById('ctf-status');
+    if (f) f.reset();
+    if (st) st.style.display = 'none';
 };
 document.addEventListener('keydown', function(e){
     if(e.key === 'Escape') window.closeContattiSistemi();
+});
+
+// ── EmailJS
+(function() { emailjs.init({ publicKey: "GuQa3eT9zxd73_FzS" }); })();
+
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var btn = document.getElementById('ctf-btn');
+    var lbl = document.getElementById('ctf-lbl');
+    var st  = document.getElementById('ctf-status');
+    var t   = (typeof translations !== 'undefined' && translations[document.documentElement.lang])
+              ? translations[document.documentElement.lang] : {};
+    btn.disabled = true;
+    lbl.textContent = '…';
+    st.style.display = 'none';
+    emailjs.sendForm("service_uan2fln", "template_9cukux4", this)
+    .then(() => {
+        st.style.display = 'block';
+        st.style.color = '#4ade80';
+        st.style.background = 'rgba(74,222,128,0.08)';
+        st.textContent = t['cts-form-ok'] || '✓ Messaggio inviato!';
+        document.getElementById('contact-form').reset();
+        if(typeof gtag!=='undefined') gtag('event','contact_form_submit',{method:'emailjs'});
+        btn.disabled = false;
+        lbl.textContent = t['cts-form-send'] || 'Invia richiesta';
+    })
+    .catch((error) => {
+        console.error("FAILED...", error);
+        st.style.display = 'block';
+        st.style.color = '#f87171';
+        st.style.background = 'rgba(248,113,113,0.08)';
+        st.textContent = t['cts-form-err'] || '✗ Errore. Prova via WhatsApp.';
+        btn.disabled = false;
+        lbl.textContent = t['cts-form-send'] || 'Invia richiesta';
+    });
 });
 </script>
 
