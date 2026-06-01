@@ -12,6 +12,12 @@
     <meta property="og:title" content="Tutti i Sistemi | SFERA Smart Systems">
     <meta property="og:description" content="Scegli il sistema smart giusto per la tua casa.">
     <meta property="og:image" content="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/photo-principale.jpg">
+    <meta property="og:url"          content="https://www.sferasmart.it/tutti_i_sistemi.html">
+    <meta property="og:type"         content="website">
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Tutti i Sistemi | SFERA Smart Systems">
+    <meta name="twitter:description" content="Scegli il sistema smart giusto per la tua casa. Starter, Comfort, Security, Energy e Full Smart.">
+    <meta name="twitter:image"       content="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/photo-principale.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -45,7 +51,7 @@ html { overflow-x: hidden; max-width: 100%; }
         /* ── Social icons ── */
         .soc-icon {
             display: flex; align-items: center; justify-content: center;
-            width: 42px; height: 42px; border-radius: 10px;
+            width: 44px; height: 44px; border-radius: 10px;
             border: 1px solid rgba(255,255,255,0.12);
             color: rgba(255,255,255,0.45);
             transition: color 0.25s cubic-bezier(0.4,0,0.2,1),
@@ -616,7 +622,7 @@ html { overflow-x: hidden; max-width: 100%; }
         .nav-dropdown a:hover .nav-dd-desc { color: rgba(255,255,255,0.72); }
         .nav-dd-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 6px 0; }
         .nav-dd-badge {
-            font-size: 9px;
+            font-size: 11px;
             background: rgba(198,167,94,0.18);
             color: #C6A75E;
             padding: 2px 7px;
@@ -928,7 +934,7 @@ html { overflow-x: hidden; max-width: 100%; }
         #mobile-menu-btn {
             display: none;
             background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); cursor: pointer;
-            padding: 8px; border-radius: 10px;
+            padding: 10px; border-radius: 10px; min-width: 44px; min-height: 44px;
             color: rgba(255,255,255,0.9); transition: background 0.2s;
         }
         #mobile-menu-btn:hover { background: rgba(255,255,255,0.18); }
@@ -947,7 +953,7 @@ html { overflow-x: hidden; max-width: 100%; }
             box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05);
             transform: translateY(-100%);
             transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-            max-height: 90vh; overflow-y: auto;
+            max-height: 90dvh; overflow-y: auto;
         }
         #mobile-nav-overlay.open { display: block; }
         #mobile-nav-overlay.open #mobile-nav-panel { transform: translateY(0); }
@@ -991,6 +997,16 @@ html { overflow-x: hidden; max-width: 100%; }
         ══════════════════════════════════ */
         @media (max-width: 1024px) {
             .nav-item-btn { font-size: 12px; padding: 7px 11px; }
+        }
+
+        /* ══════════════════════════════════
+           RESPONSIVE — TABLET (769–1023px)
+        ══════════════════════════════════ */
+        @media (min-width: 769px) and (max-width: 1023px) {
+            #main-nav .nav-inner { padding: 0 20px; }
+            .nav-menu { display: none !important; }
+            #nav-right { display: none !important; }
+            #mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
         }
 
         /* ══════════════════════════════════
@@ -1049,7 +1065,7 @@ html { overflow-x: hidden; max-width: 100%; }
         /* Close */
         .ct-close {
             position: absolute; top: 14px; right: 14px; z-index: 10;
-            width: 30px; height: 30px; border-radius: 50%;
+            width: 44px; height: 44px; border-radius: 50%;
             background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             font-size: 13px; color: rgba(255,255,255,0.4);
@@ -1930,8 +1946,8 @@ html { overflow-x: hidden; max-width: 100%; }
 }
 /* Arrow buttons */
 .sc3d-arrow {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: rgba(255,255,255,.06);
     border: 1px solid rgba(255,255,255,.12);
@@ -3501,13 +3517,13 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
                         <span class="soc-tooltip">Instagram</span>
                     </div>
                     <div class="soc-tooltip-wrap">
-                        <a href="https://t.me/sferasmart" target="_blank" rel="noopener noreferrer" aria-label="Telegram Sfera Smart Systems" class="soc-icon soc-tg">
+                        <a href="https://t.me/Dmytro_Ital" target="_blank" rel="noopener noreferrer" aria-label="Telegram Sfera Smart Systems" class="soc-icon soc-tg">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                         </a>
                         <span class="soc-tooltip">Telegram</span>
                     </div>
                     <div class="soc-tooltip-wrap">
-                        <a href="https://www.facebook.com/sferasmartsystems" target="_blank" rel="noopener noreferrer" aria-label="Facebook Sfera Smart Systems" class="soc-icon soc-fb">
+                        <a href="https://www.facebook.com/profile.php?id=61552390809800" target="_blank" rel="noopener noreferrer" aria-label="Facebook Sfera Smart Systems" class="soc-icon soc-fb">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                         </a>
                         <span class="soc-tooltip">Facebook</span>
@@ -3519,7 +3535,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
                         <span class="soc-tooltip">YouTube</span>
                     </div>
                     <div class="soc-tooltip-wrap">
-                        <a href="#" onclick="return false;" aria-label="LinkedIn" class="soc-icon soc-li">
+                        <a href="https://www.linkedin.com/company/126253915/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Dmytro Kirichek" class="soc-icon soc-li">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                         </a>
                         <span class="soc-tooltip">LinkedIn</span>
@@ -3724,7 +3740,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
             'nav-about-chi': 'Über uns', 'nav-about-chi-sub': 'Das Team hinter SFERA',
             'nav-about-miss': 'Unsere Mission', 'nav-about-miss-sub': 'Werte und Unternehmensvision',
             /* ── contatti overlay ── */
-            'ct-eyebrow': 'Kontakt', 'ct-h2': 'Reden wir über<br>Ihr Projekt',
+            'ct-eyebrow': 'Kontakt', 'ct-h2': 'Reden wir über<br>dein Projekt',
             'ct-sub1': 'Wir antworten innerhalb von 24 Stunden.', 'ct-sub2': 'Kostenlose Beratung, unverbindlich.',
             'ct-wa-btn': 'WhatsApp schreiben', 'ct-tg-btn': 'Telegram schreiben',
             'ct-tg-note': 'Wir antworten auch auf Telegram', 'ct-phone-btn': 'Jetzt anrufen', 'ct-email-btn': 'E-Mail senden',
@@ -3740,7 +3756,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
             'ft-preventivo': 'Angebot für Unternehmen', 'ft-smart-home': 'B2B-Lösungen',
             'ft-carriere': 'Karriere', 'ft-lavora': 'Arbeite mit uns', 'ft-posizioni': 'Offene Stellen',
             'ft-i-partner': 'Für Partner', 'ft-diventa': 'Partner werden',
-            'footer-slogan': 'Comfort • Intelligenza • Sfera',
+            'footer-slogan': 'Komfort • Intelligenz • Sfera',
             /* ── package feature badges ── */
             'feat-sos': 'SOS-Benachrichtigungen', 'feat-sprechi': 'Verbrauchsbenachrichtigungen',
             'nav-contact-lbl': 'Kontakt', 'nav-contact-sub': 'Sprechen wir über dein Projekt',
@@ -3850,7 +3866,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
             'ft-preventivo': 'Quote for businesses', 'ft-smart-home': 'B2B Solutions',
             'ft-carriere': 'Careers', 'ft-lavora': 'Work with us', 'ft-posizioni': 'Open positions',
             'ft-i-partner': 'For partners', 'ft-diventa': 'Become a partner',
-            'footer-slogan': 'Comfort • Intelligenza • Sfera',
+            'footer-slogan': 'Comfort • Intelligence • Sfera',
             /* ── package feature badges ── */
             'feat-sos': 'SOS notifications', 'feat-sprechi': 'Waste notifications',
             'nav-contact-lbl': 'Contact', 'nav-contact-sub': "Let's talk about your project",
@@ -4020,7 +4036,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
     #pkg-popup-overlay-grad { position:absolute; inset:0; z-index:1; }
     #pkg-popup-close {
         position:absolute; top:14px; right:14px; z-index:20;
-        width:36px; height:36px; border-radius:50%;
+        width:44px; height:44px; border-radius:50%;
         background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12);
         color:rgba(255,255,255,0.65); font-size:17px; cursor:pointer; line-height:1;
         display:flex; align-items:center; justify-content:center;
@@ -4031,7 +4047,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
     .ss-feat-card:hover { background:rgba(74,222,128,0.07) !important; border-color:rgba(74,222,128,0.25) !important; box-shadow:0 0 18px rgba(74,222,128,0.08); }
     @media(max-width:767px) {
         #pkg-overlay { padding:0 !important; }
-        #pkg-popup { width:100vw !important; max-width:100% !important;
+        #pkg-popup { width:100% !important; max-width:100% !important;
             height:100dvh !important; border-radius:0 !important; }
         #pkg-popup-inner { flex-direction:column !important; }
         #pkg-popup-right { width:100% !important; height:40vh !important; flex-shrink:0; }
@@ -4903,7 +4919,7 @@ document.addEventListener('keydown',function(e){
 #ct-overlay.open { display:flex; }
 #ct-modal {
     position:relative; width:100%; max-width:660px;
-    max-height:calc(100vh - 48px); overflow-y:auto;
+    max-height:calc(100dvh - 48px); overflow-y:auto;
     background:linear-gradient(160deg,#0b1220 0%,#0f172a 100%);
     border-radius:22px; overflow-x:hidden;
     border:1px solid rgba(255,255,255,0.08);
@@ -4914,7 +4930,7 @@ document.addEventListener('keydown',function(e){
 #ct-overlay.open #ct-modal { transform:translateY(0) scale(1); opacity:1; }
 #ct-close {
     position:absolute; top:14px; right:14px; z-index:10;
-    width:30px; height:30px; border-radius:50%;
+    width:44px; height:44px; border-radius:50%;
     background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1);
     cursor:pointer; display:flex; align-items:center; justify-content:center;
     font-size:13px; color:rgba(255,255,255,0.4);
@@ -4928,8 +4944,8 @@ document.addEventListener('keydown',function(e){
         padding: 12px;
     }
     #ct-modal {
-        max-width: calc(100vw - 24px);
-        max-height: 90vh;
+        max-width: calc(100% - 24px);
+        max-height: 90dvh;
         overflow-y: auto;
         overflow-x: hidden;
         border-radius: 18px;
@@ -5194,7 +5210,7 @@ document.getElementById("contact-form").addEventListener("submit", function(even
                             </div>
                         </a>
 
-                        <a href="https://t.me/sferasmart" target="_blank" class="ct-row">
+                        <a href="https://t.me/Dmytro_Ital" target="_blank" class="ct-row">
                             <div class="ct-row-icon">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 1 0 23.888 12 12.012 12.012 0 0 0 11.944 0Zm3.68 8.174-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941Z"/></svg>
                             </div>
@@ -5669,9 +5685,12 @@ document.getElementById("contact-form").addEventListener("submit", function(even
         #pp-modal .pp-body th, #pp-modal .pp-body td { padding: 6px 8px; }
     }
 
-    /* Mobile: hide Confronto pacchetti section */
+    /* Mobile: Confronto pacchetti — horizontal scroll */
     @media (max-width: 767px) {
-        .cmp-section#confronto { display: none !important; }
+        .cmp-section#confronto { display: block; }
+        .cmp-wrap { padding-left: 0 !important; padding-right: 0 !important; }
+        .cmp-section#confronto .reveal > div[style] { padding: 0 16px; }
+        .cmp-scroll { border-radius: 0; margin: 0 -1px; }
     }
 
     /* Tablet (iPad Mini 768-1023px): Confronto pacchetti fits on screen */

@@ -18,7 +18,7 @@ html { overflow-x: hidden; max-width: 100%; }
         /* ── Social icons ── */
         .soc-icon {
             display: flex; align-items: center; justify-content: center;
-            width: 42px; height: 42px; border-radius: 10px;
+            width: 44px; height: 44px; border-radius: 10px;
             border: 1px solid rgba(255,255,255,0.12);
             color: rgba(255,255,255,0.45);
             transition: color 0.25s cubic-bezier(0.4,0,0.2,1),
@@ -548,7 +548,7 @@ html { overflow-x: hidden; max-width: 100%; }
         .nav-dropdown a:hover .nav-dd-desc { color: rgba(255,255,255,0.72); }
         .nav-dd-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 6px 0; }
         .nav-dd-badge {
-            font-size: 9px;
+            font-size: 11px;
             background: rgba(198,167,94,0.18);
             color: #C6A75E;
             padding: 2px 7px;
@@ -840,7 +840,7 @@ html { overflow-x: hidden; max-width: 100%; }
         #mobile-menu-btn {
             display: none;
             background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); cursor: pointer;
-            padding: 8px; border-radius: 10px;
+            padding: 10px; border-radius: 10px; min-width: 44px; min-height: 44px;
             color: rgba(255,255,255,0.9); transition: background 0.2s;
         }
         #mobile-menu-btn:hover { background: rgba(255,255,255,0.18); }
@@ -971,7 +971,7 @@ html { overflow-x: hidden; max-width: 100%; }
         /* Close */
         .ct-close {
             position: absolute; top: 14px; right: 14px; z-index: 10;
-            width: 30px; height: 30px; border-radius: 50%;
+            width: 44px; height: 44px; border-radius: 50%;
             background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             font-size: 13px; color: rgba(255,255,255,0.4);
@@ -1521,8 +1521,8 @@ html { overflow-x: hidden; max-width: 100%; }
         -webkit-overflow-scrolling: touch;
     }
 
-    /* 7. Video close button: always visible on small screens */
-    @media (max-width: 540px) {
+    /* 7. Video close button: always visible on mobile/tablet */
+    @media (max-width: 767px) {
         #video-modal-outer { padding-top: 52px; }
         #video-close { top: 8px; right: 8px; }
     }
@@ -1605,6 +1605,7 @@ html { overflow-x: hidden; max-width: 100%; }
                 @media(max-width:860px){  #ft-grid{ grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; } }
                 @media(max-width:680px){  #ft-grid{ grid-template-columns: repeat(3, 1fr) !important; } }
                 @media(max-width:440px){  #ft-grid{ grid-template-columns: repeat(2, 1fr) !important; } }
+                @media(max-width:320px){  #ft-grid{ grid-template-columns: 1fr !important; } }
             
 
         #nav-dots {
@@ -1893,8 +1894,8 @@ html { overflow-x: hidden; max-width: 100%; }
 }
 /* Arrow buttons */
 .sc3d-arrow {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: rgba(255,255,255,.06);
     border: 1px solid rgba(255,255,255,.12);
