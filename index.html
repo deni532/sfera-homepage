@@ -212,38 +212,55 @@
     }
     </script>
 
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZK83EC7MK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-FZK83EC7MK');
-    </script>
-
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1349236593745689');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1349236593745689&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
 
 meta-tag: 
 <meta name="facebook-domain-verification" content="a1u8lbdkzq028856ek5nyhzlfcd16t" />
 
+<script>
+function avviaTracciamenti() {
+    // Evita caricamenti multipli se l'utente clicca più volte
+    if(window.tracciamentiAvviati) return;
+    window.tracciamentiAvviati = true;
+
+    // 1. Microsoft Clarity
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x6v6sf08lh");
+
+    // 2. Google Analytics 4
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-FZK83EC7MK";
+    document.head.appendChild(gtagScript);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FZK83EC7MK');
+
+    // 3. Meta Pixel
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1349236593745689');
+    fbq('track', 'PageView');
+}
+
+// Controlla al caricamento della pagina se l'utente aveva già accettato in passato
+document.addEventListener("DOMContentLoaded", function() {
+    // IMPORTANTE: Sostituisci 'sfera-cookie' con il nome esatto 
+    // della chiave che salvi nel LocalStorage tramite il tuo script.js
+    if (localStorage.getItem('sfera-cookie') === 'true') {
+        avviaTracciamenti();
+    }
+});
+</script>
 
 </head>
 <body class="antialiased">
@@ -1754,7 +1771,7 @@ meta-tag:
         <p data-i18n-html="cookie-text">Utilizziamo i cookie per migliorare l'esperienza di navigazione. Continuando accetti la nostra <a href="#" onclick="openPrivacyPolicy();return false;">Privacy Policy</a>.</p>
         <div class="cookie-btns">
             <button class="cookie-decline" onclick="dismissCookie(false)" data-i18n="cookie-decline">Solo essenziali</button>
-            <button class="cookie-accept" onclick="dismissCookie(true)" data-i18n="cookie-accept">Accetta tutti</button>
+            <button class="cookie-accept" onclick="dismissCookie(true); avviaTracciamenti();" data-i18n="cookie-accept">Accetta tutti</button>
         </div>
     </div>
 
