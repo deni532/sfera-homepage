@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title data-i18n-title="page-title">Tutti i Sistemi | SFERA Smart Systems</title>
-    <meta name="description" content="Confronta tutti i sistemi SFERA Smart: Starter, Comfort, Security, Energy e Full Smart. Trova il pacchetto giusto per la tua casa.">
-    <link rel="canonical" href="https://www.sferasmart.it/tutti_i_sistemi.html">
+    <title>Cos'è la Smart Home | SFERA Smart Systems</title>
+    <meta name="description" content="Scopri cos'è la Smart Home: come funziona la domotica, i vantaggi e come trasformare la tua casa in una casa intelligente con SFERA Smart Systems.">
+    <link rel="canonical" href="https://www.sferasmart.it/smart-home.html">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
     <link rel="icon" type="image/png" href="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/logo_blue.png">
     <link rel="apple-touch-icon" href="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/logo_blue.png">
     <meta name="theme-color" content="#070C18">
-    <meta property="og:title" content="Tutti i Sistemi | SFERA Smart Systems">
-    <meta property="og:description" content="Scegli il sistema smart giusto per la tua casa.">
+    <meta property="og:title" content="Cos'è la Smart Home | SFERA Smart Systems">
+    <meta property="og:description" content="Scopri cos'è la Smart Home e come funziona la domotica per la tua casa.">
     <meta property="og:image" content="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/photo-principale.jpg">
-    <meta property="og:url"          content="https://www.sferasmart.it/tutti_i_sistemi.html">
+    <meta property="og:url"          content="https://www.sferasmart.it/smart-home.html">
     <meta property="og:type"         content="website">
     <meta name="twitter:card"        content="summary_large_image">
-    <meta name="twitter:title"       content="Tutti i Sistemi | SFERA Smart Systems">
-    <meta name="twitter:description" content="Scegli il sistema smart giusto per la tua casa. Starter, Comfort, Security, Energy e Full Smart.">
+    <meta name="twitter:title"       content="Cos'è la Smart Home | SFERA Smart Systems">
+    <meta name="twitter:description" content="Scopri cos'è la Smart Home e come funziona la domotica per la tua casa.">
     <meta name="twitter:image"       content="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/photo-principale.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2995,404 +2995,626 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
         </div>
     </div>
 
-<!-- ── HERO ── -->
-<section class="page-hero">
-    <div class="page-hero-dot-grid"></div>
-    <div class="page-hero-glow"></div>
-    <div style="position:relative;z-index:2;">
-        <span class="eyebrow" data-i18n="hero-eyebrow">I nostri sistemi</span>
-        <h1 style="font-family:'Poppins',sans-serif;font-size:clamp(2rem,5vw,3.6rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:18px;max-width:720px;margin-left:auto;margin-right:auto;">
-            <span data-i18n="hero-h1-1">Scegli il sistema</span><br>
-            <span style="background:linear-gradient(90deg,#3AAEFF,#009DFF,#C6A75E,#3AAEFF);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:grad 4s ease infinite;" data-i18n="hero-h1-2">giusto per te</span>
-        </h1>
-        <p style="font-family:'Inter',sans-serif;font-size:clamp(15px,2vw,17px);color:rgba(255,255,255,0.5);max-width:500px;margin:0 auto 40px;line-height:1.75;" data-i18n="hero-sub">
-            Da un primo passo smart fino alla casa completamente automatizzata. Ogni sistema include installazione e supporto.
-        </p>
-        <a href="#confronto" style="font-family:'Inter',sans-serif;font-size:13px;color:#3AAEFF;text-decoration:none;border-bottom:1px solid rgba(58,174,255,0.3);padding-bottom:2px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(58,174,255,0.8)'" onmouseout="this.style.borderColor='rgba(58,174,255,0.3)'" data-i18n="hero-anchor">
-            ↓ Vedi il confronto completo
-        </a>
+
+<style>
+/* ═══════════ SMART HOME PAGE — STYLES ═══════════ */
+
+/* ── Hero ── */
+#sh-hero {
+    min-height: calc(100vh - 80px);
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    padding: 140px 24px 100px;
+    position: relative; overflow: hidden;
+    background: #070C18;
+}
+.sh-hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+        linear-gradient(rgba(58,174,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58,174,255,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+}
+.sh-hero-orb {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,174,255,0.07) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+    animation: sh-orb-pulse 6s ease-in-out infinite;
+}
+@keyframes sh-orb-pulse {
+    0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.7; }
+    50% { transform: translate(-50%,-50%) scale(1.15); opacity: 1; }
+}
+.sh-hero-eyebrow {
+    position: relative; z-index: 1;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: #3AAEFF; margin-bottom: 24px;
+    opacity: 0; transform: translateY(12px);
+    animation: sh-fadein 0.7s 0.2s ease both;
+}
+.sh-hero-h1 {
+    position: relative; z-index: 1;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 900; line-height: 1.05;
+    color: #fff; margin: 0 0 8px;
+    opacity: 0; transform: translateY(20px);
+    animation: sh-fadein 0.8s 0.4s ease both;
+}
+.sh-hero-h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, #3AAEFF, #009DFF);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.sh-hero-sub {
+    position: relative; z-index: 1;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.3rem, 3vw, 2.2rem);
+    font-weight: 600; color: rgba(255,255,255,0.28);
+    margin: 0 0 48px;
+    opacity: 0; transform: translateY(16px);
+    animation: sh-fadein 0.8s 0.6s ease both;
+}
+.sh-hero-scroll {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0; animation: sh-fadein 0.8s 1.1s ease both;
+}
+.sh-hero-scroll span {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+}
+.sh-scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(58,174,255,0.5), transparent);
+    animation: sh-scroll-drop 1.8s 1.5s ease-in-out infinite;
+}
+@keyframes sh-scroll-drop {
+    0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    51% { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+@keyframes sh-fadein {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Section shared ── */
+.sh-section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: #3AAEFF; margin-bottom: 20px; display: block;
+}
+.sh-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800; color: #fff; line-height: 1.1;
+    margin: 0 0 16px;
+}
+.sh-section-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: rgba(255,255,255,0.5);
+    line-height: 1.7; max-width: 520px; margin: 0;
+}
+.sh-reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sh-reveal.active { opacity: 1; transform: translateY(0); }
+
+/* ── Interactive Room ── */
+#sh-room {
+    background: #070C18;
+    padding: 100px 24px 120px;
+    overflow: hidden;
+}
+.sh-room-inner { max-width: 1100px; margin: 0 auto; }
+.sh-room-header { margin-bottom: 60px; }
+.sh-room-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+}
+.sh-room-plan-wrap {
+    position: relative; border-radius: 20px; overflow: hidden;
+    background: rgba(10,16,40,0.8);
+    border: 1px solid rgba(58,174,255,0.12);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5), inset 0 1px 0 rgba(58,174,255,0.08);
+    aspect-ratio: 4/3;
+}
+.sh-floor-plan { width: 100%; height: 100%; position: relative; }
+.sh-room-zone {
+    position: absolute;
+    border: 1px solid rgba(58,174,255,0.1);
+    border-radius: 2px;
+    background: rgba(58,174,255,0.02);
+    transition: background 0.4s, border-color 0.4s;
+}
+.sh-zone-label {
+    position: absolute;
+    font-family: 'Inter', sans-serif;
+    font-size: 7px; font-weight: 700;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.15);
+}
+.sh-furn {
+    position: absolute;
+    background: rgba(255,255,255,0.04);
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+.sh-hotspot {
+    position: absolute;
+    width: 28px; height: 28px;
+    transform: translate(-50%, -50%);
+    cursor: pointer; z-index: 10;
+}
+.sh-hs-dot {
+    position: absolute; inset: 6px;
+    border-radius: 50%;
+    background: rgba(58,174,255,0.7);
+    border: 2px solid rgba(58,174,255,0.9);
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 12px rgba(58,174,255,0.5);
+}
+.sh-hotspot:hover .sh-hs-dot { background: #3AAEFF; transform: scale(1.3); box-shadow: 0 0 20px rgba(58,174,255,0.8); }
+.sh-hotspot.active .sh-hs-dot { background: #C6A75E; border-color: #C6A75E; transform: scale(1.3); box-shadow: 0 0 20px rgba(198,167,94,0.7); }
+.sh-hs-ring {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 1.5px solid rgba(58,174,255,0.35);
+    animation: sh-hs-pulse 2.4s ease-in-out infinite;
+}
+.sh-hs-ring2 {
+    position: absolute; inset: -4px; border-radius: 50%;
+    border: 1px solid rgba(58,174,255,0.15);
+    animation: sh-hs-pulse 2.4s 0.6s ease-in-out infinite;
+}
+@keyframes sh-hs-pulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.8); opacity: 0; }
+}
+.sh-room-panel { min-height: 360px; display: flex; flex-direction: column; justify-content: center; }
+.sh-panel-default p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: rgba(255,255,255,0.25); line-height: 1.7; margin: 16px 0 0;
+}
+.sh-panel-hint-row {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 8px;
+}
+.sh-panel-hint-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid rgba(58,174,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+    animation: sh-orb-pulse 2.5s ease-in-out infinite;
+}
+.sh-panel-hint-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 19px; font-weight: 700;
+    color: rgba(255,255,255,0.45); line-height: 1.3; margin: 0;
+}
+.sh-panel-detail { display: none; flex-direction: column; gap: 20px; }
+.sh-panel-detail.active { display: flex; animation: sh-fadein 0.4s ease both; }
+.sh-panel-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+    background: rgba(58,174,255,0.1); border: 1px solid rgba(58,174,255,0.2);
+}
+.sh-panel-icon.gold { background: rgba(198,167,94,0.1); border-color: rgba(198,167,94,0.25); }
+.sh-panel-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px; font-weight: 800; color: #fff; margin: 0;
+}
+.sh-panel-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.75; margin: 0;
+}
+.sh-panel-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.sh-panel-tag {
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+    color: #3AAEFF; background: rgba(58,174,255,0.1);
+    border: 1px solid rgba(58,174,255,0.2); border-radius: 100px; padding: 4px 12px;
+}
+
+/* ── Timeline ── */
+#sh-timeline {
+    background: linear-gradient(180deg, #070C18 0%, #0a0f20 100%);
+    padding: 100px 0 120px; overflow: hidden;
+}
+.sh-timeline-header { max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
+.sh-timeline-track {
+    display: flex; overflow-x: auto;
+    padding: 0 calc(50vw - 550px) 20px;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    cursor: grab; gap: 16px;
+}
+.sh-timeline-track::-webkit-scrollbar { display: none; }
+.sh-tl-card {
+    flex: 0 0 280px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px; padding: 32px 28px;
+    transition: border-color 0.3s, background 0.3s, transform 0.3s;
+    position: relative; overflow: hidden;
+}
+.sh-tl-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, #3AAEFF, transparent);
+    opacity: 0; transition: opacity 0.3s;
+}
+.sh-tl-card:hover { border-color: rgba(58,174,255,0.25); background: rgba(58,174,255,0.04); transform: translateY(-4px); }
+.sh-tl-card:hover::before { opacity: 1; }
+.sh-tl-time {
+    font-family: 'Poppins', sans-serif; font-size: 36px; font-weight: 900;
+    color: rgba(255,255,255,0.1); line-height: 1; margin-bottom: 16px;
+    transition: color 0.3s;
+}
+.sh-tl-card:hover .sh-tl-time { color: rgba(58,174,255,0.4); }
+.sh-tl-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+.sh-tl-name { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.sh-tl-desc { font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.65; }
+.sh-timeline-dots { display: flex; justify-content: center; gap: 6px; margin-top: 32px; }
+.sh-tl-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); transition: background 0.3s, width 0.3s; cursor: pointer;
+}
+.sh-tl-dot.active { background: #3AAEFF; width: 20px; border-radius: 3px; }
+
+/* ── Questions ── */
+#sh-questions { background: #070C18; padding: 100px 24px; }
+.sh-q-wrap { max-width: 900px; margin: 0 auto; }
+.sh-q-item {
+    padding: 48px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 40px; align-items: center;
+}
+.sh-q-item:last-child { border-bottom: none; }
+.sh-q-question {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 800; color: rgba(255,255,255,0.8);
+    line-height: 1.15; margin: 0 0 16px;
+    transition: color 0.3s;
+}
+.sh-q-item:hover .sh-q-question { color: #fff; }
+.sh-q-answer {
+    font-family: 'Inter', sans-serif; font-size: 15px;
+    color: rgba(255,255,255,0.35); line-height: 1.75; margin: 0;
+    transition: color 0.3s;
+}
+.sh-q-item:hover .sh-q-answer { color: rgba(255,255,255,0.6); }
+.sh-q-badge {
+    flex-shrink: 0; font-family: 'Poppins', sans-serif;
+    font-size: 12px; font-weight: 700;
+    padding: 8px 18px; border-radius: 100px;
+    background: rgba(58,174,255,0.1); border: 1px solid rgba(58,174,255,0.2);
+    color: #3AAEFF; white-space: nowrap; transition: all 0.3s;
+}
+.sh-q-item:hover .sh-q-badge { background: #3AAEFF; color: #070C18; border-color: #3AAEFF; }
+.sh-q-badge.gold { background: rgba(198,167,94,0.1); border-color: rgba(198,167,94,0.25); color: #C6A75E; }
+.sh-q-item:hover .sh-q-badge.gold { background: #C6A75E; color: #070C18; border-color: #C6A75E; }
+
+/* ── Numbers ── */
+#sh-numbers { background: linear-gradient(180deg, #070C18 0%, #0d1529 100%); padding: 100px 24px 120px; }
+.sh-num-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+}
+.sh-num-card {
+    padding: 48px 32px; text-align: center;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s, border-color 0.3s;
+    position: relative; overflow: hidden;
+}
+.sh-num-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 100%, rgba(58,174,255,0.06), transparent 70%);
+    opacity: 0; transition: opacity 0.4s;
+}
+.sh-num-card:hover { background: rgba(58,174,255,0.04); border-color: rgba(58,174,255,0.15); }
+.sh-num-card:hover::after { opacity: 1; }
+.sh-num-value {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(3rem, 5.5vw, 5rem); font-weight: 900;
+    line-height: 1; color: #fff; display: block; margin-bottom: 12px;
+}
+.sh-num-suffix { font-size: 0.45em; color: #3AAEFF; vertical-align: super; }
+.sh-num-label {
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); display: block; line-height: 1.5;
+}
+
+/* ── CTA ── */
+#sh-cta { padding: 120px 24px; text-align: center; position: relative; overflow: hidden; background: #070C18; }
+.sh-cta-orb {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse, rgba(58,174,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+.sh-cta-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5vw, 4rem); font-weight: 900;
+    color: #fff; line-height: 1.1; margin: 0 0 20px;
+}
+.sh-cta-sub {
+    font-family: 'Inter', sans-serif; font-size: 16px;
+    color: rgba(255,255,255,0.4); margin: 0 auto 48px;
+    max-width: 420px; line-height: 1.7;
+}
+.sh-cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 700;
+    color: #070C18;
+    background: linear-gradient(90deg, #3AAEFF, #009DFF);
+    border: none; border-radius: 100px; padding: 18px 40px;
+    cursor: pointer; transition: transform 0.25s, box-shadow 0.25s;
+    box-shadow: 0 8px 40px rgba(58,174,255,0.35);
+}
+.sh-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 50px rgba(58,174,255,0.5); }
+.sh-cta-note {
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    color: rgba(255,255,255,0.22); margin-top: 20px; display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .sh-room-wrap { grid-template-columns: 1fr; gap: 32px; }
+    .sh-room-panel { min-height: auto; }
+    .sh-num-grid { grid-template-columns: repeat(2, 1fr); }
+    .sh-q-item { grid-template-columns: 1fr; gap: 16px; }
+    .sh-q-badge { align-self: flex-start; }
+}
+@media (max-width: 600px) {
+    .sh-tl-card { flex: 0 0 240px; }
+    .sh-timeline-track { padding: 0 24px 20px; }
+}
+</style>
+
+<!-- ══ HERO ══ -->
+<section id="sh-hero">
+    <div class="sh-hero-grid"></div>
+    <div class="sh-hero-orb"></div>
+    <span class="sh-hero-eyebrow">SFERA Smart Systems · Bolzano</span>
+    <h1 class="sh-hero-h1">La tua casa<br>ha già <em>tutto.</em></h1>
+    <p class="sh-hero-sub">Le manca solo un cervello.</p>
+    <div class="sh-hero-scroll">
+        <div class="sh-scroll-line"></div>
+        <span>Scopri come funziona</span>
     </div>
 </section>
 
-<!-- ── PACKAGE CARDS ── -->
-<section style="padding:0 0 110px;">
-    <div class="pkg-grid">
-
-        <!-- STARTER SMART -->
-        <div id="pkg-starter" class="pkg-card reveal" style="--pkg-color:rgba(100,200,120,0.6);--pkg-icon-bg:rgba(100,200,120,0.1);--pkg-icon-border:rgba(100,200,120,0.22);--pkg-icon-color:#4ade80;--pkg-icon-hover-bg:rgba(100,200,120,0.18);--shimmer-delay:0s;">
-            <div class="pkg-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-            </div>
-            <div class="pkg-name" data-i18n="pkg-starter-name">Starter Smart</div>
-            <div class="pkg-desc" data-i18n="pkg-starter-desc">Il primo passo nel mondo smart. Luci intelligenti, tapparelle e controllo da app.</div>
-            <div class="pkg-features">
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-luci">Luci Smart</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-tapp">Tapparelle automatiche</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-app">App mobile</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-voce">Comandi vocali</span></div>
-            </div>
-            <button class="pkg-cta ripple-btn" onclick="openPkg('starter')" data-i18n="pkg-cta-scopri">Scopri di più</button>
+<!-- ══ INTERACTIVE ROOM ══ -->
+<section id="sh-room">
+    <div class="sh-room-inner">
+        <div class="sh-room-header">
+            <span class="sh-section-label sh-reveal">Tocca e scopri</span>
+            <h2 class="sh-section-title sh-reveal" style="transition-delay:.1s">Ogni angolo della tua casa,<br>connesso e intelligente.</h2>
+            <p class="sh-section-sub sh-reveal" style="transition-delay:.2s">Seleziona un elemento nella pianta per scoprire cosa fa quando è smart.</p>
         </div>
-
-        <!-- COMFORT SMART — FEATURED -->
-        <div id="pkg-comfort" class="pkg-card featured reveal" style="--pkg-color:#3AAEFF;--pkg-icon-bg:rgba(58,174,255,0.15);--pkg-icon-border:rgba(58,174,255,0.32);--pkg-icon-color:#3AAEFF;--pkg-icon-hover-bg:rgba(58,174,255,0.26);--shimmer-delay:0.6s;" data-delay="1">
-            <div class="pkg-badge" data-i18n="pkg-badge">⭐ Più scelto</div>
-            <div class="pkg-icon" style="margin-top:18px;">
-                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
+        <div class="sh-room-wrap">
+            <div class="sh-room-plan-wrap sh-reveal" style="transition-delay:.1s">
+                <div class="sh-floor-plan" id="sh-floor-plan">
+                    <!-- Zones -->
+                    <div class="sh-room-zone" style="left:5%;top:5%;width:58%;height:55%;"><span class="sh-zone-label" style="bottom:8px;left:50%;transform:translateX(-50%)">Soggiorno</span></div>
+                    <div class="sh-room-zone" style="left:64%;top:5%;width:31%;height:35%;"><span class="sh-zone-label" style="bottom:8px;left:50%;transform:translateX(-50%)">Camera</span></div>
+                    <div class="sh-room-zone" style="left:64%;top:42%;width:31%;height:23%;"><span class="sh-zone-label" style="bottom:6px;left:50%;transform:translateX(-50%)">Bagno</span></div>
+                    <div class="sh-room-zone" style="left:5%;top:62%;width:58%;height:33%;"><span class="sh-zone-label" style="bottom:8px;left:50%;transform:translateX(-50%)">Cucina</span></div>
+                    <!-- Furniture -->
+                    <div class="sh-furn" style="left:8%;top:22%;width:25%;height:18%;border-radius:6px;"></div>
+                    <div class="sh-furn" style="left:9%;top:8%;width:28%;height:6%;border-radius:2px;background:rgba(58,174,255,0.08);"></div>
+                    <div class="sh-furn" style="left:66%;top:10%;width:26%;height:22%;border-radius:5px;"></div>
+                    <div class="sh-furn" style="left:9%;top:65%;width:36%;height:8%;border-radius:3px;"></div>
+                    <div class="sh-furn" style="left:9%;top:75%;width:12%;height:14%;border-radius:3px;"></div>
+                    <!-- Hotspots -->
+                    <div class="sh-hotspot" data-id="luci" style="left:25%;top:15%;"><div class="sh-hs-ring"></div><div class="sh-hs-ring2"></div><div class="sh-hs-dot"></div></div>
+                    <div class="sh-hotspot" data-id="clima" style="left:48%;top:38%;"><div class="sh-hs-ring"></div><div class="sh-hs-ring2"></div><div class="sh-hs-dot"></div></div>
+                    <div class="sh-hotspot" data-id="sicurezza" style="left:5%;top:60%;"><div class="sh-hs-ring"></div><div class="sh-hs-ring2"></div><div class="sh-hs-dot"></div></div>
+                    <div class="sh-hotspot" data-id="tapparelle" style="left:60%;top:8%;"><div class="sh-hs-ring"></div><div class="sh-hs-ring2"></div><div class="sh-hs-dot"></div></div>
+                    <div class="sh-hotspot" data-id="audio" style="left:78%;top:22%;"><div class="sh-hs-ring"></div><div class="sh-hs-ring2"></div><div class="sh-hs-dot"></div></div>
+                    <div class="sh-hotspot" data-id="energia" style="left:38%;top:78%;"><div class="sh-hs-ring"></div><div class="sh-hs-ring2"></div><div class="sh-hs-dot"></div></div>
+                </div>
             </div>
-            <div class="pkg-name" data-i18n="pkg-comfort-name">Comfort Smart</div>
-            <div class="pkg-desc" data-i18n="pkg-comfort-desc">Il perfetto equilibrio. Clima, scenari automatici e sicurezza base in un ecosistema.</div>
-            <div class="pkg-features">
-                <div class="pkg-feat inherited"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-all-starter">Tutto lo Starter</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#3AAEFF" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-clima">Clima e riscaldamento</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#3AAEFF" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-scenari">Scenari Cinema / Notte</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#3AAEFF" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-sic-base">Sicurezza base</span></div>
-            </div>
-            <button class="pkg-cta primary ripple-btn" onclick="openPkg('comfort')" data-i18n="pkg-cta-scopri">Scopri di più</button>
-        </div>
-
-        <!-- SECURITY SMART -->
-        <div id="pkg-security" class="pkg-card reveal" style="--pkg-color:rgba(248,113,113,0.6);--pkg-icon-bg:rgba(248,113,113,0.08);--pkg-icon-border:rgba(248,113,113,0.22);--pkg-icon-color:#F87171;--pkg-icon-hover-bg:rgba(248,113,113,0.16);--shimmer-delay:1.2s;" data-delay="2">
-            <div class="pkg-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            </div>
-            <div class="pkg-name" data-i18n="pkg-security-name">Security Smart</div>
-            <div class="pkg-desc" data-i18n="pkg-security-desc">La tua fortezza digitale. Telecamere AI, sensori e notifiche istantanee.</div>
-            <div class="pkg-features">
-                <div class="pkg-feat inherited"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-all-comfort">Tutto il Comfort</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#F87171" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-cam">Telecamere AI</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#F87171" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-sensori">Sensori porte / finestre</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#F87171" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-sos">Notifiche SOS</span></div>
-            </div>
-            <button class="pkg-cta ripple-btn" onclick="openPkg('security')" data-i18n="pkg-cta-scopri">Scopri di più</button>
-        </div>
-
-        <!-- ENERGY SMART -->
-        <div id="pkg-energy" class="pkg-card reveal" style="--pkg-color:rgba(251,146,60,0.55);--pkg-icon-bg:rgba(251,146,60,0.1);--pkg-icon-border:rgba(251,146,60,0.22);--pkg-icon-color:#fb923c;--pkg-icon-hover-bg:rgba(251,146,60,0.18);--shimmer-delay:1.8s;" data-delay="3">
-            <div class="pkg-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            </div>
-            <div class="pkg-name" data-i18n="pkg-energy-name">Energy Smart</div>
-            <div class="pkg-desc" data-i18n="pkg-energy-desc">Risparmia sulle bollette. Monitoraggio consumi, gestione carichi e ottimizzazione.</div>
-            <div class="pkg-features">
-                <div class="pkg-feat inherited"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-all-comfort">Tutto il Comfort</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#fb923c" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-monitor">Monitoraggio energia</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#fb923c" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-carichi">Gestione carichi</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#fb923c" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-sprechi">Notifiche sprechi</span></div>
-            </div>
-            <button class="pkg-cta ripple-btn" onclick="openPkg('energy')" data-i18n="pkg-cta-scopri">Scopri di più</button>
-        </div>
-
-        <!-- FULL SMART -->
-        <div id="pkg-full" class="pkg-card flagship reveal" style="--pkg-color:rgba(198,167,94,0.65);--pkg-icon-bg:rgba(198,167,94,0.12);--pkg-icon-border:rgba(198,167,94,0.28);--pkg-icon-color:#C6A75E;--pkg-icon-hover-bg:rgba(198,167,94,0.22);--shimmer-delay:2.4s;" data-delay="4">
-            <div class="pkg-badge">&#x1F451; Full</div>
-            <div class="pkg-icon" style="margin-top:18px;">
-                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
-            </div>
-            <div class="pkg-name" data-i18n="pkg-full-name">Full Smart</div>
-            <div class="pkg-desc" data-i18n="pkg-full-desc">L'esperienza definitiva. Tutto integrato, interfaccia 3D e assistenza priority H24.</div>
-            <div class="pkg-features">
-                <div class="pkg-feat inherited"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-all-sec-en">Tutto Security + Energy</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#C6A75E" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-3d">Interfaccia 3D</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#C6A75E" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-audio">Audio multiroom</span></div>
-                <div class="pkg-feat"><svg width="13" height="13" fill="none" stroke="#C6A75E" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat-h24">Assistenza prioritaria H24</span></div>
-            </div>
-            <button class="pkg-cta gold ripple-btn" onclick="openPkg('full')" data-i18n="pkg-cta-scopri">Scopri di più</button>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ── COMPATIBILITY MARQUEE ── -->
-<div style="padding:0;">
-<div style="background:#070C18;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.05);overflow:hidden;position:relative;">
-            <div style="position:absolute;top:0;left:0;bottom:0;width:80px;background:linear-gradient(to right,#070C18,transparent);z-index:2;pointer-events:none;"></div>
-            <div style="position:absolute;top:0;right:0;bottom:0;width:80px;background:linear-gradient(to left,#070C18,transparent);z-index:2;pointer-events:none;"></div>
-            <div class="marquee-track">
-                <span class="marquee-item mi-text-only" data-brand="knx"><span class="mi-label">KNX</span></span>
-                <span class="marquee-item" data-brand="shelly"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 0C5.373 0 0 5.373 0 12a12 12 0 0 0 .033.88c1.07-.443 2.495-.679 4.322-.679h5.762c-.167.61-.548 1.087-1.142 1.436-.532.308-1.14.463-1.823.463h-.927c-.89 0-1.663.154-2.32.463-.859.403-1.286 1-1.286 1.789 0 .893.59 1.594 1.774 2.1a7.423 7.423 0 0 0 2.927.581c1.318 0 2.416-.29 3.297-.867 1.024-.664 1.535-1.616 1.535-2.857 0-.854-.325-2.08-.976-3.676-.65-1.597-.975-2.837-.975-3.723 0-2.79 2.305-4.233 6.916-4.324.641-.01 1.337-.005 1.916-.004.593 0 1.144.05 1.66.147A12 12 0 0 0 12 0zm4.758 5.691c-1.206 0-1.809.502-1.809 1.506 0 .514.356 1.665 1.067 3.451.71 1.787 1.064 3.186 1.064 4.198 0 2.166-1.202 3.791-3.607 4.875-1.794.797-3.892 1.197-6.297 1.197-1.268 0-2.442-.114-3.543-.316A12 12 0 0 0 12 24c6.627 0 12-5.373 12-12a12 12 0 0 0-.781-4.256 3.404 3.404 0 0 1-.832.77h-4.371l1.425-2.828a299.94 299.94 0 0 0-2.683.005Z"/></svg></span><span class="mi-label">Shelly</span></span>
-                <span class="marquee-item mi-text-only" data-brand="sonoff"><span class="mi-label">Sonoff</span></span>
-                <span class="marquee-item mi-text-only" data-brand="aqara"><span class="mi-label">Aqara</span></span>
-                <span class="marquee-item" data-brand="mi-home"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 0C8.016 0 4.756.255 2.493 2.516.23 4.776 0 8.033 0 12.012c0 3.98.23 7.235 2.494 9.497C4.757 23.77 8.017 24 12 24c3.983 0 7.243-.23 9.506-2.491C23.77 19.247 24 15.99 24 12.012c0-3.984-.233-7.243-2.502-9.504C19.234.252 15.978 0 12 0zM4.906 7.405h5.624c1.47 0 3.007.068 3.764.827.746.746.827 2.233.83 3.676v4.54a.15.15 0 0 1-.152.147h-1.947a.15.15 0 0 1-.152-.148V11.83c-.002-.806-.048-1.634-.464-2.051-.358-.36-1.026-.441-1.72-.458H7.158a.15.15 0 0 0-.151.147v6.98a.15.15 0 0 1-.152.148H4.906a.15.15 0 0 1-.15-.148V7.554a.15.15 0 0 1 .15-.149zm12.131 0h1.949a.15.15 0 0 1 .15.15v8.892a.15.15 0 0 1-.15.148h-1.949a.15.15 0 0 1-.151-.148V7.554a.15.15 0 0 1 .151-.149zM8.92 10.948h2.046c.083 0 .15.066.15.147v5.352a.15.15 0 0 1-.15.148H8.92a.15.15 0 0 1-.152-.148v-5.352a.15.15 0 0 1 .152-.147Z"/></svg></span><span class="mi-label">Mi Home</span></span>
-                <span class="marquee-item" data-brand="ha"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22.939 10.627 13.061.749a1.505 1.505 0 0 0-2.121 0l-9.879 9.878C.478 11.21 0 12.363 0 13.187v9c0 .826.675 1.5 1.5 1.5h9.227l-4.063-4.062a2.034 2.034 0 0 1-.664.113c-1.13 0-2.05-.92-2.05-2.05s.92-2.05 2.05-2.05 2.05.92 2.05 2.05c0 .233-.041.456-.113.665l3.163 3.163V9.928a2.05 2.05 0 0 1-1.15-1.84c0-1.13.92-2.05 2.05-2.05s2.05.92 2.05 2.05a2.05 2.05 0 0 1-1.15 1.84v8.127l3.146-3.146A2.051 2.051 0 0 1 18 12.239c1.13 0 2.05.92 2.05 2.05s-.92 2.05-2.05 2.05c-.25 0-.488-.047-.709-.13L12.9 20.602v3.088h9.6c.825 0 1.5-.675 1.5-1.5v-9c0-.825-.477-1.977-1.061-2.561z"/></svg></span><span class="mi-label">Home Assistant</span></span>
-                <span class="marquee-item" data-brand="openai"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg></span><span class="mi-label">OpenAI</span></span>
-                <span class="marquee-item" data-brand="alexa"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 0C5.37 0 0 5.37 0 12C0 18.09 4.53 23.11 10.4 23.9V21.5A1.59 1.59 0 0 0 9.32 19.97A8.41 8.41 0 0 1 3.6 11.8A8.37 8.37 0 0 1 12.09 3.6A8.4 8.4 0 0 1 20.4 12.31L20.39 12.38A8.68 8.68 0 0 1 20.36 12.76C20.36 12.83 20.35 12.9 20.34 12.96C20.34 13.04 20.33 13.12 20.32 13.19L20.3 13.29C19.27 20.07 10.45 23.87 10.4 23.9C10.92 23.97 11.46 24 12 24C18.63 24 24 18.63 24 12S18.63 0 12 0Z"/></svg></span><span class="mi-label">Alexa</span></span>
-                <span class="marquee-item" data-brand="google"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></span><span class="mi-label">Google Home</span></span>
-                <span class="marquee-item mi-text-only" data-brand="bticino"><span class="mi-label">BTicino</span></span>
-                <span class="marquee-item mi-text-only" data-brand="loxone"><span class="mi-label">Loxone</span></span>
-                <span class="marquee-item" data-brand="homekit"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></span><span class="mi-label">HomeKit</span></span>
-                <span class="marquee-item mi-text-only" data-brand="matter"><span class="mi-label">Matter</span></span>
-                <span class="marquee-item" data-brand="zigbee"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M11.988 0a11.85 11.85 0 00-8.617 3.696c7.02-.875 11.401-.583 13.289-.34 3.752.583 3.558 3.404 3.558 3.404L8.237 19.112c2.299.22 6.897.366 13.796-.631a11.86 11.86 0 001.912-6.469C23.945 5.374 18.595 0 11.988 0zm.232 4.31c-2.451-.014-5.772.146-9.963.723C.854 7.003.055 9.41.055 12.012.055 18.626 5.38 24 11.988 24c3.63 0 6.85-1.63 9.053-4.182-7.286.948-11.813.631-13.75.388-3.775-.56-3.557-3.404-3.557-3.404L15.691 4.474a38.635 38.635 0 00-3.471-.163Z"/></svg></span><span class="mi-label">Zigbee</span></span>
-                <span class="marquee-item mi-text-only" data-brand="somfy"><span class="mi-label">Somfy</span></span>
-                <span class="marquee-item" data-brand="homepod"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.28.05-2.26-1.32-3.1-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></span><span class="mi-label">HomePod</span></span>
-                <span class="marquee-item mi-text-only" data-brand="smartthings"><span class="mi-label">SmartThings</span></span>
-                <span class="marquee-item mi-text-only" data-brand="homey"><span class="mi-label">Homey</span></span>
-                <span class="marquee-item mi-text-only" data-brand="mqtt"><span class="mi-label">MQTT</span></span>
-                <span class="marquee-item mi-text-only" data-brand="ps"><span class="mi-label">PS</span></span>
-                <span class="marquee-item mi-text-only" data-brand="knx"><span class="mi-label">KNX</span></span>
-                <span class="marquee-item" data-brand="shelly"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 0C5.373 0 0 5.373 0 12a12 12 0 0 0 .033.88c1.07-.443 2.495-.679 4.322-.679h5.762c-.167.61-.548 1.087-1.142 1.436-.532.308-1.14.463-1.823.463h-.927c-.89 0-1.663.154-2.32.463-.859.403-1.286 1-1.286 1.789 0 .893.59 1.594 1.774 2.1a7.423 7.423 0 0 0 2.927.581c1.318 0 2.416-.29 3.297-.867 1.024-.664 1.535-1.616 1.535-2.857 0-.854-.325-2.08-.976-3.676-.65-1.597-.975-2.837-.975-3.723 0-2.79 2.305-4.233 6.916-4.324.641-.01 1.337-.005 1.916-.004.593 0 1.144.05 1.66.147A12 12 0 0 0 12 0zm4.758 5.691c-1.206 0-1.809.502-1.809 1.506 0 .514.356 1.665 1.067 3.451.71 1.787 1.064 3.186 1.064 4.198 0 2.166-1.202 3.791-3.607 4.875-1.794.797-3.892 1.197-6.297 1.197-1.268 0-2.442-.114-3.543-.316A12 12 0 0 0 12 24c6.627 0 12-5.373 12-12a12 12 0 0 0-.781-4.256 3.404 3.404 0 0 1-.832.77h-4.371l1.425-2.828a299.94 299.94 0 0 0-2.683.005Z"/></svg></span><span class="mi-label">Shelly</span></span>
-                <span class="marquee-item mi-text-only" data-brand="sonoff"><span class="mi-label">Sonoff</span></span>
-                <span class="marquee-item mi-text-only" data-brand="aqara"><span class="mi-label">Aqara</span></span>
-                <span class="marquee-item" data-brand="mi-home"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 0C8.016 0 4.756.255 2.493 2.516.23 4.776 0 8.033 0 12.012c0 3.98.23 7.235 2.494 9.497C4.757 23.77 8.017 24 12 24c3.983 0 7.243-.23 9.506-2.491C23.77 19.247 24 15.99 24 12.012c0-3.984-.233-7.243-2.502-9.504C19.234.252 15.978 0 12 0zM4.906 7.405h5.624c1.47 0 3.007.068 3.764.827.746.746.827 2.233.83 3.676v4.54a.15.15 0 0 1-.152.147h-1.947a.15.15 0 0 1-.152-.148V11.83c-.002-.806-.048-1.634-.464-2.051-.358-.36-1.026-.441-1.72-.458H7.158a.15.15 0 0 0-.151.147v6.98a.15.15 0 0 1-.152.148H4.906a.15.15 0 0 1-.15-.148V7.554a.15.15 0 0 1 .15-.149zm12.131 0h1.949a.15.15 0 0 1 .15.15v8.892a.15.15 0 0 1-.15.148h-1.949a.15.15 0 0 1-.151-.148V7.554a.15.15 0 0 1 .151-.149zM8.92 10.948h2.046c.083 0 .15.066.15.147v5.352a.15.15 0 0 1-.15.148H8.92a.15.15 0 0 1-.152-.148v-5.352a.15.15 0 0 1 .152-.147Z"/></svg></span><span class="mi-label">Mi Home</span></span>
-                <span class="marquee-item" data-brand="ha"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22.939 10.627 13.061.749a1.505 1.505 0 0 0-2.121 0l-9.879 9.878C.478 11.21 0 12.363 0 13.187v9c0 .826.675 1.5 1.5 1.5h9.227l-4.063-4.062a2.034 2.034 0 0 1-.664.113c-1.13 0-2.05-.92-2.05-2.05s.92-2.05 2.05-2.05 2.05.92 2.05 2.05c0 .233-.041.456-.113.665l3.163 3.163V9.928a2.05 2.05 0 0 1-1.15-1.84c0-1.13.92-2.05 2.05-2.05s2.05.92 2.05 2.05a2.05 2.05 0 0 1-1.15 1.84v8.127l3.146-3.146A2.051 2.051 0 0 1 18 12.239c1.13 0 2.05.92 2.05 2.05s-.92 2.05-2.05 2.05c-.25 0-.488-.047-.709-.13L12.9 20.602v3.088h9.6c.825 0 1.5-.675 1.5-1.5v-9c0-.825-.477-1.977-1.061-2.561z"/></svg></span><span class="mi-label">Home Assistant</span></span>
-                <span class="marquee-item" data-brand="openai"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg></span><span class="mi-label">OpenAI</span></span>
-                <span class="marquee-item" data-brand="alexa"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 0C5.37 0 0 5.37 0 12C0 18.09 4.53 23.11 10.4 23.9V21.5A1.59 1.59 0 0 0 9.32 19.97A8.41 8.41 0 0 1 3.6 11.8A8.37 8.37 0 0 1 12.09 3.6A8.4 8.4 0 0 1 20.4 12.31L20.39 12.38A8.68 8.68 0 0 1 20.36 12.76C20.36 12.83 20.35 12.9 20.34 12.96C20.34 13.04 20.33 13.12 20.32 13.19L20.3 13.29C19.27 20.07 10.45 23.87 10.4 23.9C10.92 23.97 11.46 24 12 24C18.63 24 24 18.63 24 12S18.63 0 12 0Z"/></svg></span><span class="mi-label">Alexa</span></span>
-                <span class="marquee-item" data-brand="google"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></span><span class="mi-label">Google Home</span></span>
-                <span class="marquee-item mi-text-only" data-brand="bticino"><span class="mi-label">BTicino</span></span>
-                <span class="marquee-item mi-text-only" data-brand="loxone"><span class="mi-label">Loxone</span></span>
-                <span class="marquee-item" data-brand="homekit"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></span><span class="mi-label">HomeKit</span></span>
-                <span class="marquee-item mi-text-only" data-brand="matter"><span class="mi-label">Matter</span></span>
-                <span class="marquee-item" data-brand="zigbee"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M11.988 0a11.85 11.85 0 00-8.617 3.696c7.02-.875 11.401-.583 13.289-.34 3.752.583 3.558 3.404 3.558 3.404L8.237 19.112c2.299.22 6.897.366 13.796-.631a11.86 11.86 0 001.912-6.469C23.945 5.374 18.595 0 11.988 0zm.232 4.31c-2.451-.014-5.772.146-9.963.723C.854 7.003.055 9.41.055 12.012.055 18.626 5.38 24 11.988 24c3.63 0 6.85-1.63 9.053-4.182-7.286.948-11.813.631-13.75.388-3.775-.56-3.557-3.404-3.557-3.404L15.691 4.474a38.635 38.635 0 00-3.471-.163Z"/></svg></span><span class="mi-label">Zigbee</span></span>
-                <span class="marquee-item mi-text-only" data-brand="somfy"><span class="mi-label">Somfy</span></span>
-                <span class="marquee-item" data-brand="homepod"><span class="mi-logo"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.28.05-2.26-1.32-3.1-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></span><span class="mi-label">HomePod</span></span>
-                <span class="marquee-item mi-text-only" data-brand="smartthings"><span class="mi-label">SmartThings</span></span>
-                <span class="marquee-item mi-text-only" data-brand="homey"><span class="mi-label">Homey</span></span>
-                <span class="marquee-item mi-text-only" data-brand="mqtt"><span class="mi-label">MQTT</span></span>
-                <span class="marquee-item mi-text-only" data-brand="ps"><span class="mi-label">PS</span></span>
-            </div>
-        </div>
-    </div>
-
-
-
-
-<!-- ── FEATURE COMPARISON TABLE ── -->
-<section class="cmp-section" id="confronto">
-    <div class="cmp-wrap">
-
-        <div class="reveal" style="text-align:center;margin-bottom:32px;">
-            <span class="eyebrow" style="font-size:11px;letter-spacing:.18em;" data-i18n="cmp-eyebrow">Confronto pacchetti</span>
-            <p style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.28);max-width:360px;margin:0 auto;line-height:1.6;letter-spacing:.01em;" data-i18n="cmp-sub">
-                Un confronto chiaro per scegliere il sistema giusto.
-            </p>
-        </div>
-
-        <div class="cmp-scroll reveal">
-        <div class="cmp-table-outer">
-        <table class="cmp-table">
-            <thead>
-                <tr>
-                    <th style="min-width:200px;" data-i18n="cmp-col-feat">Funzione</th>
-                    <th style="min-width:120px;">
-                        <span class="cmp-col-name">Starter</span>
-                    </th>
-                    <th style="min-width:130px;">
-                        <span class="cmp-col-name">Comfort</span>
-                    </th>
-                    <th style="min-width:120px;">
-                        <span class="cmp-col-name">Security</span>
-                    </th>
-                    <th style="min-width:120px;">
-                        <span class="cmp-col-name">Energy</span>
-                    </th>
-                    <th style="min-width:120px;">
-                        <span class="cmp-col-name">Full 👑</span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="cat-row"><td colspan="6" style="padding:12px 20px 7px;font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.65);background:rgba(255,255,255,0.07);border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.05);">💡 <span data-i18n="cat-controllo">Luci</span></td></tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">💡</span><span data-i18n="feat-luci">Luci Smart</span></div></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td class="featured-col"><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🪟</span><span data-i18n="feat-tapp">Tapparelle automatiche</span></div></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td class="featured-col"><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">📱</span><span data-i18n="feat-app">App mobile</span></div></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td class="featured-col"><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🎙️</span><span data-i18n="feat-voce">Comandi vocali</span></div></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td class="featured-col"><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-
-                <tr class="cat-row"><td colspan="6" style="padding:12px 20px 7px;font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.65);background:rgba(255,255,255,0.07);border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.05);">🌡️ <span data-i18n="cat-clima">Clima &amp; Comfort</span></td></tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🌡️</span><span data-i18n="feat-clima">Clima e riscaldamento</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🎬</span><span data-i18n="feat-scenari">Scenari automatici</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🎞️</span><span data-i18n="feat-cinema">Cinema / Notte</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🤖</span><span data-i18n="feat-vorwerk">Pulizia Vorwerk</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-yes"></span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-
-                <tr class="cat-row"><td colspan="6" style="padding:12px 20px 7px;font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.65);background:rgba(255,255,255,0.07);border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.05);">🔒 <span data-i18n="cat-sicurezza">Sicurezza</span></td></tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🔒</span><span data-i18n="feat-sic-base">Sicurezza base</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">📹</span><span data-i18n="feat-cam">Telecamere AI</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🚪</span><span data-i18n="feat-sensori">Sensori porte / finestre</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">💧</span><span data-i18n="feat-acqua-fuoco">Sicurezza acqua e fuoco</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-
-                <tr class="cat-row"><td colspan="6" style="padding:12px 20px 7px;font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.65);background:rgba(255,255,255,0.07);border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.05);">⚡ <span data-i18n="cat-energia">Energia</span></td></tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">⚡</span><span data-i18n="feat-monitor">Monitoraggio consumi</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-no">—</span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">📊</span><span data-i18n="feat-carichi">Gestione carichi</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-no">—</span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-
-                <tr class="cat-row"><td colspan="6" style="padding:12px 20px 7px;font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.65);background:rgba(255,255,255,0.07);border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.05);">🏠 <span data-i18n="cat-avanzato">Avanzato</span></td></tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🔗</span><span data-i18n="feat-terze">Interfacce terze parti</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-no">—</span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🎵</span><span data-i18n="feat-audio">Audio multiroom</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-no">—</span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-                <tr class="feat-row">
-                    <td><div class="feat-icon-label"><span class="feat-emoji">🛟</span><span data-i18n="feat-h24">Assistenza prioritaria H24</span></div></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td class="featured-col"><span class="chk-no">—</span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-no">—</span></td>
-                    <td><span class="chk-yes"></span></td>
-                </tr>
-
-                <!-- CTA row -->
-                <tr>
-                    <td style="padding:20px 20px;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.22);letter-spacing:.06em;">
-                        <span data-i18n="cmp-legend">✓ incluso &nbsp;&nbsp; — non incluso</span>
-                    </td>
-                    <td style="padding:16px 10px;"><a href="index.html" style="display:block;text-align:center;font-family:'Inter',sans-serif;font-size:11px;font-weight:400;color:rgba(255,255,255,0.35);text-decoration:none;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);transition:all 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.8)';this.style.borderColor='rgba(255,255,255,0.22)'" onmouseout="this.style.color='rgba(255,255,255,0.35)';this.style.borderColor='rgba(255,255,255,0.08)'" data-i18n="cmp-scegli">Scegli</a></td>
-                    <td class="featured-col" style="padding:16px 10px;"><a href="index.html" style="display:block;text-align:center;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#fff;text-decoration:none;padding:8px;border-radius:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.15)';this.style.borderColor='rgba(255,255,255,0.35)'" onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.2)'" data-i18n="cmp-scegli-top">⭐ Scegli</a></td>
-                    <td style="padding:16px 10px;"><a href="index.html" style="display:block;text-align:center;font-family:'Inter',sans-serif;font-size:11px;font-weight:400;color:rgba(255,255,255,0.35);text-decoration:none;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);transition:all 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.8)';this.style.borderColor='rgba(255,255,255,0.22)'" onmouseout="this.style.color='rgba(255,255,255,0.35)';this.style.borderColor='rgba(255,255,255,0.08)'" data-i18n="cmp-scegli">Scegli</a></td>
-                    <td style="padding:16px 10px;"><a href="index.html" style="display:block;text-align:center;font-family:'Inter',sans-serif;font-size:11px;font-weight:400;color:rgba(255,255,255,0.35);text-decoration:none;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);transition:all 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.8)';this.style.borderColor='rgba(255,255,255,0.22)'" onmouseout="this.style.color='rgba(255,255,255,0.35)';this.style.borderColor='rgba(255,255,255,0.08)'" data-i18n="cmp-scegli">Scegli</a></td>
-                    <td style="padding:16px 10px;"><a href="index.html" style="display:block;text-align:center;font-family:'Inter',sans-serif;font-size:11px;font-weight:400;color:rgba(198,167,94,0.8);text-decoration:none;padding:8px;border-radius:8px;border:1px solid rgba(198,167,94,0.18);background:transparent;transition:all 0.2s;" onmouseover="this.style.color='#C6A75E';this.style.borderColor='rgba(198,167,94,0.35)'" onmouseout="this.style.color='rgba(198,167,94,0.8)';this.style.borderColor='rgba(198,167,94,0.18)'" data-i18n="cmp-scegli-full">Premium →</a></td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-        </div>
-        <!-- Percorso -->
-        <div class="cmp-percorso reveal">
-            <span class="percorso-label" data-i18n="cmp-percorso">Percorso consigliato</span>
-            <div class="percorso-steps">
-                <span class="percorso-step">Starter</span>
-                <span class="percorso-arrow">→</span>
-                <span class="percorso-step">Comfort</span>
-                <span class="percorso-arrow">→</span>
-                <span class="percorso-step">Security</span>
-                <span class="percorso-arrow">→</span>
-                <span class="percorso-step">Energy</span>
-                <span class="percorso-arrow">→</span>
-                <span class="percorso-step percorso-full">Full Smart</span>
+            <!-- Panel -->
+            <div class="sh-room-panel sh-reveal" style="transition-delay:.25s">
+                <div id="sh-panel-default">
+                    <div class="sh-panel-hint-row">
+                        <div class="sh-panel-hint-icon">👆</div>
+                        <p class="sh-panel-hint-text">Tocca un punto<br>sulla pianta</p>
+                    </div>
+                    <p>Ogni pallino è un sistema che puoi controllare. Scopri cosa cambia quando la tua casa diventa smart.</p>
+                </div>
+                <div class="sh-panel-detail" id="sh-panel-detail">
+                    <div class="sh-panel-icon" id="sh-panel-icon-el">💡</div>
+                    <div>
+                        <p class="sh-panel-name" id="sh-panel-name"></p>
+                        <p class="sh-panel-desc" id="sh-panel-desc"></p>
+                    </div>
+                    <div class="sh-panel-tags" id="sh-panel-tags"></div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ── TROVA SISTEMA CTA ── -->
-<div style="text-align:center;padding:0 24px 48px;">
-    <button onclick="openQuiz()" class="ripple-btn" style="font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;background:linear-gradient(135deg,#2EA7FF,#1C7DFF);color:#fff;border:none;border-radius:10px;padding:14px 32px;box-shadow:0 6px 20px rgba(0,157,255,0.3);transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;position:relative;overflow:hidden;" onmouseover="this.style.transform='scale(1.04)';this.style.boxShadow='0 10px 32px rgba(0,157,255,0.5)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 6px 20px rgba(0,157,255,0.3)'" data-i18n="trova-btn">
-        Trova il sistema giusto per te →
-    </button>
-</div>
-
-<!-- ── CTA FINALE ── -->
-<section style="padding:0 24px 110px;">
-    <div class="cta-strip reveal">
-        <span class="eyebrow" data-i18n="cta-eyebrow">Inizia oggi</span>
-        <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:14px;position:relative;" data-i18n="cta-h2">
-            Non sai quale scegliere?
-        </h2>
-        <p style="font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.45);line-height:1.75;margin-bottom:32px;max-width:400px;margin-left:auto;margin-right:auto;position:relative;" data-i18n="cta-sub">
-            In 15 minuti di chiamata ti aiutiamo a capire qual è il sistema perfetto per la tua casa — senza impegno.
-        </p>
-        <button onclick="openContatti()" class="ripple-btn" style="display:inline-block;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;background:linear-gradient(135deg,#2EA7FF,#1C7DFF);color:#fff;text-decoration:none;border:none;border-radius:10px;padding:14px 32px;box-shadow:0 6px 20px rgba(0,157,255,0.3);transition:transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;cursor:pointer;" onmouseover="this.style.transform='scale(1.04)';this.style.boxShadow='0 10px 32px rgba(0,157,255,0.5)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 6px 20px rgba(0,157,255,0.3)'" data-i18n="cta-btn">
-            Sopralluogo gratuito →
-        </button>
+<!-- ══ TIMELINE 24H ══ -->
+<section id="sh-timeline">
+    <div class="sh-timeline-header">
+        <span class="sh-section-label sh-reveal">Una giornata con la Smart Home</span>
+        <h2 class="sh-section-title sh-reveal" style="transition-delay:.1s">24 ore che si<br>gestiscono da sole.</h2>
+    </div>
+    <div class="sh-timeline-track" id="sh-tl-track">
+        <div class="sh-tl-card sh-reveal"><div class="sh-tl-time">07:00</div><span class="sh-tl-icon">🌅</span><div class="sh-tl-name">Risveglio perfetto</div><div class="sh-tl-desc">Le tapparelle si aprono lentamente. Le luci salgono al 30%. La temperatura è già quella giusta.</div></div>
+        <div class="sh-tl-card sh-reveal" style="transition-delay:.08s"><div class="sh-tl-time">08:30</div><span class="sh-tl-icon">🚪</span><div class="sh-tl-name">Esco — pensa lei</div><div class="sh-tl-desc">Un tocco: luci spente, riscaldamento in eco, tapparelle abbassate, allarme inserito.</div></div>
+        <div class="sh-tl-card sh-reveal" style="transition-delay:.16s"><div class="sh-tl-time">14:00</div><span class="sh-tl-icon">📱</span><div class="sh-tl-name">Controllo da remoto</div><div class="sh-tl-desc">Dal telefono vedi tutto. Accendi il riscaldamento prima di tornare. Guardi la telecamera. Zero preoccupazioni.</div></div>
+        <div class="sh-tl-card sh-reveal" style="transition-delay:.24s"><div class="sh-tl-time">19:00</div><span class="sh-tl-icon">🏠</span><div class="sh-tl-name">Bentornato a casa</div><div class="sh-tl-desc">Il sensore ti riconosce. Luci d'accoglienza, musica preferita, temperatura perfetta. La casa sapeva che stavi arrivando.</div></div>
+        <div class="sh-tl-card sh-reveal" style="transition-delay:.32s"><div class="sh-tl-time">23:00</div><span class="sh-tl-icon">🌙</span><div class="sh-tl-name">Buonanotte</div><div class="sh-tl-desc">Scenario notte: luci off, porte verificate, allarme perimetrale, termostato notturno. Tutto in un comando.</div></div>
+    </div>
+    <div class="sh-timeline-dots" id="sh-tl-dots">
+        <div class="sh-tl-dot active"></div><div class="sh-tl-dot"></div><div class="sh-tl-dot"></div><div class="sh-tl-dot"></div><div class="sh-tl-dot"></div>
     </div>
 </section>
+
+<!-- ══ TRE DOMANDE ══ -->
+<section id="sh-questions">
+    <div class="sh-q-wrap">
+        <span class="sh-section-label sh-reveal">Le domande vere</span>
+        <div class="sh-q-item sh-reveal" style="transition-delay:.1s">
+            <div>
+                <p class="sh-q-question">Devo fare lavori in casa?</p>
+                <p class="sh-q-answer">Nel 70% dei casi no. Lavoriamo in wireless e con soluzioni minimamente invasive. Niente demolizioni, niente polvere. Il sistema si adatta alla tua casa — non il contrario.</p>
+            </div>
+            <div class="sh-q-badge">Quasi mai</div>
+        </div>
+        <div class="sh-q-item sh-reveal" style="transition-delay:.2s">
+            <div>
+                <p class="sh-q-question">È complicato da usare?</p>
+                <p class="sh-q-answer">Se sai usare uno smartphone, sai già usare la tua Smart Home. Un'app, comandi vocali o automatismi che funzionano da soli. Parla, tocca, dimentica.</p>
+            </div>
+            <div class="sh-q-badge">Per niente</div>
+        </div>
+        <div class="sh-q-item sh-reveal" style="transition-delay:.3s">
+            <div>
+                <p class="sh-q-question">Quanto costa davvero?</p>
+                <p class="sh-q-answer">Si parte da soluzioni entry-level accessibili. In media, il risparmio energetico copre parte dell'investimento nei primi anni. Il sopralluogo è gratuito — scopri il prezzo esatto per la tua casa.</p>
+            </div>
+            <div class="sh-q-badge gold">Scopri i prezzi</div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ NUMERI ══ -->
+<section id="sh-numbers">
+    <div style="max-width:1100px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:64px;">
+            <span class="sh-section-label sh-reveal">La Smart Home in numeri</span>
+            <h2 class="sh-section-title sh-reveal" style="transition-delay:.1s">Risultati reali,<br>non promesse.</h2>
+        </div>
+        <div class="sh-num-grid">
+            <div class="sh-num-card sh-reveal"><span class="sh-num-value"><span class="sh-counter" data-target="30">0</span><span class="sh-num-suffix">%</span></span><span class="sh-num-label">Risparmio medio<br>sui consumi energetici</span></div>
+            <div class="sh-num-card sh-reveal" style="transition-delay:.1s"><span class="sh-num-value"><span class="sh-counter" data-target="1">0</span></span><span class="sh-num-label">Sola app per controllare<br>tutta la casa</span></div>
+            <div class="sh-num-card sh-reveal" style="transition-delay:.2s"><span class="sh-num-value"><span class="sh-counter" data-target="47">0</span></span><span class="sh-num-label">Famiglie a Bolzano<br>già con SFERA</span></div>
+            <div class="sh-num-card sh-reveal" style="transition-delay:.3s"><span class="sh-num-value"><span class="sh-counter" data-target="24">0</span><span class="sh-num-suffix">h</span></span><span class="sh-num-label">Assistenza e supporto<br>sempre disponibile</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section id="sh-cta">
+    <div class="sh-cta-orb"></div>
+    <div style="position:relative;z-index:1;">
+        <span class="sh-section-label sh-reveal" style="display:block;margin-bottom:24px;">Prossimo passo</span>
+        <h2 class="sh-cta-title sh-reveal" style="transition-delay:.1s">Pronta a diventare<br>intelligente.</h2>
+        <p class="sh-cta-sub sh-reveal" style="transition-delay:.2s">Sopralluogo gratuito a casa tua.<br>Nessun impegno, solo idee chiare.</p>
+        <div class="sh-reveal" style="transition-delay:.3s">
+            <button class="sh-cta-btn" onclick="openContatti()">
+                Prenota il sopralluogo gratuito
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4-4 4M3 12h18"/></svg>
+            </button>
+        </div>
+        <span class="sh-cta-note sh-reveal" style="transition-delay:.4s">Risposta entro 24 ore · Consulenza senza impegno</span>
+    </div>
+</section>
+
+<script>
+(function(){
+    /* Hotspot data */
+    var D = {
+        luci:      { icon:'💡', gold:false, name:'Illuminazione intelligente',   desc:'Si adatta a te: si accende quando entri, cambia intensità con la luce naturale e si spegne da sola. Scenari personalizzati per ogni momento della giornata.', tags:['Presenza rilevata','Luce naturale','Scenari','Dimmer automatico'] },
+        clima:     { icon:'🌡️', gold:false, name:'Clima automatico',              desc:'Impara le tue abitudini. Sa quando sei in casa, quando esci, quando torni. La temperatura giusta ti aspetta sempre — senza che tu debba pensarci.', tags:['Geofencing','Apprendimento AI','Risparmio 30%','Multizona'] },
+        sicurezza: { icon:'🔒', gold:true,  name:'Sicurezza attiva',              desc:'Telecamere AI, sensori apertura porte e finestre, rilevamento movimento. Notifica istantanea sul telefono. Tutto monitorato anche quando sei lontano.', tags:['Telecamere AI','Notifiche real-time','Accesso remoto','H24'] },
+        tapparelle:{ icon:'🪟', gold:false, name:'Tapparelle automatiche',        desc:'Si abbassano sole quando il sole è troppo forte. Si aprono al risveglio. Si chiudono quando esci. Integrate con meteo e orari — la casa respira da sola.', tags:['Meteo integrato','Orari programmati','Risparmio termico','Privacy'] },
+        audio:     { icon:'🎵', gold:true,  name:'Audio multiroom',               desc:'Musica in ogni stanza, sincronizzata o indipendente. Si abbassa automaticamente quando squilla il telefono. La colonna sonora della tua casa.', tags:['Multiroom','Controllo vocale','Bluetooth','Sincronizzato'] },
+        energia:   { icon:'⚡', gold:false, name:'Risparmio energetico',          desc:'Monitora i consumi in tempo reale. Identifica gli sprechi. Ottimizza automaticamente luci e riscaldamento. Bollette più basse senza rinunciare al comfort.', tags:['Monitoraggio real-time','-30% consumi','Report mensile','Ottimizzazione'] }
+    };
+
+    var hotspots = document.querySelectorAll('.sh-hotspot');
+    var pDef  = document.getElementById('sh-panel-default');
+    var pDet  = document.getElementById('sh-panel-detail');
+    var pIcon = document.getElementById('sh-panel-icon-el');
+    var pName = document.getElementById('sh-panel-name');
+    var pDesc = document.getElementById('sh-panel-desc');
+    var pTags = document.getElementById('sh-panel-tags');
+
+    hotspots.forEach(function(hs){
+        hs.addEventListener('click', function(){
+            var d = D[this.dataset.id]; if(!d) return;
+            hotspots.forEach(function(h){ h.classList.remove('active'); });
+            this.classList.add('active');
+            pDef.style.display = 'none';
+            pDet.classList.add('active');
+            pIcon.textContent = d.icon;
+            pIcon.className = 'sh-panel-icon' + (d.gold ? ' gold' : '');
+            pName.textContent = d.name;
+            pDesc.textContent = d.desc;
+            pTags.innerHTML = '';
+            d.tags.forEach(function(t){
+                var s = document.createElement('span');
+                s.className = 'sh-panel-tag'; s.textContent = t;
+                pTags.appendChild(s);
+            });
+        });
+    });
+
+    /* Timeline drag */
+    var track = document.getElementById('sh-tl-track');
+    var dots  = document.querySelectorAll('.sh-tl-dot');
+    var drag  = false, sx, sl;
+    if(track){
+        track.addEventListener('mousedown', function(e){ drag=true; sx=e.pageX-track.offsetLeft; sl=track.scrollLeft; track.style.cursor='grabbing'; });
+        document.addEventListener('mouseup', function(){ drag=false; if(track) track.style.cursor='grab'; });
+        track.addEventListener('mousemove', function(e){ if(!drag) return; e.preventDefault(); track.scrollLeft = sl-(e.pageX-track.offsetLeft-sx)*1.5; });
+        track.addEventListener('scroll', function(){
+            var cards = track.querySelectorAll('.sh-tl-card');
+            var cw = cards[0] ? cards[0].offsetWidth+16 : 296;
+            var idx = Math.min(Math.round(track.scrollLeft/cw), dots.length-1);
+            dots.forEach(function(d,i){ d.classList.toggle('active', i===idx); });
+        });
+        dots.forEach(function(dot,i){
+            dot.addEventListener('click', function(){
+                var cards = track.querySelectorAll('.sh-tl-card');
+                if(cards[i]) track.scrollTo({left: cards[i].offsetLeft-24, behavior:'smooth'});
+            });
+        });
+    }
+
+    /* Scroll reveal */
+    var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('active'); obs.unobserve(e.target); } });
+    }, {threshold:0.12});
+    document.querySelectorAll('.sh-reveal').forEach(function(el){ obs.observe(el); });
+
+    /* Counter */
+    var cobs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(!e.isIntersecting) return;
+            var el = e.target, target = +el.dataset.target, t0 = performance.now();
+            cobs.unobserve(el);
+            (function tick(now){
+                var p = Math.min((now-t0)/1600, 1);
+                var ease = 1-Math.pow(1-p,3);
+                el.textContent = Math.round(ease*target);
+                if(p<1) requestAnimationFrame(tick); else el.textContent=target;
+            })(t0);
+        });
+    }, {threshold:0.5});
+    document.querySelectorAll('.sh-counter').forEach(function(c){ cobs.observe(c); });
+})();
+</script>
+
+
 
 <!-- ── FOOTER — identical to main page ── -->
 
@@ -3411,11 +3633,11 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
                 <div>
                     <h4 style="font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #C6A75E; margin: 0 0 16px 0;" data-i18n="ft-sistemi">Sistemi</h4>
                     <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px;">
-                        <li><a href="#pkg-starter" class="footer-link" data-i18n="nav-s-starter">Starter Smart</a></li>
-                        <li style="display:flex;align-items:center;gap:6px;"><a href="#pkg-comfort" class="footer-link" data-i18n="nav-s-comfort-plain">Comfort Smart</a><span style="font-family:'Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(198,167,94,0.15);color:#C6A75E;border:1px solid rgba(198,167,94,0.25);border-radius:4px;padding:1px 5px;" data-i18n="nav-badge-top">⭐ più scelto</span></li>
-                        <li><a href="#pkg-security" class="footer-link" data-i18n="nav-s-security">Security Smart</a></li>
-                        <li><a href="#pkg-energy" class="footer-link" data-i18n="nav-s-energy">Energy Smart</a></li>
-                        <li><a href="#pkg-full" class="footer-link" data-i18n="nav-s-full">Full Smart</a></li>
+                        <li><a href="tutti_i_sistemi.html#pkg-starter" class="footer-link" data-i18n="nav-s-starter">Starter Smart</a></li>
+                        <li style="display:flex;align-items:center;gap:6px;"><a href="tutti_i_sistemi.html#pkg-comfort" class="footer-link" data-i18n="nav-s-comfort-plain">Comfort Smart</a><span style="font-family:'Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(198,167,94,0.15);color:#C6A75E;border:1px solid rgba(198,167,94,0.25);border-radius:4px;padding:1px 5px;" data-i18n="nav-badge-top">⭐ più scelto</span></li>
+                        <li><a href="tutti_i_sistemi.html#pkg-security" class="footer-link" data-i18n="nav-s-security">Security Smart</a></li>
+                        <li><a href="tutti_i_sistemi.html#pkg-energy" class="footer-link" data-i18n="nav-s-energy">Energy Smart</a></li>
+                        <li><a href="tutti_i_sistemi.html#pkg-full" class="footer-link" data-i18n="nav-s-full">Full Smart</a></li>
                     </ul>
                 </div>
 
@@ -3493,7 +3715,6 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
                     <h4 style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C6A75E;margin:0 0 16px 0;" data-i18n="ft-i-partner">Per i partner</h4>
                     <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;">
                         <li><a href="#" onclick="openSol('diventa-partner'); return false;" class="footer-link" data-i18n="ft-diventa">Diventa partner</a></li>
-                        <li><a href="#" onclick="openDeskLogin(); return false;" class="footer-link" style="color:#C6A75E;">Smart Core Desk M1</a></li>
                     </ul>
                 </div>
 
@@ -5904,35 +6125,6 @@ document.getElementById("contact-form").addEventListener("submit", function(even
             toast.classList.add('show');
             setTimeout(function() { toast.classList.remove('show'); }, 2200);
         }
-    
-    function openDeskLogin() {
-        var o = document.getElementById('desk-login-overlay');
-        o.style.display = 'flex';
-        document.getElementById('desk-login-input').value = '';
-        document.getElementById('desk-pass-input').value = '';
-        document.getElementById('desk-login-err').style.display = 'none';
-        setTimeout(function(){ document.getElementById('desk-login-input').focus(); }, 80);
-    }
-    function closeDeskLogin() {
-        document.getElementById('desk-login-overlay').style.display = 'none';
-    }
-    async function sha256(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
-    async function submitDeskLogin() {
-        var login = document.getElementById('desk-login-input').value.trim().toLowerCase();
-        var pass  = document.getElementById('desk-pass-input').value.trim().toLowerCase();
-        var lh = await sha256(login);
-        var ph = await sha256(pass);
-        if (lh === '3d54552b9bcd872e8175280598646a7b91306af5ea679cf90f7e51acf40efd3a' && ph === '3d54552b9bcd872e8175280598646a7b91306af5ea679cf90f7e51acf40efd3a') {
-            closeDeskLogin();
-            window.location.href = 'pitch_desk_m1_87.html';
-        } else {
-            var err = document.getElementById('desk-login-err');
-            err.textContent = 'Login o password non corretti.';
-            err.style.display = 'block';
-            document.getElementById('desk-pass-input').value = '';
-            document.getElementById('desk-pass-input').focus();
-        }
-    }
     </script>
 
     <!-- ── Quiz Modal ── -->
@@ -6028,24 +6220,6 @@ document.getElementById("contact-form").addEventListener("submit", function(even
                 <button class="quiz-cta-btn" onclick="closeQuiz();openContatti();" data-i18n="quiz-cta-btn">Prenota consulenza gratuita &#8594;</button>
                 <p style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.3);text-align:center;margin:12px 0 0;" data-i18n="quiz-note">Nessun impegno. Solo idee chiare.</p>
             </div>
-        </div>
-    </div>
-    <!-- Desk M1 login modal -->
-    <div id="desk-login-overlay" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(7,12,24,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;">
-        <div style="background:#0f172a;border:1px solid rgba(198,167,94,0.35);border-radius:16px;padding:40px 36px;width:100%;max-width:360px;margin:0 16px;box-shadow:0 24px 60px rgba(0,0,0,0.6);">
-            <p style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C6A75E;margin:0 0 6px;">Partner Area</p>
-            <h2 style="font-family:'Poppins',sans-serif;font-size:20px;font-weight:700;color:#fff;margin:0 0 28px;">Smart Core Desk M1</h2>
-            <div style="margin-bottom:14px;">
-                <label style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);display:block;margin-bottom:6px;">Login</label>
-                <input id="desk-login-input" type="text" autocomplete="username" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:11px 14px;color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none;" placeholder="login">
-            </div>
-            <div style="margin-bottom:20px;">
-                <label style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);display:block;margin-bottom:6px;">Password</label>
-                <input id="desk-pass-input" type="password" autocomplete="current-password" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:11px 14px;color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none;" placeholder="password" onkeydown="if(event.key==='Enter')submitDeskLogin()">
-            </div>
-            <p id="desk-login-err" style="display:none;font-family:'Inter',sans-serif;font-size:12px;color:#f87171;margin:0 0 14px;"></p>
-            <button onclick="submitDeskLogin()" style="width:100%;padding:13px;background:linear-gradient(135deg,#C6A75E,#a8863c);border:none;border-radius:8px;color:#fff;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;cursor:pointer;">Entra</button>
-            <button onclick="closeDeskLogin()" style="width:100%;margin-top:10px;padding:10px;background:none;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:rgba(255,255,255,0.4);font-family:'Inter',sans-serif;font-size:12px;cursor:pointer;">Annulla</button>
         </div>
     </div>
 </body>
