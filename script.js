@@ -82,9 +82,24 @@
 
         function toggleMobileNav() {
             const overlay = document.getElementById('mobile-nav-overlay');
+            document.querySelectorAll('#mobile-nav-panel .mob-acc.open').forEach(function(el) { el.classList.remove('open'); var b = el.querySelector('.mob-acc-btn'); if (b) b.setAttribute('aria-expanded', 'false'); });
             const isOpen = overlay.classList.toggle('open');
             document.body.style.overflow = isOpen ? 'hidden' : '';
             _syncOverlayState();
+        }
+        function toggleMobAcc(btn) {
+            var acc = btn.closest('.mob-acc');
+            if (!acc) return;
+            var wasOpen = acc.classList.contains('open');
+            document.querySelectorAll('#mobile-nav-panel .mob-acc.open').forEach(function(el) {
+                el.classList.remove('open');
+                var b = el.querySelector('.mob-acc-btn');
+                if (b) b.setAttribute('aria-expanded', 'false');
+            });
+            if (!wasOpen) {
+                acc.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
         }
         function closeMobileNavOverlay(e) {
             if (e.target === document.getElementById('mobile-nav-overlay')) toggleMobileNav();
@@ -369,17 +384,17 @@
         // #3: Escape key — close any open overlay
         document.addEventListener('keydown', function(e) {
             if (e.key !== 'Escape') return;
-            if (document.getElementById('video-overlay').classList.contains('open')) { closeVideo(); return; }
-            if (document.getElementById('exit-overlay').classList.contains('open')) { closeExit(); return; }
-            if (document.getElementById('sol-overlay').classList.contains('open')) { closeSolBtn(); return; }
-            if (document.getElementById('quiz-overlay').classList.contains('open')) { closeQuiz(); return; }
-            if (document.getElementById('contatti-overlay').classList.contains('open')) { closeContatti(); return; }
+            if (document.getElementById('video-overlay') && document.getElementById('video-overlay').classList.contains('open')) { closeVideo(); return; }
+            if (document.getElementById('exit-overlay') && document.getElementById('exit-overlay').classList.contains('open')) { closeExit(); return; }
+            if (document.getElementById('sol-overlay') && document.getElementById('sol-overlay').classList.contains('open')) { closeSolBtn(); return; }
+            if (document.getElementById('quiz-overlay') && document.getElementById('quiz-overlay').classList.contains('open')) { closeQuiz(); return; }
+            if (document.getElementById('contatti-overlay') && document.getElementById('contatti-overlay').classList.contains('open')) { closeContatti(); return; }
             if (document.getElementById('mobile-nav-overlay').classList.contains('open')) { toggleMobileNav(); return; }
             closeLangMenu();
         });
 
         // #14: Focus trap helper
-        function trapFocus(modalEl) {
+        function trapFocus(modalEl) { if (!modalEl) return;
             const sel = 'button:not([disabled]), a[href], input:not([disabled]), [tabindex]:not([tabindex="-1"])';
             modalEl.addEventListener('keydown', function(e) {
                 if (e.key !== 'Tab') return;
@@ -409,11 +424,22 @@
                 'hero-check3':   'Tutto automatico',
                 'hero-btn1':     'Prenota un sopralluogo gratuito',
                 'hero-btn2':     'Guarda il Video',
+                'hero-nontech':  'Non serve essere esperti di tecnologia!',
+                'hero-feat1':    'I tuoi interruttori a muro restano dove sono',
+                'hero-feat2':    'Non ti costringe ad aprire un\'app ogni 5 minuti',
+                'hero-feat3':    'Funziona anche senza Internet',
+                'comp-scroll-hint': '← scorri per confrontare →',
+                'comp-aside-eyebrow': 'Tutto in uno',
+                'integ-h2':      'Hai già un impianto domotico o dispositivi di marche diverse?',
+                'integ-p':       'Con la nostra piattaforma SFERA manteniamo il tuo impianto già esistente e lo espandiamo senza opere murarie e senza rifare un\'installazione già funzionante, controllando tutto da un\'unica schermata.',
+                'desk-enter':    'Entra',
+                'desk-cancel':   'Annulla',
                 /* ── Nav desktop ── */
                 'nav-btn-sistemi':        'Sistemi',
                 'nav-btn-sol':            'Soluzioni',
                 'nav-btn-about':          'Su di noi',
-                'nav-btn-contact':        'Contattaci',
+                'nav-btn-contact':        'Contattaci',
+                'nav-btn-green':          '🌱 Impegno ambientale',
                 'nav-btn-cta':            'Sopralluogo gratuito',
                 'nav-badge-top':          '⭐ più scelto',
                 'nav-s-all':              'Tutti i sistemi',
@@ -601,6 +627,14 @@
                 'faq-4-q':'Quanto tempo richiede l\'installazione?','faq-4-a':'Un appartamento standard richiede 1–3 giorni lavorativi. I progetti più ampi vengono pianificati durante la fase di progettazione 3D.',
                 'faq-5-q':'È compatibile con Alexa, Google e Apple HomeKit?','faq-5-a':'Sì. I nostri sistemi si integrano con Alexa, Google Assistant e Apple HomeKit. Un solo ecosistema, controllo ovunque.',
                 'faq-6-q':'Cosa succede dopo l\'installazione?','faq-6-a':'Offriamo supporto continuativo, aggiornamenti da remoto e assistenza prioritaria. Restiamo al tuo fianco per sempre.',
+                'faq-7-q':'E se va via la corrente o salta il Wi-Fi? Rimango chiuso in casa o al buio?','faq-7-a':'Questa è la paura più comune, causata dai gadget "fai-da-te". Un impianto domotico professionale progettato da SFERA non dipende dal Wi-Fi di casa, ma ha una sua infrastruttura di comunicazione indipendente e sicura. In caso di blackout, l\'impianto possiede sblocchi manuali e sistemi di backup: la tua casa continuerà a funzionare esattamente come una casa tradizionale. Non rimarrai mai bloccato.',
+                'faq-8-q':'Non voglio vivere con il telefono in mano per accendere una luce. È così?','faq-8-a':'Assolutamente no. Se devi prendere lo smartphone per spegnere una luce, la tua casa non è intelligente, è solo più complicata di prima. Il nostro obiettivo è farti dimenticare il telefono, il telecomando e, in alcuni casi, anche gli interruttori. Utilizziamo interruttori fisici di altissimo design e sensori invisibili. La casa agisce in autonomia per le azioni ripetitive (clima, sicurezza, luci di passaggio), lasciandoti il piacere del controllo manuale con un semplice tocco a parete quando lo desideri.',
+                'faq-9-q':'Voglio mantenere il controllo. Non voglio elettrodomestici che fanno di testa loro.','faq-9-a':'La vera tecnologia si adatta a te, non viceversa. I sistemi SFERA non includono "frigoriferi parlanti" o dispositivi invadenti. Progettiamo automazioni silenziose che ti tolgono il carico mentale (come abbassare tutte le tapparelle e inserire l\'allarme con un solo tasto "Buonanotte"), ma ogni singola azione può essere sempre controllata, fermata o modificata da te in qualsiasi istante. Sei tu il regista.',
+                'faq-10-q':'Amo lo stile classico e antico. La tecnologia rovinerà l\'estetica della mia casa?','faq-10-a':'Il lusso moderno è invisibile. L\'idea che una casa tecnologica debba sembrare una navicella spaziale asettica è un falso mito. I nostri sistemi scompaiono dietro i muri. Che tu abbia un appartamento ultramoderno o un casale d\'epoca con travi a vista, l\'impianto non si nota. Scegliamo placche e comandi che si integrano perfettamente con il tuo interior design, rispettando l\'anima e il calore della tua casa.',
+                'faq-11-q':'Ho paura per la mia privacy. I miei dati vengono registrati o ascoltati nel cloud?','faq-11-a':'Assolutamente NO! La privacy è una priorità assoluta. A differenza dei dispositivi commerciali, i sistemi di integrazione di alto livello processano le informazioni localmente. Anche nel caso di telecamere interne se non ti senti sicuro le telecamere si chiudono fisicamente per non irrompere la tua privacy. Il server "cervello" della tua casa è fisicamente chiuso dentro le tue mura. Quello che succede in casa tua, rimane nei server di casa tua.',
+                'faq-12-q':'Rendere la casa \'smart\' significa dover spaccare i muri e affrontare cantieri infiniti?','faq-12-a':'No, possiamo creare tutto l\'ecosistema in modo wireless e senza alcuna opera muraria.',
+                'faq-13-q':'Non è una spesa inutile? In fondo spegnere una luce non mi costa nessuna fatica.','faq-13-a':'Hai ragione, se vuoi usare SFERA solo per spegnere una luce non hai bisogno di un impianto intelligente. Perché il valore è il comfort mentale di non dover controllare 15 finestre prima di uscire. È il risparmio energetico costante di un riscaldamento che non spreca mai calore. È la sicurezza di una casa che simula la tua presenza quando sei in vacanza o previene il danno se c\'è una perdita d\'acqua (cosa che da solo ti sarebbe impossibile senza prima un allagamento ;)). È un investimento che aumenta il valore del tuo immobile e protegge la tua serenità.',
+                'faq-14-q':'Ho già un sistema domotico, devo rifare l\'impianto da zero se passo a SFERA?','faq-14-a':'No. Valorizziamo ciò che hai già, integrandolo ed evolvendolo. Il sistema SFERA nasce per far dialogare standard e protocolli differenti in modo fluido. Questo non solo preserva i tuoi investimenti attuali senza inutili sprechi, ma ti garantisce una compatibilità totale nel tempo. Potrai ampliare e aggiornare la tua smart home, mantenendo intatte le fondamenta del tuo ecosistema attuale.',
                 /* ── Quiz ── */
                 'quiz-step':'Passo 1 di 6','quiz-step2':'Passo 2 di 6','quiz-step3':'Passo 3 di 6',
                 'quiz-1-q':'Quante stanze vuoi automatizzare?','quiz-1-a1':'1–2 stanze','quiz-1-a2':'3–4 stanze','quiz-1-a3':'5 o più stanze',
@@ -618,6 +652,44 @@
                 'comp-row1': 'Comfort al risveglio', 'comp-row2': 'Uscita di casa',
                 'comp-row3': 'Ritorno a casa', 'comp-row4': 'Gestione imprevisti',
                 'compat-label': 'Compatibile con',
+                /* ── Impegno Ambientale (Green page) ── */
+                'gr-page-title': 'Impegno Ambientale | Il nostro Impegno Green | SFERA Smart Systems',
+                'gr-eyebrow': '🌱 Sostenibilità & Impegno Ambientale',
+                'gr-h1': 'Una casa o un ufficio intelligente non aiuta solo te: <em>aiuta anche l\'ambiente.</em>',
+                'gr-manifesto': 'Ogni giorno, per pura distrazione, luci e impianti restano accesi per ore in case e uffici vuoti. La missione Green di SFERA è azzerare questi <strong>sprechi</strong> con la tecnologia: <strong>fino al 30% di consumi in meno</strong> per ridurre le bollette e l\'inquinamento del nostro territorio.',
+                'gr-stat1-lbl': 'Consumi energetici<br>fino a',
+                'gr-stat2-lbl': 'Sprechi sotto controllo,<br>senza pensarci',
+                'gr-stat3-lbl': 'Energia buttata fuori<br>dalla finestra',
+                'gr-btn-contact': 'Richiedi un sopralluogo gratuito →',
+                'gr-btn-systems': 'Scopri i sistemi SFERA',
+                'gr-prob-kicker': 'Il nostro impegno green',
+                'gr-prob-h2': 'Quante volte è successo anche a te?',
+                'gr-prob-lead': 'Piccole distrazioni quotidiane che, sommate, pesano sulla bolletta e sull\'ambiente.',
+                'gr-prob-1': '<b>La sala riunioni</b> dove finisce un incontro e tutti escono lasciando luci e condizionatore accesi per 5 ore.',
+                'gr-prob-2': '<b>Il bagno dell\'ufficio o il corridoio</b> con la luce accesa dalla mattina alla sera.',
+                'gr-prob-3': '<b>La finestra aperta in inverno</b> per «cambiare aria» mentre il termosifone sotto continua a pompare calore verso la strada.',
+                'gr-prob-4': '<b>L\'ufficio o il negozio che il venerdì sera chiude</b>, ma resta con stampanti, schermi, macchinette del caffè, boiler e clima accesi fino al lunedì mattina.',
+                'gr-prob-punch': 'Con SFERA, tutto questo semplicemente non succede più.',
+                'gr-biz-kicker': '🏢 Per uffici, negozi e aziende',
+                'gr-biz-h2': 'Ogni stanza consuma solo quando serve.',
+                'gr-biz-lead': 'Automazioni che lavorano in silenzio, ogni giorno, al posto di chi ha già mille cose a cui pensare.',
+                'gr-biz-c1-h3': 'Sensori di presenza davvero precisi',
+                'gr-biz-c1-p': 'I nostri sensori rilevano <strong>persino chi è fermo a leggere alla scrivania</strong>: abbassano o spengono luci e clima solo quando la stanza è davvero vuota.',
+                'gr-biz-c2-h3': 'Finestra aperta? Il clima va in pausa',
+                'gr-biz-c2-p': 'Rileva l\'apertura delle finestre e <strong>sospende subito</strong> termosifoni o aria condizionata nella stanza. <strong>Zero calore o fresco sprecato.</strong>',
+                'gr-biz-c3-h3': 'Chiusura serale e weekend in risparmio',
+                'gr-biz-c3-p': 'Inserendo l\'allarme, spegne <strong>luci, clima e standby dimenticati</strong>. Il lunedì mattina riporta gli uffici alla <strong>temperatura perfetta 30 minuti prima</strong> dell\'arrivo.',
+                'gr-home-kicker': '🏡 Per la tua casa',
+                'gr-home-h2': 'Più comfort per la famiglia, meno spreco per il pianeta.',
+                'gr-home-lead': 'La casa impara le abitudini di chi la vive e consuma solo ciò che serve davvero.',
+                'gr-home-c1-h3': 'Temperatura stanza per stanza',
+                'gr-home-c1-p': 'Non scalda le camere a vuoto mentre sei in soggiorno o al lavoro, ma <strong>regola la temperatura stanza per stanza</strong> in base alla vostra presenza.',
+                'gr-home-c2-h3': 'Stop ai consumi fantasma',
+                'gr-home-c2-p': 'TV e macchina del caffè consumano anche da spenti. Di notte SFERA <strong>stacca le prese inutilizzate</strong> e le riattiva prima della tua sveglia.',
+                'gr-home-c3-h3': 'Carichi sotto controllo, energia ben distribuita',
+                'gr-home-c3-p': 'Forno e lavatrice accesi insieme? SFERA <strong>evita il blackout</strong> mettendo in pausa l\'elettrodomestico meno urgente, ottimizzando anche l\'energia del fotovoltaico.',
+                'gr-cta-h2': 'Costruiamo insieme un ambiente più sostenibile.',
+                'gr-cta-p': 'Scopri quanto puoi risparmiare con SFERA: un sopralluogo gratuito per capire dove si nascondono gli sprechi di casa tua o della tua azienda.',
             },
             de: {
                 'page-title': 'Smart Home | SFERA Smart Systems',
@@ -630,11 +702,22 @@
                 'hero-check3':   'Alles automatisch',
                 'hero-btn1':     'Kostenlose Besichtigung buchen',
                 'hero-btn2':     'Video ansehen',
+                'hero-nontech':  'Man muss kein Technik-Experte sein!',
+                'hero-feat1':    'Deine Wandschalter bleiben dort, wo sie sind',
+                'hero-feat2':    'Zwingt dich nicht, alle 5 Minuten eine App zu öffnen',
+                'hero-feat3':    'Funktioniert auch ohne Internet',
+                'comp-scroll-hint': '← zum Vergleichen wischen →',
+                'comp-aside-eyebrow': 'Alles in einem',
+                'integ-h2':      'Hast du bereits ein Smart-Home-System oder Geräte verschiedener Marken?',
+                'integ-p':       'Mit unserer SFERA-Plattform behalten wir deine bestehende Anlage bei und erweitern sie ohne Maurerarbeiten und ohne eine bereits funktionierende Installation neu zu machen – alles gesteuert über einen einzigen Bildschirm.',
+                'desk-enter':    'Anmelden',
+                'desk-cancel':   'Abbrechen',
                 /* ── Nav desktop ── */
                 'nav-btn-sistemi':        'Systeme',
                 'nav-btn-sol':            'Lösungen',
                 'nav-btn-about':          'Über uns',
-                'nav-btn-contact':        'Kontakt',
+                'nav-btn-contact':        'Kontakt',
+                'nav-btn-green':          '🌱 Umweltengagement',
                 'nav-btn-cta':            'Kostenlose Besichtigung →',
                 'nav-badge-top':          '⭐ beliebteste Wahl',
                 'nav-s-all':              'Alle Systeme',
@@ -820,6 +903,14 @@
                 'faq-4-q':'Wie lange dauert die Installation?','faq-4-a':'Eine Standardwohnung benötigt 1–3 Arbeitstage. Größere Projekte werden in der 3D-Planungsphase detailliert geplant.',
                 'faq-5-q':'Ist es kompatibel mit Alexa, Google und Apple HomeKit?','faq-5-a':'Ja. Unsere Systeme integrieren sich mit Alexa, Google Assistant und Apple HomeKit. Ein Ökosystem, Kontrolle überall.',
                 'faq-6-q':'Was passiert nach der Installation?','faq-6-a':'Wir bieten kontinuierlichen Support, Remote-Updates und Prioritäts-Support. Wir sind immer für dich da.',
+                'faq-7-q':'Was passiert bei Stromausfall oder wenn das WLAN ausfällt? Bleibe ich im Dunkeln oder ausgesperrt?','faq-7-a':'Das ist die häufigste Sorge, ausgelöst durch „Do-it-yourself"-Gadgets. Ein professionelles Smart-Home-System von SFERA hängt nicht vom Heim-WLAN ab, sondern verfügt über eine eigene unabhängige und sichere Kommunikationsinfrastruktur. Bei einem Stromausfall greifen manuelle Entriegelungen und Backup-Systeme: Dein Zuhause funktioniert genau wie ein herkömmliches Haus weiter. Du wirst niemals ausgesperrt sein.',
+                'faq-8-q':'Ich möchte nicht ständig das Handy in der Hand haben, nur um ein Licht einzuschalten. Ist das so?','faq-8-a':'Absolut nicht. Wenn du zum Ausschalten einer Lampe erst das Smartphone nehmen musst, ist dein Zuhause nicht intelligent, sondern nur komplizierter als zuvor. Unser Ziel ist es, dass du Telefon, Fernbedienung und oft sogar Lichtschalter vergisst. Wir nutzen edle physische Design-Taster und unsichtbare Sensoren. Das Haus übernimmt wiederkehrende Abläufe (Klima, Sicherheit, Durchgangslicht) selbstständig und lässt dir jederzeit die Freude an der manuellen Steuerung per sanftem Wanddruck.',
+                'faq-9-q':'Ich möchte die Kontrolle behalten. Ich will keine Geräte, die machen, was sie wollen.','faq-9-a':'Wahre Technologie passt sich dir an, nicht umgekehrt. SFERA-Systeme beinhalten keine „sprechenden Kühlschränke" oder aufdringlichen Geräte. Wir entwickeln stille Automationen, die dir mentale Last abnehmen (wie alle Rollläden schließen und den Alarm aktivieren mit nur einer „Gute Nacht"-Taste) — aber jede einzelne Aktion kann jederzeit von dir gesteuert, gestoppt oder geändert werden. Du führst Regie.',
+                'faq-10-q':'Ich liebe den klassischen und antiken Stil. Ruiniert die Technik die Ästhetik meines Zuhauses?','faq-10-a':'Moderner Luxus ist unsichtbar. Die Vorstellung, ein technisches Zuhause müsse wie ein steriles Raumschiff aussehen, ist ein Mythos. Unsere Systeme verschwinden hinter den Wänden. Ob hochmodernes Apartment oder historisches Landhaus mit Sichtbalken — die Anlage fällt nicht auf. Wir wählen Schalter und Blenden, die sich nahtlos in dein Interior Design einfügen und Seele sowie Wärme deines Hauses respektieren.',
+                'faq-11-q':'Ich sorge mich um meine Privatsphäre. Werden meine Daten in der Cloud gespeichert oder abgehört?','faq-11-a':'Absolut NEIN! Datenschutz hat höchste Priorität. Im Gegensatz zu kommerziellen Geräten verarbeiten unsere hochwertigen Integrationssysteme alle Informationen lokal. Selbst bei Innenkameras schließen sich die Objektive auf Wunsch physisch, um deine Privatsphäre zu schützen. Der Server — das „Gehirn" deines Hauses — befindet sich physisch geschützt in deinen eigenen vier Wänden. Was bei dir zu Hause passiert, bleibt auf deinen eigenen Servern.',
+                'faq-12-q':'Bedeutet „Smart Home", dass Wände aufgestemmt werden müssen und endlose Baustellen entstehen?','faq-12-a':'Nein, wir können das gesamte Ökosystem komplett kabellos (wireless) und ohne jegliche Maurerarbeiten realisieren.',
+                'faq-13-q':'Ist das keine unnötige Ausgabe? Ein Licht auszuschalten kostet mich schließlich keine Mühe.','faq-13-a':'Du hast recht: Wenn du SFERA nur nutzen willst, um ein Licht auszuschalten, brauchst du kein intelligentes System. Denn der wahre Wert liegt im mentalen Komfort, vor dem Gehen nicht 15 Fenster prüfen zu müssen. Er liegt in der konstanten Energieeinsparung einer Heizung, die niemals Wärme verschwendet. Und in der Sicherheit eines Hauses, das im Urlaub deine Anwesenheit simuliert oder bei einem Wasserleck Schäden verhindert (was allein ohne vorherige Überschwemmung unmöglich wäre ;)). Es ist eine Investition, die den Wert deiner Immobilie steigert und deine Gelassenheit schützt.',
+                'faq-14-q':'Ich habe bereits ein Smart-Home-System. Muss ich bei einem Wechsel zu SFERA alles neu machen?','faq-14-a':'Nein. Wir werten das auf, was du bereits hast, indem wir es integrieren und weiterentwickeln. Das SFERA-System wurde entwickelt, damit unterschiedliche Standards und Protokolle nahtlos miteinander kommunizieren. Das schützt deine bisherigen Investitionen ohne unnötige Verschwendung und garantiert volle Zukunftssicherheit. Du kannst dein Smart Home erweitern und modernisieren, während das Fundament deines bestehenden Systems erhalten bleibt.',
                 /* ── Quiz ── */
                 'quiz-step':'Schritt 1 von 6','quiz-step2':'Schritt 2 von 6','quiz-step3':'Schritt 3 von 6',
                 'quiz-1-q':'Wie viele Räume möchtest du automatisieren?','quiz-1-a1':'1–2 Räume','quiz-1-a2':'3–4 Räume','quiz-1-a3':'5 oder mehr',
@@ -837,6 +928,44 @@
                 'comp-row1': 'Komfort beim Aufwachen', 'comp-row2': 'Das Haus verlassen',
                 'comp-row3': 'Heimkehr', 'comp-row4': 'Unvorhergesehenes managen',
                 'compat-label': 'Kompatibel mit',
+                /* ── Impegno Ambientale (Green page) ── */
+                'gr-page-title': 'Umweltengagement | Unsere Grüne Mission | SFERA Smart Systems',
+                'gr-eyebrow': '🌱 Nachhaltigkeit & Umweltengagement',
+                'gr-h1': 'Ein intelligentes Zuhause oder Büro hilft nicht nur dir: <em>Es hilft auch der Umwelt.</em>',
+                'gr-manifesto': 'Jeden Tag bleiben aus reiner Unachtsamkeit Lichter und Anlagen stundenlang in leeren Häusern und Büros eingeschaltet. Die Grüne Mission von SFERA ist es, diese <strong>Verschwendung</strong> durch Technologie auf null zu setzen: <strong>bis zu 30 % weniger Verbrauch</strong>, um Rechnungen und die Umweltbelastung in unserer Region zu senken.',
+                'gr-stat1-lbl': 'Energieverbrauch<br>bis zu',
+                'gr-stat2-lbl': 'Verschwendung im Griff,<br>ohne daran zu denken',
+                'gr-stat3-lbl': 'Zum Fenster hinaus-<br>geworfene Energie',
+                'gr-btn-contact': 'Kostenlose Besichtigung anfragen →',
+                'gr-btn-systems': 'SFERA-Systeme entdecken',
+                'gr-prob-kicker': 'Unser grünes Engagement',
+                'gr-prob-h2': 'Wie oft ist dir das auch schon passiert?',
+                'gr-prob-lead': 'Kleine alltägliche Unachtsamkeiten, die sich summieren und Rechnung sowie Umwelt belasten.',
+                'gr-prob-1': '<b>Der Besprechungsraum</b>, in dem ein Meeting endet und alle hinausgehen, während Licht und Klimaanlage noch 5 Stunden weiterlaufen.',
+                'gr-prob-2': '<b>Das Büro-WC oder der Flur</b>, in dem das Licht von morgens bis abends brennt.',
+                'gr-prob-3': '<b>Das offene Fenster im Winter</b> zum „Stoßlüften", während der Heizkörper darunter weiter Wärme auf die Straße pumpt.',
+                'gr-prob-4': '<b>Das Büro oder Geschäft, das am Freitagabend schließt</b>, aber bis Montagmorgen mit eingeschalteten Druckern, Bildschirmen, Kaffeemaschinen, Boilern und Klimaanlagen bleibt.',
+                'gr-prob-punch': 'Mit SFERA passiert all das schlichtweg nicht mehr.',
+                'gr-biz-kicker': '🏢 Für Büros, Geschäfte und Unternehmen',
+                'gr-biz-h2': 'Jeder Raum verbraucht nur dann Energie, wenn sie gebraucht wird.',
+                'gr-biz-lead': 'Automationen, die jeden Tag still im Hintergrund arbeiten – für alle, die ohnehin schon an tausend Dinge denken müssen.',
+                'gr-biz-c1-h3': 'Hochpräzise Präsenzmelder',
+                'gr-biz-c1-p': 'Unsere Sensoren erkennen <strong>selbst Personen, die ruhig am Schreibtisch lesen</strong>: Licht und Klima werden erst dann gedimmt oder ausgeschaltet, wenn der Raum wirklich leer ist.',
+                'gr-biz-c2-h3': 'Fenster offen? Das Klima pausiert',
+                'gr-biz-c2-p': 'Erkennt offene Fenster und <strong>pausiert sofort</strong> Heizkörper oder Klimaanlage im Raum. <strong>Null verschwendete Wärme oder Kälte.</strong>',
+                'gr-biz-c3-h3': 'Feierabend- und Wochenend-Sparmodus',
+                'gr-biz-c3-p': 'Beim Aktivieren des Alarms werden <strong>vergessene Lichter, Klimaanlagen und Standby-Geräte</strong> ausgeschaltet. Am Montagmorgen bringt das System die Büros <strong>30 Minuten vor Ankunft auf die perfekte Temperatur</strong>.',
+                'gr-home-kicker': '🏡 Für dein Zuhause',
+                'gr-home-h2': 'Mehr Komfort für die Familie, weniger Verschwendung für den Planeten.',
+                'gr-home-lead': 'Das Zuhause lernt die Gewohnheiten seiner Bewohner und verbraucht nur das, was wirklich nötig ist.',
+                'gr-home-c1-h3': 'Temperatur Raum für Raum',
+                'gr-home-c1-p': 'Heizt Schlafzimmer nicht unnötig, während du im Wohnzimmer oder bei der Arbeit bist, sondern <strong>regelt die Temperatur Raum für Raum</strong> je nach Anwesenheit.',
+                'gr-home-c2-h3': 'Stopp dem Standby-Verbrauch',
+                'gr-home-c2-p': 'TV und Kaffeemaschine verbrauchen auch im ausgeschalteten Zustand Strom. Nachts <strong>trennt SFERA ungenutzte Steckdosen</strong> und aktiviert sie wieder vor dem Aufwachen.',
+                'gr-home-c3-h3': 'Lastmanagement & optimal verteilte Energie',
+                'gr-home-c3-p': 'Backofen und Waschmaschine gleichzeitig an? SFERA <strong>verhindert den Stromausfall</strong>, indem es das weniger dringende Gerät pausiert und auch den Solarstrom optimal nutzt.',
+                'gr-cta-h2': 'Gestalten wir gemeinsam eine nachhaltigere Umwelt.',
+                'gr-cta-p': 'Entdecke, wie viel du mit SFERA sparen kannst: eine kostenlose Besichtigung, um herauszufinden, wo sich die Energieverschwendung in deinem Zuhause oder Unternehmen versteckt.',
             },
             en: {
                 'page-title': 'Smart Home | SFERA Smart Systems',
@@ -849,11 +978,22 @@
                 'hero-check3':   'Everything automatic',
                 'hero-btn1':     'Book a free site survey',
                 'hero-btn2':     'Watch the Video',
+                'hero-nontech':  'No need to be a tech expert!',
+                'hero-feat1':    'Your wall switches stay right where they are',
+                'hero-feat2':    'Doesn\'t force you to open an app every 5 minutes',
+                'hero-feat3':    'Works even without Internet',
+                'comp-scroll-hint': '← swipe to compare →',
+                'comp-aside-eyebrow': 'All in one',
+                'integ-h2':      'Already have a home automation system or devices from different brands?',
+                'integ-p':       'With our SFERA platform, we keep your existing system and expand it without masonry work and without redoing an already working installation — controlling everything from a single screen.',
+                'desk-enter':    'Sign in',
+                'desk-cancel':   'Cancel',
                 /* ── Nav desktop ── */
                 'nav-btn-sistemi':        'Systems',
                 'nav-btn-sol':            'Solutions',
                 'nav-btn-about':          'About us',
-                'nav-btn-contact':        'Contact us',
+                'nav-btn-contact':        'Contact us',
+                'nav-btn-green':          '🌱 Environmental commitment',
                 'nav-btn-cta':            'Free site survey →',
                 'nav-badge-top':          '⭐ most popular',
                 'nav-s-all':              'All systems',
@@ -1039,6 +1179,14 @@
                 'faq-4-q':'How long does installation take?','faq-4-a':'A standard apartment takes 1–3 working days. Larger projects are planned in detail during the 3D design phase.',
                 'faq-5-q':'Is it compatible with Alexa, Google and Apple HomeKit?','faq-5-a':'Yes. Our systems integrate with Alexa, Google Assistant and Apple HomeKit. One ecosystem, control from anywhere.',
                 'faq-6-q':'What happens after installation?','faq-6-a':'We offer ongoing support, remote updates and priority assistance. We stay by your side forever.',
+                'faq-7-q':'What if the power goes out or the Wi-Fi drops? Will I be locked in or left in the dark?','faq-7-a':'This is the most common fear, caused by DIY gadgets. A professional home automation system designed by SFERA does not depend on your home Wi-Fi, but has its own independent and secure communication infrastructure. In the event of a blackout, the system features manual overrides and backup systems: your home will continue to work just like a traditional home. You will never be locked out or stuck.',
+                'faq-8-q':'I don\'t want to live with my phone in my hand just to turn on a light. Is it like that?','faq-8-a':'Absolutely not. If you have to pick up your smartphone to turn off a light, your home isn\'t smart — it\'s just more complicated than before. Our goal is to make you forget your phone, remotes and, in some cases, even switches. We use high-design physical switches and invisible sensors. The home acts autonomously for repetitive actions (climate, security, passage lighting), leaving you the pleasure of manual control with a simple touch on the wall whenever you wish.',
+                'faq-9-q':'I want to stay in control. I don\'t want appliances that have a mind of their own.','faq-9-a':'True technology adapts to you, not the other way around. SFERA systems don\'t include "talking fridges" or intrusive devices. We design silent automations that take the mental load off your shoulders (like lowering all shutters and arming the alarm with a single "Goodnight" button), while every single action can always be controlled, stopped or modified by you at any moment. You are the director.',
+                'faq-10-q':'I love classic and antique styles. Will technology ruin the aesthetics of my home?','faq-10-a':'Modern luxury is invisible. The idea that a smart home must look like a sterile spaceship is a myth. Our systems disappear behind the walls. Whether you have an ultra-modern apartment or a period country house with exposed beams, the system goes unnoticed. We select switch plates and controls that blend seamlessly with your interior design, respecting the soul and warmth of your home.',
+                'faq-11-q':'I\'m worried about my privacy. Is my data recorded or listened to in the cloud?','faq-11-a':'Absolutely NOT! Privacy is an absolute priority. Unlike commercial gadgets, high-level integration systems process information locally. Even with indoor cameras, if you don\'t feel comfortable, the cameras physically close their shutters so your privacy is never intruded upon. The "brain" server of your home is physically locked inside your own walls. What happens in your home stays on your home\'s servers.',
+                'faq-12-q':'Does making my home "smart" mean breaking walls and dealing with endless construction?','faq-12-a':'No, we can create the entire ecosystem wirelessly and without any masonry work.',
+                'faq-13-q':'Isn\'t it a pointless expense? After all, turning off a light takes no effort.','faq-13-a':'You\'re right: if you only want to use SFERA to turn off a light, you don\'t need a smart system. Because the true value is the peace of mind of not having to check 15 windows before leaving. It\'s the constant energy savings of heating that never wastes warmth. It\'s the security of a home that simulates your presence while you\'re on holiday or prevents damage if there\'s a water leak (something impossible to do on your own without flooding first ;)). It\'s an investment that increases your property\'s value and protects your peace of mind.',
+                'faq-14-q':'I already have a home automation system — do I have to start from scratch if I switch to SFERA?','faq-14-a':'No. We enhance what you already have by integrating and evolving it. The SFERA system is built to make different standards and protocols communicate seamlessly. This not only preserves your current investments without unnecessary waste, but also guarantees total compatibility over time. You can expand and upgrade your smart home while keeping the foundations of your current ecosystem intact.',
                 /* ── Quiz ── */
                 'quiz-step':'Step 1 of 6','quiz-step2':'Step 2 of 6','quiz-step3':'Step 3 of 6',
                 'quiz-1-q':'How many rooms do you want to automate?','quiz-1-a1':'1–2 rooms','quiz-1-a2':'3–4 rooms','quiz-1-a3':'5 or more rooms',
@@ -1056,6 +1204,44 @@
                 'comp-row1': 'Morning comfort', 'comp-row2': 'Leaving home',
                 'comp-row3': 'Coming home', 'comp-row4': 'Handling unexpected events',
                 'compat-label': 'Compatible with',
+                /* ── Impegno Ambientale (Green page) ── */
+                'gr-page-title': 'Environmental Commitment | Our Green Mission | SFERA Smart Systems',
+                'gr-eyebrow': '🌱 Sustainability & Environmental Commitment',
+                'gr-h1': 'A smart home or office doesn\'t just help you: <em>it helps the environment too.</em>',
+                'gr-manifesto': 'Every day, out of pure distraction, lights and systems stay on for hours in empty homes and offices. SFERA\'s Green mission is to eliminate this <strong>waste</strong> through technology: <strong>up to 30% less energy consumption</strong> to lower bills and reduce pollution in our region.',
+                'gr-stat1-lbl': 'Energy consumption<br>up to',
+                'gr-stat2-lbl': 'Waste under control,<br>without a second thought',
+                'gr-stat3-lbl': 'Energy thrown<br>out the window',
+                'gr-btn-contact': 'Request a free site survey →',
+                'gr-btn-systems': 'Explore SFERA systems',
+                'gr-prob-kicker': 'Our green commitment',
+                'gr-prob-h2': 'How many times has this happened to you too?',
+                'gr-prob-lead': 'Small daily distractions that add up, weighing on your energy bill and the environment.',
+                'gr-prob-1': '<b>The meeting room</b> where a meeting ends and everyone leaves with the lights and air conditioning running for 5 hours.',
+                'gr-prob-2': '<b>The office restroom or hallway</b> with the light left on from morning till night.',
+                'gr-prob-3': '<b>The window left open in winter</b> for "fresh air" while the radiator below keeps pumping heat out into the street.',
+                'gr-prob-4': '<b>The office or shop that closes on Friday evening</b>, leaving printers, screens, coffee machines, boilers and climate systems on until Monday morning.',
+                'gr-prob-punch': 'With SFERA, all of this simply doesn\'t happen anymore.',
+                'gr-biz-kicker': '🏢 For offices, shops and businesses',
+                'gr-biz-h2': 'Every room uses energy only when needed.',
+                'gr-biz-lead': 'Automations working silently every day in place of people who already have a thousand things on their minds.',
+                'gr-biz-c1-h3': 'Truly accurate presence sensors',
+                'gr-biz-c1-p': 'Our sensors detect <strong>even someone sitting still reading at a desk</strong>: they dim or turn off lights and climate only when the room is truly empty.',
+                'gr-biz-c2-h3': 'Window open? Climate goes on pause',
+                'gr-biz-c2-p': 'Detects open windows and <strong>immediately pauses</strong> radiators or air conditioning in the room. <strong>Zero wasted heat or cooling.</strong>',
+                'gr-biz-c3-h3': 'Evening & weekend energy-saving closure',
+                'gr-biz-c3-p': 'When you arm the alarm, it turns off <strong>forgotten lights, climate and standby loads</strong>. On Monday morning, it brings offices back to the <strong>perfect temperature 30 minutes before</strong> arrival.',
+                'gr-home-kicker': '🏡 For your home',
+                'gr-home-h2': 'More comfort for your family, less waste for the planet.',
+                'gr-home-lead': 'Your home learns the habits of those who live in it and uses only what is truly needed.',
+                'gr-home-c1-h3': 'Room-by-room temperature',
+                'gr-home-c1-p': 'It doesn\'t heat empty bedrooms while you\'re in the living room or at work, but <strong>adjusts the temperature room by room</strong> based on your presence.',
+                'gr-home-c2-h3': 'Stop phantom energy drain',
+                'gr-home-c2-p': 'TVs and coffee machines draw power even when turned off. At night, SFERA <strong>cuts power to unused sockets</strong> and turns them back on before your alarm.',
+                'gr-home-c3-h3': 'Loads under control, energy well distributed',
+                'gr-home-c3-p': 'Oven and washing machine on at the same time? SFERA <strong>prevents blackouts</strong> by pausing the less urgent appliance while also optimising solar energy.',
+                'gr-cta-h2': 'Let\'s build a more sustainable environment together.',
+                'gr-cta-p': 'Find out how much you can save with SFERA: a free site survey to uncover where energy waste is hiding in your home or business.',
             }
         };
 
@@ -1112,7 +1298,9 @@
             if (ytLink && t['title-youtube']) ytLink.setAttribute('title', t['title-youtube']);
 
             // Refresh open solution/about popup text
-            if (currentSolKey && document.getElementById('sol-overlay').classList.contains('open')) {
+            if (document.body && document.body.classList.contains('green-page') && t['gr-page-title']) { document.title = t['gr-page-title']; }
+            const _solOv = document.getElementById('sol-overlay');
+            if (currentSolKey && _solOv && _solOv.classList.contains('open')) {
                 _renderSolContent(currentSolKey, lang);
             }
         }
@@ -1149,7 +1337,7 @@
             document.body.style.overflow = '';
             _syncOverlayState();
         }
-        if (!exitFired) {
+        if (!exitFired && document.getElementById('exit-overlay')) {
             document.addEventListener('mouseleave', function onExitIntent(e) {
                 if (e.clientY > 20) return; // only top edge
                 if (Date.now() - _exitT0 < 15000) return; // < 15 sec on page

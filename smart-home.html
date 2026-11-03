@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -984,6 +984,21 @@ html { overflow-x: hidden; max-width: 100%; }
         }
         .mob-link:hover .mob-link-desc { color: rgba(58,174,255,0.72); }
         .mob-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 16px 0; }
+        .mob-acc { border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .mob-acc-btn {
+            width: 100%; display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 12px; background: transparent; border: none; border-radius: 12px;
+            font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600;
+            color: rgba(255,255,255,0.88); cursor: pointer; text-align: left;
+            transition: background 0.18s, color 0.18s;
+        }
+        .mob-acc-btn:hover, .mob-acc.open .mob-acc-btn { background: rgba(255,255,255,0.05); color: #3AAEFF; }
+        .mob-acc-chevron { width: 17px; height: 17px; flex-shrink: 0; color: rgba(255,255,255,0.45); transition: transform 0.25s ease, color 0.18s; }
+        .mob-acc.open .mob-acc-chevron { transform: rotate(180deg); color: #3AAEFF; }
+        .mob-acc-body { display: none; padding: 4px 0 10px 8px; }
+        .mob-acc.open .mob-acc-body { display: block; }
+        .mob-acc + .mob-divider, .mob-green-item + .mob-divider { display: none; }
+        .mob-green-item { border-bottom: 1px solid rgba(255,255,255,0.06); }
         .mob-cta {
             display: block; width: 100%; margin-top: 20px;
             background: linear-gradient(90deg, #3AAEFF, #007BFF); color: #fff;
@@ -2699,134 +2714,44 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
             <nav class="nav-menu" id="main-menu">
                 <!-- #9: Sliding underline indicator -->
                 <div class="nav-underline-track" id="nav-underline"></div>
-
                 <!-- SISTEMI -->
                 <div class="nav-item" id="nav-sistemi">
                     <button class="nav-item-btn" onclick="toggleNavItem('nav-sistemi')" data-nav-section="sistemi">
                         <span data-i18n="nav-btn-sistemi">Sistemi</span><span class="nav-active-dot"></span>
                         <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </button>
-                    <div class="nav-dropdown" style="min-width: 290px;">
-                        
-                        <a href="tutti_i_sistemi.html#pkg-starter">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-s-starter">Starter Smart</span>
-                                <span class="nav-dd-desc" data-i18n="nav-s-starter-sub">Controllo base luci e prese</span>
-                            </div>
-                        </a>
-                        <a href="tutti_i_sistemi.html#pkg-comfort">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-s-comfort">Comfort Smart ⭐</span>
-                                <span class="nav-dd-desc" data-i18n="nav-s-comfort-sub">Luci, clima e automazioni</span>
-                            </div>
-                            <span class="nav-dd-badge" data-i18n="nav-badge-top">⭐ più scelto</span>
-                        </a>
-                        <a href="tutti_i_sistemi.html#pkg-security">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-s-security">Security Smart</span>
-                                <span class="nav-dd-desc" data-i18n="nav-s-security-sub">Allarme, telecamere e controllo remoto</span>
-                            </div>
-                        </a>
-                        <a href="tutti_i_sistemi.html#pkg-energy">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-s-energy">Energy Smart</span>
-                                <span class="nav-dd-desc" data-i18n="nav-s-energy-sub">Riduzione consumi e monitoraggio</span>
-                            </div>
-                        </a>
-                        <a href="tutti_i_sistemi.html#pkg-full">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 4v10m-5-5h10"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-s-full">Full Smart</span>
-                                <span class="nav-dd-desc" data-i18n="nav-s-full-sub">Casa completamente automatizzata</span>
-                            </div>
-                        </a>
+                    <div class="nav-dropdown" style="min-width:290px;">
+                        <a href="tutti_i_sistemi.html"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-s-all">Tutti i sistemi</span><span class="nav-dd-desc" data-i18n="nav-s-all-sub">Esplora l'intera gamma</span></div></a>
+                        <div class="nav-dd-divider"></div>
+                        <a href="tutti_i_sistemi.html#pkg-starter"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-s-starter">Starter Smart</span><span class="nav-dd-desc" data-i18n="nav-s-starter-sub">Controllo base luci e prese</span></div></a>
+                        <a href="tutti_i_sistemi.html#pkg-comfort"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-s-comfort">Comfort Smart ⭐</span><span class="nav-dd-desc" data-i18n="nav-s-comfort-sub">Luci, clima e automazioni</span></div><span class="nav-dd-badge" data-i18n="nav-badge-top">⭐ più scelto</span></a>
+                        <a href="tutti_i_sistemi.html#pkg-security"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-s-security">Security Smart</span><span class="nav-dd-desc" data-i18n="nav-s-security-sub">Allarme, telecamere e controllo remoto</span></div></a>
+                        <a href="tutti_i_sistemi.html#pkg-energy"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-s-energy">Energy Smart</span><span class="nav-dd-desc" data-i18n="nav-s-energy-sub">Riduzione consumi e monitoraggio</span></div></a>
+                        <a href="tutti_i_sistemi.html#pkg-full"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 4v10m-5-5h10"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-s-full">Full Smart</span><span class="nav-dd-desc" data-i18n="nav-s-full-sub">Casa completamente automatizzata</span></div></a>
                     </div>
                 </div>
-
+                <!-- IMPEGNO AMBIENTALE -->
+                <div class="nav-item" id="nav-green">
+                    <a class="nav-item-btn nav-green-link" href="impegno-ambientale.html" data-nav-section="green" style="text-decoration:none;color:#5FD08A;display:inline-flex;align-items:center;">
+                        <span data-i18n="nav-btn-green">🌱 Impegno ambientale</span><span class="nav-active-dot"></span>
+                    </a>
+                </div>
                 <!-- SOLUZIONI -->
                 <div class="nav-item" id="nav-soluzioni">
                     <button class="nav-item-btn" onclick="toggleNavItem('nav-soluzioni')" data-nav-section="soluzioni">
                         <span data-i18n="nav-btn-sol">Soluzioni</span><span class="nav-active-dot"></span>
                         <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </button>
-                    <div class="nav-dropdown" style="min-width: 300px;">
-                        <a href="#" onclick="openSol('illuminazione'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-sol-luce">Illuminazione intelligente</span>
-                                <span class="nav-dd-desc" data-i18n="nav-sol-luce-sub">La luce che si adatta a te</span>
-                            </div>
-                        </a>
-                        <a href="#" onclick="openSol('clima'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 10-4.584-7H7a4 4 0 00-4 3z M12 9v3m0 0v3m0-3h3m-3 0H9"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-sol-clima">Clima e riscaldamento</span>
-                                <span class="nav-dd-desc" data-i18n="nav-sol-clima-sub">La temperatura giusta, sempre</span>
-                            </div>
-                        </a>
-                        <a href="#" onclick="openSol('sicurezza'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-sol-sicur">Sicurezza e allarme</span>
-                                <span class="nav-dd-desc" data-i18n="nav-sol-sicur-sub">Dormi tranquillo, ci pensiamo noi</span>
-                            </div>
-                        </a>
-                        <a href="#" onclick="openSol('scenari'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-sol-scenari">Scenari automatici</span>
-                                <span class="nav-dd-desc" data-i18n="nav-sol-scenari-sub">Un tocco, tutto cambia</span>
-                            </div>
-                        </a>
-                        <a href="#" onclick="openSol('vocale'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4M9 11V7a3 3 0 016 0v4a3 3 0 01-6 0z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-sol-vocale">Controllo vocale</span>
-                                <span class="nav-dd-desc" data-i18n="nav-sol-vocale-sub">Parla, la casa ti ascolta</span>
-                            </div>
-                        </a>
-                        <a href="#" onclick="openSol('remoto'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-sol-remoto">Controllo remoto</span>
-                                <span class="nav-dd-desc" data-i18n="nav-sol-remoto-sub">La tua casa, ovunque tu sia</span>
-                            </div>
-                        </a>
-                        <a href="#" onclick="openSol('energia'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-sol-energia">Risparmio energetico</span>
-                                <span class="nav-dd-desc" data-i18n="nav-sol-energia-sub">Consuma meno, vivi meglio</span>
-                            </div>
-                        </a>
-                        <a href="#" onclick="openSol('giardino'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-sol-giardino">Giardino e accessi</span>
-                                <span class="nav-dd-desc" data-i18n="nav-sol-giardino-sub">Accesso sicuro, giardino curato</span>
-                            </div>
-                        </a>
-                        <a href="#" onclick="openSol('3d'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-sol-3d">Controllo 3D</span>
-                                <span class="nav-dd-desc" data-i18n="nav-sol-3d-sub">Gestisci la tua casa dalla pianta 3D</span>
-                            </div>
-                        </a>
-                        <a href="#" onclick="openSol('casa'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-sol-casa">Casa intelligente</span>
-                                <span class="nav-dd-desc" data-i18n="nav-sol-casa-sub">Tutto connesso, vita senza pensieri</span>
-                            </div>
-                        </a>
+                    <div class="nav-dropdown" style="min-width:300px;">
+                        <a href="#" onclick="openSol('illuminazione'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-sol-luce">Illuminazione intelligente</span><span class="nav-dd-desc" data-i18n="nav-sol-luce-sub">La luce che si adatta a te</span></div></a>
+                        <a href="#" onclick="openSol('clima'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 10-4.584-7H7a4 4 0 00-4 3z M12 9v3m0 0v3m0-3h3m-3 0H9"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-sol-clima">Clima e riscaldamento</span><span class="nav-dd-desc" data-i18n="nav-sol-clima-sub">La temperatura giusta, sempre</span></div></a>
+                        <a href="#" onclick="openSol('sicurezza'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-sol-sicur">Sicurezza e allarme</span><span class="nav-dd-desc" data-i18n="nav-sol-sicur-sub">Dormi tranquillo, ci pensiamo noi</span></div></a>
+                        <a href="#" onclick="openSol('scenari'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-sol-scenari">Scenari automatici</span><span class="nav-dd-desc" data-i18n="nav-sol-scenari-sub">Un tocco, tutto cambia</span></div></a>
+                        <a href="#" onclick="openSol('vocale'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4M9 11V7a3 3 0 016 0v4a3 3 0 01-6 0z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-sol-vocale">Controllo vocale</span><span class="nav-dd-desc" data-i18n="nav-sol-vocale-sub">Parla, la casa ti ascolta</span></div></a>
+                        <a href="#" onclick="openSol('remoto'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-sol-remoto">Controllo remoto</span><span class="nav-dd-desc" data-i18n="nav-sol-remoto-sub">La tua casa, ovunque tu sia</span></div></a>
+                        <a href="#" onclick="openSol('energia'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-sol-energia">Risparmio energetico</span><span class="nav-dd-desc" data-i18n="nav-sol-energia-sub">Consuma meno, vivi meglio</span></div></a>
                     </div>
                 </div>
-
                 <!-- SU DI NOI -->
                 <div class="nav-item" id="nav-azienda">
                     <button class="nav-item-btn" onclick="toggleNavItem('nav-azienda')">
@@ -2834,23 +2759,10 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
                         <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="nav-dropdown">
-                        <a href="#" onclick="openSol('chi-siamo'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-about-chi">Chi siamo</span>
-                                <span class="nav-dd-desc" data-i18n="nav-about-chi-sub">Il team dietro SFERA</span>
-                            </div>
-                        </a>
-                        <a href="#" onclick="openSol('missione'); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-about-miss">La nostra missione</span>
-                                <span class="nav-dd-desc" data-i18n="nav-about-miss-sub">Valori e visione aziendale</span>
-                            </div>
-                        </a>
+                        <a href="#" onclick="openSol('chi-siamo'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-about-chi">Chi siamo</span><span class="nav-dd-desc" data-i18n="nav-about-chi-sub">Il team dietro SFERA</span></div></a>
+                        <a href="#" onclick="openSol('missione'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-about-miss">La nostra missione</span><span class="nav-dd-desc" data-i18n="nav-about-miss-sub">Valori e visione aziendale</span></div></a>
                     </div>
                 </div>
-
                 <!-- CONTATTACI -->
                 <div class="nav-item" id="nav-contatti">
                     <button class="nav-item-btn" onclick="toggleNavItem('nav-contatti')">
@@ -2858,16 +2770,11 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
                         <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="nav-dropdown">
-                        <a href="#" onclick="openContatti(); return false;">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            <div class="nav-dd-text">
-                                <span class="nav-dd-title" data-i18n="nav-contact-lbl">Contatti</span>
-                                <span class="nav-dd-desc" data-i18n="nav-contact-sub">Parliamo del tuo progetto</span>
-                            </div>
-                        </a>
+                        <a href="#" onclick="openContatti(); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><div class="nav-dd-text"><span class="nav-dd-title" data-i18n="nav-contact-lbl">Contatti</span><span class="nav-dd-desc" data-i18n="nav-contact-sub">Parliamo del tuo progetto</span></div></a>
                     </div>
                 </div>
-
+                    </a>
+                </div>
             </nav>
 
             <!-- Right side: CTA + Lang switcher (desktop) -->
@@ -2949,47 +2856,60 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
                 </button>
             </div>
 
-            <div class="mob-divider"></div>
 
-            <p class="mob-section" data-i18n="nav-btn-sistemi">Sistemi</p>
-            
-            <a href="tutti_i_sistemi.html#pkg-starter" class="mob-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
-                <span><span data-i18n="nav-s-starter">Starter Smart</span> <span class="mob-link-desc" data-i18n="nav-s-starter-sub">Controllo base luci e prese</span></span>
-            </a>
-            <a href="tutti_i_sistemi.html#pkg-comfort" class="mob-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
-                <span><span data-i18n="nav-s-comfort">Comfort Smart ⭐</span> <span class="mob-link-desc" data-i18n="nav-s-comfort-sub">Luci, clima e automazioni</span></span>
-            </a>
-            <a href="tutti_i_sistemi.html#pkg-security" class="mob-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                <span><span data-i18n="nav-s-security">Security Smart</span> <span class="mob-link-desc" data-i18n="nav-s-security-sub">Allarme, telecamere e controllo remoto</span></span>
-            </a>
-            <a href="tutti_i_sistemi.html#pkg-energy" class="mob-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                <span><span data-i18n="nav-s-energy">Energy Smart</span> <span class="mob-link-desc" data-i18n="nav-s-energy-sub">Riduzione consumi e monitoraggio</span></span>
-            </a>
-            <a href="tutti_i_sistemi.html#pkg-full" class="mob-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 4v10m-5-5h10"/></svg>
-                <span><span data-i18n="nav-s-full">Full Smart</span> <span class="mob-link-desc" data-i18n="nav-s-full-sub">Casa completamente automatizzata</span></span>
-            </a>
 
             <div class="mob-divider"></div>
-
-            <p class="mob-section" data-i18n="nav-btn-sol">Soluzioni</p>
-            <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('illuminazione'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg><span><span data-i18n="nav-sol-luce">Illuminazione intelligente</span> <span class="mob-link-desc" data-i18n="nav-sol-luce-sub">La luce che si adatta a te</span></span></a>
-            <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('clima'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg><span><span data-i18n="nav-sol-clima">Clima e riscaldamento</span> <span class="mob-link-desc" data-i18n="nav-sol-clima-sub">La temperatura giusta, sempre</span></span></a>
-            <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('sicurezza'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><span><span data-i18n="nav-sol-sicur">Sicurezza e allarme</span> <span class="mob-link-desc" data-i18n="nav-sol-sicur-sub">Dormi tranquillo, ci pensiamo noi</span></span></a>
-            <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('scenari'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/></svg><span><span data-i18n="nav-sol-scenari">Scenari automatici</span> <span class="mob-link-desc" data-i18n="nav-sol-scenari-sub">Un tocco, tutto cambia</span></span></a>
-            <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('remoto'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg><span><span data-i18n="nav-sol-remoto">Controllo remoto</span> <span class="mob-link-desc" data-i18n="nav-sol-remoto-sub">La tua casa, ovunque tu sia</span></span></a>
-            <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('energia'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span><span data-i18n="nav-sol-energia">Risparmio energetico</span> <span class="mob-link-desc" data-i18n="nav-sol-energia-sub">Consuma meno, vivi meglio</span></span></a>
-
-            <div class="mob-divider"></div>
-
-            <p class="mob-section" data-i18n="nav-btn-about">Su di noi</p>
-            <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('chi-siamo'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span><span data-i18n="nav-about-chi">Chi siamo</span> <span class="mob-link-desc" data-i18n="nav-about-chi-sub">Il team dietro SFERA</span></span></a>
-            <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('missione'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg><span><span data-i18n="nav-about-miss">La nostra missione</span> <span class="mob-link-desc" data-i18n="nav-about-miss-sub">Valori e visione aziendale</span></span></a>
-            <a href="#" class="mob-link" onclick="toggleMobileNav(); openContatti(); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span><span data-i18n="nav-contact-lbl">Contatti</span> <span class="mob-link-desc" data-i18n="nav-contact-sub">Parliamo del tuo progetto</span></span></a>
+            <div class="mob-acc">
+                <button type="button" class="mob-acc-btn" onclick="toggleMobAcc(this)" aria-expanded="false">
+                    <span data-i18n="nav-btn-sistemi">Sistemi</span>
+                    <svg class="mob-acc-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="mob-acc-body">
+                    <a href="tutti_i_sistemi.html" class="mob-link"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg><span><span data-i18n="nav-s-all">Tutti i sistemi</span> <span class="mob-link-desc" data-i18n="nav-s-all-sub">Esplora l'intera gamma</span></span></a>
+                    <a href="tutti_i_sistemi.html#pkg-starter" class="mob-link"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg><span><span data-i18n="nav-s-starter">Starter Smart</span> <span class="mob-link-desc" data-i18n="nav-s-starter-sub">Controllo base luci e prese</span></span></a>
+                    <a href="tutti_i_sistemi.html#pkg-comfort" class="mob-link"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg><span><span data-i18n="nav-s-comfort">Comfort Smart ⭐</span> <span class="mob-link-desc" data-i18n="nav-s-comfort-sub">Luci, clima e automazioni</span></span></a>
+                    <a href="tutti_i_sistemi.html#pkg-security" class="mob-link"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><span><span data-i18n="nav-s-security">Security Smart</span></span></a>
+                    <a href="tutti_i_sistemi.html#pkg-energy" class="mob-link"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span><span data-i18n="nav-s-energy">Energy Smart</span></span></a>
+                    <a href="tutti_i_sistemi.html#pkg-full" class="mob-link"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 4v10m-5-5h10"/></svg><span><span data-i18n="nav-s-full">Full Smart</span></span></a>
+                </div>
+            </div>
+            <div class="mob-green-item">
+                <a href="impegno-ambientale.html" class="mob-acc-btn" style="color:#5FD08A;text-decoration:none;"><span data-i18n="nav-btn-green">🌱 Impegno ambientale</span></a>
+            </div>
+            <div class="mob-acc">
+                <button type="button" class="mob-acc-btn" onclick="toggleMobAcc(this)" aria-expanded="false">
+                    <span data-i18n="nav-btn-sol">Soluzioni</span>
+                    <svg class="mob-acc-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="mob-acc-body">
+                    <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('illuminazione'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg><span><span data-i18n="nav-sol-luce">Illuminazione intelligente</span> <span class="mob-link-desc" data-i18n="nav-sol-luce-sub">La luce che si adatta a te</span></span></a>
+                    <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('clima'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 10-4.584-7H7a4 4 0 00-4 3z M12 9v3m0 0v3m0-3h3m-3 0H9"/></svg><span><span data-i18n="nav-sol-clima">Clima e riscaldamento</span> <span class="mob-link-desc" data-i18n="nav-sol-clima-sub">La temperatura giusta, sempre</span></span></a>
+                    <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('sicurezza'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><span><span data-i18n="nav-sol-sicur">Sicurezza e allarme</span> <span class="mob-link-desc" data-i18n="nav-sol-sicur-sub">Dormi tranquillo, ci pensiamo noi</span></span></a>
+                    <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('scenari'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/></svg><span><span data-i18n="nav-sol-scenari">Scenari automatici</span> <span class="mob-link-desc" data-i18n="nav-sol-scenari-sub">Un tocco, tutto cambia</span></span></a>
+                    <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('vocale'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4M9 11V7a3 3 0 016 0v4a3 3 0 01-6 0z"/></svg><span><span data-i18n="nav-sol-vocale">Controllo vocale</span> <span class="mob-link-desc" data-i18n="nav-sol-vocale-sub">Parla, la casa ti ascolta</span></span></a>
+                    <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('remoto'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg><span><span data-i18n="nav-sol-remoto">Controllo remoto</span> <span class="mob-link-desc" data-i18n="nav-sol-remoto-sub">La tua casa, ovunque tu sia</span></span></a>
+                    <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('energia'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span><span data-i18n="nav-sol-energia">Risparmio energetico</span> <span class="mob-link-desc" data-i18n="nav-sol-energia-sub">Consuma meno, vivi meglio</span></span></a>
+                </div>
+            </div>
+            <div class="mob-acc">
+                <button type="button" class="mob-acc-btn" onclick="toggleMobAcc(this)" aria-expanded="false">
+                    <span data-i18n="nav-btn-about">Su di noi</span>
+                    <svg class="mob-acc-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="mob-acc-body">
+                    <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('chi-siamo'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span><span data-i18n="nav-about-chi">Chi siamo</span> <span class="mob-link-desc" data-i18n="nav-about-chi-sub">Il team dietro SFERA</span></span></a>
+                    <a href="#" class="mob-link" onclick="toggleMobileNav(); openSol('missione'); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg><span><span data-i18n="nav-about-miss">La nostra missione</span> <span class="mob-link-desc" data-i18n="nav-about-miss-sub">Valori e visione aziendale</span></span></a>
+                </div>
+            </div>
+            <div class="mob-acc">
+                <button type="button" class="mob-acc-btn" onclick="toggleMobAcc(this)" aria-expanded="false">
+                    <span data-i18n="nav-btn-contact">Contattaci</span>
+                    <svg class="mob-acc-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="mob-acc-body">
+                    <a href="#" class="mob-link" onclick="toggleMobileNav(); openContatti(); return false;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span><span data-i18n="nav-contact-lbl">Contatti</span> <span class="mob-link-desc" data-i18n="nav-contact-sub">Parliamo del tuo progetto</span></span></a>
+                </div>
+            </div>
 
             <button class="mob-cta" onclick="toggleMobileNav(); openContatti();" data-i18n="nav-btn-cta">Sopralluogo gratuito →</button>
         </div>
@@ -3725,7 +3645,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
                 <!-- Logo + tagline -->
                 <div style="display: flex; align-items: center; gap: 16px;">
                     <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-start;">
-                        <img src="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/logo_tex_org.png" alt="SFERA" loading="lazy" decoding="async" style="height: 44px; width: auto; object-fit: contain; -webkit-filter: invert(1) hue-rotate(180deg); filter: invert(1) hue-rotate(180deg);">
+                        <a href="index.html" aria-label="SFERA - Home" style="display:inline-flex;align-items:center;text-decoration:none;"><img src="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/logo_tex_org.png" alt="SFERA" loading="lazy" decoding="async" style="height: 44px; width: auto; object-fit: contain; -webkit-filter: invert(1) hue-rotate(180deg); filter: invert(1) hue-rotate(180deg);"></a>
                         <span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.22);" data-i18n="footer-slogan">Comfort&nbsp;•&nbsp;Intelligenza&nbsp;•&nbsp;Sfera</span>
                     </div>
                     <span style="width: 1px; height: 36px; background: rgba(255,255,255,0.1); display: inline-block; flex-shrink:0;"></span>
@@ -3832,7 +3752,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
             'footer-copy': '© 2026 SFERA Smart Systems · Tutti i diritti riservati',
             /* ── nav keys ── */
             'nav-btn-home': 'Home',
-            'nav-btn-sistemi': 'Sistemi', 'nav-btn-sol': 'Soluzioni',
+            'nav-btn-sistemi': 'Sistemi', 'nav-btn-green': '🌱 Impegno ambientale', 'nav-btn-sol': 'Soluzioni',
             'nav-btn-about': 'Su di noi', 'nav-btn-contact': 'Contattaci',
             'nav-btn-cta': 'Sopralluogo gratuito →',
             'nav-s-starter-sub': 'Controllo base luci e prese',
@@ -3942,7 +3862,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
             'footer-copy': '© 2026 SFERA Smart Systems · Alle Rechte vorbehalten',
             /* ── nav keys ── */
             'nav-btn-home': 'Startseite',
-            'nav-btn-sistemi': 'Systeme', 'nav-btn-sol': 'Lösungen',
+            'nav-btn-sistemi': 'Systeme', 'nav-btn-green': '🌱 Umweltengagement', 'nav-btn-sol': 'Lösungen',
             'nav-btn-about': 'Über uns', 'nav-btn-contact': 'Kontakt',
             'nav-btn-cta': 'Kostenlose Besichtigung →',
             'nav-s-starter-sub': 'Grundsteuerung Licht und Steckdosen',
@@ -4052,7 +3972,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
             'footer-copy': '© 2026 SFERA Smart Systems · All rights reserved',
             /* ── nav keys ── */
             'nav-btn-home': 'Home',
-            'nav-btn-sistemi': 'Systems', 'nav-btn-sol': 'Solutions',
+            'nav-btn-sistemi': 'Systems', 'nav-btn-green': '🌱 Environmental commitment', 'nav-btn-sol': 'Solutions',
             'nav-btn-about': 'About', 'nav-btn-contact': 'Contact',
             'nav-btn-cta': 'Free site survey →',
             'nav-s-starter-sub': 'Basic light and outlet control',
@@ -4291,7 +4211,7 @@ html[data-theme="light"] #theme-icon-sun  { display: block; }
                 <h2 id="pkg-popup-name" style="font-family:'Poppins',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px;"></h2>
                 <p id="pkg-popup-desc" style="font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.62);line-height:1.75;margin-bottom:30px;"></p>
                 <ul id="pkg-popup-feats" style="list-style:none;margin:0 0 38px;padding:0;display:flex;flex-direction:column;gap:13px;"></ul>
-                <button id="pkg-popup-cta" onclick="window.location='index.html'" style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;background:linear-gradient(135deg,#2EA7FF,#1C7DFF);color:#fff;border:none;border-radius:12px;padding:15px 28px;cursor:pointer;box-shadow:0 6px 24px rgba(74,222,128,0.35);transition:transform 0.2s,box-shadow 0.2s;text-align:center;" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 12px 38px rgba(74,222,128,0.52)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 6px 24px rgba(74,222,128,0.35)'">Prenota un sopralluogo gratuito</button>
+                <button id="pkg-popup-cta" onclick="closePkg(); setTimeout(openContatti, 180);" style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;background:linear-gradient(135deg,#2EA7FF,#1C7DFF);color:#fff;border:none;border-radius:12px;padding:15px 28px;cursor:pointer;box-shadow:0 6px 24px rgba(74,222,128,0.35);transition:transform 0.2s,box-shadow 0.2s;text-align:center;" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 12px 38px rgba(74,222,128,0.52)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 6px 24px rgba(74,222,128,0.35)'">Prenota un sopralluogo gratuito</button>
             </div>
             <!-- Right: hero image -->
             <div id="pkg-popup-right">
@@ -5753,6 +5673,20 @@ document.getElementById("contact-form").addEventListener("submit", function(even
         var overlay = document.getElementById('mobile-nav-overlay');
         var isOpen = overlay.classList.toggle('open');
         document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    function toggleMobAcc(btn) {
+        var acc = btn.closest('.mob-acc');
+        if (!acc) return;
+        var wasOpen = acc.classList.contains('open');
+        document.querySelectorAll('#mobile-nav-panel .mob-acc.open').forEach(function(el) {
+            el.classList.remove('open');
+            var b = el.querySelector('.mob-acc-btn');
+            if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        if (!wasOpen) {
+            acc.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+        }
     }
     function closeMobileNavOverlay(e) {
         if (e.target === document.getElementById('mobile-nav-overlay')) toggleMobileNav();
