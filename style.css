@@ -807,9 +807,9 @@ html { overflow-x: hidden; max-width: 100%; }
         .mob-lang-btn.active { border-color: #3AAEFF; background: rgba(58,174,255,0.12); color: #3AAEFF; }
 
         /* Nav height — mobile first */
-        #main-nav .nav-inner { height: 68px; }
-        @media (min-width: 768px)  { #main-nav .nav-inner { height: 80px; } }
-        @media (min-width: 1024px) { #main-nav .nav-inner { height: 112px; } }
+        #main-nav .nav-inner { height: 58px; }
+        @media (min-width: 768px)  { #main-nav .nav-inner { height: 66px; } }
+        @media (min-width: 1024px) { #main-nav .nav-inner { height: 76px; } }
 
         /* Nav CTA button — filled blue, clearly visible */
         .nav-cta-btn {
@@ -833,6 +833,15 @@ html { overflow-x: hidden; max-width: 100%; }
         .btn-arrow { display: inline-flex; align-items: center; gap: 10px; }
         .btn-arrow svg { transition: transform 0.3s; }
         .btn-arrow:hover svg { transform: translateX(4px); }
+        #main-nav .logo-container img { height: 50px !important; width: auto !important; }
+        @media (min-width: 640px)  { #main-nav .logo-container img { height: 64px !important; } }
+        @media (min-width: 1024px) { #main-nav .logo-container img { height: 86px !important; } }
+        #main-nav .nav-item-btn { font-size: 12px; padding: 6px 12px; }
+        #main-nav .nav-item-btn .chevron { width: 13px; height: 13px; }
+        #main-nav .nav-cta-btn { font-size: 12px; padding: 8px 16px; }
+        #main-nav .lang-globe-btn { font-size: 12px; padding: 6px 10px; }
+        #main-nav .lang-globe-btn .globe-icon { width: 17px; height: 17px; }
+        #main-nav #mobile-menu-btn { padding: 8px; min-width: 38px; min-height: 38px; }
 
         /* ══════════════════════════════════
            MOBILE NAV

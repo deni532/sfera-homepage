@@ -5,11 +5,11 @@
     <script>try{var _l=localStorage.getItem('sfera-lang');if(_l&&['it','de','en'].includes(_l))document.documentElement.lang=_l;}catch(e){}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="robots" content="index, follow">
-    <title>Impegno Ambientale | Il nostro Impegno Green | SFERA Smart Systems</title>
-    <meta name="description" content="Una casa o un ufficio intelligente aiuta anche l'ambiente: SFERA elimina gli sprechi invisibili di luce, clima e stand-by e fa consumare fino al 30% in meno.">
+    <title>Domotica Sostenibile: Risparmio Energetico e Idrico | SFERA</title>
+    <meta name="description" content="Scopri l'impegno ambientale di SFERA Smart Systems: tagliamo gli sprechi di corrente e acqua fino al 40% con sensori di presenza e irrigazione meteo-adattiva.">
     <link rel="canonical" href="https://www.sferasmart.it/impegno-ambientale.html">
-    <meta property="og:title" content="Il nostro Impegno Green | SFERA Smart Systems">
-    <meta property="og:description" content="Meno sprechi, bollette più leggere, meno inquinamento: la missione Green di SFERA.">
+    <meta property="og:title" content="Domotica Sostenibile: Risparmio Energetico e Idrico | SFERA">
+    <meta property="og:description" content="Scopri l'impegno ambientale di SFERA Smart Systems: tagliamo gli sprechi di corrente e acqua fino al 40% con sensori di presenza e irrigazione meteo-adattiva.">
     <meta property="og:url" content="https://www.sferasmart.it/impegno-ambientale.html">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev/logo_blue.png">
@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://pub-a92582c773094eecb29c572fa1712b3d.r2.dev" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=224">
+    <link rel="stylesheet" href="style.css?v=230">
 
     <style>
         :root {
@@ -37,13 +37,25 @@
         body.green-page { background: var(--gr-950); color: #fff; font-family: 'Inter', sans-serif; }
         .gr-wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
 
+        /* ── ULTRA-MODERN BIONIC LEAVES CANVAS ── */
+        #gr-leaves-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            contain: strict;
+        }
+        footer { position: relative; z-index: 2; }
+
         /* ── HERO ── */
         .gr-hero {
             position: relative; overflow: hidden; padding: 170px 0 110px;
             background:
-                radial-gradient(900px 520px at 85% 8%, rgba(46,139,87,.38), transparent 60%),
-                radial-gradient(700px 480px at 5% 95%, rgba(30,107,69,.40), transparent 62%),
-                linear-gradient(180deg, #0A2016 0%, var(--gr-950) 100%);
+                radial-gradient(900px 520px at 85% 8%, rgba(46,139,87,.34), transparent 60%),
+                radial-gradient(700px 480px at 5% 95%, rgba(30,107,69,.36), transparent 62%),
+                linear-gradient(180deg, rgba(10,32,22,.78) 0%, rgba(5,17,11,.82) 100%);
             border-bottom: 1px solid rgba(123,217,166,.12);
         }
         .gr-hero::before { /* fine grid */
@@ -53,35 +65,34 @@
             -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
             mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
         }
-        .gr-leaf { position: absolute; z-index: 1; pointer-events: none; color: var(--gr-400); opacity: .13; animation: gr-float 14s ease-in-out infinite; }
-        .gr-leaf svg { width: 100%; height: 100%; }
-        .gr-leaf.l1 { width: 220px; height: 220px; top: 90px; right: 6%; }
-        .gr-leaf.l2 { width: 120px; height: 120px; bottom: 60px; left: 7%; animation-delay: -5s; opacity: .10; }
-        .gr-leaf.l3 { width: 70px; height: 70px; top: 40%; right: 30%; animation-delay: -9s; opacity: .12; }
-        @keyframes gr-float {
-            0%,100% { transform: translateY(0) rotate(-6deg); }
-            50%     { transform: translateY(-26px) rotate(8deg); }
-        }
+        .gr-leaf { display: none; }
         .gr-eyebrow {
             display: inline-flex; align-items: center; gap: 10px;
-            font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+            font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
             color: var(--gr-300); background: rgba(46,139,87,.16); border: 1px solid rgba(123,217,166,.28);
-            padding: 9px 18px; border-radius: 999px; margin-bottom: 30px; backdrop-filter: blur(8px);
+            padding: 9px 18px; border-radius: 999px; margin-bottom: 24px; backdrop-filter: blur(8px);
         }
         .gr-hero h1 {
-            font-family: 'Poppins', sans-serif; font-weight: 900; line-height: 1.07;
-            font-size: clamp(34px, 5.4vw, 66px); max-width: 940px; margin: 0 0 30px; letter-spacing: -.01em;
+            font-family: 'Poppins', sans-serif; font-weight: 800; line-height: 1.22;
+            font-size: clamp(1.4rem, 4vw, 2.7rem); max-width: 820px; margin: 0 0 20px; letter-spacing: normal; text-wrap: balance;
         }
         .gr-hero h1 em {
             font-style: normal;
-            background: linear-gradient(100deg, var(--gr-300), var(--gr-400) 55%, #D7F5E3);
-            -webkit-background-clip: text; background-clip: text; color: transparent;
+            background: linear-gradient(90deg, #1FA35B, #5FD08A, #C8F79E, #5FD08A, #1FA35B);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: gradient-shift 4s ease infinite;
+            will-change: background-position;
         }
         .gr-manifesto {
-            max-width: 780px; font-size: clamp(16px, 1.55vw, 19px); line-height: 1.85; color: rgba(255,255,255,.72);
-            font-style: italic; padding-left: 24px; border-left: 3px solid var(--gr-500); margin: 0 0 44px;
+            font-family: 'Inter', sans-serif; font-style: normal;
+            max-width: 780px; font-size: clamp(14.5px, 1.5vw, 16px); line-height: 1.75; color: rgba(255,255,255,.72);
+            padding-left: 20px; border-left: 3px solid var(--gr-500); margin: 0 0 40px;
         }
-        .gr-manifesto strong { color: var(--gr-200); font-style: normal; }
+        .gr-manifesto strong { color: var(--gr-200); font-weight: 600; font-style: normal; }
         .gr-hero-stats { display: flex; gap: 18px; flex-wrap: wrap; }
         .gr-stat {
             min-width: 190px; padding: 20px 26px; border-radius: 18px;
@@ -89,32 +100,33 @@
             border: 1px solid rgba(123,217,166,.22); backdrop-filter: blur(10px);
         }
         .gr-stat b { display: block; font-family: 'Poppins', sans-serif; font-size: 40px; font-weight: 900; line-height: 1; color: var(--gr-300); }
-        .gr-stat span { display: block; margin-bottom: 10px; font-size: 12.5px; color: rgba(255,255,255,.6); line-height: 1.45; }
+        .gr-stat span { display: block; font-family: 'Inter', sans-serif; margin-bottom: 10px; font-size: 12.5px; color: rgba(255,255,255,.6); line-height: 1.45; }
 
         /* ── SECTIONS ── */
         .gr-section { padding: 96px 0; position: relative; }
-        .gr-section.alt { background: linear-gradient(180deg, var(--gr-900), #0A1F15 100%); border-top: 1px solid rgba(123,217,166,.08); border-bottom: 1px solid rgba(123,217,166,.08); }
-        .gr-kicker { font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--gr-400); margin: 0 0 14px; }
-        .gr-h2 { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(26px, 3.4vw, 42px); line-height: 1.15; margin: 0 0 18px; max-width: 820px; }
-        .gr-lead { font-size: 17px; line-height: 1.8; color: rgba(255,255,255,.62); max-width: 720px; margin: 0 0 52px; }
+        .gr-section.alt { background: linear-gradient(180deg, rgba(8,23,15,.72), rgba(10,31,21,.76) 100%); border-top: 1px solid rgba(123,217,166,.08); border-bottom: 1px solid rgba(123,217,166,.08); }
+        .gr-kicker { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gr-300); margin: 0 0 14px; text-align: center; }
+        .gr-h2 { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(26px, 4vw, 38px); line-height: 1.15; color: #fff; margin: 0 auto 14px; max-width: 820px; text-align: center; }
+        .gr-lead { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.65; color: rgba(255,255,255,.48); max-width: 640px; margin: 0 auto 56px; text-align: center; }
 
         /* Problem list */
         .gr-problems { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .gr-problem {
-            display: flex; gap: 18px; align-items: flex-start; padding: 24px 26px; border-radius: 18px;
-            background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+            display: flex; gap: 18px; align-items: flex-start; padding: 22px 24px; border-radius: 14px;
+            background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
             transition: transform .3s ease, border-color .3s ease, background .3s ease;
         }
         .gr-problem:hover { transform: translateY(-4px); border-color: rgba(123,217,166,.35); background: rgba(46,139,87,.08); }
-        .gr-problem .ico { flex: 0 0 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; font-size: 24px; background: rgba(46,139,87,.18); border: 1px solid rgba(123,217,166,.2); }
-        .gr-problem p { margin: 0; font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,.72); }
-        .gr-problem p b { color: #fff; }
-        .gr-punch { margin-top: 36px; font-family: 'Poppins', sans-serif; font-size: clamp(18px, 2vw, 24px); font-weight: 700; color: var(--gr-300); }
+        .gr-problem .ico { flex: 0 0 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-size: 22px; background: rgba(46,139,87,.18); border: 1px solid rgba(123,217,166,.2); }
+        .gr-problem p { font-family: 'Inter', sans-serif; margin: 0; font-size: 14px; line-height: 1.65; color: rgba(255,255,255,.55); }
+        .gr-problem p b { font-family: 'Poppins', sans-serif; font-weight: 700; color: #fff; }
+        .gr-problems > .gr-problem:last-child:nth-child(odd) { grid-column: 1 / -1; }
+        .gr-punch { margin: 36px auto 0; text-align: center; font-family: 'Poppins', sans-serif; font-size: clamp(18px, 2.5vw, 22px); font-weight: 800; line-height: 1.4; color: #fff; }
 
         /* Feature cards */
         .gr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .gr-card {
-            position: relative; overflow: hidden; padding: 36px 30px 34px; border-radius: 24px;
+            position: relative; overflow: hidden; padding: 34px 28px 32px; border-radius: 20px;
             background: linear-gradient(160deg, rgba(20,64,42,.55), rgba(8,23,15,.85));
             border: 1px solid rgba(123,217,166,.16);
             transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
@@ -127,31 +139,35 @@
         .gr-card:hover { transform: translateY(-8px); border-color: rgba(123,217,166,.45); box-shadow: 0 24px 60px -20px rgba(46,139,87,.45); }
         .gr-num { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: .14em; color: var(--gr-400); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
         .gr-num::after { content: ''; flex: 1; height: 1px; background: rgba(123,217,166,.2); }
-        .gr-card .big { font-size: 38px; line-height: 1; margin-bottom: 18px; display: block; filter: saturate(.9); }
-        .gr-card h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; margin: 0 0 14px; color: #fff; line-height: 1.3; }
-        .gr-card p { margin: 0; font-size: 15px; line-height: 1.8; color: rgba(255,255,255,.66); }
+        .gr-card .big { font-size: 36px; line-height: 1; margin-bottom: 16px; display: block; filter: saturate(.9); }
+        .gr-card h3 { font-family: 'Poppins', sans-serif; font-size: 19px; font-weight: 700; margin: 0 0 12px; color: #fff; line-height: 1.3; }
+        .gr-card p { font-family: 'Inter', sans-serif; margin: 0; font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,.52); }
         .gr-card p strong { color: var(--gr-200); font-weight: 600; }
 
         /* CTA */
         .gr-cta {
-            text-align: center; padding: 70px 40px; border-radius: 32px; position: relative; overflow: hidden;
+            text-align: center; padding: 64px 40px; border-radius: 24px; position: relative; overflow: hidden;
             background: radial-gradient(600px 300px at 50% 0%, rgba(79,181,131,.30), transparent 70%), linear-gradient(160deg, #134A2E, #0A2016);
             border: 1px solid rgba(123,217,166,.28);
         }
-        .gr-cta h2 { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(26px, 3.2vw, 40px); margin: 0 0 16px; line-height: 1.2; }
-        .gr-cta p { max-width: 640px; margin: 0 auto 34px; color: rgba(255,255,255,.7); font-size: 16.5px; line-height: 1.75; }
+        .gr-cta h2 { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(26px, 4vw, 38px); margin: 0 0 14px; line-height: 1.15; color: #fff; }
+        .gr-cta p { font-family: 'Inter', sans-serif; max-width: 620px; margin: 0 auto 32px; color: rgba(255,255,255,.55); font-size: 15px; line-height: 1.7; }
         .gr-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
         .gr-btn {
             display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 12px; text-decoration: none; cursor: pointer;
             font-family: 'Poppins', sans-serif; font-size: 15px; transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
         }
-        .gr-btn.primary, .gr-btn.ghost { font-weight: 700; background: #fff; color: #1E6B45; border: 1.5px solid #fff; box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
-        .gr-btn.primary:hover, .gr-btn.ghost:hover { transform: translateY(-2px); background: #E9FBF1; border-color: #E9FBF1; color: #14402A; box-shadow: 0 10px 34px rgba(123,217,166,0.35); }
-        .gr-hero-stats { align-items: center; flex-wrap: nowrap; gap: 14px; }
-        .gr-hero-stats .gr-stat { min-width: 0; flex: 0 1 158px; padding: 16px 16px; border-radius: 16px; }
-        .gr-hero-stats .gr-stat b { font-size: 34px; }
+        .gr-btn.primary { font-weight: 700; background: linear-gradient(135deg, #34A86C, #1E6B45); color: #fff; border: none; box-shadow: 0 6px 24px rgba(46,139,87,0.38); }
+        .gr-btn.primary:hover { transform: translateY(-2px); background: linear-gradient(135deg, #3EC07D, #247D51); color: #fff; box-shadow: 0 10px 36px rgba(79,181,131,0.55); }
+        .gr-btn.ghost { font-weight: 600; background: rgba(255,255,255,0.09); color: rgba(255,255,255,0.92); border: 1.5px solid rgba(123,217,166,0.28); box-shadow: none; }
+        .gr-btn.ghost:hover { transform: translateY(-2px); background: rgba(123,217,166,0.15); border-color: rgba(123,217,166,0.48); color: #fff; }
+        body.green-page .faq-btn:hover .faq-icon { border-color: rgba(123,217,166,0.45); color: var(--gr-300); }
+        body.green-page .faq-btn[aria-expanded="true"] .faq-icon { background: rgba(46,139,87,0.22); border-color: rgba(123,217,166,0.4); color: var(--gr-300); }
+        .gr-hero-stats { align-items: stretch; flex-wrap: nowrap; gap: 12px; }
+        .gr-hero-stats .gr-stat { min-width: 0; flex: 0 1 142px; padding: 15px 14px; border-radius: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+        .gr-hero-stats .gr-stat b { font-size: 32px; }
         .gr-hero-stats .gr-stat span { font-size: 12px; margin-bottom: 8px; }
-        .gr-hero-btns { display: flex; flex-direction: row; flex-wrap: nowrap; flex: 0 0 auto; gap: 12px; align-items: center; margin-left: 110px; }
+        .gr-hero-btns { display: flex; flex-direction: row; flex-wrap: nowrap; flex: 0 0 auto; gap: 12px; align-items: center; margin-left: 52px; margin-right: -52px; }
         .gr-hero-btns .gr-btn { white-space: nowrap; padding: 13px 20px; font-size: 14px; }        .gr-hero-btns .gr-btn, .gr-btns .gr-btn { animation: gr-pulse 2.8s ease-in-out infinite; }
         .gr-hero-btns .gr-btn.ghost, .gr-btns .gr-btn.ghost { animation-delay: -1.4s; }
         @keyframes gr-pulse {
@@ -160,10 +176,10 @@
         }
         .gr-hero-btns .gr-btn:hover, .gr-btns .gr-btn:hover { animation-play-state: paused; }
         @media (prefers-reduced-motion: reduce) { .gr-hero-btns .gr-btn, .gr-btns .gr-btn { animation: none; } }
-        @media (max-width: 1200px) {
+        @media (max-width: 1120px) {
             .gr-hero-stats { flex-wrap: wrap; }
             .gr-hero-stats .gr-stat { flex: 1 1 140px; }
-            .gr-hero-btns { margin-left: 0; flex-wrap: wrap; flex: 1 1 100%; margin-top: 8px; }
+            .gr-hero-btns { margin-left: 0; margin-right: 0; flex-wrap: wrap; flex: 1 1 100%; margin-top: 8px; }
         }
         .gr-reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
         .gr-reveal.in { opacity: 1; transform: none; }
@@ -175,7 +191,7 @@
             .gr-hero { padding: 120px 0 70px; }
             .gr-section { padding: 68px 0; }
             .gr-cta { padding: 48px 22px; }
-            .gr-stat { min-width: 0; flex: 1 1 140px; padding: 16px 18px; }
+            .gr-stat { min-width: 0; flex: 1 1 calc(50% - 10px); padding: 16px 16px; }
             .gr-stat b { font-size: 32px; }
             .gr-hero-btns, .gr-btns { flex-direction: column; align-items: stretch; width: 100%; }
             .gr-hero-btns .gr-btn, .gr-btns .gr-btn { width: 100%; min-height: 50px; padding: 14px 16px; font-size: clamp(12.5px, 3.6vw, 14.5px); justify-content: center; text-align: center; box-sizing: border-box; white-space: nowrap; }
@@ -186,10 +202,13 @@
         #main-nav .nav-inner { max-width: 1400px !important; padding-left: 20px !important; padding-right: 20px !important; }
     </style>
 </head>
-<body class="green-page">
+<body class="green-page antialiased">
 
     <!-- Cursor spotlight  -->
     <div id="cursor-glow"></div>
+
+    <!-- Ultra-modern bionic leaves & wind-gust background canvas -->
+    <canvas id="gr-leaves-canvas" aria-hidden="true"></canvas>
 
     <!-- ── SOLUTION MODALS ── -->
     <div class="sol-overlay" id="sol-overlay" role="dialog" aria-modal="true" aria-label="Dettagli sistema" onclick="closeSol(event)">
@@ -527,11 +546,12 @@
         <div class="gr-wrap">
             <p class="gr-eyebrow" data-i18n="gr-eyebrow">🌱 Sostenibilità &amp; Impegno Ambientale</p>
             <h1 data-i18n-html="gr-h1">Una casa o un ufficio intelligente non aiuta solo te: <em>aiuta anche l'ambiente.</em></h1>
-            <p class="gr-manifesto" data-i18n-html="gr-manifesto">Ogni giorno, per pura distrazione, luci e impianti restano accesi per ore in case e uffici vuoti. La missione Green di SFERA è azzerare questi <strong>sprechi</strong> con la tecnologia: <strong>fino al 30% di consumi in meno</strong> per ridurre le bollette e l'inquinamento del nostro territorio.</p>
+            <p class="gr-manifesto" data-i18n-html="gr-manifesto">Ogni giorno, per pura distrazione o per colpa di vecchi timer ciechi, luci e impianti restano accesi per ore in stanze vuote e migliaia di litri d'acqua vengono sprecati per irrigare giardini sotto la pioggia. La missione Green di SFERA è azzerare gli <strong>sprechi di corrente e acqua</strong> con la tecnologia: <strong>fino al 30% di consumi elettrici in meno</strong> e <strong>fino al 40% di risparmio idrico</strong> per ridurre le bollette e proteggere il nostro territorio.</p>
             <div class="gr-hero-stats">
                 <div class="gr-stat"><span data-i18n-html="gr-stat1-lbl">Consumi energetici<br>fino a</span><b>−30%</b></div>
+                <div class="gr-stat"><span data-i18n-html="gr-stat-water-lbl">Acqua risparmiata<br>fino a</span><b>−40%</b></div>
                 <div class="gr-stat"><span data-i18n-html="gr-stat2-lbl">Sprechi sotto controllo,<br>senza pensarci</span><b>24/7</b></div>
-                <div class="gr-stat"><span data-i18n-html="gr-stat3-lbl">Energia buttata fuori<br>dalla finestra</span><b>0</b></div>
+                <div class="gr-stat"><span data-i18n-html="gr-stat3-lbl">Energia e acqua<br>buttate via</span><b>0</b></div>
                 <div class="gr-hero-btns">
                     <a class="gr-btn primary" id="green-hero-contact" href="https://wa.me/393345875351" target="_blank" rel="noopener noreferrer" data-i18n="gr-btn-contact">Richiedi un sopralluogo gratuito &rarr;</a>
                     <a class="gr-btn ghost" id="green-hero-systems" href="tutti_i_sistemi.html" data-i18n="gr-btn-systems">Scopri i sistemi SFERA</a>
@@ -547,14 +567,15 @@
             <div class="gr-wrap">
                 <p class="gr-kicker gr-reveal" data-i18n="gr-prob-kicker">Il nostro impegno green</p>
                 <h2 class="gr-h2 gr-reveal" id="green-problema-title" data-i18n="gr-prob-h2">Quante volte è successo anche a te?</h2>
-                <p class="gr-lead gr-reveal" data-i18n="gr-prob-lead">Piccole distrazioni quotidiane che, sommate, pesano sulla bolletta e sull'ambiente.</p>
+                <p class="gr-lead gr-reveal" data-i18n="gr-prob-lead">Piccole distrazioni quotidiane e vecchi automatismi che, sommati, pesano sulla bolletta e sull'ambiente.</p>
                 <div class="gr-problems">
                     <div class="gr-problem gr-reveal"><span class="ico">🏢</span><p data-i18n-html="gr-prob-1"><b>La sala riunioni</b> dove finisce un incontro e tutti escono lasciando luci e condizionatore accesi per 5 ore.</p></div>
                     <div class="gr-problem gr-reveal"><span class="ico">💡</span><p data-i18n-html="gr-prob-2"><b>Il bagno dell'ufficio o il corridoio</b> con la luce accesa dalla mattina alla sera.</p></div>
                     <div class="gr-problem gr-reveal"><span class="ico">🪟</span><p data-i18n-html="gr-prob-3"><b>La finestra aperta in inverno</b> per «cambiare aria» mentre il termosifone sotto continua a pompare calore verso la strada.</p></div>
                     <div class="gr-problem gr-reveal"><span class="ico">🔌</span><p data-i18n-html="gr-prob-4"><b>L'ufficio o il negozio che il venerdì sera chiude</b>, ma resta con stampanti, schermi, macchinette del caffè, boiler e clima accesi fino al lunedì mattina.</p></div>
+                    <div class="gr-problem gr-reveal"><span class="ico">🌧️</span><p data-i18n-html="gr-prob-5"><b>L'irrigatore del giardino o del parco aziendale</b> che parte puntuale all'ora programmata… proprio mentre sta diluviando o dopo una giornata di pioggia.</p></div>
                 </div>
-                <p class="gr-punch gr-reveal" data-i18n="gr-prob-punch">Con SFERA, tutto questo semplicemente non succede più.</p>
+                <p class="gr-punch gr-reveal" data-i18n="gr-prob-punch">Con SFERA, tutto questo semplicemente non succede più</p>
             </div>
         </section>
 
@@ -562,7 +583,7 @@
         <section class="gr-section alt" id="green-aziende" aria-labelledby="green-aziende-title">
             <div class="gr-wrap">
                 <p class="gr-kicker gr-reveal" data-i18n="gr-biz-kicker">🏢 Per uffici, negozi e aziende</p>
-                <h2 class="gr-h2 gr-reveal" id="green-aziende-title" data-i18n="gr-biz-h2">Ogni stanza consuma solo quando serve.</h2>
+                <h2 class="gr-h2 gr-reveal" id="green-aziende-title" data-i18n="gr-biz-h2">Ogni stanza consuma solo quando serve</h2>
                 <p class="gr-lead gr-reveal" data-i18n="gr-biz-lead">Automazioni che lavorano in silenzio, ogni giorno, al posto di chi ha già mille cose a cui pensare.</p>
                 <div class="gr-grid">
                     <article class="gr-card gr-reveal">
@@ -591,7 +612,7 @@
         <section class="gr-section" id="green-casa" aria-labelledby="green-casa-title">
             <div class="gr-wrap">
                 <p class="gr-kicker gr-reveal" data-i18n="gr-home-kicker">🏡 Per la tua casa</p>
-                <h2 class="gr-h2 gr-reveal" id="green-casa-title" data-i18n="gr-home-h2">Più comfort per la famiglia, meno spreco per il pianeta.</h2>
+                <h2 class="gr-h2 gr-reveal" id="green-casa-title" data-i18n="gr-home-h2">Meno pensieri per la famiglia, meno spreco per il pianeta</h2>
                 <p class="gr-lead gr-reveal" data-i18n="gr-home-lead">La casa impara le abitudini di chi la vive e consuma solo ciò che serve davvero.</p>
                 <div class="gr-grid">
                     <article class="gr-card gr-reveal">
@@ -616,12 +637,41 @@
             </div>
         </section>
 
+        <!-- ── GIARDINO E SPAZI VERDI ── -->
+        <section class="gr-section alt" id="green-giardino" aria-labelledby="green-giardino-title">
+            <div class="gr-wrap">
+                <p class="gr-kicker gr-reveal" data-i18n="gr-garden-kicker">💧 Per il tuo giardino e gli spazi verdi</p>
+                <h2 class="gr-h2 gr-reveal" id="green-giardino-title" data-i18n="gr-garden-h2">Irrigazione intelligente basata sul meteo</h2>
+                <p class="gr-lead gr-reveal" data-i18n="gr-garden-lead">I normali timer da giardino aprono l'acqua a orari fissi, ignorando se fuori diluvia o se la terra è già bagnata. SFERA trasforma l'irrigazione automatica in un sistema intelligente che guarda il cielo e ascolta il terreno.</p>
+                <div class="gr-grid">
+                    <article class="gr-card gr-reveal">
+                        <div class="gr-num">01</div>
+                        <span class="big">🌦️</span>
+                        <h3 data-i18n="gr-garden-c1-h3">Irrigazione collegata alle previsioni meteo</h3>
+                        <p data-i18n-html="gr-garden-c1-p">Il sistema legge le <strong>previsioni meteo locali in tempo reale</strong>: se nel pomeriggio o il giorno dopo è prevista pioggia, <strong>salta o riduce automaticamente</strong> il ciclo di irrigazione programmato.</p>
+                    </article>
+                    <article class="gr-card gr-reveal">
+                        <div class="gr-num">02</div>
+                        <span class="big">🌱</span>
+                        <h3 data-i18n="gr-garden-c2-h3">Sensori di pioggia e umidità del terreno</h3>
+                        <p data-i18n-html="gr-garden-c2-p">Piove già o il prato è ancora umido dal giorno prima? SFERA <strong>blocca subito gli irrigatori</strong> e calibra l'acqua in base alla reale temperatura esterna, evitando <strong>ristagni dannosi per le piante</strong> e inutili sprechi in bolletta.</p>
+                    </article>
+                    <article class="gr-card gr-reveal">
+                        <div class="gr-num">03</div>
+                        <span class="big">🧠</span>
+                        <h3 data-i18n="gr-garden-c3-h3">Cycle &amp; Soak</h3>
+                        <p data-i18n-html="gr-garden-c3-p">SFERA divide l'irrigazione in <strong>micro-cicli calibrati sull'esposizione solare</strong> di ogni zona e sulla stagione. La terra assorbe fino all'ultima goccia in profondità, <strong>risparmiando fino al 40% di acqua</strong>.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- ── CTA ── -->
         <section class="gr-section" id="green-cta" style="padding-top:40px;padding-bottom:72px;">
             <div class="gr-wrap">
                 <div class="gr-cta gr-reveal">
-                    <h2 data-i18n="gr-cta-h2">Costruiamo insieme un ambiente più sostenibile.</h2>
-                    <p data-i18n="gr-cta-p">Scopri quanto puoi risparmiare con SFERA: un sopralluogo gratuito per capire dove si nascondono gli sprechi di casa tua o della tua azienda.</p>
+                    <h2 data-i18n="gr-cta-h2">Costruiamo insieme un ambiente più sostenibile</h2>
+                    <p data-i18n="gr-cta-p">Scopri quanto puoi risparmiare su corrente, riscaldamento e acqua con SFERA: un sopralluogo gratuito per capire dove si nascondono gli sprechi di casa tua, del tuo giardino o della tua azienda.</p>
                     <div class="gr-btns">
                         <a class="gr-btn primary" id="green-cta-contact" href="https://wa.me/393345875351" target="_blank" rel="noopener noreferrer" data-i18n="gr-btn-contact">Richiedi un sopralluogo gratuito →</a>
                         <a class="gr-btn ghost" id="green-cta-systems" href="tutti_i_sistemi.html" data-i18n="gr-btn-systems">Scopri i sistemi SFERA</a>
@@ -631,8 +681,8 @@
         </section>
 
         <!-- ── FAQ ── -->
-        <section id="section-faq" style="padding:90px 0 110px;border-top:1px solid rgba(123,217,166,0.08);background:linear-gradient(180deg,#08170F 0%,#0D2A1C 30%,#12303A 62%,#182640 85%,#1a2540 100%);">
-            <div style="max-width:760px;margin:0 auto;padding:0 28px;">
+        <section id="section-faq" style="position:relative;padding:90px 0 110px;border-top:1px solid rgba(123,217,166,0.08);background:linear-gradient(180deg,rgba(8,23,15,0.75) 0%,rgba(13,42,28,0.82) 30%,rgba(18,48,58,0.88) 62%,rgba(24,38,64,0.94) 85%,#1a2540 100%);">
+            <div style="max-width:760px;margin:0 auto;padding:0 28px;position:relative;z-index:2;">
                 <div class="gr-reveal" style="text-align:center;margin-bottom:56px;">
                     <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gr-300);display:block;margin-bottom:14px;" data-i18n="faq-eyebrow">Domande frequenti</span>
                     <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(26px,4vw,38px);font-weight:800;color:#fff;margin:0;" data-i18n="faq-h2">Hai dubbi? Abbiamo le risposte.</h2>
@@ -743,12 +793,28 @@
                         <div class="faq-body"><p data-i18n="faq-13-a">Hai ragione, se vuoi usare SFERA solo per spegnere una luce non hai bisogno di un impianto intelligente. Perché il valore è il comfort mentale di non dover controllare 15 finestre prima di uscire. È il risparmio energetico costante di un riscaldamento che non spreca mai calore. È la sicurezza di una casa che simula la tua presenza quando sei in vacanza o previene il danno se c'è una perdita d'acqua (cosa che da solo ti sarebbe impossibile senza prima un allagamento ;)). È un investimento che aumenta il valore del tuo immobile e protegge la tua serenità.</p></div>
                     </div>
 
-                    <div class="faq-item" style="border-bottom:none;">
+                    <div class="faq-item">
                         <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
                             <span class="faq-q" data-i18n="faq-14-q">Ho già un sistema domotico, devo rifare l'impianto da zero se passo a SFERA?</span>
                             <span class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
                         </button>
                         <div class="faq-body"><p data-i18n="faq-14-a">No. Valorizziamo ciò che hai già, integrandolo ed evolvendolo. Il sistema SFERA nasce per far dialogare standard e protocolli differenti in modo fluido. Questo non solo preserva i tuoi investimenti attuali senza inutili sprechi, ma ti garantisce una compatibilità totale nel tempo. Potrai ampliare e aggiornare la tua smart home, mantenendo intatte le fondamenta del tuo ecosistema attuale.</p></div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+                            <span class="faq-q" data-i18n="faq-15-q">Posso rendere intelligente il mio impianto di irrigazione senza scavare in giardino?</span>
+                            <span class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="faq-body"><p data-i18n="faq-15-a">Assolutamente sì. Non tocchiamo i tubi o gli irrigatori già interrati: ci colleghiamo direttamente alle elettrovalvole esistenti sostituendo il vecchio programmatore a timer con il controllo meteo-adattivo di SFERA.</p></div>
+                    </div>
+
+                    <div class="faq-item" style="border-bottom:none;">
+                        <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+                            <span class="faq-q" data-i18n="faq-16-q">Cosa succede se il meteo prevede pioggia ma poi non piove?</span>
+                            <span class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="faq-body"><p data-i18n="faq-16-a">Il sistema controlla costantemente l'evoluzione meteo reale e l'umidità del suolo: se la pioggia prevista non cade, recupera in automatico l'irrigazione necessaria per non lasciare mai il prato a secco.</p></div>
                     </div>
 
                 </div>
@@ -924,7 +990,7 @@
 
 
     <!-- ── SCRIPTS ── -->
-    <script src="script.js?v=227"></script>
+    <script src="script.js?v=233"></script>
     <script>
     // Scroll reveal
     (function () {
@@ -934,6 +1000,349 @@
             entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
         els.forEach(function (e, i) { e.style.transitionDelay = ((i % 4) * 90) + 'ms'; io.observe(e); });
+    })();
+
+    // Ultra-modern Bionic Leaves & Dynamic Wind-Gust Engine (Zero dependencies, Offscreen sprite cached)
+    (function () {
+        var canvas = document.getElementById('gr-leaves-canvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d', { alpha: true });
+        if (!ctx) return;
+
+        var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        var W = 0, H = 0;
+
+        function resize() {
+            W = window.innerWidth;
+            H = window.innerHeight;
+            canvas.width = Math.round(W * dpr);
+            canvas.height = Math.round(H * dpr);
+        }
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+
+        // Pre-render 4 ultra-modern translucent bionic leaf sprites on tiny offscreen canvases
+        var palettes = [
+            { body1: 'rgba(31,163,91,0.52)',  body2: 'rgba(14,58,36,0.18)',  rim: 'rgba(123,217,166,0.85)', vein: 'rgba(200,247,158,0.70)', glow: 'rgba(95,208,138,0.35)' },
+            { body1: 'rgba(95,208,138,0.48)', body2: 'rgba(20,82,50,0.16)',  rim: 'rgba(200,247,158,0.92)', vein: 'rgba(255,255,255,0.65)', glow: 'rgba(200,247,158,0.38)' },
+            { body1: 'rgba(46,139,87,0.44)',  body2: 'rgba(10,36,22,0.20)',  rim: 'rgba(95,208,138,0.75)',  vein: 'rgba(123,217,166,0.55)', glow: 'rgba(46,139,87,0.30)' },
+            { body1: 'rgba(123,217,166,0.42)',body2: 'rgba(30,107,69,0.15)', rim: 'rgba(200,247,158,0.88)', vein: 'rgba(200,247,158,0.75)', glow: 'rgba(123,217,166,0.35)' }
+        ];
+
+        var sprites = palettes.map(function (p, idx) {
+            var s = 96;
+            var oc = document.createElement('canvas');
+            oc.width = s; oc.height = s;
+            var c = oc.getContext('2d');
+            c.translate(s / 2, s / 2);
+
+            // Soft bioluminescent outer halo
+            var halo = c.createRadialGradient(0, 0, 2, 0, 0, 42);
+            halo.addColorStop(0, p.glow);
+            halo.addColorStop(1, 'rgba(0,0,0,0)');
+            c.fillStyle = halo;
+            c.beginPath();
+            c.arc(0, 0, 42, 0, Math.PI * 2);
+            c.fill();
+
+            // Sleek organic leaf silhouette (slightly different curvature per variant)
+            var w = idx % 2 === 0 ? 17 : 14.5;
+            var grad = c.createLinearGradient(-34, -w, 34, w);
+            grad.addColorStop(0, p.body2);
+            grad.addColorStop(0.55, p.body1);
+            grad.addColorStop(1, p.rim);
+
+            c.beginPath();
+            c.moveTo(-34, 0);
+            c.bezierCurveTo(-18, -w * 1.35, 12, -w * 1.15, 36, 0);
+            c.bezierCurveTo(12, w * 1.15, -18, w * 1.35, -34, 0);
+            c.closePath();
+            c.fillStyle = grad;
+            c.fill();
+
+            // Specular rim border
+            c.lineWidth = 1.25;
+            c.strokeStyle = p.rim;
+            c.stroke();
+
+            // Central glowing midrib + petiole stem
+            c.beginPath();
+            c.moveTo(-41, 1.5);
+            c.quadraticCurveTo(-4, -1.2, 34, 0);
+            c.lineWidth = 1.4;
+            c.strokeStyle = p.vein;
+            c.stroke();
+
+            // Delicate bionic lateral veins
+            c.lineWidth = 0.85;
+            c.strokeStyle = p.vein;
+            var veins = [-16, -5, 6, 17];
+            for (var v = 0; v < veins.length; v++) {
+                var vx = veins[v];
+                var span = (1 - Math.abs(vx) / 34) * (w * 0.72);
+                c.beginPath();
+                c.moveTo(vx, -0.4);
+                c.quadraticCurveTo(vx + 5, -span * 0.65, vx + 10, -span);
+                c.moveTo(vx, -0.4);
+                c.quadraticCurveTo(vx + 5, span * 0.65, vx + 10, span);
+                c.stroke();
+            }
+            return oc;
+        });
+
+        var isMobile = W < 768;
+        var LEAF_COUNT = isMobile ? 22 : 38;
+        var SPORE_COUNT = isMobile ? 18 : 32;
+        var STREAM_COUNT = isMobile ? 5 : 9;
+
+        var leaves = [];
+        for (var i = 0; i < LEAF_COUNT; i++) {
+            var depth = i < LEAF_COUNT * 0.35 ? 0 : (i < LEAF_COUNT * 0.82 ? 1 : 2); // 0=far, 1=mid, 2=near
+            var baseScale = depth === 0 ? (0.34 + Math.random() * 0.22) : (depth === 1 ? (0.58 + Math.random() * 0.34) : (0.95 + Math.random() * 0.45));
+            leaves.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                z: depth,
+                scale: baseScale,
+                sprite: sprites[i % sprites.length],
+                vx: 0.14 + Math.random() * 0.24,
+                vy: -0.06 + Math.random() * 0.22,
+                angle: Math.random() * Math.PI * 2,
+                pitch: Math.random() * Math.PI * 2,
+                roll: Math.random() * Math.PI * 2,
+                spinSpeed: (0.004 + Math.random() * 0.007) * (Math.random() < 0.5 ? 1 : -1),
+                pitchSpeed: 0.008 + Math.random() * 0.012,
+                rollSpeed: 0.006 + Math.random() * 0.010,
+                swayPhase: Math.random() * Math.PI * 2,
+                swayAmp: 0.22 + Math.random() * 0.35,
+                alpha: depth === 0 ? 0.32 : (depth === 1 ? 0.62 : 0.86),
+                trail: []
+            });
+        }
+
+        var spores = [];
+        for (var j = 0; j < SPORE_COUNT; j++) {
+            spores.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                r: 0.9 + Math.random() * 1.9,
+                vx: 0.08 + Math.random() * 0.18,
+                vy: -0.12 - Math.random() * 0.15,
+                phase: Math.random() * Math.PI * 2,
+                speed: 0.4 + Math.random() * 0.8
+            });
+        }
+
+        // Aerodynamic wind stream ribbons visible during fast gusts
+        var streams = [];
+        for (var k = 0; k < STREAM_COUNT; k++) {
+            streams.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                len: 140 + Math.random() * 220,
+                speed: 11 + Math.random() * 9,
+                amp: 12 + Math.random() * 24,
+                phase: Math.random() * Math.PI * 2
+            });
+        }
+
+        // Wind-Gust State Machine: slow baseline with periodic high-velocity peaks
+        var gust = {
+            power: 0,          // 0 = calm slow drift, 1 = peak high-velocity gust
+            target: 0,
+            angle: -0.18,      // direction of the gust wave
+            nextPeakAt: performance.now() + 2600, // first peak soon after load for immediate visual impact!
+            duration: 0,
+            startedAt: 0,
+            scrollBoost: 0
+        };
+
+        var lastScrollY = window.pageYOffset || 0;
+        window.addEventListener('scroll', function () {
+            var sy = window.pageYOffset || 0;
+            var delta = Math.min(Math.abs(sy - lastScrollY), 120);
+            lastScrollY = sy;
+            gust.scrollBoost = Math.min(gust.scrollBoost + delta * 0.0025, 0.45);
+        }, { passive: true });
+
+        function updateGust(now) {
+            if (now >= gust.nextPeakAt && gust.duration === 0) {
+                gust.startedAt = now;
+                gust.duration = 2100 + Math.random() * 950; // 2.1s - 3.0s burst
+                gust.angle = (Math.random() < 0.5 ? -1 : 1) * (0.10 + Math.random() * 0.22);
+            }
+            if (gust.duration > 0) {
+                var t = (now - gust.startedAt) / gust.duration;
+                if (t >= 1) {
+                    gust.duration = 0;
+                    gust.power = 0;
+                    // Next fast peak in 5.5s - 9.5s of slow hypnotic floating
+                    gust.nextPeakAt = now + 5500 + Math.random() * 4000;
+                } else {
+                    // Sharp attack (0 -> 0.22) + dramatic high-velocity crest + smooth exponential tail
+                    gust.power = t < 0.22
+                        ? Math.pow(t / 0.22, 2.2)
+                        : Math.pow(1 - (t - 0.22) / 0.78, 2.4);
+                }
+            }
+            gust.scrollBoost *= 0.94;
+        }
+
+        var rafId = null;
+        function render(now) {
+            updateGust(now);
+            var totalGust = Math.min(1, gust.power + gust.scrollBoost);
+            var gustCos = Math.cos(gust.angle);
+            var gustSin = Math.sin(gust.angle);
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.clearRect(0, 0, W, H);
+
+            // 1. Draw aerodynamic luminous wind ribbons during gust peaks
+            if (totalGust > 0.06) {
+                ctx.save();
+                ctx.lineCap = 'round';
+                for (var s = 0; s < streams.length; s++) {
+                    var st = streams[s];
+                    st.x += st.speed * (0.35 + totalGust * 1.55) * gustCos;
+                    st.y += st.speed * (0.35 + totalGust * 1.55) * gustSin;
+                    if (st.x - st.len > W + 100) { st.x = -st.len; st.y = Math.random() * H; }
+                    if (st.y < -100) st.y = H + 80;
+                    if (st.y > H + 100) st.y = -80;
+
+                    var sg = ctx.createLinearGradient(st.x - st.len * gustCos, st.y - st.len * gustSin, st.x, st.y);
+                    sg.addColorStop(0, 'rgba(123,217,166,0)');
+                    sg.addColorStop(0.65, 'rgba(123,217,166,' + (totalGust * 0.16).toFixed(3) + ')');
+                    sg.addColorStop(1, 'rgba(200,247,158,' + (totalGust * 0.34).toFixed(3) + ')');
+
+                    ctx.strokeStyle = sg;
+                    ctx.lineWidth = 1.2 + totalGust * 1.1;
+                    ctx.beginPath();
+                    var tailX = st.x - st.len * gustCos;
+                    var tailY = st.y - st.len * gustSin;
+                    var midX = (st.x + tailX) * 0.5 - gustSin * Math.sin(now * 0.004 + st.phase) * st.amp;
+                    var midY = (st.y + tailY) * 0.5 + gustCos * Math.sin(now * 0.004 + st.phase) * st.amp;
+                    ctx.moveTo(tailX, tailY);
+                    ctx.quadraticCurveTo(midX, midY, st.x, st.y);
+                    ctx.stroke();
+                }
+                ctx.restore();
+            }
+
+            // 2. Draw bioluminescent spores / pollen
+            for (var j = 0; j < spores.length; j++) {
+                var sp = spores[j];
+                var spBoost = 1 + totalGust * 14 * sp.speed;
+                sp.x += sp.vx * spBoost + gustCos * totalGust * 6.5 * sp.speed;
+                sp.y += sp.vy + Math.sin(now * 0.0015 + sp.phase) * 0.18 + gustSin * totalGust * 6.5 * sp.speed;
+
+                if (sp.x > W + 20) sp.x = -20;
+                if (sp.y < -20) sp.y = H + 20;
+                if (sp.y > H + 20) sp.y = -20;
+
+                var pulse = 0.25 + 0.35 * (0.5 + 0.5 * Math.sin(now * 0.003 + sp.phase)) + totalGust * 0.35;
+                ctx.fillStyle = 'rgba(200,247,158,' + Math.min(0.9, pulse).toFixed(3) + ')';
+                ctx.beginPath();
+                ctx.arc(sp.x, sp.y, sp.r * (1 + totalGust * 0.4), 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // 3. Draw 3D-tumbling bionic leaves + slipstream trails on peak gusts
+            for (var i = 0; i < leaves.length; i++) {
+                var lf = leaves[i];
+                var layerMult = lf.z === 0 ? 0.55 : (lf.z === 1 ? 1.0 : 1.45);
+
+                // Spatial wave so the wind gust sweeps across the screen organically
+                var waveOffset = Math.max(0, 1 - Math.abs((lf.x / W) - ((now - gust.startedAt) / 900)) * 0.45);
+                var localGust = totalGust * (0.75 + 0.45 * waveOffset) * layerMult;
+
+                // Slow hypnotic drift + explosive gust acceleration (up to ~14x during peak)
+                var swayX = Math.cos(now * 0.0011 + lf.swayPhase) * lf.swayAmp;
+                var swayY = Math.sin(now * 0.0014 + lf.swayPhase) * lf.swayAmp;
+
+                var dx = (lf.vx + swayX * 0.35) * layerMult + gustCos * localGust * 13.5;
+                var dy = (lf.vy + swayY) * layerMult + gustSin * localGust * 13.5 - (localGust * 1.6 * Math.sin(lf.swayPhase + now * 0.005));
+
+                lf.x += dx;
+                lf.y += dy;
+
+                // 3D rotation speeds up dramatically during wind peaks
+                var spinBoost = 1 + localGust * 6.5;
+                lf.angle += lf.spinSpeed * spinBoost;
+                lf.pitch += lf.pitchSpeed * spinBoost;
+                lf.roll  += lf.rollSpeed * spinBoost;
+
+                // Record luminous slipstream trail for foreground/midground leaves during gusts
+                if (lf.z >= 1 && localGust > 0.18) {
+                    lf.trail.push({ x: lf.x, y: lf.y });
+                    if (lf.trail.length > 7) lf.trail.shift();
+                } else if (lf.trail.length > 0) {
+                    lf.trail.shift();
+                }
+
+                // Wrap around screen edges cleanly (and clear trail on wrap)
+                var pad = 70;
+                if (lf.x > W + pad) { lf.x = -pad; lf.y = Math.random() * H; lf.trail.length = 0; }
+                else if (lf.x < -pad) { lf.x = W + pad; lf.trail.length = 0; }
+                if (lf.y > H + pad) { lf.y = -pad; lf.x = Math.random() * W; lf.trail.length = 0; }
+                else if (lf.y < -pad) { lf.y = H + pad; lf.x = Math.random() * W; lf.trail.length = 0; }
+
+                // Render slipstream trail if active
+                if (lf.trail.length > 2) {
+                    ctx.beginPath();
+                    ctx.moveTo(lf.trail[0].x, lf.trail[0].y);
+                    for (var t = 1; t < lf.trail.length; t++) {
+                        ctx.lineTo(lf.trail[t].x, lf.trail[t].y);
+                    }
+                    ctx.strokeStyle = 'rgba(123,217,166,' + Math.min(0.42, localGust * 0.28).toFixed(3) + ')';
+                    ctx.lineWidth = 1.6 * lf.scale;
+                    ctx.lineCap = 'round';
+                    ctx.stroke();
+                }
+
+                // 3D foreshortening via 2D matrix transform
+                var flipX = Math.cos(lf.pitch);
+                var flipY = 0.38 + 0.62 * Math.abs(Math.sin(lf.roll));
+                var sx = lf.scale * (0.28 + 0.72 * Math.abs(flipX)) * (flipX < 0 ? -1 : 1);
+                var sy = lf.scale * flipY;
+
+                // Gently align leaf angle toward wind vector during strong gusts
+                var renderAngle = lf.angle + (gust.angle - lf.angle) * Math.min(0.35, localGust * 0.22);
+                var cosA = Math.cos(renderAngle);
+                var sinA = Math.sin(renderAngle);
+
+                ctx.setTransform(
+                    dpr * cosA * sx,
+                    dpr * sinA * sx,
+                    dpr * -sinA * sy,
+                    dpr * cosA * sy,
+                    dpr * lf.x,
+                    dpr * lf.y
+                );
+                ctx.globalAlpha = Math.min(1, lf.alpha + localGust * 0.22);
+                ctx.drawImage(lf.sprite, -48, -48);
+            }
+            ctx.globalAlpha = 1;
+
+            if (!reducedMotion && !document.hidden) {
+                rafId = requestAnimationFrame(render);
+            }
+        }
+
+        if (reducedMotion) {
+            render(performance.now());
+        } else {
+            rafId = requestAnimationFrame(render);
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+                } else if (!rafId) {
+                    gust.nextPeakAt = performance.now() + 2000;
+                    rafId = requestAnimationFrame(render);
+                }
+            });
+        }
     })();
     </script>
     <!-- Desk M1 login modal -->
