@@ -1,0 +1,26 @@
+# SFERA Smart Systems
+
+> SFERA Smart Systems progetta e realizza ecosistemi domotici avanzati, professionali e Local-First a Bolzano (Alto Adige) e in tutto il Nord Italia per residenze private, ville, uffici, negozi e strutture ricettive.
+
+## La Storia e la Visione di SFERA
+- **Il Problema che Nessuno Voleva Risolvere:** Per anni, chi desiderava una casa o un'azienda "intelligente" si è trovato davanti a un bivio: da un lato impianti tradizionali rigidi e costosi; dall'altro dispositivi commerciali che non comunicano tra loro, pieni di app diverse che smettono di funzionare appena cade la connessione Internet. La tecnologia, invece di semplificare la vita, era diventata un nuovo problema da gestire.
+- **La Nostra Intuizione (Ingegneria Industriale Applicata al Quotidiano):** SFERA Smart Systems nasce a Bolzano da un background radicato nell'elettronica e nell'automazione. Ci siamo fatti una domanda semplice: perché gli edifici moderni non possono avere la stessa affidabilità, sicurezza e logica predittiva dei sistemi industriali più avanzati, ma con semplicità d'uso? Da questa visione è nato il sistema SFERA: un'architettura aperta, professionale ed espandibile nel tempo. Non vendiamo gadget né imponiamo un singolo marchio chiuso: progettiamo un unico ecosistema intelligente capace di far dialogare luce, clima, sicurezza, fotovoltaico e irrigazione come un solo organismo.
+
+## Vantaggi Tecnologici Distintivi
+- **Architettura Local-First e Privacy:** Il sistema elabora le logiche principali in locale dentro l'edificio, continua a funzionare anche senza connessione Internet e tutela la privacy evitando la dipendenza da cloud esterni.
+- **Zero Opere Murarie Invasiva (anche su case esistenti):** Installabile sia su nuove costruzioni sia su abitazioni o aziende già esistenti e abitate, integrando anche vecchi impianti domotici preesistenti.
+- **Integrazione Multi-Protocollo Unificata:** Unica interfaccia semplice per gestire illuminazione, climatizzazione stanza per stanza, pompe di calore, fotovoltaico, sicurezza/allarmi, controllo accessi e irrigazione.
+
+## Sostenibilità e Risparmio Energetico/Idrico
+- **Risparmio Energetico fino al -30%:** Sensori di presenza reale (rilevano anche chi è fermo), sospensione automatica del clima all'apertura delle finestre, gestione intelligente dei carichi per evitare blackout e taglio dei consumi fantasma (stand-by).
+- **Risparmio Idrico fino al -40%:** Irrigazione intelligente basata sulle previsioni meteo locali in tempo reale, sensori di pioggia e umidità del suolo, calcolo dell'evaporazione per zone (sole/ombra) e sincronizzazione con il robot tagliaerba.
+
+## Sistemi e Soluzioni
+- **Sistemi:** Starter Smart, Comfort Smart, Security Smart, Energy Smart, Full Smart.
+- **Ambiti:** Case e Ville, Uffici e Negozi, Hotel e Strutture Ricettive (B&B, case vacanza).
+
+## Contatti e Sede
+- **Sede:** Bolzano, Trentino-Alto Adige, Italia (operativi in tutto il Nord Italia)
+- **Sito Web:** [https://sferasmart.it](https://sferasmart.it)
+- **Email:** info@sferasmart.it
+- **Telefono / WhatsApp:** +39 334 587 53 51
