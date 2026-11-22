@@ -1768,6 +1768,8 @@
                     'translateX(' + tx + 'px) translateZ(' + tz + 'px) rotateY(' + ry + 'deg) scale(' + sc + ')';
                 cards[i].style.opacity   = op;
                 cards[i].style.zIndex    = Math.round(op * 10);
+                cards[i].style.pointerEvents = (row === 5) ? 'none' : 'auto';
+                cards[i].setAttribute('data-slot-row', String(row));
                 if (row === 0) {
                     cards[i].classList.add('sc3d-active');
                 } else {
@@ -1787,21 +1789,62 @@
         function next() { goTo(activeIdx + 1); }
         function prev() { goTo(activeIdx - 1); }
 
-        function startAuto() { /* auto-rotate disabled */ }
-        function stopAuto()  { /* auto-rotate disabled */ }
+        var autoTimer = null;
+        var lastDragDx = 0;
+        function startAuto() {
+            stopAuto();
+            autoTimer = setInterval(function() { next(); }, 3200);
+        }
+        function stopAuto() {
+            if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+        }
 
         function init() {
             var stage  = document.getElementById('sc3d-stage');
             var cards  = document.querySelectorAll('.sc3d-card');
             var dots   = document.querySelectorAll('.sc3d-dot-btn');
             if (!stage || !cards.length) return;
+            var trackEl = document.getElementById('sc3d-track');
+            if (trackEl) trackEl.style.pointerEvents = 'none';
+
+            stage.addEventListener('click', function(e) {
+                if (Math.abs(lastDragDx) > 40) { lastDragDx = 0; return; }
+                var cx = e.clientX, cy = e.clientY;
+                var bestIdx = -1, bestRow = 99;
+                for (var k = 0; k < cards.length; k++) {
+                    var rSlot = parseInt(cards[k].getAttribute('data-slot-row') || '5', 10);
+                    if (rSlot >= 5) continue;
+                    var rect = cards[k].getBoundingClientRect();
+                    if (cx >= rect.left && cx <= rect.right && cy >= rect.top && cy <= rect.bottom) {
+                        if (rSlot < bestRow) {
+                            bestRow = rSlot;
+                            bestIdx = k;
+                        }
+                    }
+                }
+                if (bestIdx === -1) {
+                    var closestCard = e.target.closest ? e.target.closest('.sc3d-card') : null;
+                    if (closestCard) {
+                        var cIdx = parseInt(closestCard.getAttribute('data-sc-idx'), 10);
+                        if (!isNaN(cIdx)) bestIdx = cIdx;
+                    }
+                }
+                if (bestIdx !== -1 && bestIdx !== activeIdx) {
+                    goTo(bestIdx);
+                } else {
+                    var sr = stage.getBoundingClientRect();
+                    var midX = sr.left + sr.width / 2;
+                    if (cx >= midX) { next(); } else { prev(); }
+                }
+                startAuto();
+            });
 
             /* click on any card → navigate (active → next, others → go to that card) */
             for (var i = 0; i < cards.length; i++) {
                 cards[i].removeAttribute('onclick');
                 (function(idx) {
                     cards[idx].addEventListener('click', function() {
-                        if (idx !== activeIdx) { goTo(idx); } else { next(); }
+                        /* handled by stage click listener */
                         startAuto();
                     });
                 })(i);
@@ -1822,7 +1865,25 @@
             if (btnNext) btnNext.addEventListener('click', function() { next(); startAuto(); });
 
             /* pause on hover */
-            stage.addEventListener('mouseenter', stopAuto);
+            /* keep slow auto-rotation active even on hover */
+            stage.style.overscrollBehaviorX = 'contain';
+            var wheelAccumX = 0, lastWheelStep = 0, wheelResetTimer = null;
+            stage.addEventListener('wheel', function(e) {
+                var dx = Math.abs(e.deltaX) >= Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+                if (Math.abs(dx) < 2 || Math.abs(e.deltaX) < Math.abs(e.deltaY) * 0.8 && !e.shiftKey) return;
+                e.preventDefault();
+                var now = Date.now();
+                if (wheelAccumX * dx < 0) wheelAccumX = 0;
+                wheelAccumX += dx;
+                if (wheelResetTimer) clearTimeout(wheelResetTimer);
+                wheelResetTimer = setTimeout(function() { wheelAccumX = 0; }, 180);
+                if (Math.abs(wheelAccumX) >= 28 && (now - lastWheelStep > 320)) {
+                    if (wheelAccumX > 0) { next(); } else { prev(); }
+                    wheelAccumX = 0;
+                    lastWheelStep = now;
+                    startAuto();
+                }
+            }, { passive: false });
             stage.addEventListener('mouseleave', startAuto);
 
             /* touch swipe */
@@ -1838,12 +1899,13 @@
             /* mouse drag */
             var mouseStartX = 0, isDragging = false;
             stage.addEventListener('mousedown', function(e) {
-                mouseStartX = e.clientX; isDragging = true; stopAuto();
+            mouseStartX = e.clientX; lastDragDx = 0; isDragging = true; stopAuto();
             });
             document.addEventListener('mouseup', function(e) {
                 if (!isDragging) return;
                 isDragging = false;
                 var dx = e.clientX - mouseStartX;
+                lastDragDx = dx;
                 if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
                 startAuto();
             });
