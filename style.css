@@ -1901,6 +1901,7 @@ html { overflow-x: hidden; max-width: 100%; }
 }
 /* Carousel CTA button */
 .sc3d-cta-btn {
+    margin-top: 64px;
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
     font-weight: 700;
